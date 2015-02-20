@@ -1,0 +1,3 @@
+activator 
+run
+pause
