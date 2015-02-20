@@ -11,3 +11,7 @@ Have a look at the [Play documentation](https://www.playframework.com/documentat
 - Type in the command "activator run".
 - Open your browser with the url "http://localhost:9000"
 - (Optional) Type in "activator ui" for more activator fun.
+
+####Intellij IDEA Support
+- Install the Scala and Play Framework plugin for Intellij
+- Import project as SBT
