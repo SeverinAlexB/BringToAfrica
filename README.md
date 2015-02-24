@@ -1,8 +1,10 @@
-# BringToAfrica
+# BringToAfrica [![Join the chat at https://gitter.im/Sebubu/BringToAfrica](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Sebubu/BringToAfrica?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Travis](https://travis-ci.org/Sebubu/BringToAfrica.svg?branch=master)](https://travis-ci.org/Sebubu/BringToAfrica)[![Coverity Scan Build Status](https://scan.coverity.com/projects/4349/badge.svg)](
+https://scan.coverity.com/projects/4349)
 
-[![Join the chat at https://gitter.im/Sebubu/BringToAfrica](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Sebubu/BringToAfrica?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Travis](https://travis-ci.org/Sebubu/BringToAfrica.svg?branch=master)](https://travis-ci.org/Sebubu/BringToAfrica)
 This project belongs to the module SE2P at the HSR Hochschule für Technik Rapperswil Switzerland and is part of the bachelor degree in software engineering.  
+
 ![alt tag](http://s14.postimg.org/tfcji033l/Sw_COn_HSR.png)  
+
 The software is written in Java and bases on the [Playframework](https://www.playframework.com/) (See [here](https://www.youtube.com/watch?v=bLrmnjPQsZc) for a introduction).  
 Have a look at the [Play documentation](https://www.playframework.com/documentation/2.3.x/Home).
      

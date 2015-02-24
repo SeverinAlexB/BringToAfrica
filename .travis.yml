@@ -14,4 +14,22 @@ notifications:
 webhooks:
   urls:
     - https://webhooks.gitter.im/e/d7bf8b6d7f119fe0961d
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "PNLhxvcHbEolOPNNBVHek8Oy0NpYtNP0bciKBjjcu1Ljtqs3Ryz+xE2rf95zFJnfGNMZuPNrIOO2/rXXpw45XVtuQlyD06EDrxe30zq6MkreJTz4hiNUHuMfFSlOqgcv+/3PREbbmLRdc/X/p96ZpVjOsnZ6MJHOPaeXUUm74Pc="
 
+addons:
+  coverity_scan:
+    project:
+      name: "Sebubu/BringToAfrica"
+      description: "Build submitted via Travis CI"
+    notification_email: 
+      - m2roth@hsr.ch
+      - lmartine@hsr.ch
+      - skurath@hsr.ch
+      - sbuehler@hsr.ch
+    build_command_prepend: "sbt clean"
+    build_command:   "sbt compile"
+    branch_pattern: master
