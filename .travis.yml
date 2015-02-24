@@ -2,10 +2,15 @@ language: java
 jdk:
   - oraclejdk8
 script:
-  - ls -l
   - cd "playProject"
   - ls -l
   - sbt test
 notifications:
   email:
     - sevi_buehler@hotmail.com
+	- skurath@hsr.ch
+	- lmartine@hsr.ch
+	- m2roth@hsr.ch
+	  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/d7bf8b6d7f119fe0961d
