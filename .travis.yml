@@ -10,6 +10,6 @@ notifications:
     - skurath@hsr.ch
     - lmartine@hsr.ch
     - m2roth@hsr.ch
-webhooks:
-  urls:
-    - https://webhooks.gitter.im/e/d7bf8b6d7f119fe0961d
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/0eb826f4fab05abd2366
