@@ -1,3 +1,11 @@
 language: java
-before_install: ls -l
-script: playProject/activator test
+jdk:
+  - oraclejdk8
+script:
+  - ls -l
+  - cd "playProject"
+  - ls -l
+  - sbt test
+notifications:
+  email:
+    - sevi_buehler@hotmail.com
