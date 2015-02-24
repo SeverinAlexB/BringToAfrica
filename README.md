@@ -17,3 +17,6 @@ Have a look at the [Play documentation](https://www.playframework.com/documentat
 ####Intellij IDEA Support
 - Install the Scala and Play Framework plugin for Intellij
 - Import project as SBT
+
+####Project management
+[HostedRedmine](https://www.hostedredmine.com/projects/bringtoafrica)
