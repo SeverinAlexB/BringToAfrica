@@ -4,7 +4,8 @@ jdk:
 script:
   - cd "playProject"
   - ls -l
-  - sbt test
+  - sbt clean coverage test
+after_success: "sbt coveralls"
 notifications:
   email:
     - sevi_buehler@hotmail.com
