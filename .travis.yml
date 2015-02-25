@@ -5,6 +5,7 @@ script:
   - sbt clean coverage cpd checkstyle test
 after_success: "sbt coveralls"
 notifications:
+  slack: bringtoafrica:rGSyp0j9xvfP1BQsFOk441pv
   email:
     - sevi_buehler@hotmail.com
     - skurath@hsr.ch
