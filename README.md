@@ -18,4 +18,4 @@ Have a look at the [Play documentation](https://www.playframework.com/documentat
 - Import project as SBT
 
 ####Project management
-[HSR Redmine](http://sinv-56071.edu.hsr.ch/redmine/projects/bringtoafrica/)
+[Jira](https://bringtoafrica.atlassian.net)
