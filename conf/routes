@@ -7,5 +7,8 @@ GET     /                           controllers.Application.index()
 POST    /person                     controllers.Application.addPerson()
 GET     /persons                    controllers.Application.getPersons
 
+GET     /projects                   controllers.Application.getProjects
+POST    /project                    controllers.Application.addProject()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
