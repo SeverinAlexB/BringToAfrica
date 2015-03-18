@@ -13,6 +13,8 @@ create table project (
   id                        varchar(255) not null,
   title                     varchar(255),
   description               varchar(255),
+  starts_at                 date,
+  ends_at                   date,
   contact                   varchar(255),
   constraint pk_project primary key (id))
 ;
