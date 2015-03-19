@@ -1,7 +1,7 @@
 import de.johoop.cpd4sbt.CopyPasteDetector._
 import com.etsy.sbt.Checkstyle._
 
-name := """play-java-intro"""
+name := """BringToAfrica"""
 
 version := "1.0-SNAPSHOT"
 
