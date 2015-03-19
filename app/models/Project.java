@@ -9,7 +9,7 @@ import java.sql.Date;
 public class Project extends Model {
 
     @Id
-    private String id;
+    private int id;
     private String title;
     private String description;
     private Date startsAt;
@@ -56,12 +56,12 @@ public class Project extends Model {
         this.contact = contact;
     }
 
-    public String getId() {
+    public int getId() {
 
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
