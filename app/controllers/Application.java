@@ -1,20 +1,16 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-
-import views.html.*;
-
 import models.Person;
 import models.Project;
-
 import play.data.Form;
+import play.db.ebean.Model;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.index;
 
 import java.util.List;
 
-import play.db.ebean.Model;
-
-import static play.libs.Json.*;
+import static play.libs.Json.toJson;
 
 public class Application extends Controller {
 
@@ -29,7 +25,7 @@ public class Application extends Controller {
     }
 
     public static Result getPersons() {
-    	List<Person> persons = new Model.Finder(String.class, Person.class).all();
+    	List<Person> persons = new Model.Finder<>(String.class, Person.class).all();
     	return ok(toJson(persons));
     }
 
@@ -43,7 +39,4 @@ public class Application extends Controller {
         List<Project> projects = new Model.Finder(String.class, Project.class).all();
         return ok(toJson(projects));
     }
-
-
-
 }
