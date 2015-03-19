@@ -1,6 +1,5 @@
 package controllers;
 
-import models.Person;
 import models.Project;
 import play.data.Form;
 import play.db.ebean.Model;
