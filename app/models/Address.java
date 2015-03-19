@@ -3,6 +3,7 @@ package models;
 import play.db.ebean.Model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -10,6 +11,9 @@ public class Address {
     private int id;
     private String city;
     private String street;
+
+    @OneToOne
+    private Project project;
 
     public int getId() {
         return id;

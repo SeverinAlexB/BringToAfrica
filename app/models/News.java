@@ -2,10 +2,8 @@ package models;
 
 import play.db.ebean.Model;
 import static javax.persistence.FetchType.LAZY;
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
@@ -17,6 +15,10 @@ public class News {
     @Basic(fetch=LAZY)
     @Lob
     private byte[] picture;
+
+    @ManyToOne
+    private Project project;
+
 
     public int getId() {
         return id;

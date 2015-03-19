@@ -1,9 +1,10 @@
 package models;
 
 import play.db.ebean.Model;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 public class Project extends Model {
@@ -15,6 +16,21 @@ public class Project extends Model {
     private Date startsAt;
     private Date endsAt;
     private String contact;
+
+    @OneToMany
+    private List<News> news;
+
+    @OneToOne
+    private Address address;
+
+    @OneToMany
+    private List<DonationGoal> donationGoals;
+
+    @OneToMany
+    private List<Donation> donations;
+
+    @ManyToOne
+    private User user;
 
     public String getTitle() {
         return title;

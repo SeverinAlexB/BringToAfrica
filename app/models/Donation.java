@@ -3,6 +3,7 @@ package models;
 import play.db.ebean.Model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Donation {
@@ -10,6 +11,15 @@ public class Donation {
     private int id;
     private String description;
     //TODO Enum
+
+    @ManyToOne
+    private Project project;
+
+    @ManyToOne
+    private DonationType donationType;
+
+    @ManyToOne
+    private User user;
 
     public int getId() {
         return id;
