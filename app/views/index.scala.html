@@ -9,4 +9,14 @@
 		<input type="text" name="name"/>
 		<button>Add Person</button>
 	</form>
+
+    <ul id="projects"></ul>
+
+    <form method="POST" action="@routes.Application.addProject()">
+        <input type="text" name="title"/>
+        <input type="text" name="description"/>
+        <button>Add Project</button>
+    </form>
+
+
 }

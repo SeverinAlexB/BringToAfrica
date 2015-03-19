@@ -9,18 +9,30 @@ create table person (
   constraint pk_person primary key (id))
 ;
 
+create table project (
+  id                        varchar(255) not null,
+  title                     varchar(255),
+  description               varchar(255),
+  starts_at                 date,
+  ends_at                   date,
+  contact                   varchar(255),
+  constraint pk_project primary key (id))
+;
+
 create sequence person_seq;
+
+create sequence project_seq;
 
 
 
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+drop table if exists person cascade;
 
-drop table if exists person;
-
-SET REFERENTIAL_INTEGRITY TRUE;
+drop table if exists project cascade;
 
 drop sequence if exists person_seq;
+
+drop sequence if exists project_seq;
 
