@@ -1,24 +1,223 @@
 @()
 
 @main("BringToAfrica") {
-	<script type='text/javascript' src='@routes.Assets.at("javascripts/index.js")'></script>
-
-    <ul id="projects"></ul>
-
-    <form method="POST" action="@routes.Application.addProject()">
-        Gib deinem Projekt einen Namen <br />
-        <input type="text" name="title"/> <br />
-        Beschreibe dein Projekt in ein paar kurzen Sätzen<br />
-        <input type="text" name="description"/><br />
-            Wann solll deine Spendenaktion starten?<br />
-        <input type="week" name="endsAt"><br />
-            (optional) Wann solll deine Spendenaktion enden?<br />
-            <input type="date" name="startsAt"><br />
-            Wie soll die Spender mit dir in Kontakt treten?<br />
-            <input type="date" name="contact"/><br />
-            <button>Add Project</button>
-
-    </form>
-
-
+        <div class="content-wrapper cause-page-section" id="page-info">
+            <div class="container">
+                <!-- Our Causes Section-->
+                <section class="our-causes">
+                    <div class="anim-section animate">
+                        <div class="row">
+                            <!-- Article Section Srart Here -->
+                            <div class="article-list progressbar">
+                                <div class="cols-xs-12 col-sm-4 anim-section animate">
+                                    <div style="height: 424px;" class="spacer-bottom zoom equal-box">
+                                        <h3 class="h5">Help African children to get shelter</h3>
+                                        <a href="causes-detail.html" class="img-thumb">
+                                            <figure>
+                                                <img src="assets/img/img-slide-01.jpg" alt="" height="400" width="600">
+                                            </figure>
+                                        </a>
+                                        <div class="progress">
+                                            <div style="width: 72%;" class="progress-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="progress-value">72% </span>
+                                            </div>
+                                        </div>
+                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
+                                        <p>
+                                            Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
+                                        </p>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                    </div>
+                                </div>
+                                <div class="cols-xs-12 col-sm-4 anim-section animate">
+                                    <div style="height: 424px;" class="spacer-bottom zoom equal-box">
+                                        <h3 class="h5">Help girls to get Education</h3>
+                                        <a href="causes-detail-with-sidebar.html" class="img-thumb">
+                                            <figure>
+                                                <img src="assets/img/img-slide-02.jpg" alt="" height="400" width="600">
+                                            </figure>
+                                        </a>
+                                        <div class="progress">
+                                            <div style="width: 60%;" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="progress-value">60% </span>
+                                            </div>
+                                        </div>
+                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
+                                        <p>
+                                            Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
+                                        </p>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                    </div>
+                                </div>
+                                <div class="cols-xs-12 col-sm-4 anim-section animate">
+                                    <div style="height: 424px;" class="spacer-bottom zoom equal-box">
+                                        <h3 class="h5">Help us to send Vegetables to Africa</h3>
+                                        <a href="causes-detail-with-sidebar.html" class="img-thumb">
+                                            <figure>
+                                                <img src="assets/img/img-slide-03.jpg" alt="" height="400" width="600">
+                                            </figure>
+                                        </a>
+                                        <div class="progress">
+                                            <div style="width: 80%;" class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="progress-value">80% </span>
+                                            </div>
+                                        </div>
+                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
+                                        <p>
+                                            Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
+                                        </p>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                    </div>
+                                </div>
+                                <div class="cols-xs-12 col-sm-4 anim-section animate">
+                                    <div style="height: 424px;" class="spacer-bottom zoom equal-box">
+                                        <h3 class="h5">Help Economic Opportunity</h3>
+                                        <a href="causes-detail.html" class="img-thumb">
+                                            <figure>
+                                                <img src="assets/img/slide-banner-01.jpg" alt="" height="400" width="600">
+                                            </figure>
+                                        </a>
+                                        <div class="progress">
+                                            <div style="width: 72%;" class="progress-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="progress-value">72% </span>
+                                            </div>
+                                        </div>
+                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
+                                        <p>
+                                            Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
+                                        </p>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                    </div>
+                                </div>
+                                <div class="cols-xs-12 col-sm-4 anim-section animate">
+                                    <div style="height: 424px;" class="spacer-bottom zoom equal-box">
+                                        <h3 class="h5">Focusing on Forgotten Rural Community</h3>
+                                        <a href="#" class="img-thumb">
+                                            <figure>
+                                                <img src="assets/img/img-slide-05.jpg" alt="" height="400" width="600">
+                                            </figure>
+                                        </a>
+                                        <div class="progress">
+                                            <div style="width: 72%;" class="progress-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="progress-value">72% </span>
+                                            </div>
+                                        </div>
+                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
+                                        <p>
+                                            Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
+                                        </p>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                    </div>
+                                </div>
+                                <div class="cols-xs-12 col-sm-4 anim-section animate">
+                                    <div style="height: 424px;" class="spacer-bottom zoom equal-box">
+                                        <h3 class="h5">Help Tanzania Female Farmers</h3>
+                                        <a href="#" class="img-thumb">
+                                            <figure>
+                                                <img src="assets/img/img-slide-06.jpg" alt="" height="400" width="600">
+                                            </figure>
+                                        </a>
+                                        <div class="progress">
+                                            <div style="width: 72%;" class="progress-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="progress-value">72% </span>
+                                            </div>
+                                        </div>
+                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
+                                        <p>
+                                            Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
+                                        </p>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                    </div>
+                                </div>
+                                <div class="cols-xs-12 col-sm-4 anim-section animate">
+                                    <div style="height: 424px;" class="spacer-bottom zoom equal-box">
+                                        <h3 class="h5">Help African children to get shelter</h3>
+                                        <a href="#" class="img-thumb">
+                                            <figure>
+                                                <img src="assets/img/img-slide-01.jpg" alt="" height="400" width="600">
+                                            </figure>
+                                        </a>
+                                        <div class="progress">
+                                            <div style="width: 72%;" class="progress-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="progress-value">72% </span>
+                                            </div>
+                                        </div>
+                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
+                                        <p>
+                                            Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
+                                        </p>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                    </div>
+                                </div>
+                                <div class="cols-xs-12 col-sm-4 anim-section animate">
+                                    <div style="height: 424px;" class="spacer-bottom zoom equal-box">
+                                        <h3 class="h5">Help girls to get Education</h3>
+                                        <a href="#" class="img-thumb">
+                                            <figure>
+                                                <img src="assets/img/img-slide-02.jpg" alt="" height="400" width="600">
+                                            </figure>
+                                        </a>
+                                        <div class="progress">
+                                            <div style="width: 60%;" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="progress-value">60% </span>
+                                            </div>
+                                        </div>
+                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
+                                        <p>
+                                            Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
+                                        </p>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                    </div>
+                                </div>
+                                <div class="cols-xs-12 col-sm-4 anim-section animate">
+                                    <div style="height: 424px;" class="spacer-bottom zoom equal-box">
+                                        <h3 class="h5">Help us to send Vegetables to Africa</h3>
+                                        <a href="#" class="img-thumb">
+                                            <figure>
+                                                <img src="assets/img/img-slide-03.jpg" alt="" height="400" width="600">
+                                            </figure>
+                                        </a>
+                                        <div class="progress">
+                                            <div style="width: 80%;" class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="progress-value">80% </span>
+                                            </div>
+                                        </div>
+                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
+                                        <p>
+                                            Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
+                                        </p>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Article Section Srart Here -->
+                        </div>
+                    </div>
+                </section>
+                <!-- Our Causes Section End-->
+                <!--Pagination Section Start Here-->
+                <div class="cols-xs-12 anim-section text-center animate">
+                    <ul class="pagination">
+                        <li>
+                            <a href="#">Prev</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">2</a>
+                        </li>
+                        <li>
+                            <a href="#">3</a>
+                        </li>
+                        <li>
+                            <a href="#">4</a>
+                        </li>
+                        <li>
+                            <a href="#">Next</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 }
