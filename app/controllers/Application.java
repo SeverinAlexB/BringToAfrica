@@ -20,11 +20,7 @@ public class Application extends Controller {
         return ok(index.render());
     }
 
-    public static Result addProject() {
-        Project project = Form.form(Project.class).bindFromRequest().get();
-        project.save();
-        return redirect(routes.Application.index());
-    }
+
 
     public static Result getProjects() {
         List<Project> projects = new Model.Finder(String.class, Project.class).all();

@@ -1,0 +1,24 @@
+@()
+
+@main("BringToAfrica") {
+  <script type='text/javascript' src='@routes.Assets.at("javascripts/index.js")'></script>
+
+  <ul id="projects"></ul>
+
+  <form method="POST" action="@routes.Project.addProject()">
+    Gib deinem Projekt einen Namen <br />
+    <input type="text" name="title"/> <br />
+    Beschreibe dein Projekt in ein paar kurzen Sätzen<br />
+    <input type="text" name="description"/><br />
+    Wann solll deine Spendenaktion starten?<br />
+    <input type="week" name="endsAt"><br />
+    (optional) Wann solll deine Spendenaktion enden?<br />
+    <input type="date" name="startsAt"><br />
+    Wie soll die Spender mit dir in Kontakt treten?<br />
+    <input type="date" name="contact"/><br />
+    <button>Add Project</button>
+
+  </form>
+
+
+}

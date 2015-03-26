@@ -3,10 +3,11 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
+GET         /                    controllers.Application.index()
 
-GET     /projects                   controllers.Application.getProjects
-POST    /project                    controllers.Application.addProject()
+GET         /projects            controllers.Application.getProjects
+GET         /projects/new        controllers.Project.foo()
+POST        /projects            controllers.Project.addProject()
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET         /assets/*file        controllers.Assets.at(path="/public", file)
