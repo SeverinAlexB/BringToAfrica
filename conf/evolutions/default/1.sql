@@ -5,6 +5,7 @@
 
 create table address (
   id                        bigint not null,
+  country                   varchar(255),
   city                      varchar(255),
   street                    varchar(255),
   project_id                bigint,
@@ -47,6 +48,7 @@ create table news (
   id                        bigint not null,
   title                     varchar(255),
   description               varchar(255),
+  date                      date,
   picture                   bytea,
   project_id                bigint,
   constraint pk_news primary key (id))
