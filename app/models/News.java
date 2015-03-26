@@ -13,6 +13,9 @@ public class News {
     private Long id;
     private String title;
     private String description;
+    private Date date;
+
+
     @Basic(fetch=LAZY)
     @Lob
     private byte[] picture;
@@ -50,5 +53,13 @@ public class News {
 
     public void setPicture(byte[] picture) {
         this.picture = picture;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
