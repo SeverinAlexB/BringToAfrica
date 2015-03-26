@@ -1,20 +1,37 @@
 package models;
 
 import play.db.ebean.Model;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 public class Project extends Model {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
     private String title;
     private String description;
     private Date startsAt;
     private Date endsAt;
     private String contact;
+
+    @OneToMany
+    private List<News> news;
+
+    @OneToOne
+    private Address address;
+
+    @OneToMany
+    private List<DonationGoal> donationGoals;
+
+    @OneToMany
+    private List<Donation> donations;
+
+    @ManyToOne
+    private Consumer consumer;
 
     public String getTitle() {
         return title;
@@ -56,12 +73,12 @@ public class Project extends Model {
         this.contact = contact;
     }
 
-    public String getId() {
+    public Long getId() {
 
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
