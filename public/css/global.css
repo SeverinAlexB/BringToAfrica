@@ -1148,7 +1148,7 @@ display: block;
  5.1) Footer First
  ----------------------------------------*/
 #footer {
-	padding: 86px 0 0;
+	padding: 40px 0 0;
 	background: #32302f;
 	color: #8f8b89;
 }
@@ -1270,7 +1270,6 @@ display: block;
 	font-size: 15px;
 	color: #575352;
 	text-align: center;
-	margin-top: 82px;
 	background: #2a2928;
 	padding: 21px 0;
 }
