@@ -1,15 +1,15 @@
 package models;
 
 import play.db.ebean.Model;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class DonationType {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
     private String name;
 
     @OneToMany
@@ -26,11 +26,11 @@ public class DonationType {
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }
