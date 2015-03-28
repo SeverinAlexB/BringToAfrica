@@ -3,6 +3,7 @@ package models;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 public class Donation {
@@ -10,7 +11,8 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String description;
-    //TODO Enum
+    private Date date;
+    private String messageToCollector;
 
     @ManyToOne
     private Project project;
@@ -35,5 +37,21 @@ public class Donation {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getMessageToCollector() {
+        return messageToCollector;
+    }
+
+    public void setMessageToCollector(String messageToCollector) {
+        this.messageToCollector = messageToCollector;
     }
 }
