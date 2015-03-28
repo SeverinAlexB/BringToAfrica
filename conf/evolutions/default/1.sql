@@ -24,6 +24,8 @@ create table consumer (
 create table donation (
   id                        bigint not null,
   description               varchar(255),
+  date                      date,
+  message_to_collector      varchar(255),
   project_id                bigint,
   donation_type_id          bigint,
   consumer_id               bigint,
