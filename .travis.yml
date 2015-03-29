@@ -14,19 +14,3 @@ notifications:
   webhooks:
     urls:
     - https://webhooks.gitter.im/e/0eb826f4fab05abd2366
-env:
-  global:
-  - secure: P7ttInNmhfgcOjEXWQgY0e5Apjnb0rtpqtKPKTA+S5RbzQdQK53anH11+9Y1Kavepo2izb+oUQJdFGQg05eVCfAXMjC3CTNqDoOy6FCpP96lqBtneqbNYaMB/dPvv3nLW0pMHjl8+22tnw8uyfyBC8Xl+92xXYVSoarQcVBVMUU=
-addons:
-  coverity_scan:
-    project:
-      name: Sebubu/BringToAfrica
-      description: Build submitted via Travis CI
-    notification_email:
-    - m2roth@hsr.ch
-    - lmartine@hsr.ch
-    - skurath@hsr.ch
-    - sbuehler@hsr.ch
-    build_command_prepend: sbt clean
-    build_command: sbt compile
-    branch_pattern: master
