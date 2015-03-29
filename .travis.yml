@@ -14,3 +14,10 @@ notifications:
   webhooks:
     urls:
     - https://webhooks.gitter.im/e/0eb826f4fab05abd2366
+deploy:
+  provider: heroku
+  api_key:
+    secure: dzmNmFEnunZgRAVl2RH1uV1AwDlH00/sMUXAL5krGAl18d7CnUDP8KJWmtw7UNXC7dv1VG2qeyfRL8R25QOpnU2p0JFKJA1U1r9wWoCDxSFP8ut6DuIj2AVBNIZ42TtzqJE5lkQzGRkzARn2I7byOIw80FPdlLOffFqGnVi5dG8=
+  app: bringtoafrica
+  on:
+    repo: Sebubu/BringToAfrica

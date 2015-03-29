@@ -1,0 +1,1 @@
+web: target/universal/stage/bin/bringtoafrica -Dhttp.port=${PORT} -Dconfig.file=conf/production.conf -Ddb.default.driver=org.postgresql.Driver -Ddb.default.url=${DATABASE_URL}
