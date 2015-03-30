@@ -32,4 +32,20 @@ public class DonationGoal {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public DonationType getDonationType() {
+        return donationType;
+    }
+
+    public void setDonationType(DonationType donationType) {
+        this.donationType = donationType;
+    }
 }

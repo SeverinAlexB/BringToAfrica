@@ -82,5 +82,43 @@ public class Project extends Model {
         this.id = id;
     }
 
+    public List<News> getNews() {
+        return news;
+    }
 
+    public void setNews(List<News> news) {
+        this.news = news;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<DonationGoal> getDonationGoals() {
+        return donationGoals;
+    }
+
+    public void setDonationGoals(List<DonationGoal> donationGoals) {
+        this.donationGoals = donationGoals;
+    }
+
+    public List<Donation> getDonations() {
+        return donations;
+    }
+
+    public void setDonations(List<Donation> donations) {
+        this.donations = donations;
+    }
+
+    public Consumer getConsumer() {
+        return consumer;
+    }
+
+    public void setConsumer(Consumer consumer) {
+        this.consumer = consumer;
+    }
 }
