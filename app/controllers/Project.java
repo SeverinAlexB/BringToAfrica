@@ -1,40 +1,54 @@
 package controllers;
 
 
+import models.Address;
+import models.DonationGoal;
+import models.DonationType;
 import play.data.validation.Constraints;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.helper.form;
+import play.mvc.Call;
 import views.html.newProject;
 import play.data.Form;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
 import patch.PatchedForm;
 
 
 
 public class Project extends Controller {
 
-    public static class NewProject {
+    //private static Form<ProjectData> projectDataForm = new PatchedForm<ProjectData>(ProjectData.class);
+    //private static Form<Waren> warenForm = new PatchedForm<Waren>(Waren.class).bindFromRequest();
+    //private static Form<Contact> contactForm = new PatchedForm<Contact>(Contact.class);
+    private static Form<Contact> contactForm = new Form<Contact>(Contact.class);
+    private static Form<Waren> warenForm = new Form<Waren>(Waren.class);
+    private static Form<ProjectData> projectDataForm = new Form<ProjectData>(ProjectData.class);
+
+    private static models.Project project = new models.Project();
+    private static List<DonationGoal> donationGoalList = new ArrayList<>();
+    private static models.Address address = new models.Address();
+
+    public static class ProjectData{
         @Constraints.Required
         public String title;
         @Constraints.Required
         public String description;
-        @Constraints.Required
-        public String contact;
         @Constraints.Required
         public String endsAt;
         @Constraints.Required
         public String startsAt;
 
         public String validate() {
+            System.out.println("ProjectData Validation");
             if (title.isEmpty()) {
                 return "Title is empty";
             }else if(description.isEmpty()){
                 return "Description is empty";
-            }else if(contact.isEmpty()){
-                return "Contact is empty";
             }else if(endsAt.isEmpty()){
                 return "endsAt is empty";
             }else if(startsAt.isEmpty()){
@@ -43,38 +57,102 @@ public class Project extends Controller {
             return null;
         }
     }
+    public static class Contact{
+        @Constraints.Required
+        public String contact;
+        @Constraints.Required
+        public String destination;
 
-    //TODO: https://gist.github.com/ndeverge/3074629
-    public static Result addProject() throws Exception{
-        //Form<NewProject> projectForm = Form.form(NewProject.class).bindFromRequest();
-        Form<NewProject> projectForm = new PatchedForm<NewProject>(NewProject.class).bindFromRequest();
-        try{
-            System.out.println(projectForm.get().title);
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        if (projectForm.hasErrors()) {
-            return badRequest(newProject.render(projectForm));
-        } else {
-            String title = projectForm.get().title;
-            System.out.println("title " + title);
-            String description = projectForm.get().description;
-            java.sql.Date endsAt = stringToSqlDate(projectForm.get().endsAt);
-            java.sql.Date startsAt = stringToSqlDate(projectForm.get().startsAt);
-            String contact = projectForm.get().contact;
-            models.Project project = new models.Project();
-            project.setTitle(title);
-            project.setDescription(description);
-            project.setEndsAt(endsAt);
-            project.setStartsAt(startsAt);
-            project.setContact(contact);
-            project.save();
-            return redirect(routes.Application.index());
+        public String validate() {
+            System.out.println("Contact Validation");
+            if (contact.isEmpty()) {
+                return "contact is empty";
+            }else if(destination.isEmpty()){
+                return "destination is empty";
+            }
+            return null;
         }
     }
 
+    public static class Waren{
+        @Constraints.Required
+        public String amount;
+        @Constraints.Required
+        public String donation;
+
+        public String validate() {
+            System.out.println("Waren Validation");
+            if (amount.isEmpty()) {
+                return "amount is empty";
+            }else if(donation.isEmpty()){
+                return "donation is empty";
+            }
+            return null;
+        }
+    }
+
+    //TODO: https://gist.github.com/ndeverge/3074629
+    public static Result addProjectData() throws Exception{
+        //Form<NewProject> projectForm = Form.form(NewProject.class).bindFromRequest();
+        //Form<ProjectData> projectDataForm = new PatchedForm<ProjectData>(ProjectData.class).bindFromRequest();
+        projectDataForm = Form.form(ProjectData.class).bindFromRequest();
+        if (projectDataForm.hasErrors()) {
+            System.out.println("Projectdata has errors");
+            return badRequest(newProject.render(projectDataForm,warenForm,contactForm));
+        } else {
+            project.setTitle(projectDataForm.get().title);
+            project.setDescription(projectDataForm.get().description);
+            project.setEndsAt(stringToSqlDate(projectDataForm.get().endsAt));
+            project.setStartsAt(stringToSqlDate(projectDataForm.get().startsAt));
+            System.out.println("ProjectData");
+            return redirect("/projects/new#billing");
+        }
+    }
+
+    public static Result addWaren() throws Exception{
+        warenForm = Form.form(Waren.class).bindFromRequest();
+        if (warenForm.hasErrors()) {
+            System.out.println("Waren has errrors: ");
+            return badRequest(newProject.render(projectDataForm,warenForm,contactForm));
+        } else {
+            DonationGoal donationGoal = new DonationGoal();
+            DonationType donationType = new DonationType();
+            donationGoal.setAmount(Integer.parseInt(warenForm.get().amount));
+            donationType.setName(warenForm.get().donation);
+            donationGoal.setDonationType(donationType);
+            System.out.println("Waren");
+            return redirect("/projects/new#review");
+        }
+    }
+
+
+    public static Result addContact() throws Exception{
+        contactForm = Form.form(Contact.class).bindFromRequest();
+        if (contactForm.hasErrors()) {
+            for(play.data.validation.ValidationError err: contactForm.globalErrors()){
+                System.out.println(err.messages());
+            }
+            System.out.println("Contact has errors");
+            return badRequest(newProject.render(projectDataForm,warenForm,contactForm));
+        } else {
+            project.setContact(contactForm.get().contact);
+            address.setCountry(contactForm.get().destination);
+            System.out.println("Contact");
+            return redirect("/projects/new#confirmation");
+        }
+    }
+
+    public static Result saveProject() throws Exception{
+        project.setDonationGoals(donationGoalList);
+        project.setAddress(address);
+        project.save();
+        System.out.println("Save");
+        return redirect(routes.Application.index());
+    }
+
+
     public static Result foo() {
-        return ok(newProject.render(Form.form(NewProject.class)));
+        return ok(newProject.render(Form.form(ProjectData.class), Form.form(Waren.class), Form.form(Contact.class)));
     }
 
     private static java.sql.Date stringToSqlDate(String date)throws Exception{
