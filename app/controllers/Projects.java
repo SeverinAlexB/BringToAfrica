@@ -53,6 +53,12 @@ public class Projects extends Controller {
         return ok(views.html.index.render(projects));
     }
 
+    public static Result getProject(long id) {
+        Model.Finder<Long, Project> finder = new Model.Finder(String.class, Project.class);
+        Project project = finder.byId(id);
+        return ok(views.html.detail.render(project));
+    }
+
     //TODO: https://gist.github.com/ndeverge/3074629
     public static Result addProject() throws Exception{
         //Form<NewProject> projectForm = Form.form(NewProject.class).bindFromRequest();
