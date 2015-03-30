@@ -1,4 +1,4 @@
-@()
+@(projects: List[Project])
 
 @main("BringToAfrica") {
         <div class="content-wrapper cause-page-section" id="page-info">
@@ -9,9 +9,10 @@
                         <div class="row">
                             <!-- Article Section Srart Here -->
                             <div class="article-list progressbar">
+                            @for(project <- projects) {
                                 <div class="cols-xs-12 col-sm-4 anim-section animate">
                                     <div style="height: 424px;" class="spacer-bottom zoom equal-box">
-                                        <h3 class="h5">Help African children to get shelter</h3>
+                                        <h3 class="h5">@project.getTitle()</h3>
                                         <a href="causes-detail.html" class="img-thumb">
                                             <figure>
                                                 <img src="assets/img/img-slide-01.jpg" alt="" height="400" width="600">
@@ -23,12 +24,15 @@
                                             </div>
                                         </div>
                                         <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
-                                        <p>
-                                            Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
+                                        <p>@project.getDescription()
                                         </p>
                                         <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
                                     </div>
                                 </div>
+                            }
+
+
+                            <!-- SAMPLE DATA-->
                                 <div class="cols-xs-12 col-sm-4 anim-section animate">
                                     <div style="height: 424px;" class="spacer-bottom zoom equal-box">
                                         <h3 class="h5">Help girls to get Education</h3>

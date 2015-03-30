@@ -1,7 +1,9 @@
 package controllers;
 
 
+import models.Project;
 import play.data.validation.Constraints;
+import play.db.ebean.Model;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.helper.form;
@@ -10,11 +12,13 @@ import play.data.Form;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
+
 import patch.PatchedForm;
 
 
 
-public class Project extends Controller {
+public class Projects extends Controller {
 
     public static class NewProject {
         @Constraints.Required
@@ -42,6 +46,11 @@ public class Project extends Controller {
             }
             return null;
         }
+    }
+
+    public static Result getProjects() {
+        List<Project> projects = new Model.Finder(String.class, Project.class).all();
+        return ok(views.html.index.render(projects));
     }
 
     //TODO: https://gist.github.com/ndeverge/3074629

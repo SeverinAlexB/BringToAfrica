@@ -1,4 +1,4 @@
-@(newProjectForm: Form[controllers.Project.NewProject])
+@(newProjectForm: Form[controllers.Projects.NewProject])
 @import helper._
 
 @main("BringToAfrica") {
@@ -6,7 +6,7 @@
     <script type='text/javascript' src='@routes.Assets.at("javascripts/index.js")'></script>
 
     <ul id="projects"></ul>
-        @helper.form(routes.Project.addProject){
+        @helper.form(routes.Projects.addProject){
             @if(newProjectForm.hasGlobalErrors) {
                 <p class="error">
                 @newProjectForm.globalError.message

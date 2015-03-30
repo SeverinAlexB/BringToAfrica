@@ -5,9 +5,9 @@
 # Home page
 GET         /                    controllers.Application.index()
 
-GET         /projects            controllers.Application.getProjects
-GET         /projects/new        controllers.Project.foo()
-POST        /projects            controllers.Project.addProject()
+GET         /projects            controllers.Projects.getProjects()
+GET         /projects/new        controllers.Projects.foo()
+POST        /projects            controllers.Projects.addProject()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file        controllers.Assets.at(path="/public", file)
