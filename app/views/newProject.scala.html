@@ -132,8 +132,12 @@
                                                 }
                                             @helper.form(action = routes.Projects.addContact(), 'role -> "form") {
                                                 <div class="form-group">
-                                                    <label for="country">Wo werden die Spenden verteilt?<span>*</span></label>
-                                                    <input class="form-control" id="name" type="text" name="destination" value="@contactForm("destination").value">
+                                                    <label for="country">In welchem Land werden die Spenden verteilt?<span>*</span></label>
+                                                    <input class="form-control" id="name" type="text" name="country" value="@contactForm("country").value">
+                                                    <label for="country">In welcher Stadt soll gespendet werden?<span>*</span></label>
+                                                    <input class="form-control" id="name" type="text" name="city" value="@contactForm("city").value">
+                                                    <label for="country">Und in welcher Strasse?<span>*</span></label>
+                                                    <input class="form-control" id="name" type="text" name="street" value="@contactForm("street").value">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="country">Wie sollen die Spender mit dir in Kontakt treten?<span>*</span></label>

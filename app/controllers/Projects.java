@@ -56,7 +56,11 @@ public class Projects extends Controller {
         @Constraints.Required
         public String contact;
         @Constraints.Required
-        public String destination;
+        public String country;
+        @Constraints.Required
+        public String city;
+        @Constraints.Required
+        public String street;
     }
 
     public static class Waren{
@@ -84,10 +88,7 @@ public class Projects extends Controller {
         return ok(views.html.detail.render(project));
     }
 
-    //TODO: https://gist.github.com/ndeverge/3074629
     public static Result addProjectData() throws Exception{
-        //Form<NewProject> projectForm = Form.form(NewProject.class).bindFromRequest();
-        //Form<ProjectData> projectDataForm = new PatchedForm<ProjectData>(ProjectData.class).bindFromRequest();
         projectDataForm = Form.form(ProjectData.class).bindFromRequest();
         if (projectDataForm.hasErrors()) {
             System.out.println("Projectdata has errors");
@@ -131,7 +132,9 @@ public class Projects extends Controller {
             return badRequest(newProject.render(projectDataForm,warenForm,contactForm, state));
         } else {
             project.setContact(contactForm.get().contact);
-            address.setCountry(contactForm.get().destination);
+            address.setCountry(contactForm.get().country);
+            address.setCity(contactForm.get().city);
+            address.setStreet(contactForm.get().street);
             System.out.println("Contact");
             changeState(3);
             return ok(newProject.render(projectDataForm,warenForm,contactForm, state));
