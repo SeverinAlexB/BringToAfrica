@@ -28,20 +28,20 @@
                                 <div class="tab-pane active" id="signin">
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            @if(projektDataForm.hasErrors) {
-                                                <div class="alert alert-danger" role="alert">
+                                                @if(projektDataForm.errors.size() > 0) {
+                                                    <div class="alert alert-danger" role="alert">
                                                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                                     <span class="sr-only">Error:</span>
-                                                    @if(projektDataForm.errors.size() > 0) {
-                                                        @for((key, value) <- projektDataForm.errors) {
-                                                            @key.toString() :
-                                                            @for(err <- value) {
-                                                                @err.message().toString()
-                                                            }
+                                                    @for((key, value) <- projektDataForm.errors) {
+                                                        @key.toString() :
+                                                        @for(err <- value) {
+                                                            @err.message().toString()
                                                         }
-                                                    } else {No error returned.}
+                                                    }
                                                 </div>
-                                            }
+                                                } else {
+                                                }
+
                                             @helper.form(action = routes.Projects.addProjectData, 'role -> "form") {
                                                 <div class="form-group">
                                                     <label for="country">Gib deinem Projekt einen Namen<span>*</span></label>
@@ -73,20 +73,19 @@
                                     <section class="anim-section AddtoCart animate">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                @if(warenForm.hasErrors) {
-                                                    <div class="alert alert-danger" role="alert">
+                                                    @if(warenForm.errors.size() > 0) {
+                                                        <div class="alert alert-danger" role="alert">
                                                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                                         <span class="sr-only">Error:</span>
-                                                        @if(warenForm.errors.size() > 0) {
-                                                            @for((key, value) <- warenForm.errors) {
-                                                                @key.toString() :
-                                                                @for(err <- value) {
-                                                                    @err.message().toString()
-                                                                }
+                                                        @for((key, value) <- warenForm.errors) {
+                                                            @key.toString() :
+                                                            @for(err <- value) {
+                                                                @err.message().toString()
                                                             }
-                                                        } else {No error returned.}
-                                                    </div>
-                                                }
+                                                        }
+                                                        </div>
+                                                    } else {
+                                                    }
                                                 @helper.form(action = routes.Projects.addWaren(), 'role -> "form") {
                                                     <table class="table" id="main-table">
                                                         <thead>
@@ -117,20 +116,19 @@
                                 <div class="tab-pane" id="review">
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            @if(contactForm.hasErrors) {
-                                                <div class="alert alert-danger" role="alert">
+                                                @if(contactForm.errors.size() > 0) {
+                                                    <div class="alert alert-danger" role="alert">
                                                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                                     <span class="sr-only">Error:</span>
-                                                    @if(warenForm.errors.size() > 0) {
-                                                        @for((key, value) <- contactForm.errors) {
-                                                            @key.toString() :
-                                                            @for(err <- value) {
-                                                                @err.message().toString()
-                                                            }
+                                                    @for((key, value) <- contactForm.errors) {
+                                                        @key.toString() :
+                                                        @for(err <- value) {
+                                                            @err.message().toString()
                                                         }
-                                                    } else {No error returned.}
-                                                </div>
-                                            }
+                                                    }
+                                                    </div>
+                                                } else {
+                                                }
                                             @helper.form(action = routes.Projects.addContact(), 'role -> "form") {
                                                 <div class="form-group">
                                                     <label for="country">Wo werden die Spenden verteilt?<span>*</span></label>

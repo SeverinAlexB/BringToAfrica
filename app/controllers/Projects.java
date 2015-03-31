@@ -43,15 +43,10 @@ public class Projects extends Controller {
         public String startsAt;
 
         public String validate() {
-            System.out.println("ProjectData Validation");
-            if (title.isEmpty()) {
-                return "Title is empty";
-            }else if(description.isEmpty()){
-                return "Description is empty";
-            }else if(endsAt.isEmpty()){
-                return "endsAt is empty";
-            }else if(startsAt.isEmpty()){
-                return "startsAt is empty";
+            if(!isDate(startsAt)){
+                return "startsAt is not a Date";
+            }else if(!isDate(endsAt)){
+                return "endsAt is not a Date";
             }
             return null;
         }
@@ -61,16 +56,6 @@ public class Projects extends Controller {
         public String contact;
         @Constraints.Required
         public String destination;
-
-        public String validate() {
-            System.out.println("Contact Validation");
-            if (contact.isEmpty()) {
-                return "contact is empty";
-            }else if(destination.isEmpty()){
-                return "destination is empty";
-            }
-            return null;
-        }
     }
 
     public static class Waren{
@@ -80,11 +65,8 @@ public class Projects extends Controller {
         public String donation;
 
         public String validate() {
-            System.out.println("Waren Validation");
-            if (amount.isEmpty()) {
-                return "amount is empty";
-            }else if(donation.isEmpty()){
-                return "donation is empty";
+            if (!isPositivNumber(amount)) {
+                return "amount hast to be a postiv number.";
             }
             return null;
         }
@@ -115,7 +97,7 @@ public class Projects extends Controller {
             project.setEndsAt(stringToSqlDate(projectDataForm.get().endsAt));
             project.setStartsAt(stringToSqlDate(projectDataForm.get().startsAt));
             System.out.println("ProjectData");
-            return redirect("/projects/new#billing");
+            return ok(newProject.render(projectDataForm, warenForm, contactForm));
         }
     }
 
@@ -132,7 +114,7 @@ public class Projects extends Controller {
             donationGoal.setDonationType(donationType);
             donationGoalList.add(donationGoal);
             System.out.println("Waren");
-            return redirect("/projects/new#review");
+            return ok(newProject.render(projectDataForm, warenForm, contactForm));
         }
     }
 
@@ -149,7 +131,7 @@ public class Projects extends Controller {
             project.setContact(contactForm.get().contact);
             address.setCountry(contactForm.get().destination);
             System.out.println("Contact");
-            return redirect("/projects/new#confirmation");
+            return ok(newProject.render(projectDataForm,warenForm,contactForm));
         }
     }
 
@@ -182,5 +164,18 @@ public class Projects extends Controller {
         }
         java.sql.Date sqlStartDate = new Date(dateUtil.getTime());
         return sqlStartDate;
+    }
+
+    private static boolean isDate(String date){
+        try{
+            stringToSqlDate(date);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean isPositivNumber(String number){
+        return number.matches("[1-9]\\d*");
     }
 }
