@@ -3,22 +3,23 @@ package controllers;
 
 import models.DonationGoal;
 import models.DonationType;
+import models.Project;
+import play.data.Form;
 import play.data.validation.Constraints;
+import play.db.ebean.Model;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.newProject;
-import play.data.Form;
+
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import patch.PatchedForm;
 
 
-
-public class Project extends Controller {
+public class Projects extends Controller {
 
     //private static Form<ProjectData> projectDataForm = new PatchedForm<ProjectData>(ProjectData.class);
     //private static Form<Waren> warenForm = new PatchedForm<Waren>(Waren.class).bindFromRequest();
@@ -87,6 +88,17 @@ public class Project extends Controller {
             }
             return null;
         }
+    }
+
+    public static Result getProjects() {
+        List<Project> projects = new Model.Finder(String.class, Project.class).all();
+        return ok(views.html.index.render(projects));
+    }
+
+    public static Result getProject(long id) {
+        Model.Finder<Long, Project> finder = new Model.Finder(String.class, Project.class);
+        Project project = finder.byId(id);
+        return ok(views.html.detail.render(project));
     }
 
     //TODO: https://gist.github.com/ndeverge/3074629

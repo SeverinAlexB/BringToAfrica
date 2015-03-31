@@ -1,4 +1,4 @@
-@(projektDataForm: Form[controllers.Project.ProjectData],warenForm: Form[controllers.Project.Waren],contactForm: Form[controllers.Project.Contact])
+@(projektDataForm: Form[controllers.Projects.ProjectData],warenForm: Form[controllers.Projects.Waren],contactForm: Form[controllers.Projects.Contact])
 @import helper._
 
 @main("BringToAfrica") {
@@ -6,7 +6,6 @@
     <script type='text/javascript' src='@routes.Assets.at("javascripts/index.js")'></script>
 
     <ul id="projects"></ul>
-
     <div class="container" id="page-info">
         <div class="row">
             <div class="col-xs-12">
@@ -43,7 +42,7 @@
                                                     } else {No error returned.}
                                                 </div>
                                             }
-                                            @helper.form(action = routes.Project.addProjectData, 'role -> "form") {
+                                            @helper.form(action = routes.Projects.addProjectData, 'role -> "form") {
                                                 <div class="form-group">
                                                     <label for="country">Gib deinem Projekt einen Namen<span>*</span></label>
                                                     <input class="form-control" id="name" type="text" name="title">
@@ -88,7 +87,7 @@
                                                         } else {No error returned.}
                                                     </div>
                                                 }
-                                                @helper.form(action = routes.Project.addWaren(), 'role -> "form") {
+                                                @helper.form(action = routes.Projects.addWaren(), 'role -> "form") {
                                                     <table class="table" id="main-table">
                                                         <thead>
                                                             <tr>
@@ -132,7 +131,7 @@
                                                     } else {No error returned.}
                                                 </div>
                                             }
-                                            @helper.form(action = routes.Project.addContact(), 'role -> "form") {
+                                            @helper.form(action = routes.Projects.addContact(), 'role -> "form") {
                                                 <div class="form-group">
                                                     <label for="country">Wo werden die Spenden verteilt?<span>*</span></label>
                                                     <input class="form-control" id="name" type="text" name="destination">
@@ -172,7 +171,7 @@
                                         </div>
 
                                         <div class="col-xs-12">
-                                            @helper.form(action = routes.Project.saveProject(), 'role -> "form") {
+                                            @helper.form(action = routes.Projects.saveProject(), 'role -> "form") {
                                                 <button type="submit" class="btn btn-default btn-lg">Projekt erstellen</button>
                                             }
                                         </div>
