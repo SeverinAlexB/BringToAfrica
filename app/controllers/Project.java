@@ -1,13 +1,11 @@
 package controllers;
 
 
-import models.Address;
 import models.DonationGoal;
 import models.DonationType;
 import play.data.validation.Constraints;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Call;
 import views.html.newProject;
 import play.data.Form;
 import java.sql.Date;
@@ -120,6 +118,7 @@ public class Project extends Controller {
             donationGoal.setAmount(Integer.parseInt(warenForm.get().amount));
             donationType.setName(warenForm.get().donation);
             donationGoal.setDonationType(donationType);
+            donationGoalList.add(donationGoal);
             System.out.println("Waren");
             return redirect("/projects/new#review");
         }
@@ -145,6 +144,12 @@ public class Project extends Controller {
     public static Result saveProject() throws Exception{
         project.setDonationGoals(donationGoalList);
         project.setAddress(address);
+        address.setProject(project);
+        for(DonationGoal dg: donationGoalList){
+            dg.setProject(project);
+            dg.save();
+        }
+        address.save();
         project.save();
         System.out.println("Save");
         return redirect(routes.Application.index());

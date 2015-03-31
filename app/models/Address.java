@@ -1,14 +1,10 @@
 package models;
 
 import play.db.ebean.Model;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.*;
 
 @Entity
-public class Address {
+public class Address extends Model {
     @Id
     @GeneratedValue
     private Long id;
@@ -18,6 +14,14 @@ public class Address {
 
     @OneToOne
     private Project project;
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
 
     public Long getId() {
         return id;

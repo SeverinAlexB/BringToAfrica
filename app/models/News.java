@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-public class News {
+public class News extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;

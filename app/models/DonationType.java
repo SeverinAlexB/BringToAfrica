@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class DonationType {
+public class DonationType extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;

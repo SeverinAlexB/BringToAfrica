@@ -5,7 +5,7 @@ import play.db.ebean.Model;
 import javax.persistence.*;
 
 @Entity
-public class Donation {
+public class Donation extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;

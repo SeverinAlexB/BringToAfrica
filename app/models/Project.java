@@ -1,7 +1,6 @@
 package models;
 
 import play.db.ebean.Model;
-
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
