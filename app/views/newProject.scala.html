@@ -1,9 +1,10 @@
-@(projektDataForm: Form[controllers.Projects.ProjectData],warenForm: Form[controllers.Projects.Waren],contactForm: Form[controllers.Projects.Contact])
+@(projektDataForm: Form[controllers.Projects.ProjectData],warenForm: Form[controllers.Projects.Waren],contactForm: Form[controllers.Projects.Contact], state: Array[Boolean])
 @import helper._
 
 @main("BringToAfrica") {
 
     <script type='text/javascript' src='@routes.Assets.at("javascripts/index.js")'></script>
+
 
     <ul id="projects"></ul>
     <div class="container" id="page-info">
@@ -38,26 +39,26 @@
                                                             @err.message().toString()
                                                         }
                                                     }
-                                                </div>
+                                                    </div>
                                                 } else {
                                                 }
 
                                             @helper.form(action = routes.Projects.addProjectData, 'role -> "form") {
                                                 <div class="form-group">
                                                     <label for="country">Gib deinem Projekt einen Namen<span>*</span></label>
-                                                    <input class="form-control" id="name" type="text" name="title">
+                                                    <input class="form-control" id="name" type="text" name="title" value="@projektDataForm("title").value">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="country">Beschreibe dein Projekt in ein paar kurzen Sätzen<span>*</span></label>
-                                                    <textarea class="form-control" rows="5" cols="10" name="description"></textarea>
+                                                    <textarea class="form-control" rows="5" cols="10" name="description" value="@projektDataForm("description").value"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="country">Wann soll deine Spendenaktion starten?<span>*</span></label>
-                                                    <input class="form-control" id="name" type="date" name="startsAt">
+                                                    <input class="form-control" id="name" type="date" name="startsAt" value="@projektDataForm("startsAt").value">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="country">Wan soll deine Spendenaktion enden?</label>
-                                                    <input class="form-control" id="name" type="date" name="endsAt">
+                                                    <input class="form-control" id="name" type="date" name="endsAt" value="@projektDataForm("endsAt").value">
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-default btn-lg">continue</button>
@@ -96,8 +97,8 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td class="product-image"><input class="form-control" id="name" type="number" name="amount"></td>
-                                                                <td class="product-title"><input class="form-control" id="name" type="text" name="donation"></td>
+                                                                <td class="product-image"><input class="form-control" id="name" type="number" name="amount"  value="@warenForm("amount").value"></td>
+                                                                <td class="product-title"><input class="form-control" id="name" type="text" name="donation"  value="@warenForm("donation").value"></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -132,11 +133,11 @@
                                             @helper.form(action = routes.Projects.addContact(), 'role -> "form") {
                                                 <div class="form-group">
                                                     <label for="country">Wo werden die Spenden verteilt?<span>*</span></label>
-                                                    <input class="form-control" id="name" type="text" name="destination">
+                                                    <input class="form-control" id="name" type="text" name="destination" value="@contactForm("destination").value">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="country">Wie sollen die Spender mit dir in Kontakt treten?<span>*</span></label>
-                                                    <textarea class="form-control" rows="5" cols="10" name="contact"></textarea>
+                                                    <textarea class="form-control" rows="5" cols="10" name="contact"  value="@contactForm("contatct").value"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-default btn-lg">continue</button>
@@ -182,5 +183,34 @@
             </div>
         </div>
     </div>
+
+    @if(state(0)){
+        <script>
+        $(function() {
+            $('.nav-tabs [href="#sign"]').tab('show');
+        });
+        </script>
+    }
+    @if(state(1)){
+        <script>
+        $(function() {
+            $('.nav-tabs [href="#billing"]').tab('show');
+        });
+        </script>
+    }
+    @if(state(2)){
+        <script>
+        $(function() {
+            $('.nav-tabs [href="#review"]').tab('show');
+        });
+        </script>
+    }
+    @if(state(3)){
+        <script>
+        $(function() {
+            $('.nav-tabs [href="#confirmation"]').tab('show');
+        });
+        </script>
+    }
 
 }

@@ -31,6 +31,7 @@ public class Projects extends Controller {
     private static models.Project project = new models.Project();
     private static List<DonationGoal> donationGoalList = new ArrayList<>();
     private static models.Address address = new models.Address();
+    private static Boolean[] state = new Boolean[4];
 
     public static class ProjectData{
         @Constraints.Required
@@ -90,14 +91,16 @@ public class Projects extends Controller {
         projectDataForm = Form.form(ProjectData.class).bindFromRequest();
         if (projectDataForm.hasErrors()) {
             System.out.println("Projectdata has errors");
-            return badRequest(newProject.render(projectDataForm,warenForm,contactForm));
+            changeState(0);
+            return badRequest(newProject.render(projectDataForm,warenForm,contactForm,state));
         } else {
             project.setTitle(projectDataForm.get().title);
             project.setDescription(projectDataForm.get().description);
             project.setEndsAt(stringToSqlDate(projectDataForm.get().endsAt));
             project.setStartsAt(stringToSqlDate(projectDataForm.get().startsAt));
             System.out.println("ProjectData");
-            return ok(newProject.render(projectDataForm, warenForm, contactForm));
+            changeState(1);
+            return ok(newProject.render(projectDataForm, warenForm, contactForm,state));
         }
     }
 
@@ -105,7 +108,8 @@ public class Projects extends Controller {
         warenForm = Form.form(Waren.class).bindFromRequest();
         if (warenForm.hasErrors()) {
             System.out.println("Waren has errrors: ");
-            return badRequest(newProject.render(projectDataForm,warenForm,contactForm));
+            changeState(1);
+            return badRequest(newProject.render(projectDataForm,warenForm,contactForm,state));
         } else {
             DonationGoal donationGoal = new DonationGoal();
             DonationType donationType = new DonationType();
@@ -114,7 +118,8 @@ public class Projects extends Controller {
             donationGoal.setDonationType(donationType);
             donationGoalList.add(donationGoal);
             System.out.println("Waren");
-            return ok(newProject.render(projectDataForm, warenForm, contactForm));
+            changeState(2);
+            return ok(newProject.render(projectDataForm, warenForm, contactForm, state));
         }
     }
 
@@ -122,16 +127,14 @@ public class Projects extends Controller {
     public static Result addContact() throws Exception{
         contactForm = Form.form(Contact.class).bindFromRequest();
         if (contactForm.hasErrors()) {
-            for(play.data.validation.ValidationError err: contactForm.globalErrors()){
-                System.out.println(err.messages());
-            }
-            System.out.println("Contact has errors");
-            return badRequest(newProject.render(projectDataForm,warenForm,contactForm));
+            changeState(2);
+            return badRequest(newProject.render(projectDataForm,warenForm,contactForm, state));
         } else {
             project.setContact(contactForm.get().contact);
             address.setCountry(contactForm.get().destination);
             System.out.println("Contact");
-            return ok(newProject.render(projectDataForm,warenForm,contactForm));
+            changeState(3);
+            return ok(newProject.render(projectDataForm,warenForm,contactForm, state));
         }
     }
 
@@ -151,7 +154,8 @@ public class Projects extends Controller {
 
 
     public static Result foo() {
-        return ok(newProject.render(Form.form(ProjectData.class), Form.form(Waren.class), Form.form(Contact.class)));
+        changeState(0);
+        return ok(newProject.render(Form.form(ProjectData.class), Form.form(Waren.class), Form.form(Contact.class), state));
     }
 
     private static java.sql.Date stringToSqlDate(String date)throws Exception{
@@ -177,5 +181,15 @@ public class Projects extends Controller {
 
     private static boolean isPositivNumber(String number){
         return number.matches("[1-9]\\d*");
+    }
+
+    private static void changeState(int n){
+        for(int i = 0; i < state.length; i++){
+            if(i == n){
+                state[i] = true;
+            }else{
+                state[i] = false;
+            }
+        }
     }
 }
