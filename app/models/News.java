@@ -15,13 +15,9 @@ public class News extends Model{
     private String description;
     private Date date;
 
-
     @Basic(fetch=LAZY)
     @Lob
     private byte[] picture;
-
-    @ManyToOne
-    private Project project;
 
     public Long getId() {
         return id;

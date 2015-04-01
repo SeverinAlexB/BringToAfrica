@@ -12,12 +12,6 @@ public class DonationType extends Model{
     private Long id;
     private String name;
 
-    @OneToMany
-    private List<Donation> donations;
-
-    @OneToMany
-    private List<DonationGoal> donationGoals;
-
     public String getName() {
         return name;
     }

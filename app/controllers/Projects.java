@@ -144,12 +144,6 @@ public class Projects extends Controller {
     public static Result saveProject() throws Exception{
         project.setDonationGoals(donationGoalList);
         project.setAddress(address);
-        address.setProject(project);
-        for(DonationGoal dg: donationGoalList){
-            dg.setProject(project);
-            dg.save();
-        }
-        address.save();
         project.save();
         System.out.println("Save");
         return redirect(routes.Application.index());
