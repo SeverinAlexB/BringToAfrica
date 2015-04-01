@@ -61,7 +61,7 @@
                                                     <input class="form-control" id="name" type="date" name="endsAt" value="@projektDataForm("endsAt").value">
                                                 </div>
                                                 <div class="form-group">
-                                                    <button type="submit" class="btn btn-default btn-lg">continue</button>
+                                                    <button type="submit" id="btnContinue1" class="btn btn-default btn-lg">continue</button>
                                                 </div>
                                             }
                                         </div>
@@ -104,7 +104,7 @@
                                                     </table>
                                                     <div class="btns-wrapper">
                                                         <div class="form-group">
-                                                            <button type="submit" class="btn btn-default btn-lg">continue</button>
+                                                            <button type="submit" id="btnContinue2" class="btn btn-default btn-lg">continue</button>
                                                         </div>
                                                     </div>
                                                 }
@@ -144,7 +144,7 @@
                                                     <textarea class="form-control" rows="5" cols="10" name="contact"  value="@contactForm("contatct").value"></textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button type="submit" class="btn btn-default btn-lg">continue</button>
+                                                    <button type="submit" id="btnContinue3" class="btn btn-default btn-lg">continue</button>
                                                 </div>
                                             }
                                         </div>
@@ -175,7 +175,7 @@
 
                                         <div class="col-xs-12">
                                             @helper.form(action = routes.Projects.saveProject(), 'role -> "form") {
-                                                <button type="submit" class="btn btn-default btn-lg">Projekt erstellen</button>
+                                                <button type="submit" id="btnProjektErstellen" class="btn btn-default btn-lg">Projekt erstellen</button>
                                             }
                                         </div>
                                     </div>
