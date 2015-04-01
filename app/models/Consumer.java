@@ -18,7 +18,7 @@ public class Consumer extends Model{
     @OneToMany
     private List<Project> projects;
 
-    @OneToMany
+    @OneToMany()
     private List<Donation> donations;
 
 

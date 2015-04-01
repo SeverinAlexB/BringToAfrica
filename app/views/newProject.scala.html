@@ -2,10 +2,8 @@
 @import helper._
 
 @main("BringToAfrica") {
-
-    <script type='text/javascript' src='@routes.Assets.at("js/newProject.js")'></script>
-
-    <ul id="projects"></ul>
+<script type='text/javascript' src='@routes.Assets.at("js/newProject.js")'></script>
+ <ul id="projects"></ul>
     <div class="container" id="page-info">
         <div class="row">
             <div class="col-xs-12">
@@ -17,7 +15,7 @@
                         <div class="tab-wrap col-sm-12">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
-                                <li class="col-sm- active"><a href="#signin" role="tab" data-toggle="tab">1. Projektdaten</a></li>
+                                <li class="col-sm-4 active"><a href="#signin" role="tab" data-toggle="tab">1. Projektdaten</a></li>
                                 <li class="col-sm-4"><a href="#billing" role="tab" data-toggle="tab">2. Waren</a></li>
                                 <li class="col-sm-4"><a href="#review" role="tab" data-toggle="tab">3. Kontakt</a></li>
                             </ul>
@@ -59,7 +57,7 @@
                                                     <input class="form-control" id="name" type="date" name="endsAt" value="@projektDataForm("endsAt").value">
                                                 </div>
                                                 <div class="form-group">
-                                                    <button type="submit" class="btn btn-default btn-lg">continue</button>
+                                                    <button type="submit" id="btnContinue1" class="btn btn-default btn-lg">continue</button>
                                                 </div>
                                             }
                                         </div>
@@ -110,6 +108,7 @@
                                                     <div class="btns-wrapper">
                                                         <div class="form-group">
                                                             <button type="submit" class="btn btn-default btn-lg">continue</button>
+
                                                         </div>
                                                     </div>
                                                 }

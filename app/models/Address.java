@@ -12,17 +12,6 @@ public class Address extends Model {
     private String city;
     private String street;
 
-    @OneToOne
-    private Project project;
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
     public Long getId() {
         return id;
     }
