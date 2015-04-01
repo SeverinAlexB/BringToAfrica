@@ -20,18 +20,14 @@ import java.util.List;
 
 
 public class Projects extends Controller {
-
-    //private static Form<ProjectData> projectDataForm = new PatchedForm<ProjectData>(ProjectData.class);
-    //private static Form<Waren> warenForm = new PatchedForm<Waren>(Waren.class).bindFromRequest();
-    //private static Form<Contact> contactForm = new PatchedForm<Contact>(Contact.class);
-    private static Form<Contact> contactForm = new Form<Contact>(Contact.class);
-    private static Form<Waren> warenForm = new Form<Waren>(Waren.class);
-    private static Form<ProjectData> projectDataForm = new Form<ProjectData>(ProjectData.class);
+    private static Form<Contact> contactForm = new Form<>(Contact.class);
+    private static Form<Waren> warenForm = new Form<>(Waren.class);
+    private static Form<ProjectData> projectDataForm = new Form<>(ProjectData.class);
 
     private static models.Project project = new models.Project();
     private static List<DonationGoal> donationGoalList = new ArrayList<>();
     private static models.Address address = new models.Address();
-    private static Boolean[] state = new Boolean[4];
+    private static Boolean[] state = new Boolean[3];
 
     public static class ProjectData{
         @Constraints.Required
@@ -53,37 +49,31 @@ public class Projects extends Controller {
         }
     }
     public static class Contact{
-        @Constraints.Required
+        @Constraints.Required(message="Bitte fülle deine Kontaktmöglichkeiten aus")
         public String contact;
-        @Constraints.Required
+        @Constraints.Required(message="Gib dein Land an")
         public String country;
-        @Constraints.Required
+        @Constraints.Required(message="Gib die Stadt an")
         public String city;
-        @Constraints.Required
+        @Constraints.Required(message="Gib die Strasse an")
         public String street;
     }
 
     public static class Waren{
-        @Constraints.Required
+        @Constraints.Required(message="Bitte gib eine Menge an")
+        @Constraints.Pattern(value="[1-9]\\d*", message = "Es muss eine positive Zahl eingegeben werden")
         public String amount;
-        @Constraints.Required
+        @Constraints.Required(message="Beschreibe was du spenden willst")
         public String donation;
-
-        public String validate() {
-            if (!isPositivNumber(amount)) {
-                return "amount hast to be a positive number.";
-            }
-            return null;
-        }
     }
 
     public static Result getProjects() {
-        List<Project> projects = new Model.Finder(String.class, Project.class).all();
+        List<Project> projects = new Model.Finder<>(String.class, Project.class).all();
         return ok(views.html.index.render(projects));
     }
 
     public static Result getProject(long id) {
-        Model.Finder<Long, Project> finder = new Model.Finder(String.class, Project.class);
+        Model.Finder<Long, Project> finder = new Model.Finder<>(Long.class, Project.class);
         Project project = finder.byId(id);
         return ok(views.html.detail.render(project));
     }
