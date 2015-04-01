@@ -17,20 +17,20 @@ public class Project extends Model {
     private Date endsAt;
     private String contact;
 
-    @OneToMany
-    private List<News> news;
-
-    @OneToOne
-    private Address address;
-
-    @OneToMany
-    private List<DonationGoal> donationGoals;
-
-    @OneToMany
-    private List<Donation> donations;
-
     @ManyToOne
     private Consumer consumer;
+
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<News> news;
+
+    @OneToOne(cascade=CascadeType.ALL)
+    private Address address;
+
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<DonationGoal> donationGoals;
+
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<Donation> donations;
 
     public String getTitle() {
         return title;

@@ -18,10 +18,9 @@
                         <div class="tab-wrap col-sm-12">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
-                                <li class="col-sm-3 active"><a href="#signin" role="tab" data-toggle="tab">1. Projektdaten</a></li>
-                                <li class="col-sm-3"><a href="#billing" role="tab" data-toggle="tab">2. Waren</a></li>
-                                <li class="col-sm-3"><a href="#review" role="tab" data-toggle="tab">3. Kontakt</a></li>
-                                <li class="col-sm-3"><a href="#confirmation" role="tab" data-toggle="tab">4. Bestätigung</a></li>
+                                <li class="col-sm-4 active"><a href="#signin" role="tab" data-toggle="tab">1. Projektdaten</a></li>
+                                <li class="col-sm-4"><a href="#billing" role="tab" data-toggle="tab">2. Waren</a></li>
+                                <li class="col-sm-4"><a href="#review" role="tab" data-toggle="tab">3. Kontakt</a></li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
@@ -176,6 +175,12 @@
                                         <div class="col-xs-12">
                                             @helper.form(action = routes.Projects.saveProject(), 'role -> "form") {
                                                 <button type="submit" id="btnProjektErstellen" class="btn btn-default btn-lg">Projekt erstellen</button>
+=======
+                                                    @helper.form(action = routes.Projects.saveProject(), 'role -> "form") {
+                                                    <button type="submit" class="btn btn-default btn-lg">Projekt erstellen</button>
+                                                    }
+                                                </div>
+>>>>>>> bb18283d52ee8a45a0289846180214c38db9bd91
                                             }
                                         </div>
                                     </div>
