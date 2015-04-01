@@ -29,28 +29,28 @@ public class NewProjectTest {
     private boolean warenCalled = false;
     public void gotoWaren(TestBrowser browser) {
         assert projektdatenCalled;
-        browser.$("[name^='title']").text("Help Children get clothes");
-        browser.$("[name^='description']").text("Help Children get clothes");
-        browser.$("[name^='startsAt']").text("2015-03-10");
-        browser.$("[name^='endsAt']").text("2015-04-29");
+        browser.$("[name='title']").text("Help Children get clothes");
+        browser.$("[name='description']").text("Help Children get clothes");
+        browser.$("[name='startsAt']").text("2015-03-10");
+        browser.$("[name='endsAt']").text("2015-04-29");
         browser.$("#btnContinue1").click();
         warenCalled = true;
     }
     private boolean kontaktCalled = false;
     public void gotoKontakt(TestBrowser browser) {
         assert warenCalled;
-        browser.$("[name^='amount']").text("10");
-        browser.$("[name^='donation']").text("Schuhe");
+        browser.$("[name='amount']").text("10");
+        browser.$("[name='donation']").text("Schuhe");
         browser.$("#btnContinue2").click();
         kontaktCalled = true;
     }
     private boolean bestaetigungCalled = false;
     public void gotoBestaetigung(TestBrowser browser) {
         assert kontaktCalled;
-        browser.$("[name^='country']").text("Nigeria");
-        browser.$("[name^='city']").text("New York");
-        browser.$("[name^='street']").text("Walenseestrasse 5");
-        browser.$("[name^='contact']").text("Claudia Hofstetter\nLehstrasse 5\n 8000 Zürich");
+        browser.$("[name='country']").text("Nigeria");
+        browser.$("[name='city']").text("New York");
+        browser.$("[name='street']").text("Walenseestrasse 5");
+        browser.$("[name='contact']").text("Claudia Hofstetter\nLehstrasse 5\n 8000 Zürich");
         browser.$("#btnContinue3").click();
         bestaetigungCalled = true;
     }
@@ -79,19 +79,19 @@ public class NewProjectTest {
                 browser.$("#btnContinue1").click();
                 assertThat(browser.pageSource().contains("error"));
 
-                browser.$("[name^='title']").text("Help Children get clothes");
+                browser.$("[name='title']").text("Help Children get clothes");
                 browser.$("#btnContinue1").click();
                 assertThat(browser.pageSource().contains("error"));
 
-                browser.$("[name^='description']").text("Help Children get clothes");
+                browser.$("[name='description']").text("Help Children get clothes");
                 browser.$("#btnContinue1").click();
                 assertThat(browser.pageSource().contains("error"));
 
-                browser.$("[name^='startsAt']").text("2015-03-10");
+                browser.$("[name='startsAt']").text("2015-03-10");
                 browser.$("#btnContinue1").click();
                 assertThat(browser.pageSource().contains("error"));
 
-                browser.$("[name^='endsAt']").text("2015-04-29");
+                browser.$("[name='endsAt']").text("2015-04-29");
                 browser.$("#btnContinue1").click();
                 assertThat(!browser.pageSource().contains("error"));
             }

@@ -78,7 +78,7 @@ public class Projects extends Controller {
         return ok(views.html.detail.render(project));
     }
 
-    public static Result addProjectData() throws Exception{
+    public static Result addProjectData() throws  AfricaException{
         projectDataForm = Form.form(ProjectData.class).bindFromRequest();
         if (projectDataForm.hasErrors()) {
             System.out.println("Projectdata has errors");
@@ -95,7 +95,7 @@ public class Projects extends Controller {
         }
     }
 
-    public static Result addWaren() throws Exception{
+    public static Result addWaren(){
         warenForm = Form.form(Waren.class).bindFromRequest();
         if (warenForm.hasErrors()) {
             System.out.println("Waren has errrors: ");
@@ -115,7 +115,7 @@ public class Projects extends Controller {
     }
 
 
-    public static Result addContact() throws Exception{
+    public static Result addContact(){
         contactForm = Form.form(Contact.class).bindFromRequest();
         if (contactForm.hasErrors()) {
             changeState(2);
@@ -131,7 +131,7 @@ public class Projects extends Controller {
         }
     }
 
-    public static Result saveProject() throws Exception{
+    public static Result saveProject(){
         project.setDonationGoals(donationGoalList);
         project.setAddress(address);
         project.save();
@@ -145,13 +145,13 @@ public class Projects extends Controller {
         return ok(newProject.render(Form.form(ProjectData.class), Form.form(Waren.class), Form.form(Contact.class), state));
     }
 
-    protected static java.sql.Date stringToSqlDate(String date)throws Exception{
+    protected static java.sql.Date stringToSqlDate(String date)throws AfricaException{
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date dateUtil;
         try {
             dateUtil = sdf1.parse(date);
         }catch (  ParseException ex) {
-            throw new Exception("stringToSqlDate()",ex);
+            throw new AfricaException("stringToSqlDate()",ex);
         }
         java.sql.Date sqlStartDate = new Date(dateUtil.getTime());
         return sqlStartDate;
@@ -160,7 +160,7 @@ public class Projects extends Controller {
     protected static boolean isDate(String date){
         try{
             stringToSqlDate(date);
-        }catch (Exception e){
+        }catch (AfricaException e){
             return false;
         }
         return true;
