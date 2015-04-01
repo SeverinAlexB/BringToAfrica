@@ -34,27 +34,9 @@
     <header id="header">
         <div class="container">
             <div class="row primary-header">
-                <a href="index.html" class="col-xs-12 col-sm-2 brand" title="Welcome to Charity"><img src="@routes.Assets.at("img/logo.png")" alt="Charity"></a>
+                <a href="index.html" class="col-xs-12 col-sm-2 brand title" title="Welcome to Charity">BringToAfrica</a>
                 <div class="social-links col-xs-12 col-sm-10">
-                    <a href="volunteer.html" class="btn btn-default btn-volunteer">Become volunteer</a>
-                    <ul class="social-icons hidden-xs">
-                        <li>
-                            <a href="http://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a href="http://plus.google.com" target="_blank"><i class="fa fa-google-plus"></i></a>
-                        </li>
-                        <li>
-                            <a href="http://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="http://dribble.com/" target="_blank"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                        <li>
-                            <a href="http://pinterest.com" target="_blank"><i class="fa fa-vimeo-square"></i></a>
-                        </li>
-
-                    </ul>
+                    <a href="volunteer.html" class="btn btn-default btn-volunteer">Registrieren</a>
                 </div>
             </div>
         </div>
@@ -75,24 +57,17 @@
                     <nav>
                         <ul class="nav navbar-nav">
                             <li class="active">
-                                <a href="index.html">Projects</a>
+                                <a href="@routes.Projects.getProjects()">Projekte</a>
                             </li>
                             <li>
-                                <a href="@routes.Projects.foo()">Submit Project</a>
+                                <a href="@routes.Projects.foo()">Projekt erstellen</a>
                             </li>
-                            <li>
-                                <a href="blog.html">Blog</a>
-                            </li>
-                            <li>
-                                <a href="contact-us.html">Contact us</a>
-                            </li>
-
                         </ul>
                     </nav>
 
                     <form class="navbar-form navbar-right search-form" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search Here">
+                            <input type="text" class="form-control" placeholder="Suchen">
                         </div>
                         <button type="submit">
                             <i class="icon-search"></i>
@@ -113,57 +88,11 @@
         @content
     </div><!-- /.modal-dialog -->
     <footer id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-4">
-                    <div class="footer-logo">
-                        <a href="index.html" title="Welcome to Charity"><img src="assets/img/logo.png" alt="Charity"></a>
-                    </div>
-                    <address>
-                        <span> <i class="fa fa-home"></i> <span>A-2, Sector-63, Noida, 201301, India</span> </span>
-                        <span> <i class="fa fa-phone-square"></i> <span>+1 707 921 7269</span> </span>
-                        <span> <i class="fa fa-envelope"></i> <span><a href="mailto:contact@@charity.com">contact@@charity.com</a></span> </span>
-                    </address>
-                </div>
-                <div class="col-xs-12 col-sm-4 twitter-update">
-                    <h6>Twitter Feed</h6>
-                    <p>
-                        <a href="#"> <span class="charity">@@charity</span> Various versions have evolved over the years, sometimes by accident, sometimes on purpos. <span class="comment-time">2 hours ago</span> </a>
-                    </p>
-                    <p>
-                        <a href="#"> <span class="charity">@@charity</span> Various versions have evolved over the years, sometimes by accident, sometimes on purpos. <span class="comment-time">2 hours ago</span> </a>
-                    </p>
-                </div>
-                <div class="col-xs-12 col-sm-4">
-                    <h6>Follow us</h6>
-                    <ul class="social-icons">
-                        <li>
-                            <a href="http://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a href="http://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="http://dribble.com/" target="_blank"><i class="fa fa-dribbble"></i></a>
-                        </li>
-                        <li>
-                            <a href="http://pinterest.com" target="_blank"><i class="fa fa-pinterest"></i></a>
-                        </li>
-                        <li>
-                            <a href="http://plus.google.com" target="_blank"><i class="fa fa-google-plus"></i></a>
-                        </li>
-                        <li>
-                            <a href="http://instagram.com" target="_blank"><i class="fa fa-instagram"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
         <div class="copyright">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <span> © Copyright 2014, All Rights Reserved by Charity Theme.
+                        <span> © Copyright 2015, All Rights Reserved by BringToAfrica.
                         </span>
                     </div>
                 </div>
