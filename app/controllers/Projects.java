@@ -71,7 +71,7 @@ public class Projects extends Controller {
 
         public String validate() {
             if (!isPositivNumber(amount)) {
-                return "amount hast to be a postiv number.";
+                return "amount hast to be a positive number.";
             }
             return null;
         }
@@ -161,7 +161,7 @@ public class Projects extends Controller {
         return ok(newProject.render(Form.form(ProjectData.class), Form.form(Waren.class), Form.form(Contact.class), state));
     }
 
-    private static java.sql.Date stringToSqlDate(String date)throws Exception{
+    protected static java.sql.Date stringToSqlDate(String date)throws Exception{
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date dateUtil;
         try {
@@ -173,7 +173,7 @@ public class Projects extends Controller {
         return sqlStartDate;
     }
 
-    private static boolean isDate(String date){
+    protected static boolean isDate(String date){
         try{
             stringToSqlDate(date);
         }catch (Exception e){
@@ -182,7 +182,7 @@ public class Projects extends Controller {
         return true;
     }
 
-    private static boolean isPositivNumber(String number){
+    protected static boolean isPositivNumber(String number){
         return number.matches("[1-9]\\d*");
     }
 
