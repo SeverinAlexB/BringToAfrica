@@ -5,85 +5,37 @@ import models.DonationGoal;
 import models.DonationType;
 import models.Project;
 import play.data.Form;
-import play.data.validation.Constraints;
 import play.db.ebean.Model;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.forms.Contact;
+import views.forms.Converter;
+import views.forms.ProjectData;
+import views.forms.Waren;
 import views.html.newProject;
 
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 
 
 public class Projects extends Controller {
-
-    //private static Form<ProjectData> projectDataForm = new PatchedForm<ProjectData>(ProjectData.class);
-    //private static Form<Waren> warenForm = new PatchedForm<Waren>(Waren.class).bindFromRequest();
-    //private static Form<Contact> contactForm = new PatchedForm<Contact>(Contact.class);
-    private static Form<Contact> contactForm = new Form<Contact>(Contact.class);
-    private static Form<Waren> warenForm = new Form<Waren>(Waren.class);
-    private static Form<ProjectData> projectDataForm = new Form<ProjectData>(ProjectData.class);
+    private static Form<Contact> contactForm = new Form<>(Contact.class);
+    private static Form<Waren> warenForm = new Form<>(Waren.class);
+    private static Form<ProjectData> projectDataForm = new Form<>(ProjectData.class);
 
     private static models.Project project = new models.Project();
     private static List<DonationGoal> donationGoalList = new ArrayList<>();
     private static models.Address address = new models.Address();
-    private static Boolean[] state = new Boolean[4];
-
-    public static class ProjectData{
-        @Constraints.Required
-        public String title;
-        @Constraints.Required
-        public String description;
-        @Constraints.Required
-        public String endsAt;
-        @Constraints.Required
-        public String startsAt;
-
-        public String validate() {
-            if(!isDate(startsAt)){
-                return "startsAt is not a Date";
-            }else if(!isDate(endsAt)){
-                return "endsAt is not a Date";
-            }
-            return null;
-        }
-    }
-    public static class Contact{
-        @Constraints.Required
-        public String contact;
-        @Constraints.Required
-        public String country;
-        @Constraints.Required
-        public String city;
-        @Constraints.Required
-        public String street;
-    }
-
-    public static class Waren{
-        @Constraints.Required
-        public String amount;
-        @Constraints.Required
-        public String donation;
-
-        public String validate() {
-            if (!isPositivNumber(amount)) {
-                return "amount hast to be a positive number.";
-            }
-            return null;
-        }
-    }
+    private static Boolean[] state = new Boolean[3];
 
     public static Result getProjects() {
-        List<Project> projects = new Model.Finder(String.class, Project.class).all();
+        List<Project> projects = new Model.Finder<>(String.class, Project.class).all();
         return ok(views.html.index.render(projects));
     }
 
     public static Result getProject(long id) {
-        Model.Finder<Long, Project> finder = new Model.Finder(String.class, Project.class);
+        Model.Finder<Long, Project> finder = new Model.Finder<>(Long.class, Project.class);
         Project project = finder.byId(id);
         return ok(views.html.detail.render(project));
     }
@@ -97,8 +49,8 @@ public class Projects extends Controller {
         } else {
             project.setTitle(projectDataForm.get().title);
             project.setDescription(projectDataForm.get().description);
-            project.setEndsAt(stringToSqlDate(projectDataForm.get().endsAt));
-            project.setStartsAt(stringToSqlDate(projectDataForm.get().startsAt));
+            project.setEndsAt(Converter.stringToSqlDate(projectDataForm.get().endsAt));
+            project.setStartsAt(Converter.stringToSqlDate(projectDataForm.get().startsAt));
             System.out.println("ProjectData");
             changeState(1);
             return ok(newProject.render(projectDataForm, warenForm, contactForm,state));
@@ -153,27 +105,6 @@ public class Projects extends Controller {
     public static Result foo() {
         changeState(0);
         return ok(newProject.render(Form.form(ProjectData.class), Form.form(Waren.class), Form.form(Contact.class), state));
-    }
-
-    protected static java.sql.Date stringToSqlDate(String date)throws AfricaException{
-        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date dateUtil;
-        try {
-            dateUtil = sdf1.parse(date);
-        }catch (  ParseException ex) {
-            throw new AfricaException("stringToSqlDate()",ex);
-        }
-        java.sql.Date sqlStartDate = new Date(dateUtil.getTime());
-        return sqlStartDate;
-    }
-
-    protected static boolean isDate(String date){
-        try{
-            stringToSqlDate(date);
-        }catch (AfricaException e){
-            return false;
-        }
-        return true;
     }
 
     protected static boolean isPositivNumber(String number){

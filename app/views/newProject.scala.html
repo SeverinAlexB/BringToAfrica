@@ -1,4 +1,4 @@
-@(projektDataForm: Form[controllers.Projects.ProjectData],warenForm: Form[controllers.Projects.Waren],contactForm: Form[controllers.Projects.Contact], state: Array[Boolean])
+@(projektDataForm: Form[views.forms.ProjectData],warenForm: Form[views.forms.Waren],contactForm: Form[views.forms.Contact], state: Array[Boolean])
 @import helper._
 
 @main("BringToAfrica") {
@@ -57,7 +57,7 @@
                                                     <input class="form-control" id="name" type="date" name="endsAt" value="@projektDataForm("endsAt").value">
                                                 </div>
                                                 <div class="form-group">
-                                                    <button type="submit" id="btnContinue1" class="btn btn-default btn-lg">continue</button>
+                                                    <button type="submit" id="btnContinue1" class="btn btn-default btn-lg">weiter</button>
                                                 </div>
                                             }
                                         </div>
@@ -188,12 +188,4 @@
         });
         </script>
     }
-    @if(state(3)){
-        <script>
-        $(function() {
-            $('.nav-tabs [href="#confirmation"]').tab('show');
-        });
-        </script>
-    }
-
 }
