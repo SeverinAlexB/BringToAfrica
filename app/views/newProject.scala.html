@@ -3,8 +3,7 @@
 
 @main("BringToAfrica") {
 
-    <script type='text/javascript' src='@routes.Assets.at("javascripts/index.js")'></script>
-
+    <script type='text/javascript' src='@routes.Assets.at("js/newProject.js")'></script>
 
     <ul id="projects"></ul>
     <div class="container" id="page-info">
@@ -18,7 +17,7 @@
                         <div class="tab-wrap col-sm-12">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
-                                <li class="col-sm-4 active"><a href="#signin" role="tab" data-toggle="tab">1. Projektdaten</a></li>
+                                <li class="col-sm- active"><a href="#signin" role="tab" data-toggle="tab">1. Projektdaten</a></li>
                                 <li class="col-sm-4"><a href="#billing" role="tab" data-toggle="tab">2. Waren</a></li>
                                 <li class="col-sm-4"><a href="#review" role="tab" data-toggle="tab">3. Kontakt</a></li>
                             </ul>
@@ -103,6 +102,13 @@
                                                     </table>
                                                     <div class="btns-wrapper">
                                                         <div class="form-group">
+                                                            <button id="addGood" type="button" class="btn btn-default" aria-label="Center Align">
+                                                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="btns-wrapper">
+                                                        <div class="form-group">
                                                             <button type="submit" class="btn btn-default btn-lg">continue</button>
                                                         </div>
                                                     </div>
@@ -140,14 +146,14 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="country">Wie sollen die Spender mit dir in Kontakt treten?<span>*</span></label>
-                                                    <textarea class="form-control" rows="5" cols="10" name="contact"  value="@contactForm("contatct").value"></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    @helper.form(action = routes.Projects.saveProject(), 'role -> "form") {
-                                                    <button type="submit" class="btn btn-default btn-lg">Projekt erstellen</button>
-                                                    }
+                                                    <textarea class="form-control" rows="5" cols="10" name="contact"  value="@contactForm("contact").value"></textarea>
                                                 </div>
                                             }
+                                            <div class="form-group">
+                                                @helper.form(action = routes.Projects.saveProject(), 'role -> "form") {
+                                                <button type="submit" class="btn btn-default btn-lg">Projekt erstellen</button>
+                                                }
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
