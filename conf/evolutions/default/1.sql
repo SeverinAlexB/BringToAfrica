@@ -1,8 +1,3 @@
-# --- Created by Ebean DDL
-# To stop Ebean DDL generation, remove this comment and start using Evolutions
-
-# --- !Ups
-
 create table address (
   id                        bigint not null,
   country                   varchar(255),
@@ -95,10 +90,6 @@ alter table project add constraint fk_project_consumer_7 foreign key (consumer_i
 create index ix_project_consumer_7 on project (consumer_id);
 alter table project add constraint fk_project_address_8 foreign key (address_id) references address (id);
 create index ix_project_address_8 on project (address_id);
-
-
-
-# --- !Downs
 
 drop table if exists address cascade;
 
