@@ -1,0 +1,51 @@
+@(project: Project)
+
+@main("BringToAfrica") {
+    <div class="cause-page" id="page-info">
+        <!-- Our Causes Detail Section-->
+
+        <div class="container anim-section animate">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <div class="row article-list-large progressbar">
+                        <div class="col-xs-12 anim-section animate">
+
+                            <div class="text-center section-header">
+
+                                <h2 class="h4">@project.getTitle()</h2>
+                                <span class="date-desc">06 august, 2014 </span><span class="palce-name">Africa, Child care</span>
+                            </div>
+                            <figure class="article-pic">
+                                <img src="assets/img/detail-big-01.jpg" alt="">
+                            </figure>
+                            <div class="progress">
+                                <div style="width: 72%;" class="progress-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+                                    <span class="progress-value">72% </span>
+                                </div>
+                            </div>
+
+
+
+                            <div class="detail-description">
+                                <div class="donation-details">
+
+                                    <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
+                                    <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default pull-right">DONATE NOW</a>
+                                </div>
+
+                                <p class="donation-summary">
+                                    @project.getDescription()
+                                </p>
+                                <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- our causes detail-->
+
+        </div>
+    </div>
+}

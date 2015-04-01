@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-public class News {
+public class News extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -15,13 +15,9 @@ public class News {
     private String description;
     private Date date;
 
-
     @Basic(fetch=LAZY)
     @Lob
     private byte[] picture;
-
-    @ManyToOne
-    private Project project;
 
     public Long getId() {
         return id;

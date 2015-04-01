@@ -1,0 +1,2 @@
+activator ui
+pause

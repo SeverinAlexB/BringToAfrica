@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Consumer {
+public class Consumer extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -18,7 +18,7 @@ public class Consumer {
     @OneToMany
     private List<Project> projects;
 
-    @OneToMany
+    @OneToMany()
     private List<Donation> donations;
 
 

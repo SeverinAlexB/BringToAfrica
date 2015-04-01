@@ -1,4 +1,4 @@
-@()
+@(projects: List[Project])
 
 @main("BringToAfrica") {
         <div class="content-wrapper cause-page-section" id="page-info">
@@ -9,9 +9,10 @@
                         <div class="row">
                             <!-- Article Section Srart Here -->
                             <div class="article-list progressbar">
+                            @for(project <- projects) {
                                 <div class="cols-xs-12 col-sm-4 anim-section animate">
                                     <div style="height: 424px;" class="spacer-bottom zoom equal-box">
-                                        <h3 class="h5">Help African children to get shelter</h3>
+                                        <h3 class="h5">@project.getTitle()</h3>
                                         <a href="causes-detail.html" class="img-thumb">
                                             <figure>
                                                 <img src="assets/img/img-slide-01.jpg" alt="" height="400" width="600">
@@ -22,13 +23,15 @@
                                                 <span class="progress-value">72% </span>
                                             </div>
                                         </div>
-                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
-                                        <p>
-                                            Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
+                                        <p>@project.getDescription()
                                         </p>
-                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                        <a data-toggle="modal" href="@routes.Projects.getProject(project.getId())" class="btn btn-default">Spenden</a>
                                     </div>
                                 </div>
+                            }
+
+
+                            <!-- SAMPLE DATA-->
                                 <div class="cols-xs-12 col-sm-4 anim-section animate">
                                     <div style="height: 424px;" class="spacer-bottom zoom equal-box">
                                         <h3 class="h5">Help girls to get Education</h3>
@@ -42,11 +45,10 @@
                                                 <span class="progress-value">60% </span>
                                             </div>
                                         </div>
-                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
                                         <p>
                                             Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
                                         </p>
-                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">Spenden</a>
                                     </div>
                                 </div>
                                 <div class="cols-xs-12 col-sm-4 anim-section animate">
@@ -62,11 +64,10 @@
                                                 <span class="progress-value">80% </span>
                                             </div>
                                         </div>
-                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
                                         <p>
                                             Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
                                         </p>
-                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">Spenden</a>
                                     </div>
                                 </div>
                                 <div class="cols-xs-12 col-sm-4 anim-section animate">
@@ -82,11 +83,10 @@
                                                 <span class="progress-value">72% </span>
                                             </div>
                                         </div>
-                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
                                         <p>
                                             Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
                                         </p>
-                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">Spenden</a>
                                     </div>
                                 </div>
                                 <div class="cols-xs-12 col-sm-4 anim-section animate">
@@ -102,11 +102,10 @@
                                                 <span class="progress-value">72% </span>
                                             </div>
                                         </div>
-                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
                                         <p>
                                             Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
                                         </p>
-                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">Spenden</a>
                                     </div>
                                 </div>
                                 <div class="cols-xs-12 col-sm-4 anim-section animate">
@@ -122,11 +121,10 @@
                                                 <span class="progress-value">72% </span>
                                             </div>
                                         </div>
-                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
                                         <p>
                                             Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
                                         </p>
-                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">Spenden</a>
                                     </div>
                                 </div>
                                 <div class="cols-xs-12 col-sm-4 anim-section animate">
@@ -142,11 +140,10 @@
                                                 <span class="progress-value">72% </span>
                                             </div>
                                         </div>
-                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
                                         <p>
                                             Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
                                         </p>
-                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">Spenden</a>
                                     </div>
                                 </div>
                                 <div class="cols-xs-12 col-sm-4 anim-section animate">
@@ -162,11 +159,10 @@
                                                 <span class="progress-value">60% </span>
                                             </div>
                                         </div>
-                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
                                         <p>
                                             Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
                                         </p>
-                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">Spenden</a>
                                     </div>
                                 </div>
                                 <div class="cols-xs-12 col-sm-4 anim-section animate">
@@ -182,11 +178,10 @@
                                                 <span class="progress-value">80% </span>
                                             </div>
                                         </div>
-                                        <span class="donation">Donation : <span class="value">$78,354 <small>/ $1,26,500</small></span></span>
                                         <p>
                                             Lorem ipsum dolor sit consectetur adipiscing elit ellentesque. Future stuffs also goes...
                                         </p>
-                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">DONATE NOW</a>
+                                        <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">Spenden</a>
                                     </div>
                                 </div>
                             </div>
@@ -199,7 +194,7 @@
                 <div class="cols-xs-12 anim-section text-center animate">
                     <ul class="pagination">
                         <li>
-                            <a href="#">Prev</a>
+                            <a href="#">Zurück</a>
                         </li>
                         <li class="active">
                             <a href="#">1</a>
@@ -214,7 +209,7 @@
                             <a href="#">4</a>
                         </li>
                         <li>
-                            <a href="#">Next</a>
+                            <a href="#">Weiter</a>
                         </li>
                     </ul>
                 </div>

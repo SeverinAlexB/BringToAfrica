@@ -1,22 +1,16 @@
 package models;
 
 import play.db.ebean.Model;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
-public class Address {
+public class Address extends Model {
     @Id
     @GeneratedValue
     private Long id;
     private String country;
     private String city;
     private String street;
-
-    @OneToOne
-    private Project project;
 
     public Long getId() {
         return id;

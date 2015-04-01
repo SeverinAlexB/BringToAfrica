@@ -1,7 +1,6 @@
 package models;
 
 import play.db.ebean.Model;
-
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -18,20 +17,20 @@ public class Project extends Model {
     private Date endsAt;
     private String contact;
 
-    @OneToMany
-    private List<News> news;
-
-    @OneToOne
-    private Address address;
-
-    @OneToMany
-    private List<DonationGoal> donationGoals;
-
-    @OneToMany
-    private List<Donation> donations;
-
     @ManyToOne
     private Consumer consumer;
+
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<News> news;
+
+    @OneToOne(cascade=CascadeType.ALL)
+    private Address address;
+
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<DonationGoal> donationGoals;
+
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<Donation> donations;
 
     public String getTitle() {
         return title;
@@ -82,5 +81,43 @@ public class Project extends Model {
         this.id = id;
     }
 
+    public List<News> getNews() {
+        return news;
+    }
 
+    public void setNews(List<News> news) {
+        this.news = news;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<DonationGoal> getDonationGoals() {
+        return donationGoals;
+    }
+
+    public void setDonationGoals(List<DonationGoal> donationGoals) {
+        this.donationGoals = donationGoals;
+    }
+
+    public List<Donation> getDonations() {
+        return donations;
+    }
+
+    public void setDonations(List<Donation> donations) {
+        this.donations = donations;
+    }
+
+    public Consumer getConsumer() {
+        return consumer;
+    }
+
+    public void setConsumer(Consumer consumer) {
+        this.consumer = consumer;
+    }
 }

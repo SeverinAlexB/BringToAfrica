@@ -6,17 +6,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class DonationType {
+public class DonationType extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
-
-    @OneToMany
-    private List<Donation> donations;
-
-    @OneToMany
-    private List<DonationGoal> donationGoals;
 
     public String getName() {
         return name;
