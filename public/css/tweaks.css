@@ -8,3 +8,18 @@
 .contact-form .form-group.error .form-control, .contact-form .form-group.error label, .contact-form .error .form-control {
 	border-color: #ff0000;
 }
+
+.progress-bar {
+    background: #ecc731;
+}
+
+.btn-link:hover, .btn-default:hover, .btn-default:focus {
+    background: #ecc731;
+}
+
+.progress-value:before {
+    border-top: 4px solid #ecc731;
+}
+.btn-default:hover, .btn-default:focus, {
+    border-color: #ecc731;
+}
