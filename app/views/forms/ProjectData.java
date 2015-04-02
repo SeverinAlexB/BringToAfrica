@@ -25,9 +25,9 @@ public class ProjectData{
     }
 
 
-    protected static boolean isDate(String date){
+    public static boolean isDate(String date){
         try{
-            stringToSqlDate(date);
+            Converter.stringToSqlDate(date);
         }catch (AfricaException e){
             return false;
         }
