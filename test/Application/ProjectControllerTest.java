@@ -4,6 +4,8 @@ import controllers.Projects;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import views.forms.Converter;
+import views.forms.ProjectData;
 
 import java.sql.Date;
 
@@ -23,26 +25,26 @@ public class ProjectControllerTest extends Projects {
     public void isDateTest() {
         String date1 = "2015-04-09";
         String date2 = "1999-01-31";
-        Assert.assertTrue(Projects.isDate(date1));
-        Assert.assertTrue(Projects.isDate(date2));
+        Assert.assertTrue(ProjectData.isDate(date1));
+        Assert.assertTrue(ProjectData.isDate(date2));
 
         String date3 = "2015-0e-09";
         String date4 = "31.02.1969";
-        Assert.assertFalse(Projects.isDate(date3));
-        Assert.assertFalse(Projects.isDate(date4));
+        Assert.assertFalse(ProjectData.isDate(date3));
+        Assert.assertFalse(ProjectData.isDate(date4));
     }
     @Test
     public void stringToSqlDateTest() throws Exception {
         String date = "2015-04-09";
         java.sql.Date expected = java.sql.Date.valueOf("2015-04-09");
-        java.sql.Date result = Projects.stringToSqlDate(date);
+        java.sql.Date result = Converter.stringToSqlDate(date);
         Assert.assertTrue(result.equals(expected));
     }
 
     @Test(expected=Exception.class)
     public void stringToSqlDateExceptionTest() throws Exception {
         String date1 = "09.04.2015";
-        Projects.stringToSqlDate(date1);
+        Converter.stringToSqlDate(date1);
     }
     @Test
     public void isPositiveNumberTest() {
