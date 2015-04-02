@@ -41,12 +41,12 @@
 
                                             @helper.form(action = routes.Projects.addProjectData, 'role -> "form") {
                                                 <div class="form-group">
-                                                    <label for="country">Gib deinem Projekt einen Namen<span>*</span></label>
-                                                    <input class="form-control" id="name" type="text" name="title" value="@projektDataForm("title").value" required>
+                                                    <label for="title">Gib deinem Projekt einen Namen<span>*</span></label>
+                                                    <input class="form-control" id="title" type="text" name="title" value="@projektDataForm("title").value" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="country">Beschreibe dein Projekt in ein paar kurzen Sätzen<span>*</span></label>
-                                                    <textarea class="form-control" rows="5" cols="10" name="description" value="@projektDataForm("description").value"></textarea>
+s                                                    <textarea class="form-control" rows="5" cols="10" name="description" value="@projektDataForm("description").value"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="country">Wann soll deine Spendenaktion starten?<span>*</span></label>

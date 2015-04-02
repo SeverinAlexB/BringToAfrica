@@ -6,7 +6,7 @@ import play.data.validation.Constraints;
 import static views.forms.Converter.stringToSqlDate;
 
 public class ProjectData{
-    @Constraints.Required
+    @Constraints.Required(message="Bitte füllen sie den Titel aus")
     public String title;
     @Constraints.Required
     public String description;
