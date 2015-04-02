@@ -8,10 +8,10 @@ import play.data.Form;
 import play.db.ebean.Model;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.forms.Contact;
-import views.forms.Converter;
-import views.forms.ProjectData;
-import views.forms.Waren;
+import controllers.forms.Contact;
+import controllers.forms.Converter;
+import controllers.forms.ProjectData;
+import controllers.forms.Waren;
 import views.html.newProject;
 
 import java.util.ArrayList;

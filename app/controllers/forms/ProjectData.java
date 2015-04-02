@@ -1,9 +1,7 @@
-package views.forms;
+package controllers.forms;
 
 import controllers.AfricaException;
 import play.data.validation.Constraints;
-
-import static views.forms.Converter.stringToSqlDate;
 
 public class ProjectData{
     @Constraints.Required(message="Bitte füllen sie den Titel aus")

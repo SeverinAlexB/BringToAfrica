@@ -2,12 +2,9 @@ package Application;
 
 import controllers.Projects;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import views.forms.Converter;
-import views.forms.ProjectData;
-
-import java.sql.Date;
+import controllers.forms.Converter;
+import controllers.forms.ProjectData;
 
 import static org.fest.assertions.Assertions.assertThat;
 

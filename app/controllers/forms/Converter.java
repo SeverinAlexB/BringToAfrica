@@ -1,4 +1,4 @@
-package views.forms;
+package controllers.forms;
 
 import controllers.AfricaException;
 
