@@ -97,6 +97,7 @@ public class Projects extends Controller {
         project.setDonationGoals(donationGoalList);
         project.setAddress(address);
         project.save();
+        project = new models.Project(); //TODO: Fix this later
         System.out.println("Save");
         return redirect(routes.Application.index());
     }
