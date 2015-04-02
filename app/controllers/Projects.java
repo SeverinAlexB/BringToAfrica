@@ -103,7 +103,7 @@ public class Projects extends Controller {
     }
 
 
-    public static Result foo() {
+    public static Result createProject() {
         changeState(0);
         return ok(newProject.render(Form.form(ProjectData.class), Form.form(Waren.class), Form.form(Contact.class), state));
     }

@@ -6,7 +6,7 @@
 GET         /                    controllers.Application.index()
 
 GET         /projects            controllers.Projects.getProjects()
-GET         /projects/new        controllers.Projects.foo()
+GET         /projects/new        controllers.Projects.createProject()
 GET         /projects/:id        controllers.Projects.getProject(id: Long)
 POST        /projects/data       controllers.Projects.addProjectData()
 POST        /projects/contact    controllers.Projects.addContact()
