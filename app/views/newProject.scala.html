@@ -42,7 +42,7 @@
                                             @helper.form(action = routes.Projects.addProjectData, 'role -> "form") {
                                                 <div class="form-group">
                                                     <label for="country">Gib deinem Projekt einen Namen<span>*</span></label>
-                                                    <input class="form-control" id="name" type="text" name="title" value="@projektDataForm("title").value">
+                                                    <input class="form-control" id="name" type="text" name="title" value="@projektDataForm("title").value" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="country">Beschreibe dein Projekt in ein paar kurzen Sätzen<span>*</span></label>
@@ -50,11 +50,11 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="country">Wann soll deine Spendenaktion starten?<span>*</span></label>
-                                                    <input class="form-control" id="name" type="date" name="startsAt" value="@projektDataForm("startsAt").value">
+                                                    <input class="form-control" id="name" type="date" name="startsAt" value="@projektDataForm("startsAt").value" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="country">Wan soll deine Spendenaktion enden?</label>
-                                                    <input class="form-control" id="name" type="date" name="endsAt" value="@projektDataForm("endsAt").value">
+                                                    <input class="form-control" id="name" type="date" name="endsAt" value="@projektDataForm("endsAt").value" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" id="btnContinue1" class="btn btn-default btn-lg">Weiter</button>
@@ -93,8 +93,8 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td class="product-image"><input class="form-control" id="name" type="number" name="amount"  value="@warenForm("amount").value"></td>
-                                                                <td class="product-title"><input class="form-control" id="name" type="text" name="donation"  value="@warenForm("donation").value"></td>
+                                                                <td class="product-image"><input class="form-control" id="name" type="number" name="amount"  value="@warenForm("amount").value" required></td>
+                                                                <td class="product-title"><input class="form-control" id="name" type="text" name="donation"  value="@warenForm("donation").value" required></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -140,15 +140,15 @@
                                             @helper.form(action = routes.Projects.addContact(), 'role -> "form") {
                                                 <div class="form-group">
                                                     <label for="country">In welchem Land werden die Spenden verteilt?<span>*</span></label>
-                                                    <input class="form-control" id="name" type="text" name="country" value="@contactForm("country").value">
+                                                    <input class="form-control" id="name" type="text" name="country" value="@contactForm("country").value" required>
                                                     <label for="country">In welcher Stadt soll gespendet werden?<span>*</span></label>
                                                     <input class="form-control" id="name" type="text" name="city" value="@contactForm("city").value">
                                                     <label for="country">Und in welcher Strasse?<span>*</span></label>
-                                                    <input class="form-control" id="name" type="text" name="street" value="@contactForm("street").value">
+                                                    <input class="form-control" id="name" type="text" name="street" value="@contactForm("street").value" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="country">Wie sollen die Spender mit dir in Kontakt treten?<span>*</span></label>
-                                                    <textarea class="form-control" rows="5" cols="10" name="contact"  value="@contactForm("contact").value"></textarea>
+                                                    <textarea class="form-control" rows="5" cols="10" name="contact"  value="@contactForm("contact").value" required></textarea>
                                                 </div>
                                             }
                                             <div class="form-group">
