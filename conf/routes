@@ -9,9 +9,6 @@ GET         /projects            controllers.Projects.getProjects()
 GET         /projects/new        controllers.Projects.createProject()
 GET         /projects/:id        controllers.Projects.getProject(id: Long)
 POST        /projects/data       controllers.Projects.addProjectData()
-POST        /projects/contact    controllers.Projects.addContact()
-POST        /projects/ware       controllers.Projects.addWaren()
-POST        /projects/save       controllers.Projects.saveProject()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file        controllers.Assets.at(path="/public", file)

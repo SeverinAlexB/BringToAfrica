@@ -67,7 +67,6 @@ public class NewProjectTest {
                 assertThat(!browser.pageSource().contains("error"));
                 gotoBestaetigung(browser);
                 assertThat(!browser.pageSource().contains("error"));
-                //browser.$("#btnProjektErstellen").click();
             }
         });
     }
