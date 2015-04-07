@@ -70,14 +70,10 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td class="product-image">
-                                                                    @helper.repeat(projektDataForm("amounts"), min = 1) { amountField =>
-                                                                        @helper.inputText(amountField,'type -> "number", 'class -> "form-control", 'id ->"name", 'value -> "@projektDataForm(\"amount\").value" , 'required -> "true")
-                                                                    }
+                                                                    <input type="number" id="name" name="amounts[0]" value="" class="form-control" required="true">
                                                                 </td>
-                                                                <td class="product-title">
-                                                                @helper.repeat(projektDataForm("donations"), min = 1) { donationField =>
-                                                                    @helper.inputText(donationField,'class -> "form-control", 'id ->"name", 'value -> "@projektDataForm(\"donations\").value", 'required -> "true")
-                                                                }
+                                                                <td class="product-image">
+                                                                    <input type="text" id="name" name="donations[0]" value="" class="form-control" required="true">
                                                                 </td>
                                                             </tr>
                                                         </tbody>
