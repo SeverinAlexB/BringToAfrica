@@ -59,7 +59,6 @@ public class NewProjectTest2 {
 
     @Before
     public void createCleanDb() {
-        Ebean.getServer("test");
         Ebean.execute(Ebean.createCallableSql(dropDdl));
         Ebean.execute(Ebean.createCallableSql(createDdl));
     }
