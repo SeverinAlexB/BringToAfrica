@@ -22,20 +22,18 @@ create table consumer (
 
 create table donation (
   id                        bigint not null,
+  project_id                bigint not null,
   description               varchar(255),
   date                      date,
   message_to_collector      varchar(255),
-  project_id                bigint,
   donation_type_id          bigint,
-  consumer_id               bigint,
   constraint pk_donation primary key (id))
 ;
 
 create table donation_goal (
   id                        bigint not null,
+  project_id                bigint not null,
   amount                    integer,
-  project_id                bigint,
-  donation_type_id          bigint,
   constraint pk_donation_goal primary key (id))
 ;
 
@@ -57,12 +55,12 @@ create table news (
 
 create table project (
   id                        bigint not null,
+  consumer_id               bigint not null,
   title                     varchar(255),
   description               varchar(255),
   starts_at                 date,
   ends_at                   date,
   contact                   varchar(255),
-  consumer_id               bigint,
   address_id                bigint,
   constraint pk_project primary key (id))
 ;
@@ -85,18 +83,14 @@ alter table donation add constraint fk_donation_project_1 foreign key (project_i
 create index ix_donation_project_1 on donation (project_id);
 alter table donation add constraint fk_donation_donationType_2 foreign key (donation_type_id) references donation_type (id);
 create index ix_donation_donationType_2 on donation (donation_type_id);
-alter table donation add constraint fk_donation_consumer_3 foreign key (consumer_id) references consumer (id);
-create index ix_donation_consumer_3 on donation (consumer_id);
-alter table donation_goal add constraint fk_donation_goal_project_4 foreign key (project_id) references project (id);
-create index ix_donation_goal_project_4 on donation_goal (project_id);
-alter table donation_goal add constraint fk_donation_goal_donationType_5 foreign key (donation_type_id) references donation_type (id);
-create index ix_donation_goal_donationType_5 on donation_goal (donation_type_id);
-alter table news add constraint fk_news_project_6 foreign key (project_id) references project (id);
-create index ix_news_project_6 on news (project_id);
-alter table project add constraint fk_project_consumer_7 foreign key (consumer_id) references consumer (id);
-create index ix_project_consumer_7 on project (consumer_id);
-alter table project add constraint fk_project_address_8 foreign key (address_id) references address (id);
-create index ix_project_address_8 on project (address_id);
+alter table donation_goal add constraint fk_donation_goal_project_3 foreign key (project_id) references project (id);
+create index ix_donation_goal_project_3 on donation_goal (project_id);
+alter table news add constraint fk_news_project_4 foreign key (project_id) references project (id);
+create index ix_news_project_4 on news (project_id);
+alter table project add constraint fk_project_consumer_5 foreign key (consumer_id) references consumer (id);
+create index ix_project_consumer_5 on project (consumer_id);
+alter table project add constraint fk_project_address_6 foreign key (address_id) references address (id);
+create index ix_project_address_6 on project (address_id);
 
 
 

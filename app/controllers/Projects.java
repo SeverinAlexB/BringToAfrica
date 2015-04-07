@@ -56,11 +56,7 @@ public class Projects extends Controller {
                 donationType.setName(projectDataForm.get().donations.get(i));
                 donationGoal.setAmount(Integer.parseInt(amount));
                 donationGoal.setDonationType(donationType);
-
                 donationGoalList.add(donationGoal);
-                System.out.println(projectDataForm.get().donations.get(i));
-                donationType.save();
-                donationGoal.save();
                 i++;
             }
 

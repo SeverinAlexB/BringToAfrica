@@ -17,8 +17,8 @@ public class Project extends Model {
     private Date endsAt;
     private String contact;
 
-    @ManyToOne
-    private Consumer consumer;
+    //@ManyToOne
+    //private Consumer consumer;
 
     @OneToMany(cascade=CascadeType.ALL)
     private List<News> news;
@@ -113,11 +113,4 @@ public class Project extends Model {
         this.donations = donations;
     }
 
-    public Consumer getConsumer() {
-        return consumer;
-    }
-
-    public void setConsumer(Consumer consumer) {
-        this.consumer = consumer;
-    }
 }

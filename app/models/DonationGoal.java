@@ -11,10 +11,10 @@ public class DonationGoal extends Model{
     private Long id;
     private int amount;
 
-    @ManyToOne
-    private Project project;
+    //@ManyToOne
+    //private Project project;
 
-    @ManyToOne
+    @OneToMany(cascade=CascadeType.ALL)
     private DonationType donationType;
 
     public Long getId() {
@@ -33,13 +33,6 @@ public class DonationGoal extends Model{
         this.amount = amount;
     }
 
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
 
     public DonationType getDonationType() {
         return donationType;

@@ -14,14 +14,11 @@ public class Donation extends Model{
     private Date date;
     private String messageToCollector;
 
-    @ManyToOne
-    private Project project;
+    //@ManyToOne
+    //private Project project;
 
     @ManyToOne
     private DonationType donationType;
-
-    @ManyToOne
-    private Consumer consumer;
 
     public Long getId() {
         return id;

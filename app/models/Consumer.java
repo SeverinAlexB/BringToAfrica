@@ -15,10 +15,10 @@ public class Consumer extends Model{
     private String email;
     private String password;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     private List<Project> projects;
 
-    @OneToMany()
+    @OneToMany(cascade=CascadeType.ALL)
     private List<Donation> donations;
 
 
