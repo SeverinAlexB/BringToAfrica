@@ -8,10 +8,9 @@ import play.data.Form;
 import play.db.ebean.Model;
 import play.mvc.Controller;
 import play.mvc.Result;
-import controllers.forms.Contact;
 import controllers.forms.Converter;
 import controllers.forms.ProjectData;
-import controllers.forms.Waren;
+import play.mvc.Security;
 import views.html.newProject;
 
 import java.util.ArrayList;
@@ -32,6 +31,7 @@ public class Projects extends Controller {
         return ok(views.html.detail.render(project));
     }
 
+    //@Security.Authenticated(Secured.class)
     public static Result addProjectData() throws  AfricaException{
         Form<ProjectData> projectDataForm = new Form<>(ProjectData.class);
         projectDataForm = Form.form(ProjectData.class).bindFromRequest();
