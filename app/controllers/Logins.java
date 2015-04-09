@@ -1,5 +1,6 @@
 package controllers;
 
+import com.avaje.ebean.Ebean;
 import models.Consumer;
 import controllers.forms.Login;
 import play.data.Form;
@@ -21,6 +22,7 @@ public class Logins{
             play.mvc.Controller.session("email", loginForm.get().email);
 
             Model.Finder<String, Consumer> finder = new Model.Finder<>(String.class, Consumer.class);
+            Consumer current = Ebean.find(Consumer.class).where().eq("email", loginForm.get().email).findUnique();
             return play.mvc.Controller.redirect(routes.Application.index());
         }
     }

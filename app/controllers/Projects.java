@@ -15,19 +15,20 @@ import views.html.newProject;
 
 import java.util.ArrayList;
 import java.util.List;
+import services.ProjectService;
 
 
 
 public class Projects extends Controller {
+    private static ProjectService projectService = new ProjectService();
 
     public static Result getProjects() {
-        List<Project> projects = new Model.Finder<>(String.class, Project.class).all();
+        List<Project> projects = projectService.getAllProjects();
         return ok(views.html.index.render(projects));
     }
 
     public static Result getProject(long id) {
-        Model.Finder<Long, Project> finder = new Model.Finder<>(Long.class, Project.class);
-        Project project = finder.byId(id);
+        Project project = projectService.getProjectById(id);
         return ok(views.html.detail.render(project));
     }
 
@@ -66,7 +67,7 @@ public class Projects extends Controller {
 
             project.setAddress(address);
             project.setDonationGoals(donationGoalList);
-            project.save();
+            projectService.saveProject(project);
 
             List<Project> projects = new Model.Finder<>(String.class, Project.class).all();
             return ok(views.html.index.render(projects));
