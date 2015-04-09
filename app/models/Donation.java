@@ -51,4 +51,8 @@ public class Donation extends Model{
     public void setMessageToCollector(String messageToCollector) {
         this.messageToCollector = messageToCollector;
     }
+
+    public static Finder<Long,Donation> find = new Finder<Long,Donation>(
+            Long.class, Donation.class
+    );
 }

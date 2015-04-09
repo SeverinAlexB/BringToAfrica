@@ -77,4 +77,7 @@ public class Consumer extends Model{
     public void setPassword(String password) {
         this.password = password;
     }
+    public static Finder<Long,Consumer> find = new Finder<Long,Consumer>(
+            Long.class, Consumer.class
+    );
 }

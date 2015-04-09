@@ -1,6 +1,5 @@
 package services;
 
-import com.avaje.ebean.Ebean;
 import models.Project;
 
 import java.util.List;
@@ -12,15 +11,15 @@ public class ProjectService {
     }
 
     public Project getProjectById(Long id){
-        return Ebean.find(Project.class, id);
+        return Project.find.byId(id);
     }
 
     public Project getProjectByName(String name){
-        return Ebean.find(Project.class).where().eq("name", name).findUnique();
+       return  Project.find.where().eq("name",name).findUnique();
     }
 
     public List<Project> getAllProjects(){
-        return Ebean.find(Project.class).findList();
+        return Project.find.all();
     }
 
 }

@@ -41,4 +41,8 @@ public class DonationGoal extends Model{
     public void setDonationType(DonationType donationType) {
         this.donationType = donationType;
     }
+
+    public static Finder<Long,DonationGoal> find = new Finder<Long,DonationGoal>(
+            Long.class, DonationGoal.class
+    );
 }

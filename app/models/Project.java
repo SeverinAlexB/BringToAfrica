@@ -113,4 +113,8 @@ public class Project extends Model {
         this.donations = donations;
     }
 
+    public static Finder<Long,Project> find = new Finder<Long,Project>(
+            Long.class, Project.class
+    );
+
 }

@@ -42,4 +42,8 @@ public class Address extends Model {
     public void setStreet(String street) {
         this.street = street;
     }
+
+    public static Finder<Long,Address> find = new Finder<Long,Address>(
+            Long.class, Address.class
+    );
 }
