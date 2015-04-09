@@ -2,7 +2,6 @@ package services;
 
 import com.avaje.ebean.Ebean;
 import models.Consumer;
-import play.db.ebean.Model;
 
 public class ConsumerService {
 
@@ -11,17 +10,20 @@ public class ConsumerService {
     }
 
     public Consumer getConsumerById(Long id){
-        Model.Finder<Long, Consumer> finder = new Model.Finder<>(Long.class, Consumer.class);
-        return finder.byId(id);
+        return Ebean.find(Consumer.class, id);
     }
 
     public Consumer getConsumerByEmail(String email){
-        Model.Finder<String, Consumer> finder = new Model.Finder<>(String.class, Consumer.class);
-        return finder.where().eq("email", email).findUnique();
+        return Ebean.find(Consumer.class).where().eq("email", email).findUnique();
     }
 
     public boolean authenticate(String email, String password) {
-
-        return false;
+        Consumer consumer = Ebean.find(Consumer.class).where().ieq("email", email).eq("password", password).findUnique();
+        System.out.println("consumer: " + consumer.getEmail());
+        if(consumer == null){
+            return false;
+        }else{
+            return true;
+        }
     }
 }

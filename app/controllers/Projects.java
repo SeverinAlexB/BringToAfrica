@@ -1,6 +1,7 @@
 package controllers;
 
 
+import models.Consumer;
 import models.DonationGoal;
 import models.DonationType;
 import models.Project;
@@ -16,11 +17,12 @@ import views.html.newProject;
 import java.util.ArrayList;
 import java.util.List;
 import services.ProjectService;
-
+import services.ConsumerService;
 
 
 public class Projects extends Controller {
     private static ProjectService projectService = new ProjectService();
+    private static ConsumerService consumerService = new ConsumerService();
 
     public static Result getProjects() {
         List<Project> projects = projectService.getAllProjects();
@@ -32,10 +34,13 @@ public class Projects extends Controller {
         return ok(views.html.detail.render(project));
     }
 
-    //@Security.Authenticated(Secured.class)
+    @Security.Authenticated(Secured.class)
     public static Result addProjectData() throws  AfricaException{
         Form<ProjectData> projectDataForm = new Form<>(ProjectData.class);
         projectDataForm = Form.form(ProjectData.class).bindFromRequest();
+        System.out.println(request().username());
+        Consumer consumer = consumerService.getConsumerByEmail(request().username());
+        System.out.println(consumer.getEmail());
         if (projectDataForm.hasErrors()) {
             System.out.println("Projectdata has errors");
             return badRequest(newProject.render(projectDataForm));
@@ -67,13 +72,15 @@ public class Projects extends Controller {
 
             project.setAddress(address);
             project.setDonationGoals(donationGoalList);
-            projectService.saveProject(project);
+            consumer.addProject(project);
+            consumerService.saveConsumer(consumer);
 
             List<Project> projects = new Model.Finder<>(String.class, Project.class).all();
             return ok(views.html.index.render(projects));
         }
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result createProject() {
         return ok(newProject.render(Form.form(ProjectData.class)));
     }
