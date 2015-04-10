@@ -6,22 +6,23 @@ import play.data.validation.Constraints;
 import java.util.List;
 
 public class ProjectData{
-    @Constraints.Required(message="Bitte füllen sie den Titel aus")
+    @Constraints.Required(message="Bitte gib einen Titel ein")
     public String title;
-    @Constraints.Required
+    @Constraints.Required(message="Bitte gib eine kurze Beschreibung an")
     public String description;
-    @Constraints.Required
+    @Constraints.Required(message="Bitte füge ein Projektbild hinzu")
     public String imageURL;
-    @Constraints.Required
-    public String endsAt;
-    @Constraints.Required
+    @Constraints.Required(message="Bitte gib an wann dein Projekt starten soll")
     public String startsAt;
+    @Constraints.Required(message="Bitte gib an wann dein Projekt enden soll")
+    public String endsAt;
+
 
     @Constraints.Required(message="Bitte fülle deine Kontaktmöglichkeiten aus")
     public String contactInformation;
-    @Constraints.Required(message="Gib dein Land an")
+    @Constraints.Required(message="Bitte gib das Spendenland an")
     public String country;
-    @Constraints.Required(message="Gib die Stadt an")
+    @Constraints.Required(message="Bitte gib die Spendenstadt an")
     public String city;
 
     //@Constraints.Required(message="Bitte gib eine Menge an")
