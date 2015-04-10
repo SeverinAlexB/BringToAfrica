@@ -1,10 +1,7 @@
 package controllers;
 
 
-import models.Consumer;
-import models.DonationGoal;
-import models.DonationType;
-import models.Project;
+import models.*;
 import play.data.Form;
 import play.db.ebean.Model;
 import play.mvc.Controller;
@@ -42,7 +39,7 @@ public class Projects extends Controller {
         } else {
             Consumer consumer = ConsumerService.getConsumerByEmail(request().username());
             models.Project project = new models.Project();
-            models.Address address = new models.Address();
+            Address address = new models.Address();
 
             project.setTitle(projectDataForm.get().title);
             project.setDescription(projectDataForm.get().description);

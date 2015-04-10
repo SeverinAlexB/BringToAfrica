@@ -36,17 +36,18 @@ public class NewProjectTest {
             assertTrue(Consumer.find.all().size() == 1);
 
             browser.goTo("http://localhost:3333/projects/new");
-            browser.$("[name='title']").text("Help Children get clothes");
-            browser.$("[name='description']").text("Help Children get clothes");
-            browser.$("[name='imageURL']").text("Some URL to Image");
-            browser.$("[name='startsAt']").text("2015-03-10");
-            browser.$("[name='endsAt']").text("2015-04-29");
-            browser.$("[name='amounts[0]']").text("10");
-            browser.$("[name='donations[0]']").text("Schuhe");
-            browser.$("[name='country']").text("Nigeria");
-            browser.$("[name='city']").text("New York");
-            browser.$("[name='contactInformation']").text("Claudia Hofstetter\nLehstrasse 5\n 8000 Zürich");
-            browser.$("#btnContinue3").click();
+            browser.getDriver().findElement(By.name("title")).sendKeys("Help Children get clothes");
+            browser.getDriver().findElement(By.name("description")).sendKeys("Help Children get clothes");
+
+            browser.getDriver().findElement(By.name("imageURL")).sendKeys("Some URL to Image");
+            browser.getDriver().findElement(By.name("startsAt")).sendKeys("2015-03-10");
+            browser.getDriver().findElement(By.name("endsAt")).sendKeys("2015-04-29");
+            browser.getDriver().findElement(By.name("amounts[0]")).sendKeys("10");
+            browser.getDriver().findElement(By.name("donations[0]")).sendKeys("Schuhe");
+            browser.getDriver().findElement(By.name("country")).sendKeys("Nigeria");
+            browser.getDriver().findElement(By.name("city")).sendKeys("New York");
+            browser.getDriver().findElement(By.name("contactInformation")).sendKeys("Email");
+            browser.getDriver().findElement(By.id("btnContinue3")).click();
 
             assertTrue(Project.find.all().size() == 1);
 
