@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -49,9 +51,9 @@ public class NewProjectTest {
             browser.getDriver().findElement(By.name("contactInformation")).sendKeys("Email");
             browser.getDriver().findElement(By.id("btnContinue3")).click();
 
-            assertTrue(Project.find.all().size() == 1);
+            assertTrue(models.Project.find.all().size() == 1);
 
-            Project testProject = Project.find.where().findUnique();
+            models.Project testProject = models.Project.find.findUnique();
             assertNotNull(testProject);
         }));
     }

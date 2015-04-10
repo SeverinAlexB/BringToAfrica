@@ -34,37 +34,41 @@ public class Projects extends Controller {
     public static Result addProjectData() throws  AfricaException{
         Form<ProjectData> projectDataForm = Form.form(ProjectData.class).bindFromRequest();
         if (projectDataForm.hasErrors()) {
-            System.out.println("Projectdata has errors");
             return badRequest(newProject.render(projectDataForm));
         } else {
             Consumer consumer = ConsumerService.getConsumerByEmail(request().username());
-            models.Project project = new models.Project();
-            Address address = new models.Address();
+            if(consumer != null) {
+                models.Project project = new models.Project();
+                Address address = new models.Address();
 
-            project.setTitle(projectDataForm.get().title);
-            project.setDescription(projectDataForm.get().description);
-            project.setImageURL(projectDataForm.get().imageURL);
-            project.setEndsAt(Converter.stringToSqlDate(projectDataForm.get().endsAt));
-            project.setStartsAt(Converter.stringToSqlDate(projectDataForm.get().startsAt));
-            project.setContact(projectDataForm.get().contactInformation);
+                project.setTitle(projectDataForm.get().title);
+                project.setDescription(projectDataForm.get().description);
+                project.setImageURL(projectDataForm.get().imageURL);
+                project.setEndsAt(Converter.stringToSqlDate(projectDataForm.get().endsAt));
+                project.setStartsAt(Converter.stringToSqlDate(projectDataForm.get().startsAt));
+                project.setContact(projectDataForm.get().contactInformation);
 
-            for(int i = 0; i < projectDataForm.get().amounts.size(); i++){
-                DonationType donationType = new DonationType();
-                DonationGoal donationGoal = new DonationGoal();
-                donationType.setName(projectDataForm.get().donations.get(i));
-                donationGoal.setAmount(Integer.parseInt(projectDataForm.get().amounts.get(i)));
-                donationGoal.setDonationType(donationType);
-                project.addDonationGoal(donationGoal);
+                for (int i = 0; i < projectDataForm.get().amounts.size(); i++) {
+                    DonationType donationType = new DonationType();
+                    DonationGoal donationGoal = new DonationGoal();
+                    donationType.setName(projectDataForm.get().donations.get(i));
+                    donationGoal.setAmount(Integer.parseInt(projectDataForm.get().amounts.get(i)));
+                    donationGoal.setDonationType(donationType);
+                    project.addDonationGoal(donationGoal);
+                }
+
+                address.setCountry(projectDataForm.get().country);
+                address.setCity(projectDataForm.get().city);
+
+                project.setAddress(address);
+                consumer.addProject(project);
+                consumer.save();
+
+                return redirect(routes.Projects.getProjects());
+            }else{
+                projectDataForm.reject("Benutzer nicht gefunden.");
+                return badRequest(newProject.render(projectDataForm));
             }
-
-            address.setCountry(projectDataForm.get().country);
-            address.setCity(projectDataForm.get().city);
-
-            project.setAddress(address);
-            consumer.addProject(project);
-            consumer.save();
-
-            return redirect(routes.Projects.getProjects());
         }
     }
 
