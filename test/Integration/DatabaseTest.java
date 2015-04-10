@@ -73,10 +73,10 @@ public class DatabaseTest {
     }
 
     public static void runInCleanApp(F.Callback<TestBrowser> run) {
-        running(testServer(3333, getApp(false)), new HtmlUnitDriver(BrowserVersion.CHROME), run);
+        running(testServer(3333, getApp(false)), FIREFOX, run);
     }
     public static void runInFilledApp(F.Callback<TestBrowser> run) {
-        running(testServer(3333, getApp(true)), new HtmlUnitDriver(BrowserVersion.CHROME), run);
+        running(testServer(3333, getApp(true)), FIREFOX, run);
     }
 
     @Test

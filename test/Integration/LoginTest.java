@@ -15,7 +15,7 @@ public class LoginTest {
 
     @Test
     public void LoginTestTest(){
-        DatabaseTest.runInCleanApp((browser -> {
+        DatabaseTest.runInFilledApp((browser -> {
             String firstName = "Michael";
             String lastName = "Blocker";
             String email = "michael.blocher@msn.com";
