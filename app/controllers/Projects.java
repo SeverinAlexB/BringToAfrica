@@ -62,7 +62,6 @@ public class Projects extends Controller {
 
             address.setCountry(projectDataForm.get().country);
             address.setCity(projectDataForm.get().city);
-            address.setStreet(projectDataForm.get().street);
 
             project.setAddress(address);
             project.setDonationGoals(donationGoalList);

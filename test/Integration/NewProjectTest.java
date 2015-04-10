@@ -49,7 +49,6 @@ public class NewProjectTest {
         //assert kontaktCalled;
         browser.$("[name='country']").text("Nigeria");
         browser.$("[name='city']").text("New York");
-        browser.$("[name='street']").text("Walenseestrasse 5");
         browser.$("[name='contact']").text("Claudia Hofstetter\nLehstrasse 5\n 8000 Zürich");
         browser.$("#btnContinue3").click();
         bestaetigungCalled = true;
