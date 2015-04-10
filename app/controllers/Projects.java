@@ -21,16 +21,15 @@ import services.ConsumerService;
 
 
 public class Projects extends Controller {
-    private static ProjectService projectService = new ProjectService();
-    private static ConsumerService consumerService = new ConsumerService();
+
 
     public static Result getProjects() {
-        List<Project> projects = projectService.getAllProjects();
+        List<Project> projects = ProjectService.getAllProjects();
         return ok(views.html.index.render(projects));
     }
 
     public static Result getProject(long id) {
-        Project project = projectService.getProjectById(id);
+        Project project = ProjectService.getProjectById(id);
         return ok(views.html.detail.render(project));
     }
 
@@ -39,7 +38,7 @@ public class Projects extends Controller {
         Form<ProjectData> projectDataForm = new Form<>(ProjectData.class);
         projectDataForm = Form.form(ProjectData.class).bindFromRequest();
         System.out.println(request().username());
-        Consumer consumer = consumerService.getConsumerByEmail(request().username());
+        Consumer consumer = ConsumerService.getConsumerByEmail(request().username());
         System.out.println(consumer.getEmail());
         if (projectDataForm.hasErrors()) {
             System.out.println("Projectdata has errors");
@@ -73,7 +72,7 @@ public class Projects extends Controller {
             project.setAddress(address);
             project.setDonationGoals(donationGoalList);
             consumer.addProject(project);
-            consumerService.saveConsumer(consumer);
+            ConsumerService.saveConsumer(consumer);
 
             List<Project> projects = new Model.Finder<>(String.class, Project.class).all();
             return ok(views.html.index.render(projects));

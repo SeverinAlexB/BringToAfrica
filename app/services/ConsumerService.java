@@ -1,29 +1,33 @@
 package services;
 
 import models.Consumer;
-
+import org.mindrot.jbcrypt.BCrypt;
 
 public class ConsumerService {
 
-    public void saveConsumer(Consumer consumer){
+    public static void saveConsumer(Consumer consumer){
         consumer.save();
     }
 
-    public Consumer getConsumerById(Long id){
+    public static Consumer getConsumerById(Long id){
         return Consumer.find.byId(id);
     }
 
-    public Consumer getConsumerByEmail(String email){
-        return Consumer.find.where().eq("email", email).findUnique();
+    public static Consumer getConsumerByEmail(String email){
+        return Consumer.find.where().like("email", email).findUnique();
     }
 
-    public boolean authenticate(String email, String password) {
-        Consumer consumer = Consumer.find.where().eq("email",email).eq("password",password).findUnique();
-        if(consumer == null){
+    public static boolean isValid(String email, String password) {
+        Consumer consumer = getConsumerByEmail(email);
+
+        if(consumer == null) {
             System.out.println("consumer not found");
             return false;
+        } else if(BCrypt.checkpw(password,consumer.getPasswordHashedSalted())) {
+            System.out.println("password wrong");
+            return false;
         }else{
-            System.out.println("consumer: " + consumer.getEmail());
+            System.out.println("all right, " + consumer.getEmail());
             return true;
         }
     }

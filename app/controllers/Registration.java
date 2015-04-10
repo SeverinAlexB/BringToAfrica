@@ -3,18 +3,18 @@ package controllers;
 import controllers.forms.Login;
 import play.data.Form;
 import play.mvc.Result;
-import scala.collection.immutable.Stream;
 import services.ConsumerService;
 
-public class Logins{
+public class Registration {
 
 
-    public static Result login() {
-        return play.mvc.Controller.ok(views.html.ConsumerManagement.login.render(Form.form(controllers.forms.Login.class)));
+    public static Result registration() {
+        return play.mvc.Controller.ok(views.html.ConsumerManagement.registration.render());
+        // return play.mvc.Controller.ok(views.html.ConsumerManagement.Registration.render(Form.form(Login.class)));
     }
 
     public static Result authenticate() {
-        Form<Login> loginForm = Form.form(controllers.forms.Login.class).bindFromRequest();
+        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
         if (loginForm.hasErrors()) {
             return play.mvc.Controller.badRequest(views.html.ConsumerManagement.login.render(loginForm));
         } else {

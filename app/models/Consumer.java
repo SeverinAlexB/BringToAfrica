@@ -13,7 +13,11 @@ public class Consumer extends Model{
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
+    private String passwordHashedSalted;
+
+
+
+
 
     @OneToMany(cascade=CascadeType.ALL)
     private List<Project> projects;
@@ -69,14 +73,14 @@ public class Consumer extends Model{
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    public String getPassword() {
-        return password;
+    public String getPasswordHashedSalted() {
+        return passwordHashedSalted;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHashedSalted(String passwordHashedSalted) {
+        this.passwordHashedSalted = passwordHashedSalted;
     }
+
     public static Finder<Long,Consumer> find = new Finder<Long,Consumer>(
             Long.class, Consumer.class
     );
