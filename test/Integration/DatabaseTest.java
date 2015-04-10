@@ -19,6 +19,7 @@ import play.api.db.DBApi;
 import play.api.db.evolutions.Evolution;
 import play.api.db.evolutions.Evolutions;
 import play.libs.F;
+import play.libs.Yaml;
 import play.test.FakeApplication;
 import play.test.Helpers;
 import play.test.TestBrowser;
@@ -26,6 +27,7 @@ import scala.collection.Seq;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static play.test.Helpers.*;
@@ -64,28 +66,28 @@ public class DatabaseTest {
         ddl.setup((SpiEbeanServer) server, new H2Platform(), config);
         ddl.runScript(false, ddl.generateDropDdl());
         ddl.runScript(false, ddl.generateCreateDdl());
-//        Helpers.stop(app);
         assert Consumer.find.all().size() == 0;
     }
+
+
     private static FakeApplication getApp() {
         HashMap<String,String> database = getH2TestDB();
         cleanDatabase(database);
         return fakeApplication(database);
     }
+
     public static void runInApp(F.Callback<TestBrowser> run) {
         running(testServer(3333, getApp()), new HtmlUnitDriver(BrowserVersion.CHROME), run);
     }
+
     @Test
     public void testFakeDataBase() {
-
-
         runInApp((TestBrowser t) -> {
             assertThat(Consumer.find.findUnique() == null);
 
             for (Consumer co : Consumer.find.all()) {
                 co.delete();
             }
-
             Consumer c = new Consumer();
             c.setEmail("sevi_buehler@hotmail.com");
             c.setFirstName("Severin2");
@@ -95,6 +97,15 @@ public class DatabaseTest {
 
             assertThat(Consumer.find.findUnique() != null);
 
+        });
+    }
+    @Test
+    public void testFakeDataBaseFull() {
+        runInApp((TestBrowser t) -> {
+            Ebean.save((List) Yaml.load("test-data.yml"));
+            assertThat(Consumer.find.findUnique() != null);
+            Consumer testConsumer = Consumer.find.where().like("email", "bob@gmail.com").findUnique();
+            assertThat(testConsumer.getEmail() == "bob@gmail.com");
         });
     }
 }
