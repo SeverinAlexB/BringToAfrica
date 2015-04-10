@@ -39,7 +39,16 @@
                     <h1>BringToAfrica</h1>
                 </a>
                 <div class="social-links col-xs-12 col-sm-10">
-                    <a href="@routes.Logins.login()" class="btn btn-default btn-volunteer">Login</a>
+                    @if(Application.getCurrent() == null) {
+                        <a href="@routes.Logins.login()" class="btn btn-default btn-volunteer">Login</a>
+                    } else {
+                        <a href="@routes.Logins.logout()" class="btn btn-default btn-volunteer">Logout</a>
+                    }
+                    @if(flash.contains("success")) {
+                    <p class="success">
+                        @flash.get("success")
+                    </p>
+                    }
                 </div>
             </div>
         </div>
@@ -64,9 +73,6 @@
                             </li>
                             <li>
                                 <a href="@routes.Projects.createProject()">Projekt erstellen</a>
-                            </li>
-                            <li>
-                                <a href="@routes.Logins.login()">Login</a>
                             </li>
                         </ul>
                     </nav>

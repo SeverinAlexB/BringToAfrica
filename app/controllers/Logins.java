@@ -31,7 +31,7 @@ public class Logins{
 
     public static Result logout() {
         play.mvc.Controller.session().clear();
-        play.mvc.Controller.flash("success", "You've been logged out");
+        play.mvc.Controller.flash("success", "Du wurdest erfolgreich ausgeloggt!");
         return play.mvc.Controller.redirect(routes.Application.index());
     }
 }

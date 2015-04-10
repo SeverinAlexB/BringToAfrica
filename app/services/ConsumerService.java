@@ -31,4 +31,5 @@ public class ConsumerService {
         play.mvc.Controller.session("email", email);
     }
 
+
 }
