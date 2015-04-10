@@ -4,9 +4,6 @@ import models.Consumer;
 import org.junit.Test;
 import org.mindrot.jbcrypt.BCrypt;
 import org.openqa.selenium.By;
-import play.api.test.TestBrowser;
-
-import javax.xml.crypto.Data;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -19,7 +16,7 @@ public class RegistrationTest {
 
     @Test
     public void RegistrationTest(){
-        DatabaseTest.runInApp(( browser -> {
+        DatabaseTest.runInCleanApp((browser -> {
             String firstName = "Michael";
             String lastName = "Blocker";
             String email = "michael.blocher@msn.com";
@@ -38,8 +35,8 @@ public class RegistrationTest {
 
             Consumer c = Consumer.find.findUnique();
 
-            assertEquals(firstName,c.getFirstName());
-            assertEquals(lastName,c.getLastName());
+            assertEquals(firstName, c.getFirstName());
+            assertEquals(lastName, c.getLastName());
             assertEquals(email, c.getEmail());
             assertTrue(BCrypt.checkpw(password, c.getPasswordHashedSalted()));
         }));
@@ -47,7 +44,7 @@ public class RegistrationTest {
 
     @Test
     public void passwortEqualTest() {
-        DatabaseTest.runInApp(( browser -> {
+        DatabaseTest.runInCleanApp((browser -> {
             String firstName = "Michael";
             String lastName = "Blocker";
             String email = "michael.blocher@msn.com";
@@ -67,7 +64,7 @@ public class RegistrationTest {
     }
     @Test
     public void emailAlreadyUsedTest() {
-        DatabaseTest.runInApp(( browser -> {
+        DatabaseTest.runInCleanApp((browser -> {
             String firstName = "Michael";
             String lastName = "Blocker";
             String email = "michael.blocher@msn.com";

@@ -17,25 +17,25 @@ public class ConsumerServiceTest {
 
     @Test
     public void getConsumerByEmailTest() {
-        DatabaseTest.runInApp(browser -> {
+        DatabaseTest.runInCleanApp(browser -> {
             String mail = "marc.oberholzer@hotmail.com";
             Consumer c = new Consumer();
             c.setEmail(mail);
             c.save();
-            Consumer c2 =  ConsumerService.getConsumerByEmail(mail.toUpperCase());
+            Consumer c2 = ConsumerService.getConsumerByEmail(mail.toUpperCase());
             assertEquals(c2.getId(), c.getId());
         });
     }
     @Test
     public void getConsumerByEmailNullTest() {
-        DatabaseTest.runInApp(browser -> {
-            Consumer c2 =  ConsumerService.getConsumerByEmail(null);
+        DatabaseTest.runInCleanApp(browser -> {
+            Consumer c2 = ConsumerService.getConsumerByEmail(null);
             assertNull(c2);
         });
     }
     @Test
     public void isValidTest() {
-        DatabaseTest.runInApp(browser -> {
+        DatabaseTest.runInCleanApp(browser -> {
             String mail = "marc.oberholzer@hotmail.com";
             String password = "MeinPw5#";
             String hash = BCrypt.hashpw(password, BCrypt.gensalt());
@@ -50,7 +50,7 @@ public class ConsumerServiceTest {
     }
     @Test
     public void isValidTest2() {
-        DatabaseTest.runInApp(browser -> {
+        DatabaseTest.runInCleanApp(browser -> {
             String mail = "marc.oberholzer@hotmail.com";
             String password = "MeinPw5#";
             String hash = BCrypt.hashpw(password, BCrypt.gensalt());
@@ -60,12 +60,12 @@ public class ConsumerServiceTest {
             c.setPasswordHashedSalted(hash);
             c.save();
 
-            assertTrue(!ConsumerService.isValid(mail.toUpperCase(), password +"1"));
+            assertTrue(!ConsumerService.isValid(mail.toUpperCase(), password + "1"));
         });
     }
     @Test
          public void isValidTest3() {
-        DatabaseTest.runInApp(browser -> {
+        DatabaseTest.runInCleanApp(browser -> {
             String mail = "marc.oberholzer@hotmail.com";
             String password = "MeinPw5#";
             String hash = BCrypt.hashpw(password, BCrypt.gensalt());
@@ -75,7 +75,7 @@ public class ConsumerServiceTest {
             c.setPasswordHashedSalted(hash);
             c.save();
 
-            assertTrue(!ConsumerService.isValid(mail.toUpperCase()+"e", password));
+            assertTrue(!ConsumerService.isValid(mail.toUpperCase() + "e", password));
         });
     }
 
