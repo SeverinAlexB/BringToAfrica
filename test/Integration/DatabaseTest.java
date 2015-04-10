@@ -72,17 +72,17 @@ public class DatabaseTest {
         cleanDatabase(database);
         return fakeApplication(database);
     }
-    public static void runInApp(Runnable run) {
-        running(getApp(),run);
+    public static void runInApp(F.Callback<TestBrowser> run) {
+        running(testServer(3333, getApp()), new HtmlUnitDriver(BrowserVersion.CHROME), run);
     }
     @Test
     public void testFakeDataBase() {
 
 
-        runInApp ( () -> {
+        runInApp((TestBrowser t) -> {
             assertThat(Consumer.find.findUnique() == null);
 
-            for(Consumer co: Consumer.find.all()){
+            for (Consumer co : Consumer.find.all()) {
                 co.delete();
             }
 
