@@ -108,5 +108,4 @@ public class DatabaseTest {
             assertThat(testConsumer.getEmail() == "bob@gmail.com");
         });
     }
-
 }
