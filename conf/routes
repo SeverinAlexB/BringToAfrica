@@ -12,8 +12,9 @@ POST        /projects/data        controllers.Projects.addProjectData()
 
 
 GET         /login                controllers.Logins.login()
+POST        /login                controllers.Logins.authenticate()
 GET         /logout               controllers.Logins.logout()
-POST        /authenticate         controllers.Logins.authenticate()
+
 GET         /registration         controllers.Registrations.registration()
 POST        /registration         controllers.Registrations.register()
 

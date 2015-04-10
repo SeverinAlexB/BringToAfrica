@@ -19,11 +19,10 @@ public class ConsumerService {
 
     public static boolean isValid(String email, String password) {
         Consumer consumer = getConsumerByEmail(email);
-
         if(consumer == null) {
             System.out.println("consumer not found");
             return false;
-        } else if(BCrypt.checkpw(password,consumer.getPasswordHashedSalted())) {
+        } else if(!BCrypt.checkpw(password,consumer.getPasswordHashedSalted())) {
             System.out.println("password wrong");
             return false;
         }else{
@@ -31,4 +30,5 @@ public class ConsumerService {
             return true;
         }
     }
+
 }

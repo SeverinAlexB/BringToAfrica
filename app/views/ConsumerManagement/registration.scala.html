@@ -34,7 +34,7 @@
             </div>
             <div class="row">
               <div class="col-xs-11 col-sm-6">
-                <p>W‰hle ein Passwort, dass mindestens 6 Zeichen lang ist und mindestens ein Sonder- oder Leerzeichen enth‰lt.</p>
+                <p>W√§hle ein Passwort, dass mindestens 6 Zeichen lang ist und mindestens ein Sonder- oder Leerzeichen enth√§lt.</p>
               </div>
             </div>
             <div class="row">
@@ -47,7 +47,7 @@
             <div class="row">
               <div class="col-xs-11 col-sm-6">
                 <p>
-                  <input class="form-control" type="password" name="password2" placeholder="Passwort best‰tigen" value="@loginForm("password2").value">
+                  <input class="form-control" type="password" name="password2" placeholder="Passwort best√§tigen" value="@loginForm("password2").value">
                 </p>
               </div>
             </div>
@@ -68,7 +68,6 @@
               <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
               <span class="sr-only">Error:</span>
               @for((key, value) <- loginForm.errors) {
-
                 @for(err <- value) {
                   @err.message().toString() <br/>
                 }
