@@ -6,6 +6,8 @@ import models.Consumer;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -44,7 +46,8 @@ public class NewProjectTest {
             browser.getDriver().findElement(By.name("imageURL")).sendKeys("Some URL to Image");
             browser.getDriver().findElement(By.name("startsAt")).sendKeys("2015-03-10");
             browser.getDriver().findElement(By.name("endsAt")).sendKeys("2015-04-29");
-            browser.getDriver().findElement(By.name("amounts[0]")).sendKeys("10");
+            browser.executeScript("document.getElementById('amount').value='12';");
+            //browser.getDriver().findElement(By.name("amount")).sendKeys("10");
             browser.getDriver().findElement(By.name("donations[0]")).sendKeys("Schuhe");
             browser.getDriver().findElement(By.name("country")).sendKeys("Nigeria");
             browser.getDriver().findElement(By.name("city")).sendKeys("New York");
@@ -54,7 +57,7 @@ public class NewProjectTest {
             assertTrue(models.Project.find.all().size() == 1);
 
             models.Project testProject = models.Project.find.findUnique();
-            assertNotNull(testProject);
+            assertEquals("Help Children get clothes", testProject.getTitle());
         }));
     }
 
