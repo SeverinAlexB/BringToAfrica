@@ -1,0 +1,3 @@
+- !!models.Consumer
+    email:      bob@gmail.com
+    passwordHashedSalted:   secret
