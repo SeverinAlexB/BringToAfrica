@@ -5,10 +5,6 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class ConsumerService {
 
-    public static void saveConsumer(Consumer consumer){
-        consumer.save();
-    }
-
     public static Consumer getConsumerById(Long id){
         return Consumer.find.byId(id);
     }
@@ -29,6 +25,10 @@ public class ConsumerService {
             System.out.println("all right, " + consumer.getEmail());
             return true;
         }
+    }
+    public static void logIn(String email){
+        play.mvc.Controller.session().clear();
+        play.mvc.Controller.session("email", email);
     }
 
 }

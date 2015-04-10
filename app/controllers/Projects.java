@@ -72,7 +72,7 @@ public class Projects extends Controller {
             project.setAddress(address);
             project.setDonationGoals(donationGoalList);
             consumer.addProject(project);
-            ConsumerService.saveConsumer(consumer);
+            consumer.save();
 
             List<Project> projects = new Model.Finder<>(String.class, Project.class).all();
             return ok(views.html.index.render(projects));

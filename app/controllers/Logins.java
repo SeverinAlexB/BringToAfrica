@@ -21,8 +21,7 @@ public class Logins{
             String email = loginForm.get().email;
             String password = loginForm.get().password;
             if (ConsumerService.isValid(email, password)) {
-                play.mvc.Controller.session().clear();
-                play.mvc.Controller.session("email", email);
+                ConsumerService.logIn(email);
                 return play.mvc.Controller.redirect(routes.Application.index());
             } else {
                 return play.mvc.Controller.badRequest(views.html.ConsumerManagement.login.render(loginForm));

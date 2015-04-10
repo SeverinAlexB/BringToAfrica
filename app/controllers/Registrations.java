@@ -8,6 +8,9 @@ import play.mvc.Result;
 import services.ConsumerService;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Registrations {
 
 
@@ -27,8 +30,11 @@ public class Registrations {
             c.setFirstName(form.get().firstname);
             c.setLastName(form.get().lastname);
             c.setPasswordHashedSalted(hash);
-            ConsumerService.saveConsumer(c);
-            return play.mvc.Controller.redirect(routes.Logins.login());
+            c.save();
+
+            ConsumerService.logIn(c.getEmail());
+
+            return play.mvc.Controller.redirect(routes.Application.index());
         }
     }
 }
