@@ -7,7 +7,6 @@ create table address (
   id                        bigint not null,
   country                   varchar(255),
   city                      varchar(255),
-  street                    varchar(255),
   constraint pk_address primary key (id))
 ;
 
@@ -58,6 +57,7 @@ create table project (
   consumer_id               bigint not null,
   title                     varchar(255),
   description               varchar(255),
+  image_url                 varchar(255),
   starts_at                 date,
   ends_at                   date,
   contact                   varchar(255),

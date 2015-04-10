@@ -13,6 +13,7 @@ public class Project extends Model {
     private Long id;
     private String title;
     private String description;
+    private String imageURL;
     private Date startsAt;
     private Date endsAt;
     private String contact;
@@ -55,6 +56,10 @@ public class Project extends Model {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getImageURL() { return imageURL; }
+
+    public void setImageURL(String imageURL) { this.imageURL = imageURL; }
 
     public Date getEndsAt() {
         return endsAt;

@@ -10,6 +10,4 @@ public class Contact{
     public String country;
     @Constraints.Required(message="Gib die Stadt an")
     public String city;
-    @Constraints.Required(message="Gib die Strasse an")
-    public String street;
 }

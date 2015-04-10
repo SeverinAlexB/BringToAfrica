@@ -11,6 +11,8 @@ public class ProjectData{
     @Constraints.Required
     public String description;
     @Constraints.Required
+    public String imageURL;
+    @Constraints.Required
     public String endsAt;
     @Constraints.Required
     public String startsAt;
@@ -21,8 +23,6 @@ public class ProjectData{
     public String country;
     @Constraints.Required(message="Gib die Stadt an")
     public String city;
-    @Constraints.Required(message="Gib die Strasse an")
-    public String street;
 
     //@Constraints.Required(message="Bitte gib eine Menge an")
     //@Constraints.Pattern(value="[1-9]\\d*", message = "Es muss eine positive Zahl eingegeben werden")

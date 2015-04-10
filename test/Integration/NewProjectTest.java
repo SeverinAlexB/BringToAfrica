@@ -31,6 +31,7 @@ public class NewProjectTest {
         assert projektdatenCalled;
         browser.$("[name='title']").text("Help Children get clothes");
         browser.$("[name='description']").text("Help Children get clothes");
+        browser.$("[name='imageURL']").text("Some URL to Image");
         browser.$("[name='startsAt']").text("2015-03-10");
         browser.$("[name='endsAt']").text("2015-04-29");
         //browser.$("#btnContinue1").click();
@@ -49,7 +50,6 @@ public class NewProjectTest {
         //assert kontaktCalled;
         browser.$("[name='country']").text("Nigeria");
         browser.$("[name='city']").text("New York");
-        browser.$("[name='street']").text("Walenseestrasse 5");
         browser.$("[name='contact']").text("Claudia Hofstetter\nLehstrasse 5\n 8000 Zürich");
         browser.$("#btnContinue3").click();
         bestaetigungCalled = true;
@@ -83,6 +83,10 @@ public class NewProjectTest {
                 assertThat(browser.pageSource().contains("error"));
 
                 browser.$("[name='description']").text("Help Children get clothes");
+                browser.$("#btnContinue1").click();
+                assertThat(browser.pageSource().contains("error"));
+
+                browser.$("[name='imageURL']").text("Some URL to image");
                 browser.$("#btnContinue1").click();
                 assertThat(browser.pageSource().contains("error"));
 

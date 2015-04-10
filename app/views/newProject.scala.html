@@ -31,19 +31,23 @@
                                                     <input class="form-control" id="title" type="text" name="title" value="@projektDataForm("title").value" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="country">
+                                                    <label for="imageURL">Füge ein Titelbild hinzu<span>*</span></label>
+                                                    <input class="form-control" id="imageURL" type="text" name="imageURL" value="@projektDataForm("imageURL").value" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="description">
                                                         Beschreibe dein Projekt in ein paar kurzen Sätzen<span>*</span>
                                                     </label>
-                                                    <textarea class="form-control" rows="5" cols="10" name="description" value="@projektDataForm("description").value"></textarea>
+                                                    <textarea class="form-control" rows="5" cols="10" id="description" name="description" value="@projektDataForm("description").value"></textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="country">Wann soll deine Spendenaktion starten?<span>
+                                                    <label for="startsAt">Wann soll deine Spendenaktion starten?<span>
                                                         *</span></label>
-                                                    <input class="form-control" id="name" type="date" name="startsAt" value="@projektDataForm("startsAt").value" required>
+                                                    <input class="form-control" id="startsAt" type="date" name="startsAt" value="@projektDataForm("startsAt").value" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="country">Wan soll deine Spendenaktion enden?</label>
-                                                    <input class="form-control" id="name" type="date" name="endsAt" value="@projektDataForm("endsAt").value" required>
+                                                    <label for="endsAt">Wan soll deine Spendenaktion enden?</label>
+                                                    <input class="form-control" id="endsAt" type="date" name="endsAt" value="@projektDataForm("endsAt").value" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <a href="#waren" role="tab" data-toggle="tab">
@@ -70,10 +74,10 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td class="product-image">
-                                                                    <input type="number" id="name" name="amounts[0]" value="" class="form-control" required="true">
+                                                                    <input type="number" id="amount" name="amounts[0]" value="" class="form-control" required="true">
                                                                 </td>
                                                                 <td class="product-image">
-                                                                    <input type="text" id="name" name="donations[0]" value="" class="form-control" required="true">
+                                                                    <input type="text" id="donation" name="donations[0]" value="" class="form-control" required="true">
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -108,18 +112,16 @@
                                                 <div class="form-group">
                                                     <label for="country">In welchem Land werden die Spenden verteilt?<span>
                                                         *</span></label>
-                                                    <input class="form-control" id="name" type="text" name="country" value="@projektDataForm("country").value" required>
-                                                    <label for="country">In welcher Stadt soll gespendet werden?<span>
+                                                    <input class="form-control" id="country" type="text" name="country" value="@projektDataForm("country").value" required>
+                                                    <label for="city">In welcher Stadt soll gespendet werden?<span>
                                                         *</span></label>
-                                                    <input class="form-control" id="name" type="text" name="city" value="@projektDataForm("city").value">
-                                                    <label for="country">Und in welcher Strasse?<span>*</span></label>
-                                                    <input class="form-control" id="name" type="text" name="street" value="@projektDataForm("street").value" required>
+                                                    <input class="form-control" id="city" type="text" name="city" value="@projektDataForm("city").value">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="country">
+                                                    <label for="contactInformation">
                                                         Wie sollen die Spender mit dir in Kontakt treten?<span>
                                                         *</span></label>
-                                                    <textarea class="form-control" rows="5" cols="10" name="contact" value="@projektDataForm("contact").value" required></textarea>
+                                                    <textarea class="form-control" rows="5" cols="10" id="contactInformation" name="contactInformation" value="@projektDataForm("contact").value" required></textarea>
                                                 </div>
 
                                                 <div class="form-group">

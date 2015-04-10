@@ -50,6 +50,7 @@ public class Projects extends Controller {
 
             project.setTitle(projectDataForm.get().title);
             project.setDescription(projectDataForm.get().description);
+            project.setImageURL(projectDataForm.get().imageURL);
             project.setEndsAt(Converter.stringToSqlDate(projectDataForm.get().endsAt));
             project.setStartsAt(Converter.stringToSqlDate(projectDataForm.get().startsAt));
             project.setContact(projectDataForm.get().contact);
@@ -67,7 +68,6 @@ public class Projects extends Controller {
 
             address.setCountry(projectDataForm.get().country);
             address.setCity(projectDataForm.get().city);
-            address.setStreet(projectDataForm.get().street);
 
             project.setAddress(address);
             project.setDonationGoals(donationGoalList);
