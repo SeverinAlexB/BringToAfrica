@@ -64,7 +64,7 @@ public class ConsumerServiceTest {
         });
     }
     @Test
-         public void isValidTest3() {
+    public void isValidTest3() {
         DatabaseTest.runInCleanApp(browser -> {
             String mail = "marc.oberholzer@hotmail.com";
             String password = "MeinPw5#";
@@ -78,5 +78,7 @@ public class ConsumerServiceTest {
             assertTrue(!ConsumerService.isValid(mail.toUpperCase() + "e", password));
         });
     }
+
+
 
 }
