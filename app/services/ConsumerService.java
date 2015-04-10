@@ -5,24 +5,20 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class ConsumerService {
 
-    public static Consumer getConsumerById(Long id){
-        return Consumer.find.byId(id);
-    }
-
     public static Consumer getConsumerByEmail(String email){
-        return Consumer.find.where().like("email", email).findUnique();
+        if(email == null) {
+            return null;
+        }
+        return Consumer.find.where().like("email", email.toLowerCase()).findUnique();
     }
 
     public static boolean isValid(String email, String password) {
         Consumer consumer = getConsumerByEmail(email);
         if(consumer == null) {
-            System.out.println("consumer not found");
             return false;
-        } else if(!BCrypt.checkpw(password,consumer.getPasswordHashedSalted())) {
-            System.out.println("password wrong");
+        } else if(!BCrypt.checkpw(password,consumer.getPasswordHashedSalted())) {;
             return false;
         }else{
-            System.out.println("all right, " + consumer.getEmail());
             return true;
         }
     }

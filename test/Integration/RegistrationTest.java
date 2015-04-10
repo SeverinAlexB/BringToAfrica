@@ -87,11 +87,12 @@ public class RegistrationTest {
             browser.goTo("http://localhost:3333/registration");
             browser.getDriver().findElement(By.name("firstname")).sendKeys("helmut");
             browser.getDriver().findElement(By.name("lastname")).sendKeys("Johanson");
-            browser.getDriver().findElement(By.name("email")).sendKeys("micHael.blocher@msn.com");
+            browser.getDriver().findElement(By.name("email")).sendKeys(email.toUpperCase());
             browser.getDriver().findElement(By.name("password1")).sendKeys("thePass6%");
             browser.getDriver().findElement(By.name("password2")).sendKeys("thePass6%");
             browser.getDriver().findElement(By.id("btnRegistieren")).click();
 
+            System.out.println(Consumer.find.all().size());
             assertTrue(Consumer.find.all().size() == 1);
         }));
     }
