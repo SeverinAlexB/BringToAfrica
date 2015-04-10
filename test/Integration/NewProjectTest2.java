@@ -79,6 +79,10 @@ public class NewProjectTest2 {
                 browser.$("#btnContinue1").click();
                 assertThat(browser.pageSource().contains("error"));
 
+                browser.$("[name='imageURL']").text("Some URL to image");
+                browser.$("#btnContinue1").click();
+                assertThat(browser.pageSource().contains("error"));
+
                 browser.$("[name='startsAt']").text("2015-03-10");
                 browser.$("#btnContinue1").click();
                 assertThat(browser.pageSource().contains("error"));

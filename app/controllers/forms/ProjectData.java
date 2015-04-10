@@ -11,6 +11,8 @@ public class ProjectData{
     @Constraints.Required
     public String description;
     @Constraints.Required
+    public String imageURL;
+    @Constraints.Required
     public String endsAt;
     @Constraints.Required
     public String startsAt;

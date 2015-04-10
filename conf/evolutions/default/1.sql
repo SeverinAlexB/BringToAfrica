@@ -21,7 +21,7 @@ create table consumer (
 
 create table donation (
   id                        bigint not null,
-  consumer_id               bigint not null,
+  project_id                bigint not null,
   description               varchar(255),
   date                      date,
   message_to_collector      varchar(255),
@@ -57,6 +57,7 @@ create table project (
   consumer_id               bigint not null,
   title                     varchar(255),
   description               varchar(255),
+  image_url                 varchar(255),
   starts_at                 date,
   ends_at                   date,
   contact                   varchar(255),
@@ -78,8 +79,8 @@ create sequence news_seq;
 
 create sequence project_seq;
 
-alter table donation add constraint fk_donation_consumer_1 foreign key (consumer_id) references consumer (id);
-create index ix_donation_consumer_1 on donation (consumer_id);
+alter table donation add constraint fk_donation_project_1 foreign key (project_id) references project (id);
+create index ix_donation_project_1 on donation (project_id);
 alter table donation add constraint fk_donation_donationType_2 foreign key (donation_type_id) references donation_type (id);
 create index ix_donation_donationType_2 on donation (donation_type_id);
 alter table donation_goal add constraint fk_donation_goal_project_3 foreign key (project_id) references project (id);
