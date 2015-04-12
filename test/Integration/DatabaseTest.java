@@ -73,10 +73,14 @@ public class DatabaseTest {
     }
 
     public static void runInCleanApp(F.Callback<TestBrowser> run) {
-        running(testServer(3333, getApp(false)), FIREFOX, run);
+        HtmlUnitDriver driver = new HtmlUnitDriver(BrowserVersion.CHROME);
+        driver.setJavascriptEnabled(true);
+        running(testServer(3333, getApp(false)), driver, run);
     }
     public static void runInFilledApp(F.Callback<TestBrowser> run) {
-        running(testServer(3333, getApp(true)), FIREFOX, run);
+        HtmlUnitDriver driver = new HtmlUnitDriver(BrowserVersion.CHROME);
+        driver.setJavascriptEnabled(true);
+        running(testServer(3333, getApp(true)), driver, run);
     }
 
     @Test
