@@ -14,14 +14,14 @@
             <div class="row">
               <div class="col-xs-11 col-sm-6">
                 <p>
-                  <input class="form-control" type="email" name="email" placeholder="Email" value="@loginForm("email").value">
+                  <input class="form-control" type="email" name="email" placeholder="Email" value="@loginForm("email").value" required>
                 </p>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-11 col-sm-6">
                 <p>
-                  <input class="form-control" type="password" name="password" placeholder="Passwort">
+                  <input class="form-control" type="password" name="password" placeholder="Passwort" required>
                   <p>Passwort vergessen?</p>
                 </p>
               </div>
@@ -29,20 +29,15 @@
             <div class="row">
               <div class="col-xs-11 col-sm-6">
               <p>
-
                 <button id="btnLogin" type="submit" class="btn btn-default pull-right">Login</button>
-
-
               </p>
               </div>
             </div>
-
           }
 
           @helper.form(action = routes.Registrations.registration()) {
           <button class="btn btn-default pull-right">Registrieren</button>
           }
-
 
             @if(loginForm.hasErrors()) {
             <div class="alert alert-danger" role="alert">

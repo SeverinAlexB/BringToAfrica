@@ -6,7 +6,6 @@
   <div class="container" id="page-info">
     <div class="row">
       <div class="col-xs-12">
-          <!-- Checkout Section Start Here-->
         <section class="checkout anim-section animate">
           <div class="row">
             @helper.form(action = routes.Registrations.register()) {
@@ -14,50 +13,47 @@
             <div class="row">
               <div class="col-xs-11 col-sm-6">
                 <p>
-                  <input class="form-control" type="text" name="firstname" placeholder="Vorname" value="@loginForm("firstname").value">
+                  <input class="form-control" type="text" name="firstname" placeholder="Vorname" value="@loginForm("firstname").value" required>
                 </p>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-11 col-sm-6">
                 <p>
-                  <input class="form-control" type="text" name="lastname" placeholder="Nachname" value="@loginForm("lastname").value">
+                  <input class="form-control" type="text" name="lastname" placeholder="Nachname" value="@loginForm("lastname").value" required>
                 </p>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-11 col-sm-6">
                 <p>
-                  <input class="form-control" type="text" name="email" placeholder="Email" value="@loginForm("email").value">
+                  <input class="form-control" type="email" name="email" placeholder="Email" value="@loginForm("email").value" required>
                 </p>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-11 col-sm-6">
-                <p>Wähle ein Passwort, dass mindestens 6 Zeichen lang ist und mindestens ein Sonder- oder Leerzeichen enthält.</p>
+                <p>Wähle ein Passwort, dass mindestens 8 Zeichen lang ist und mindestens eine Zahl, ein Gross-/Kleinbuchstaben und ein Sonderzeichen(&#64;&#35;&#36;&#37;&#33;) enthält.</p>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-11 col-sm-6">
                 <p>
-                  <input class="form-control" type="password" name="password1" placeholder="Passwort" value="@loginForm("password1").value">
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-11 col-sm-6">
-                <p>
-                  <input class="form-control" type="password" name="password2" placeholder="Passwort bestätigen" value="@loginForm("password2").value">
+                  <input class="form-control" type="password" name="password1" placeholder="Passwort" value="@loginForm("password1").value" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[&#64;&#35;&#36;&#37;&#33;]).{8,20}" required>
                 </p>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-11 col-sm-6">
                 <p>
-
+                  <input class="form-control" type="password" name="password2" placeholder="Passwort bestätigen" value="@loginForm("password2").value" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[&#64;&#35;&#36;&#37;&#33;]).{8,20}" required>
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-11 col-sm-6">
+                <p>
                   <button id="btnRegistieren" type="submit" class="btn btn-default pull-right">Registrieren</button>
-
-
                 </p>
               </div>
             </div>
