@@ -33,7 +33,6 @@ public class Consumer extends Model{
         donations.add(donation);
     }
 
-
     public List<Project> getProjects() {
         return projects;
     }

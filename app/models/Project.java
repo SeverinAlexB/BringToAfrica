@@ -33,6 +33,18 @@ public class Project extends Model {
     @OneToMany(cascade=CascadeType.ALL)
     private List<Donation> donations;
 
+    public void addDonation(Donation donation){
+        donations.add(donation);
+    }
+
+    public void addDonationGoal(DonationGoal donationGoal){
+        donationGoals.add(donationGoal);
+    }
+
+    public void addNews(News news){
+        this.news.add(news);
+    }
+
     public String getTitle() {
         return title;
     }

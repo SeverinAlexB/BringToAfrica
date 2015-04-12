@@ -1,10 +1,7 @@
 package controllers;
 
 
-import models.Consumer;
-import models.DonationGoal;
-import models.DonationType;
-import models.Project;
+import models.*;
 import play.data.Form;
 import play.db.ebean.Model;
 import play.mvc.Controller;
@@ -35,47 +32,43 @@ public class Projects extends Controller {
 
     @Security.Authenticated(Secured.class)
     public static Result addProjectData() throws  AfricaException{
-        Form<ProjectData> projectDataForm = new Form<>(ProjectData.class);
-        projectDataForm = Form.form(ProjectData.class).bindFromRequest();
-        System.out.println(request().username());
-        Consumer consumer = ConsumerService.getConsumerByEmail(request().username());
-        System.out.println(consumer.getEmail());
+        Form<ProjectData> projectDataForm = Form.form(ProjectData.class).bindFromRequest();
         if (projectDataForm.hasErrors()) {
-            System.out.println("Projectdata has errors");
             return badRequest(newProject.render(projectDataForm));
         } else {
-            models.Project project = new models.Project();
-            List<DonationGoal> donationGoalList = new ArrayList<>();
-            models.Address address = new models.Address();
+            Consumer consumer = ConsumerService.getConsumerByEmail(request().username());
+            if(consumer != null) {
+                models.Project project = new models.Project();
+                Address address = new models.Address();
 
-            project.setTitle(projectDataForm.get().title);
-            project.setDescription(projectDataForm.get().description);
-            project.setImageURL(projectDataForm.get().imageURL);
-            project.setEndsAt(Converter.stringToSqlDate(projectDataForm.get().endsAt));
-            project.setStartsAt(Converter.stringToSqlDate(projectDataForm.get().startsAt));
-            project.setContact(projectDataForm.get().contact);
+                project.setTitle(projectDataForm.get().title);
+                project.setDescription(projectDataForm.get().description);
+                project.setImageURL(projectDataForm.get().imageURL);
+                project.setEndsAt(Converter.stringToSqlDate(projectDataForm.get().endsAt));
+                project.setStartsAt(Converter.stringToSqlDate(projectDataForm.get().startsAt));
+                project.setContact(projectDataForm.get().contactInformation);
 
-            int i = 0;
-            for(String amount: projectDataForm.get().amounts){
-                DonationType donationType = new DonationType();
-                DonationGoal donationGoal = new DonationGoal();
-                donationType.setName(projectDataForm.get().donations.get(i));
-                donationGoal.setAmount(Integer.parseInt(amount));
-                donationGoal.setDonationType(donationType);
-                donationGoalList.add(donationGoal);
-                i++;
+                for (int i = 0; i < projectDataForm.get().amounts.size(); i++) {
+                    DonationType donationType = new DonationType();
+                    DonationGoal donationGoal = new DonationGoal();
+                    donationType.setName(projectDataForm.get().donations.get(i));
+                    donationGoal.setAmount(Integer.parseInt(projectDataForm.get().amounts.get(i)));
+                    donationGoal.setDonationType(donationType);
+                    project.addDonationGoal(donationGoal);
+                }
+
+                address.setCountry(projectDataForm.get().country);
+                address.setCity(projectDataForm.get().city);
+
+                project.setAddress(address);
+                consumer.addProject(project);
+                consumer.save();
+
+                return redirect(routes.Projects.getProjects());
+            }else{
+                projectDataForm.reject("Benutzer nicht gefunden.");
+                return badRequest(newProject.render(projectDataForm));
             }
-
-            address.setCountry(projectDataForm.get().country);
-            address.setCity(projectDataForm.get().city);
-
-            project.setAddress(address);
-            project.setDonationGoals(donationGoalList);
-            consumer.addProject(project);
-            consumer.save();
-
-            List<Project> projects = new Model.Finder<>(String.class, Project.class).all();
-            return ok(views.html.index.render(projects));
         }
     }
 
