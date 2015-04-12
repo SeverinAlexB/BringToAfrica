@@ -33,7 +33,7 @@ public class LoginTest {
     }
 
     @Test
-    public void LoginTest2(){
+    public void wrongLoginTest(){
         DatabaseTest.runInFilledApp((browser -> {
             assertTrue(Consumer.find.all().size() == 1);
             assertTrue(browser.getCookies().size() == 0);
