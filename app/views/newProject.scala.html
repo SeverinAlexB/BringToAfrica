@@ -7,11 +7,8 @@
     <div class="container" id="page-info">
         <div class="row">
             <div class="col-xs-12">
-                    <!-- Checkout Section Start Here-->
                 <section class="checkout anim-section animate">
                     <div class="row">
-                            <!-- Customer Support Section Ends Here-->
-                            <!-- Checkout Tabbing Section Start Here-->
                         <div class="tab-wrap col-sm-12">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
@@ -22,17 +19,16 @@
                             @helper.form(action = routes.Projects.addProjectData, 'role -> "form") {
                                     <!-- Tab panes -->
                                 <div class="tab-content">
-                                        <!-- Signin Section Start Here-->
                                     <div class="tab-pane active" id="projectdata">
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label for="title">Gib deinem Projekt einen Namen<span>*</span></label>
-                                                    <input class="form-control" id="title" type="text" name="title" value="@projektDataForm("title").value" required>
+                                                    <input class="form-control" id="title" type="text" name="title" value="@projektDataForm("title").value">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="imageURL">Füge ein Titelbild hinzu<span>*</span></label>
-                                                    <input class="form-control" id="imageURL" type="text" name="imageURL" value="@projektDataForm("imageURL").value" required>
+                                                    <input class="form-control" id="imageURL" type="text" name="imageURL" value="@projektDataForm("imageURL").value">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="description">
@@ -43,11 +39,11 @@
                                                 <div class="form-group">
                                                     <label for="startsAt">Wann soll deine Spendenaktion starten?<span>
                                                         *</span></label>
-                                                    <input class="form-control" id="startsAt" type="date" name="startsAt" value="@projektDataForm("startsAt").value" required>
+                                                    <input class="form-control" id="startsAt" type="date" name="startsAt" value="@projektDataForm("startsAt").value">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="endsAt">Wan soll deine Spendenaktion enden?</label>
-                                                    <input class="form-control" id="endsAt" type="date" name="endsAt" value="@projektDataForm("endsAt").value" required>
+                                                    <input class="form-control" id="endsAt" type="date" name="endsAt" value="@projektDataForm("endsAt").value">
                                                 </div>
                                                 <div class="form-group">
                                                     <a href="#waren" role="tab" data-toggle="tab">
@@ -57,10 +53,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                        <!-- Signin Section Ends Here-->
-                                        <!-- Billing & Shipping Section Start Here-->
                                     <div class="tab-pane" id="waren">
-                                            <!-- AddtoCart Section Start Here-->
                                         <section class="anim-section AddtoCart animate">
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -74,10 +67,10 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td class="product-image">
-                                                                    <input type="number" id="amount" name="amounts[0]" value="" class="form-control" required="true">
+                                                                    <input type="number" id="amount" name="amounts[0]" value="" class="form-control">
                                                                 </td>
                                                                 <td class="product-image">
-                                                                    <input type="text" id="donation" name="donations[0]" value="" class="form-control" required="true">
+                                                                    <input type="text" id="donation" name="donations[0]" value="" class="form-control">
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -104,15 +97,13 @@
                                             </div>
                                         </section>
                                     </div>
-                                        <!-- Billing & Shipping Section Ends Here-->
-                                        <!-- Review & Payment Section Start Here-->
                                     <div class="tab-pane" id="contact">
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label for="country">In welchem Land werden die Spenden verteilt?<span>
                                                         *</span></label>
-                                                    <input class="form-control" id="country" type="text" name="country" value="@projektDataForm("country").value" required>
+                                                    <input class="form-control" id="country" type="text" name="country" value="@projektDataForm("country").value">
                                                     <label for="city">In welcher Stadt soll gespendet werden?<span>
                                                         *</span></label>
                                                     <input class="form-control" id="city" type="text" name="city" value="@projektDataForm("city").value">
@@ -121,7 +112,7 @@
                                                     <label for="contactInformation">
                                                         Wie sollen die Spender mit dir in Kontakt treten?<span>
                                                         *</span></label>
-                                                    <textarea class="form-control" rows="5" cols="10" id="contactInformation" name="contactInformation" value="@projektDataForm("contact").value" required></textarea>
+                                                    <textarea class="form-control" rows="5" cols="10" id="contactInformation" name="contactInformation" value="@projektDataForm("contact").value"></textarea>
                                                 </div>
 
                                                 <div class="form-group">
@@ -129,21 +120,20 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @if(projektDataForm.errors.size() > 0) {
-                                            <div class="alert alert-danger" role="alert">
-                                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                                <span class="sr-only">Error:</span>
-                                                @for((key, value) <- projektDataForm.errors) {
-                                                    @key.toString() :
-                                                    @for(err <- value) {
-                                                        @err.message().toString()
-                                                    }
-                                                }
-                                            </div>
-                                        } else { }
+                                    </div>
+                                </div>
                             }
-                        </div>
-                        </div>
+                            @if(projektDataForm.hasErrors()) {
+                                <div class="alert alert-danger" role="alert">
+                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                    <span class="sr-only">Error:</span>
+                                    @for((key, value) <- projektDataForm.errors) {
+                                        @for(err <- value) {
+                                            @err.message().toString() <br/>
+                                        }
+                                    }
+                                </div>
+                            }
                         </div>
                     </div>
                 </section>
