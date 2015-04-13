@@ -1,0 +1,66 @@
+@(loginForm: Form[controllers.forms.Login])
+@import helper._
+
+@main("BringToAfrica") {
+  <ul id="projects"></ul>
+  <div class="container" id="page-info">
+    <div class="row">
+      <div class="col-xs-12">
+          <!-- Checkout Section Start Here-->
+        <section class="checkout anim-section animate">
+          <div class="row">
+          @helper.form(action = routes.Logins.authenticate()) {
+            <h1>Log in</h1>
+            <div class="row">
+              <div class="col-xs-11 col-sm-6">
+                <p>
+                  <input class="form-control" type="email" name="email" placeholder="Email" value="@loginForm("email").value" required>
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-11 col-sm-6">
+                <p>
+                  <input class="form-control" type="password" name="password" placeholder="Passwort" required>
+                  <p>Passwort vergessen?</p>
+                </p>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                  <p>
+                    <button id="btnLogin" type="submit" class="btn btn-default pull-right">Login</button>
+                  </p>
+                </div>
+            </div>
+          }
+            <div class="row">
+              <p>
+              <div class="col-xs-6 col-sm-6">
+                @helper.form(action = routes.Registrations.registration()) {
+                  <button class="btn btn-default pull-right">Registrieren</button>
+                }              
+              </div>
+              </p>
+            </div>
+
+          @if(loginForm.hasErrors()) {
+          <p></p>
+          <div class="col-xs-11 col-sm-6">
+            <div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              @for((key, value) <- loginForm.errors) {
+                @for(err <- value) {
+                  @err.message().toString() <br/>
+                }
+              }
+            </div>
+          </div>
+          }
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+}

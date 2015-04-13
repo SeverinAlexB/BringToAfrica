@@ -3,15 +3,21 @@
 # ~~~~
 
 # Home page
-GET         /                    controllers.Application.index()
+GET         /                     controllers.Application.index()
 
-GET         /projects            controllers.Projects.getProjects()
-GET         /projects/new        controllers.Projects.createProject()
-GET         /projects/:id        controllers.Projects.getProject(id: Long)
-POST        /projects/data       controllers.Projects.addProjectData()
-POST        /projects/contact    controllers.Projects.addContact()
-POST        /projects/ware       controllers.Projects.addWaren()
-POST        /projects/save       controllers.Projects.saveProject()
+GET         /projects             controllers.Projects.getProjects()
+GET         /projects/new         controllers.Projects.createProject()
+GET         /projects/:id         controllers.Projects.getProject(id: Long)
+POST        /projects/data        controllers.Projects.addProjectData()
+
+
+GET         /login                controllers.Logins.login()
+POST        /login                controllers.Logins.authenticate()
+GET         /logout               controllers.Logins.logout()
+
+GET         /registration         controllers.Registrations.registration()
+POST        /registration         controllers.Registrations.register()
+
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file        controllers.Assets.at(path="/public", file)
+GET         /assets/*file         controllers.Assets.at(path="/public", file)

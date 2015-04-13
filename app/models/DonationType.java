@@ -27,4 +27,8 @@ public class DonationType extends Model{
     public void setId(Long id) {
         this.id = id;
     }
+
+    public static Finder<Long,DonationType> find = new Finder<Long,DonationType>(
+            Long.class, DonationType.class
+    );
 }

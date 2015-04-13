@@ -13,14 +13,33 @@ public class Consumer extends Model{
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
+    private String passwordHashedSalted;
 
-    @OneToMany
+
+
+
+
+    @OneToMany(cascade=CascadeType.ALL)
     private List<Project> projects;
 
-    @OneToMany()
+    @OneToMany(cascade=CascadeType.ALL)
     private List<Donation> donations;
 
+    public void addProject(Project project){
+        projects.add(project);
+    }
+
+    public void addDonation(Donation donation){
+        donations.add(donation);
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+    }
 
     public Long getId() {
         return id;
@@ -53,12 +72,15 @@ public class Consumer extends Model{
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    public String getPassword() {
-        return password;
+    public String getPasswordHashedSalted() {
+        return passwordHashedSalted;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHashedSalted(String passwordHashedSalted) {
+        this.passwordHashedSalted = passwordHashedSalted;
     }
+
+    public static Finder<Long,Consumer> find = new Finder<Long,Consumer>(
+            Long.class, Consumer.class
+    );
 }

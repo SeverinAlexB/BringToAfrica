@@ -13,12 +13,13 @@ public class Project extends Model {
     private Long id;
     private String title;
     private String description;
+    private String imageURL;
     private Date startsAt;
     private Date endsAt;
     private String contact;
 
-    @ManyToOne
-    private Consumer consumer;
+    //@ManyToOne
+    //private Consumer consumer;
 
     @OneToMany(cascade=CascadeType.ALL)
     private List<News> news;
@@ -31,6 +32,18 @@ public class Project extends Model {
 
     @OneToMany(cascade=CascadeType.ALL)
     private List<Donation> donations;
+
+    public void addDonation(Donation donation){
+        donations.add(donation);
+    }
+
+    public void addDonationGoal(DonationGoal donationGoal){
+        donationGoals.add(donationGoal);
+    }
+
+    public void addNews(News news){
+        this.news.add(news);
+    }
 
     public String getTitle() {
         return title;
@@ -55,6 +68,10 @@ public class Project extends Model {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getImageURL() { return imageURL; }
+
+    public void setImageURL(String imageURL) { this.imageURL = imageURL; }
 
     public Date getEndsAt() {
         return endsAt;
@@ -113,11 +130,8 @@ public class Project extends Model {
         this.donations = donations;
     }
 
-    public Consumer getConsumer() {
-        return consumer;
-    }
+    public static Finder<Long,Project> find = new Finder<Long,Project>(
+            Long.class, Project.class
+    );
 
-    public void setConsumer(Consumer consumer) {
-        this.consumer = consumer;
-    }
 }

@@ -14,14 +14,11 @@ public class Donation extends Model{
     private Date date;
     private String messageToCollector;
 
-    @ManyToOne
-    private Project project;
+    //@ManyToOne
+    //private Project project;
 
     @ManyToOne
     private DonationType donationType;
-
-    @ManyToOne
-    private Consumer consumer;
 
     public Long getId() {
         return id;
@@ -54,4 +51,8 @@ public class Donation extends Model{
     public void setMessageToCollector(String messageToCollector) {
         this.messageToCollector = messageToCollector;
     }
+
+    public static Finder<Long,Donation> find = new Finder<Long,Donation>(
+            Long.class, Donation.class
+    );
 }

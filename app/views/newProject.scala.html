@@ -1,89 +1,62 @@
-@(projektDataForm: Form[controllers.forms.ProjectData],warenForm: Form[controllers.forms.Waren],contactForm: Form[controllers.forms.Contact], state: Array[Boolean])
+@(projektDataForm: Form[controllers.forms.ProjectData])
 @import helper._
 
 @main("BringToAfrica") {
-<script type='text/javascript' src='@routes.Assets.at("js/newProject.js")'></script>
- <ul id="projects"></ul>
+    <script type='text/javascript' src='@routes.Assets.at("js/newProject.js")'></script>
+    <ul id="projects"></ul>
     <div class="container" id="page-info">
         <div class="row">
             <div class="col-xs-12">
-                <!-- Checkout Section Start Here-->
                 <section class="checkout anim-section animate">
                     <div class="row">
-                        <!-- Customer Support Section Ends Here-->
-                        <!-- Checkout Tabbing Section Start Here-->
                         <div class="tab-wrap col-sm-12">
-                            <!-- Nav tabs -->
+                                <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
-                                <li class="col-sm-4 active"><a href="#signin" role="tab" data-toggle="tab">1. Projektdaten</a></li>
-                                <li class="col-sm-4"><a href="#billing" role="tab" data-toggle="tab">2. Waren</a></li>
-                                <li class="col-sm-4"><a href="#review" role="tab" data-toggle="tab">3. Kontakt</a></li>
+                                <li class="col-sm-4 active"><a href="#projectdata" role="tab" data-toggle="tab">1. Projektdaten</a></li>
+                                <li class="col-sm-4"><a href="#waren" role="tab" data-toggle="tab">2. Waren</a></li>
+                                <li class="col-sm-4"><a href="#contact" role="tab" data-toggle="tab">3. Kontakt</a></li>
                             </ul>
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <!-- Signin Section Start Here-->
-                                <div class="tab-pane active" id="signin">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                                @if(projektDataForm.errors.size() > 0) {
-                                                    <div class="alert alert-danger" role="alert">
-                                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                                    <span class="sr-only">Error:</span>
-                                                    @for((key, value) <- projektDataForm.errors) {
-                                                        @key.toString() :
-                                                        @for(err <- value) {
-                                                            @err.message().toString()
-                                                        }
-                                                    }
-                                                    </div>
-                                                } else {
-                                                }
-
-                                            @helper.form(action = routes.Projects.addProjectData, 'role -> "form") {
+                            @helper.form(action = routes.Projects.addProjectData, 'role -> "form") {
+                                    <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="projectdata">
+                                        <div class="row">
+                                            <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label for="title">Gib deinem Projekt einen Namen<span>*</span></label>
                                                     <input class="form-control" id="title" type="text" name="title" value="@projektDataForm("title").value" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="country">Beschreibe dein Projekt in ein paar kurzen Sätzen<span>*</span></label>
-s                                                    <textarea class="form-control" rows="5" cols="10" name="description" value="@projektDataForm("description").value"></textarea>
+                                                    <label for="imageURL">Füge ein Titelbild hinzu<span>*</span></label>
+                                                    <input class="form-control" id="imageURL" type="url" name="imageURL" value="@projektDataForm("imageURL").value" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="country">Wann soll deine Spendenaktion starten?<span>*</span></label>
-                                                    <input class="form-control" id="name" type="date" name="startsAt" value="@projektDataForm("startsAt").value" required>
+                                                    <label for="description">
+                                                        Beschreibe dein Projekt in ein paar kurzen Sätzen<span>*</span>
+                                                    </label>
+                                                    <textarea class="form-control" rows="5" cols="10" id="description" name="description" value="@projektDataForm("description").value" required></textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="country">Wan soll deine Spendenaktion enden?</label>
-                                                    <input class="form-control" id="name" type="date" name="endsAt" value="@projektDataForm("endsAt").value" required>
+                                                    <label for="startsAt">Wann soll deine Spendenaktion starten?<span>
+                                                        *</span></label>
+                                                    <input class="form-control" id="startsAt" type="date" name="startsAt" value="@projektDataForm("startsAt").value" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button type="submit" id="btnContinue1" class="btn btn-default btn-lg">Weiter</button>
+                                                    <label for="endsAt">Wan soll deine Spendenaktion enden?</label>
+                                                    <input class="form-control" id="endsAt" type="date" name="endsAt" value="@projektDataForm("endsAt").value" required>
                                                 </div>
-                                            }
+                                                <div class="form-group">
+                                                    <a href="#waren" role="tab" data-toggle="tab">
+                                                        <button id="btnContinue1" class="btn btn-default btn-lg">Weiter</button>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- Signin Section Ends Here-->
-                                <!-- Billing & Shipping Section Start Here-->
-                                <div class="tab-pane" id="billing">
-                                    <!-- AddtoCart Section Start Here-->
-                                    <section class="anim-section AddtoCart animate">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                    @if(warenForm.errors.size() > 0) {
-                                                        <div class="alert alert-danger" role="alert">
-                                                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                                        <span class="sr-only">Error:</span>
-                                                        @for((key, value) <- warenForm.errors) {
-                                                            @key.toString() :
-                                                            @for(err <- value) {
-                                                                @err.message().toString()
-                                                            }
-                                                        }
-                                                        </div>
-                                                    } else {
-                                                    }
-                                                @helper.form(action = routes.Projects.addWaren(), 'role -> "form") {
+                                    <div class="tab-pane" id="waren">
+                                        <section class="anim-section AddtoCart animate">
+                                            <div class="row">
+                                                <div class="col-sm-12">
                                                     <table class="table" id="main-table">
                                                         <thead>
                                                             <tr>
@@ -93,8 +66,12 @@ s                                                    <textarea class="form-contr
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td class="product-image"><input class="form-control" id="name" type="number" name="amount"  value="@warenForm("amount").value" required></td>
-                                                                <td class="product-title"><input class="form-control" id="name" type="text" name="donation"  value="@warenForm("donation").value" required></td>
+                                                                <td class="product-image">
+                                                                    <input type="number" id="amount" name="amounts[0]" value="" class="form-control" required>
+                                                                </td>
+                                                                <td class="product-image">
+                                                                    <input type="text" id="donation" name="donations[0]" value="" class="form-control" required>
+                                                                </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -110,82 +87,57 @@ s                                                    <textarea class="form-contr
                                                     </div>
                                                     <div class="btns-wrapper">
                                                         <div class="form-group">
-                                                            <button id="btnContinue2" type="submit" class="btn btn-default btn-lg">Weiter</button>
-
+                                                            <a href="#contact" role="tab" data-toggle="tab">
+                                                                <button id="btnContinue2" class="btn btn-default btn-lg">Weiter</button>
+                                                            </a>
                                                         </div>
                                                     </div>
-                                                }
+
+                                                </div>
                                             </div>
-                                        </div>
-                                    </section>
-                                </div>
-                                <!-- Billing & Shipping Section Ends Here-->
-                                <!-- Review & Payment Section Start Here-->
-                                <div class="tab-pane" id="review">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                                @if(contactForm.errors.size() > 0) {
-                                                    <div class="alert alert-danger" role="alert">
-                                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                                    <span class="sr-only">Error:</span>
-                                                    @for((key, value) <- contactForm.errors) {
-                                                        @key.toString() :
-                                                        @for(err <- value) {
-                                                            @err.message().toString()
-                                                        }
-                                                    }
-                                                    </div>
-                                                } else {
-                                                }
-                                            @helper.form(action = routes.Projects.addContact(), 'role -> "form") {
+                                        </section>
+                                    </div>
+                                    <div class="tab-pane" id="contact">
+                                        <div class="row">
+                                            <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <label for="country">In welchem Land werden die Spenden verteilt?<span>*</span></label>
-                                                    <input class="form-control" id="name" type="text" name="country" value="@contactForm("country").value" required>
-                                                    <label for="country">In welcher Stadt soll gespendet werden?<span>*</span></label>
-                                                    <input class="form-control" id="name" type="text" name="city" value="@contactForm("city").value">
-                                                    <label for="country">Und in welcher Strasse?<span>*</span></label>
-                                                    <input class="form-control" id="name" type="text" name="street" value="@contactForm("street").value" required>
+                                                    <label for="country">In welchem Land werden die Spenden verteilt?<span>
+                                                        *</span></label>
+                                                    <input class="form-control" id="country" type="text" name="country" value="@projektDataForm("country").value" required>
+                                                    <label for="city">In welcher Stadt soll gespendet werden?<span>
+                                                        *</span></label>
+                                                    <input class="form-control" id="city" type="text" name="city" value="@projektDataForm("city").value" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="country">Wie sollen die Spender mit dir in Kontakt treten?<span>*</span></label>
-                                                    <textarea class="form-control" rows="5" cols="10" name="contact"  value="@contactForm("contact").value" required></textarea>
+                                                    <label for="contactInformation">
+                                                        Wie sollen die Spender mit dir in Kontakt treten?<span>
+                                                        *</span></label>
+                                                    <textarea class="form-control" rows="5" cols="10" id="contactInformation" name="contactInformation" value="@projektDataForm("contact").value" required></textarea>
                                                 </div>
-                                            }
-                                            <div class="form-group">
-                                                @helper.form(action = routes.Projects.saveProject(), 'role -> "form") {
-                                                <button id="btnContinue3" type="submit" class="btn btn-default btn-lg">Projekt erstellen</button>
-                                                }
+
+                                                <div class="form-group">
+                                                    <button id="btnContinue3" type="submit" class="btn btn-default btn-lg">Projekt erstellen</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
+                            @if(projektDataForm.hasErrors()) {
+                                <div class="alert alert-danger" role="alert">
+                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                    <span class="sr-only">Error:</span>
+                                    @for((key, value) <- projektDataForm.errors) {
+                                        @for(err <- value) {
+                                            @err.message().toString() <br/>
+                                        }
+                                    }
+                                </div>
+                            }
                         </div>
                     </div>
                 </section>
             </div>
         </div>
     </div>
-
-    @if(state(0)){
-        <script>
-        $(function() {
-            $('.nav-tabs [href="#sign"]').tab('show');
-        });
-        </script>
-    }
-    @if(state(1)){
-        <script>
-        $(function() {
-            $('.nav-tabs [href="#billing"]').tab('show');
-        });
-        </script>
-    }
-    @if(state(2)){
-        <script>
-        $(function() {
-            $('.nav-tabs [href="#review"]').tab('show');
-        });
-        </script>
-    }
 }
