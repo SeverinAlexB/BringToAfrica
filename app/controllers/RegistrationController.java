@@ -1,25 +1,21 @@
 package controllers;
 
-import controllers.forms.Login;
-import controllers.forms.Registration;
 import models.Consumer;
+import org.mindrot.jbcrypt.BCrypt;
 import play.data.Form;
 import play.mvc.Result;
 import services.ConsumerService;
-import org.mindrot.jbcrypt.BCrypt;
-
-import java.util.HashMap;
-import java.util.Map;
+import viewmodels.RegistrationData;
 
 public class RegistrationController {
 
 
     public static Result registration() {
-        return play.mvc.Controller.ok(views.html.ConsumerManagement.registration.render(Form.form(controllers.forms.Registration.class)));
+        return play.mvc.Controller.ok(views.html.ConsumerManagement.registration.render(Form.form(RegistrationData.class)));
     }
 
     public static Result register() {
-        Form<Registration> form = Form.form(Registration.class).bindFromRequest();
+        Form<RegistrationData> form = Form.form(RegistrationData.class).bindFromRequest();
         if (form.hasErrors()) {
             return play.mvc.Controller.badRequest(views.html.ConsumerManagement.registration.render(form));
         } else {

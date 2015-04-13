@@ -1,20 +1,11 @@
 package Integration;
 
 import models.Consumer;
-
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
-
-
-import java.util.Set;
 
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created by Severin on 10.04.2015.
- */
 public class LoginTest {
 
     @Test

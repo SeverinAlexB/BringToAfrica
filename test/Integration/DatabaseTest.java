@@ -22,10 +22,6 @@ import java.util.List;
 import static org.fest.assertions.Assertions.assertThat;
 import static play.test.Helpers.*;
 
-
-/**
- * Created by SKU on 02.04.2015.
- */
 public class DatabaseTest {
     private static HashMap<String,String> getPgTestDB() {
         final HashMap<String,String> postgres = new HashMap<String, String>();

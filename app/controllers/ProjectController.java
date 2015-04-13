@@ -3,15 +3,13 @@ package controllers;
 
 import models.*;
 import play.data.Form;
-import play.db.ebean.Model;
 import play.mvc.Controller;
 import play.mvc.Result;
-import controllers.forms.Converter;
-import controllers.forms.ProjectData;
+import viewmodels.DateConverter;
 import play.mvc.Security;
+import viewmodels.ProjectData;
 import views.html.newProject;
 
-import java.util.ArrayList;
 import java.util.List;
 import services.ProjectService;
 import services.ConsumerService;
@@ -42,8 +40,8 @@ public class ProjectController extends Controller {
             project.setTitle(projectDataForm.get().title);
             project.setDescription(projectDataForm.get().description);
             project.setImageURL(projectDataForm.get().imageURL);
-            project.setEndsAt(Converter.stringToSqlDate(projectDataForm.get().endsAt));
-            project.setStartsAt(Converter.stringToSqlDate(projectDataForm.get().startsAt));
+            project.setEndsAt(DateConverter.stringToSqlDate(projectDataForm.get().endsAt));
+            project.setStartsAt(DateConverter.stringToSqlDate(projectDataForm.get().startsAt));
             project.setContact(projectDataForm.get().contactInformation);
 
             for (int i = 0; i < projectDataForm.get().amounts.size(); i++) {

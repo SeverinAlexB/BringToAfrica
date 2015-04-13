@@ -1,11 +1,11 @@
-package controllers.forms;
+package viewmodels;
 
 import controllers.AfricaException;
 import play.data.validation.Constraints;
 
 import java.util.List;
 
-public class ProjectData{
+public class ProjectData {
     @Constraints.Required(message="Bitte gib einen Titel ein")
     public String title;
     @Constraints.Required(message="Bitte gib eine kurze Beschreibung an")
@@ -43,7 +43,7 @@ public class ProjectData{
 
     public static boolean isDate(String date){
         try{
-            Converter.stringToSqlDate(date);
+            DateConverter.stringToSqlDate(date);
         }catch (AfricaException e){
             return false;
         }

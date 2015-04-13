@@ -6,13 +6,9 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.openqa.selenium.By;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created by Severin on 10.04.2015.
- */
-public class RegistrationTest {
+public class RegistrationDataTest {
 
     @Test
     public void RegistrationTest(){

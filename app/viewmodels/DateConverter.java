@@ -1,4 +1,4 @@
-package controllers.forms;
+package viewmodels;
 
 import controllers.AfricaException;
 
@@ -6,7 +6,7 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class Converter {
+public class DateConverter {
 
     public static java.sql.Date stringToSqlDate(String date)throws AfricaException {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");

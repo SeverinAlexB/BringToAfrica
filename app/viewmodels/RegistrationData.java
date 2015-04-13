@@ -1,12 +1,9 @@
-package controllers.forms;
+package viewmodels;
 
 import play.data.validation.Constraints;
 import services.ConsumerService;
 
-/**
- * Created by Severin on 10.04.2015.
- */
-public class Registration {
+public class RegistrationData {
     @Constraints.Required(message="Bitte gib deinen Vornamen hier an.")
     public String firstname;
     @Constraints.Required(message="Bitte gib eine Nachnamen hier an.")

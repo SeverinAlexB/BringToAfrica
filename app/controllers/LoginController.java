@@ -1,7 +1,7 @@
 package controllers;
 
 
-import controllers.forms.Login;
+import viewmodels.LoginData;
 import play.data.Form;
 import play.mvc.Result;
 import services.ConsumerService;
@@ -10,11 +10,11 @@ public class LoginController {
 
 
     public static Result login() {
-        return play.mvc.Controller.ok(views.html.ConsumerManagement.login.render(Form.form(controllers.forms.Login.class)));
+        return play.mvc.Controller.ok(views.html.ConsumerManagement.login.render(Form.form(LoginData.class)));
     }
 
     public static Result authenticate() {
-        Form<Login> loginForm = Form.form(controllers.forms.Login.class).bindFromRequest();
+        Form<LoginData> loginForm = Form.form(LoginData.class).bindFromRequest();
         if (loginForm.hasErrors()) {
             return play.mvc.Controller.badRequest(views.html.ConsumerManagement.login.render(loginForm));
         } else {

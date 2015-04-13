@@ -10,9 +10,6 @@ import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
 import static junit.framework.TestCase.assertNull;
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by Severin on 10.04.2015.
- */
 public class ConsumerServiceTest {
 
     @Test
