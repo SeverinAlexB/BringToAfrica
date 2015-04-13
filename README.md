@@ -1,4 +1,4 @@
-[![Travis](https://travis-ci.org/Sebubu/BringToAfrica.svg?branch=master)](https://travis-ci.org/Sebubu/BringToAfrica) [![Coverage Status](https://coveralls.io/repos/Sebubu/BringToAfrica/badge.svg?branch=master)](https://coveralls.io/r/Sebubu/BringToAfrica?branch=master) [![Join the chat at https://gitter.im/Sebubu/BringToAfrica](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Sebubu/BringToAfrica?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Travis](https://travis-ci.org/Sebubu/BringToAfrica.svg?branch=master)](https://travis-ci.org/Sebubu/BringToAfrica)
 
 This project belongs to the module SE2P at the HSR Hochschule für Technik Rapperswil Switzerland and is part of the bachelor degree in software engineering.  
 
