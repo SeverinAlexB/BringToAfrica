@@ -6,7 +6,7 @@ import play.data.Form;
 import play.mvc.Result;
 import services.ConsumerService;
 
-public class Logins{
+public class LoginController {
 
 
     public static Result login() {

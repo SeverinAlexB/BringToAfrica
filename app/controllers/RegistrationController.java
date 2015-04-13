@@ -11,7 +11,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Registrations {
+public class RegistrationController {
 
 
     public static Result registration() {

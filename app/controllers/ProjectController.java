@@ -17,7 +17,7 @@ import services.ProjectService;
 import services.ConsumerService;
 
 
-public class Projects extends Controller {
+public class ProjectController extends Controller {
 
 
     public static Result getProjects() {
@@ -31,7 +31,7 @@ public class Projects extends Controller {
     }
 
     @Security.Authenticated(Secured.class)
-    public static Result addProjectData() throws  AfricaException{
+    public static Result addProjectData() throws AfricaException {
         Form<ProjectData> projectDataForm = Form.form(ProjectData.class).bindFromRequest();
         if (projectDataForm.hasErrors()) {
             return badRequest(newProject.render(projectDataForm));
@@ -60,7 +60,7 @@ public class Projects extends Controller {
             project.setAddress(address);
             consumer.addProject(project);
             consumer.save();
-            return redirect(routes.Projects.getProjects());
+            return redirect(routes.ProjectController.getProjects());
         }
     }
 

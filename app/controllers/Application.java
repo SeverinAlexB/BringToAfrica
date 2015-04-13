@@ -8,7 +8,7 @@ import services.ConsumerService;
 public class Application extends Controller {
 
     public static Result index() {
-        return redirect(routes.Projects.getProjects());
+        return redirect(routes.ProjectController.getProjects());
     }
 
     public static Consumer getCurrent() {

@@ -1,6 +1,6 @@
 package Application;
 
-import controllers.Projects;
+import controllers.ProjectController;
 import org.junit.Assert;
 import org.junit.Test;
 import controllers.forms.Converter;
@@ -15,7 +15,7 @@ import static org.fest.assertions.Assertions.assertThat;
 * If you are interested in mocking a whole application, see the wiki for more details.
 *
 */
-public class ProjectControllerTest extends Projects {
+public class ProjectControllerTest extends ProjectController {
 
 
     @Test

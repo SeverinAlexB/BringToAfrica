@@ -5,18 +5,18 @@
 # Home page
 GET         /                     controllers.Application.index()
 
-GET         /projects             controllers.Projects.getProjects()
-GET         /projects/new         controllers.Projects.createProject()
-GET         /projects/:id         controllers.Projects.getProject(id: Long)
-POST        /projects/data        controllers.Projects.addProjectData()
+GET         /projects             controllers.ProjectController.getProjects()
+GET         /projects/new         controllers.ProjectController.createProject()
+GET         /projects/:id         controllers.ProjectController.getProject(id: Long)
+POST        /projects/data        controllers.ProjectController.addProjectData()
 
 
-GET         /login                controllers.Logins.login()
-POST        /login                controllers.Logins.authenticate()
-GET         /logout               controllers.Logins.logout()
+GET         /login                controllers.LoginController.login()
+POST        /login                controllers.LoginController.authenticate()
+GET         /logout               controllers.LoginController.logout()
 
-GET         /registration         controllers.Registrations.registration()
-POST        /registration         controllers.Registrations.register()
+GET         /registration         controllers.RegistrationController.registration()
+POST        /registration         controllers.RegistrationController.register()
 
 
 # Map static resources from the /public folder to the /assets URL path

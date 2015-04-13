@@ -40,9 +40,9 @@
                 </a>
                 <div class="social-links col-xs-12 col-sm-10">
                     @if(Application.getCurrent() == null) {
-                        <a href="@routes.Logins.login()" class="btn btn-default btn-volunteer">Login</a>
+                        <a href="@routes.LoginController.login()" class="btn btn-default btn-volunteer">Login</a>
                     } else {
-                        <a href="@routes.Logins.logout()" class="btn btn-default btn-volunteer">Logout</a>
+                        <a href="@routes.LoginController.logout()" class="btn btn-default btn-volunteer">Logout</a>
                     }
                     @if(flash.contains("success")) {
                     <p class="success">
@@ -69,10 +69,10 @@
                     <nav>
                         <ul class="nav navbar-nav">
                             <li class="active">
-                                <a href="@routes.Projects.getProjects()">Projekte</a>
+                                <a href="@routes.ProjectController.getProjects()">Projekte</a>
                             </li>
                             <li>
-                                <a href="@routes.Projects.createProject()">Projekt erstellen</a>
+                                <a href="@routes.ProjectController.createProject()">Projekt erstellen</a>
                             </li>
                         </ul>
                     </nav>

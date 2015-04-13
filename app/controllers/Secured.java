@@ -23,6 +23,6 @@ public class Secured extends Security.Authenticator {
 
     @Override
     public Result onUnauthorized(Context ctx) {
-        return redirect(routes.Logins.login());
+        return redirect(routes.LoginController.login());
     }
 }
