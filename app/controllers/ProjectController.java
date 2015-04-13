@@ -27,7 +27,7 @@ public class ProjectController extends Controller {
         return ok(views.html.detail.render(project));
     }
 
-    @Security.Authenticated(Secured.class)
+    @Security.Authenticated(AuthenticationController.class)
     public static Result addProjectData() throws AfricaException {
         Form<ProjectData> projectDataForm = Form.form(ProjectData.class).bindFromRequest();
         if (projectDataForm.hasErrors()) {
@@ -61,7 +61,7 @@ public class ProjectController extends Controller {
         }
     }
 
-    @Security.Authenticated(Secured.class)
+    @Security.Authenticated(AuthenticationController.class)
     public static Result createProject() {
         return ok(newProject.render(Form.form(ProjectData.class)));
     }

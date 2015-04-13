@@ -5,7 +5,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import services.ConsumerService;
 
-public class Application extends Controller {
+public class ApplicationController extends Controller {
 
     public static Result index() {
         return redirect(routes.ProjectController.getProjects());

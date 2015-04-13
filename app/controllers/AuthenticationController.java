@@ -6,7 +6,7 @@ import play.mvc.Http.*;
 import services.ConsumerService;
 
 
-public class Secured extends Security.Authenticator {
+public class AuthenticationController extends Security.Authenticator {
 
     @Override
     public String getUsername(Context ctx) {
