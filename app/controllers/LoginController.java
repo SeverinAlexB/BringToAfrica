@@ -22,7 +22,7 @@ public class LoginController {
             String password = loginForm.get().password;
             if (ConsumerService.isValid(email, password)) {
                 ConsumerService.logIn(email);
-                return play.mvc.Controller.redirect(routes.Application.index());
+                return play.mvc.Controller.redirect(routes.ApplicationController.index());
             } else {
                 return play.mvc.Controller.badRequest(views.html.ConsumerManagement.login.render(loginForm));
             }
@@ -32,6 +32,6 @@ public class LoginController {
     public static Result logout() {
         play.mvc.Controller.session().clear();
         play.mvc.Controller.flash("success", "Du wurdest erfolgreich ausgeloggt!");
-        return play.mvc.Controller.redirect(routes.Application.index());
+        return play.mvc.Controller.redirect(routes.ApplicationController.index());
     }
 }

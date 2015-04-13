@@ -30,7 +30,7 @@ public class RegistrationController {
 
             ConsumerService.logIn(c.getEmail());
 
-            return play.mvc.Controller.redirect(routes.Application.index());
+            return play.mvc.Controller.redirect(routes.ApplicationController.index());
         }
     }
 }
