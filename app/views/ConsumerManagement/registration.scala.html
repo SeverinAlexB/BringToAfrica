@@ -1,4 +1,4 @@
-@(registerForm: Form[controllers.forms.Registration])
+@(registerForm: Form[viewmodels.RegistrationData])
 @import helper._
 
 @main("BringToAfrica") {
@@ -8,7 +8,7 @@
       <div class="col-xs-12">
         <section class="checkout anim-section animate">
           <div class="row">
-            @helper.form(action = routes.Registrations.register()) {
+            @helper.form(action = routes.RegistrationController.register()) {
             <h1>Neues Profil erstellen</h1>
             <div class="row">
               <div class="col-xs-11 col-sm-6">

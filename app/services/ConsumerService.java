@@ -1,22 +1,22 @@
 package services;
 
-import models.Consumer;
+import models.User;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class ConsumerService {
 
-    public static Consumer getConsumerByEmail(String email){
+    public static User getConsumerByEmail(String email){
         if(email == null) {
             return null;
         }
-        return Consumer.find.where().like("email", email.toLowerCase()).findUnique();
+        return User.find.where().like("email", email.toLowerCase()).findUnique();
     }
 
     public static boolean isValid(String email, String password) {
-        Consumer consumer = getConsumerByEmail(email);
-        if(consumer == null) {
+        User user = getConsumerByEmail(email);
+        if(user == null) {
             return false;
-        } else if(!BCrypt.checkpw(password,consumer.getPasswordHashedSalted())) {;
+        } else if(!BCrypt.checkpw(password, user.getPasswordHashedSalted())) {;
             return false;
         }else{
             return true;

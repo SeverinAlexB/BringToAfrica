@@ -11,9 +11,6 @@ public class DonationGoal extends Model{
     private Long id;
     private int amount;
 
-    //@ManyToOne
-    //private Project project;
-
     @OneToMany(cascade=CascadeType.ALL)
     private DonationType donationType;
 
@@ -42,7 +39,7 @@ public class DonationGoal extends Model{
         this.donationType = donationType;
     }
 
-    public static Finder<Long,DonationGoal> find = new Finder<Long,DonationGoal>(
+    public static Finder<Long,DonationGoal> find = new Finder<>(
             Long.class, DonationGoal.class
     );
 }
