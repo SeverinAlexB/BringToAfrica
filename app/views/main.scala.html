@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String)(content: Html)(scripts: Html)
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -104,6 +104,8 @@
     </footer>
 </div>
 <!-- donation form popup -->
+
+@scripts
 
 <script src="@routes.Assets.at("js/jquery.min.js")"></script>
 <script src="@routes.Assets.at("js/bootstrap.min.js")"></script>

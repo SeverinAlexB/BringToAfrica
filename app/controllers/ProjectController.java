@@ -6,6 +6,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import viewmodels.DateConverter;
 import play.mvc.Security;
+import viewmodels.DonationData;
 import viewmodels.ProjectData;
 import views.html.newProject;
 
@@ -23,8 +24,9 @@ public class ProjectController extends Controller {
     }
 
     public static Result getProject(long id) {
+        Form<DonationData> donationForm = Form.form(DonationData.class);
         Project project = ProjectService.getProjectById(id);
-        return ok(views.html.detail.render(project));
+        return ok(views.html.project.detail.render(project, donationForm));
     }
 
     @Security.Authenticated(Secured.class)
