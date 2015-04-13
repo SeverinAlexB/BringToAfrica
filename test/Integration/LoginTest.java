@@ -1,26 +1,17 @@
 package Integration;
 
-import models.Consumer;
-
+import models.User;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
-
-
-import java.util.Set;
 
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created by Severin on 10.04.2015.
- */
 public class LoginTest {
 
     @Test
     public void LoginTest(){
         DatabaseTest.runInFilledApp((browser -> {
-            assertTrue(Consumer.find.all().size() == 1);
+            assertTrue(User.find.all().size() == 1);
             assertTrue(browser.getCookies().size() == 0);
 
             browser.goTo("http://localhost:3333/login");
@@ -35,7 +26,7 @@ public class LoginTest {
     @Test
     public void wrongLoginTest(){
         DatabaseTest.runInFilledApp((browser -> {
-            assertTrue(Consumer.find.all().size() == 1);
+            assertTrue(User.find.all().size() == 1);
             assertTrue(browser.getCookies().size() == 0);
 
             browser.goTo("http://localhost:3333/login");

@@ -1,8 +1,5 @@
-package controllers;
+package exceptions;
 
-/**
- * Created by Severin on 01.04.2015.
- */
 public class AfricaException extends Exception {
     public AfricaException(String message) {
         super(message);

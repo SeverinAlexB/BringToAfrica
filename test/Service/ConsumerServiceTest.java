@@ -1,7 +1,7 @@
 package Service;
 
 import Integration.DatabaseTest;
-import models.Consumer;
+import models.User;
 import org.junit.Test;
 import org.mindrot.jbcrypt.BCrypt;
 import services.ConsumerService;
@@ -10,26 +10,23 @@ import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
 import static junit.framework.TestCase.assertNull;
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by Severin on 10.04.2015.
- */
 public class ConsumerServiceTest {
 
     @Test
     public void getConsumerByEmailTest() {
         DatabaseTest.runInCleanApp(browser -> {
             String mail = "marc.oberholzer@hotmail.com";
-            Consumer c = new Consumer();
+            User c = new User();
             c.setEmail(mail);
             c.save();
-            Consumer c2 = ConsumerService.getConsumerByEmail(mail.toUpperCase());
+            User c2 = ConsumerService.getConsumerByEmail(mail.toUpperCase());
             assertEquals(c2.getId(), c.getId());
         });
     }
     @Test
     public void getConsumerByEmailNullTest() {
         DatabaseTest.runInCleanApp(browser -> {
-            Consumer c2 = ConsumerService.getConsumerByEmail(null);
+            User c2 = ConsumerService.getConsumerByEmail(null);
             assertNull(c2);
         });
     }
@@ -40,7 +37,7 @@ public class ConsumerServiceTest {
             String password = "MeinPw5#";
             String hash = BCrypt.hashpw(password, BCrypt.gensalt());
 
-            Consumer c = new Consumer();
+            User c = new User();
             c.setEmail(mail);
             c.setPasswordHashedSalted(hash);
             c.save();
@@ -55,7 +52,7 @@ public class ConsumerServiceTest {
             String password = "MeinPw5#";
             String hash = BCrypt.hashpw(password, BCrypt.gensalt());
 
-            Consumer c = new Consumer();
+            User c = new User();
             c.setEmail(mail);
             c.setPasswordHashedSalted(hash);
             c.save();
@@ -70,7 +67,7 @@ public class ConsumerServiceTest {
             String password = "MeinPw5#";
             String hash = BCrypt.hashpw(password, BCrypt.gensalt());
 
-            Consumer c = new Consumer();
+            User c = new User();
             c.setEmail(mail);
             c.setPasswordHashedSalted(hash);
             c.save();

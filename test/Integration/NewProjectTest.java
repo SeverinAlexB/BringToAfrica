@@ -1,22 +1,12 @@
 package Integration;
 
 
-import models.Project;
-import models.Consumer;
+import models.User;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-
-import static play.test.Helpers.*;
-
 
 public class NewProjectTest {
     @Test
@@ -27,7 +17,7 @@ public class NewProjectTest {
             String email = "michael.blocher@msn.com";
             String password = "MeinPw5#";
 
-            assertTrue(Consumer.find.all().size() == 0);
+            assertTrue(User.find.all().size() == 0);
 
             browser.goTo("http://localhost:3333/registration");
             browser.getDriver().findElement(By.name("firstname")).sendKeys(firstName);
@@ -37,7 +27,7 @@ public class NewProjectTest {
             browser.getDriver().findElement(By.name("password2")).sendKeys(password);
             browser.getDriver().findElement(By.id("btnRegistieren")).click();
 
-            assertTrue(Consumer.find.all().size() == 1);
+            assertTrue(User.find.all().size() == 1);
 
             browser.goTo("http://localhost:3333/projects/new");
             browser.getDriver().findElement(By.name("title")).sendKeys("Help Children get clothes");

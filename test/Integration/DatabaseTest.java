@@ -7,7 +7,7 @@ import com.avaje.ebean.config.dbplatform.H2Platform;
 import com.avaje.ebeaninternal.api.SpiEbeanServer;
 import com.avaje.ebeaninternal.server.ddl.DdlGenerator;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
-import models.Consumer;
+import models.User;
 import org.junit.Test;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import play.libs.F;
@@ -22,10 +22,6 @@ import java.util.List;
 import static org.fest.assertions.Assertions.assertThat;
 import static play.test.Helpers.*;
 
-
-/**
- * Created by SKU on 02.04.2015.
- */
 public class DatabaseTest {
     private static HashMap<String,String> getPgTestDB() {
         final HashMap<String,String> postgres = new HashMap<String, String>();
@@ -56,7 +52,7 @@ public class DatabaseTest {
         ddl.setup((SpiEbeanServer) server, new H2Platform(), config);
         ddl.runScript(false, ddl.generateDropDdl());
         ddl.runScript(false, ddl.generateCreateDdl());
-        assert Consumer.find.all().size() == 0;
+        assert User.find.all().size() == 0;
     }
     private static void fillDatabase(HashMap<String,String> database) {
         FakeApplication app = fakeApplication(database);
@@ -82,28 +78,28 @@ public class DatabaseTest {
     @Test
     public void testFakeDataBase() {
         runInCleanApp((TestBrowser t) -> {
-            assertThat(Consumer.find.findUnique() == null);
+            assertThat(User.find.findUnique() == null);
 
-            for (Consumer co : Consumer.find.all()) {
+            for (User co : User.find.all()) {
                 co.delete();
             }
-            Consumer c = new Consumer();
+            User c = new User();
             c.setEmail("sevi_buehler@hotmail.com");
             c.setFirstName("Severin2");
             c.setLastName("blaaa");
             c.setPasswordHashedSalted("afesadsfasdf");
             c.save();
 
-            assertThat(Consumer.find.findUnique() != null);
+            assertThat(User.find.findUnique() != null);
 
         });
     }
     @Test
     public void testFakeDataBaseFull() {
         runInFilledApp((TestBrowser t) -> {
-            assertThat(Consumer.find.findUnique() != null);
-            Consumer testConsumer = Consumer.find.where().like("email", "bob@gmail.com").findUnique();
-            assertThat(testConsumer.getEmail() == "bob@gmail.com");
+            assertThat(User.find.findUnique() != null);
+            User testUser = User.find.where().like("email", "bob@gmail.com").findUnique();
+            assertThat(testUser.getEmail() == "bob@gmail.com");
         });
     }
 }

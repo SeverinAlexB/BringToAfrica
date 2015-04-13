@@ -1,21 +1,12 @@
 package Application;
 
-import controllers.Projects;
+import controllers.ProjectController;
 import org.junit.Assert;
 import org.junit.Test;
-import controllers.forms.Converter;
-import controllers.forms.ProjectData;
+import viewmodels.DateConverter;
+import viewmodels.ProjectData;
 
-import static org.fest.assertions.Assertions.assertThat;
-
-
-/**
-*
-* Simple (JUnit) tests that can call all parts of a play app.
-* If you are interested in mocking a whole application, see the wiki for more details.
-*
-*/
-public class ProjectControllerTest extends Projects {
+public class ProjectControllerTest extends ProjectController {
 
 
     @Test
@@ -34,14 +25,14 @@ public class ProjectControllerTest extends Projects {
     public void stringToSqlDateTest() throws Exception {
         String date = "2015-04-09";
         java.sql.Date expected = java.sql.Date.valueOf("2015-04-09");
-        java.sql.Date result = Converter.stringToSqlDate(date);
+        java.sql.Date result = DateConverter.stringToSqlDate(date);
         Assert.assertTrue(result.equals(expected));
     }
 
     @Test(expected=Exception.class)
     public void stringToSqlDateExceptionTest() throws Exception {
         String date1 = "09.04.2015";
-        Converter.stringToSqlDate(date1);
+        DateConverter.stringToSqlDate(date1);
     }
     @Test
     public void isPositiveNumberTest() {

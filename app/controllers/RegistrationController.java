@@ -1,31 +1,27 @@
 package controllers;
 
-import controllers.forms.Login;
-import controllers.forms.Registration;
-import models.Consumer;
+import models.User;
+import org.mindrot.jbcrypt.BCrypt;
 import play.data.Form;
 import play.mvc.Result;
 import services.ConsumerService;
-import org.mindrot.jbcrypt.BCrypt;
+import viewmodels.RegistrationData;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class Registrations {
+public class RegistrationController {
 
 
     public static Result registration() {
-        return play.mvc.Controller.ok(views.html.ConsumerManagement.registration.render(Form.form(controllers.forms.Registration.class)));
+        return play.mvc.Controller.ok(views.html.ConsumerManagement.registration.render(Form.form(RegistrationData.class)));
     }
 
     public static Result register() {
-        Form<Registration> form = Form.form(Registration.class).bindFromRequest();
+        Form<RegistrationData> form = Form.form(RegistrationData.class).bindFromRequest();
         if (form.hasErrors()) {
             return play.mvc.Controller.badRequest(views.html.ConsumerManagement.registration.render(form));
         } else {
             String hash = BCrypt.hashpw(form.get().password1,BCrypt.gensalt());
 
-            Consumer c = new Consumer();
+            User c = new User();
             c.setEmail(form.get().email.toLowerCase());
             c.setFirstName(form.get().firstname);
             c.setLastName(form.get().lastname);
@@ -34,7 +30,7 @@ public class Registrations {
 
             ConsumerService.logIn(c.getEmail());
 
-            return play.mvc.Controller.redirect(routes.Application.index());
+            return play.mvc.Controller.redirect(routes.ApplicationController.index());
         }
     }
 }
