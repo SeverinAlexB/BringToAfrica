@@ -1,5 +1,6 @@
 package controllers;
 
+import exceptions.AfricaException;
 import models.*;
 import play.data.Form;
 import play.mvc.Controller;

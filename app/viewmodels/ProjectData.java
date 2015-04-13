@@ -1,6 +1,6 @@
 package viewmodels;
 
-import controllers.AfricaException;
+import exceptions.AfricaException;
 import play.data.validation.Constraints;
 
 import java.util.List;

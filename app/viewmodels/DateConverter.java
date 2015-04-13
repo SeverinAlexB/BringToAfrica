@@ -1,6 +1,6 @@
 package viewmodels;
 
-import controllers.AfricaException;
+import exceptions.AfricaException;
 
 import java.sql.Date;
 import java.text.ParseException;
