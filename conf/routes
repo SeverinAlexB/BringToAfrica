@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET         /                     controllers.Application.index()
+GET         /                     controllers.ApplicationController.index()
 
 GET         /projects             controllers.ProjectController.getProjects()
 GET         /projects/new         controllers.ProjectController.createProject()
