@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Consumer;
+import models.User;
 import org.mindrot.jbcrypt.BCrypt;
 import play.data.Form;
 import play.mvc.Result;
@@ -21,7 +21,7 @@ public class RegistrationController {
         } else {
             String hash = BCrypt.hashpw(form.get().password1,BCrypt.gensalt());
 
-            Consumer c = new Consumer();
+            User c = new User();
             c.setEmail(form.get().email.toLowerCase());
             c.setFirstName(form.get().firstname);
             c.setLastName(form.get().lastname);

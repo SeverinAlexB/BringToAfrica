@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Consumer extends Model{
+@Table(name="AfrikaUser")
+public class User extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -14,10 +15,6 @@ public class Consumer extends Model{
     private String lastName;
     private String email;
     private String passwordHashedSalted;
-
-
-
-
 
     @OneToMany(cascade=CascadeType.ALL)
     private List<Project> projects;
@@ -80,7 +77,7 @@ public class Consumer extends Model{
         this.passwordHashedSalted = passwordHashedSalted;
     }
 
-    public static Finder<Long,Consumer> find = new Finder<Long,Consumer>(
-            Long.class, Consumer.class
+    public static Finder<Long, User> find = new Finder<Long, User>(
+            Long.class, User.class
     );
 }

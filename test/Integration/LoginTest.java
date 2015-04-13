@@ -1,6 +1,6 @@
 package Integration;
 
-import models.Consumer;
+import models.User;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
@@ -11,7 +11,7 @@ public class LoginTest {
     @Test
     public void LoginTest(){
         DatabaseTest.runInFilledApp((browser -> {
-            assertTrue(Consumer.find.all().size() == 1);
+            assertTrue(User.find.all().size() == 1);
             assertTrue(browser.getCookies().size() == 0);
 
             browser.goTo("http://localhost:3333/login");
@@ -26,7 +26,7 @@ public class LoginTest {
     @Test
     public void wrongLoginTest(){
         DatabaseTest.runInFilledApp((browser -> {
-            assertTrue(Consumer.find.all().size() == 1);
+            assertTrue(User.find.all().size() == 1);
             assertTrue(browser.getCookies().size() == 0);
 
             browser.goTo("http://localhost:3333/login");

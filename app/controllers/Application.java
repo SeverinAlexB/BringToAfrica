@@ -1,6 +1,6 @@
 package controllers;
 
-import  models.Consumer;
+import models.User;
 import play.mvc.Controller;
 import play.mvc.Result;
 import services.ConsumerService;
@@ -11,7 +11,7 @@ public class Application extends Controller {
         return redirect(routes.ProjectController.getProjects());
     }
 
-    public static Consumer getCurrent() {
+    public static User getCurrent() {
         String username = play.mvc.Controller.session().get("email");
         return ConsumerService.getConsumerByEmail(username);
     }

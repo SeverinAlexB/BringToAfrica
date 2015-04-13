@@ -1,6 +1,6 @@
 package Integration;
 
-import models.Consumer;
+import models.User;
 import org.junit.Test;
 import org.mindrot.jbcrypt.BCrypt;
 import org.openqa.selenium.By;
@@ -17,7 +17,7 @@ public class RegistrationDataTest {
             String lastName = "Blocker";
             String email = "michael.blocher@msn.com";
             String password = "MeinPw5#";
-            assertTrue(Consumer.find.all().size() == 0);
+            assertTrue(User.find.all().size() == 0);
 
             browser.goTo("http://localhost:3333/registration");
             browser.getDriver().findElement(By.name("firstname")).sendKeys(firstName);
@@ -27,9 +27,9 @@ public class RegistrationDataTest {
             browser.getDriver().findElement(By.name("password2")).sendKeys(password);
             browser.getDriver().findElement(By.id("btnRegistieren")).click();
 
-            assertTrue(Consumer.find.all().size() == 1);
+            assertTrue(User.find.all().size() == 1);
 
-            Consumer c = Consumer.find.findUnique();
+            User c = User.find.findUnique();
 
             assertEquals(firstName, c.getFirstName());
             assertEquals(lastName, c.getLastName());
@@ -45,7 +45,7 @@ public class RegistrationDataTest {
             String lastName = "Blocker";
             String email = "michael.blocher@msn.com";
             String password = "MeinPw5#";
-            assertTrue(Consumer.find.all().size() == 0);
+            assertTrue(User.find.all().size() == 0);
 
             browser.goTo("http://localhost:3333/registration");
             browser.getDriver().findElement(By.name("firstname")).sendKeys(firstName);
@@ -55,7 +55,7 @@ public class RegistrationDataTest {
             browser.getDriver().findElement(By.name("password2")).sendKeys(password + "5");
             browser.getDriver().findElement(By.id("btnRegistieren")).click();
 
-            assertTrue(Consumer.find.all().size() == 0);
+            assertTrue(User.find.all().size() == 0);
         }));
     }
     @Test
@@ -65,7 +65,7 @@ public class RegistrationDataTest {
             String lastName = "Blocker";
             String email = "michael.blocher@msn.com";
             String password = "MeinPw5#";
-            assertTrue(Consumer.find.all().size() == 0);
+            assertTrue(User.find.all().size() == 0);
 
             browser.goTo("http://localhost:3333/registration");
             browser.getDriver().findElement(By.name("firstname")).sendKeys(firstName);
@@ -75,7 +75,7 @@ public class RegistrationDataTest {
             browser.getDriver().findElement(By.name("password2")).sendKeys(password);
             browser.getDriver().findElement(By.id("btnRegistieren")).click();
 
-            assertTrue(Consumer.find.all().size() == 1);
+            assertTrue(User.find.all().size() == 1);
 
             browser.goTo("http://localhost:3333/registration");
             browser.getDriver().findElement(By.name("firstname")).sendKeys("helmut");
@@ -85,8 +85,8 @@ public class RegistrationDataTest {
             browser.getDriver().findElement(By.name("password2")).sendKeys("thePass6%");
             browser.getDriver().findElement(By.id("btnRegistieren")).click();
 
-            System.out.println(Consumer.find.all().size());
-            assertTrue(Consumer.find.all().size() == 1);
+            System.out.println(User.find.all().size());
+            assertTrue(User.find.all().size() == 1);
         }));
     }
 }

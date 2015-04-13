@@ -33,7 +33,7 @@ public class ProjectController extends Controller {
         if (projectDataForm.hasErrors()) {
             return badRequest(newProject.render(projectDataForm));
         } else {
-            Consumer consumer = ConsumerService.getConsumerByEmail(request().username());
+            User user = ConsumerService.getConsumerByEmail(request().username());
             models.Project project = new models.Project();
             Address address = new models.Address();
             project.setTitle(projectDataForm.get().title);
@@ -55,8 +55,8 @@ public class ProjectController extends Controller {
             address.setCountry(projectDataForm.get().country);
             address.setCity(projectDataForm.get().city);
             project.setAddress(address);
-            consumer.addProject(project);
-            consumer.save();
+            user.addProject(project);
+            user.save();
             return redirect(routes.ProjectController.getProjects());
         }
     }
