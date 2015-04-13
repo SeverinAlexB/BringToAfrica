@@ -12,6 +12,7 @@ public class Donation extends Model{
     private Long id;
     private String description;
     private Date date;
+    private int amount;
     private String messageToCollector;
 
     //@ManyToOne
