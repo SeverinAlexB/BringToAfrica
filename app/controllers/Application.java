@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Consumer;
+import  models.Consumer;
 import play.mvc.Controller;
 import play.mvc.Result;
 import services.ConsumerService;
