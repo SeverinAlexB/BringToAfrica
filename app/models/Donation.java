@@ -15,11 +15,25 @@ public class Donation extends Model{
     private int amount;
     private String messageToCollector;
 
-    //@ManyToOne
-    //private Project project;
-
     @ManyToOne
     private DonationType donationType;
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public DonationType getDonationType() {
+        return donationType;
+    }
+
+    public void setDonationType(DonationType donationType) {
+        this.donationType = donationType;
+    }
+
 
     public Long getId() {
         return id;

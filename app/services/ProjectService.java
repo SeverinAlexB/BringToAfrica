@@ -31,11 +31,12 @@ public class ProjectService {
         for(DonationGoal dg: p.getDonationGoals()){
             goal += dg.getAmount();
         }
+        if(goal == 0)return 0;
         for(Donation d: p.getDonations()){
-            d.get
+            state += d.getAmount();
         }
-        p.getDonations();
-        return 0;
+        if(state == 0)return 0;
+        return 100 / goal * state;
     };
 
 }
