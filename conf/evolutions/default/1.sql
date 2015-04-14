@@ -40,7 +40,7 @@ create table news (
   title                     varchar(255),
   description               varchar(255),
   date                      date,
-  picture                   bytea,
+  image_url                 varchar(255),
   constraint pk_news primary key (id))
 ;
 
