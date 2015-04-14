@@ -15,7 +15,7 @@
                                         <h3 class="h5">@project.getTitle()</h3>
                                         <a href="@routes.ProjectController.getProject(project.getId())" class="img-thumb">
                                             <figure>
-                                                <img src="assets/img/img-slide-01.jpg" alt="" height="400" width="600">
+                                                <img src="@project.getImageURL()" alt="" height="400" width="600">
                                             </figure>
                                         </a>
                                         <div class="progress">
