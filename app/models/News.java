@@ -1,8 +1,6 @@
 package models;
 
 import play.db.ebean.Model;
-import static javax.persistence.FetchType.LAZY;
-
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -14,10 +12,7 @@ public class News extends Model{
     private String title;
     private String description;
     private Date date;
-
-    @Basic(fetch=LAZY)
-    @Lob
-    private byte[] picture;
+    private String imageURL;
 
     public Long getId() {
         return id;
@@ -43,12 +38,12 @@ public class News extends Model{
         this.description = description;
     }
 
-    public byte[] getPicture() {
-        return picture;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setPicture(byte[] picture) {
-        this.picture = picture;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public Date getDate() {

@@ -1,6 +1,3 @@
-# --- Created by Ebean DDL
-# To stop Ebean DDL generation, remove this comment and start using Evolutions
-
 # --- !Ups
 
 create table address (
@@ -12,7 +9,7 @@ create table address (
 
 create table donation (
   id                        bigint not null,
-  project_id                bigint not null,
+  user_id                   bigint not null,
   description               varchar(255),
   date                      date,
   message_to_collector      varchar(255),
@@ -39,7 +36,7 @@ create table news (
   title                     varchar(255),
   description               varchar(255),
   date                      date,
-  picture                   blob,
+  image_url                 varchar(255),
   constraint pk_news primary key (id))
 ;
 
@@ -79,40 +76,36 @@ create sequence project_seq;
 
 create sequence AfrikaUser_seq;
 
-alter table donation add constraint fk_donation_project_1 foreign key (project_id) references project (id) on delete restrict on update restrict;
-create index ix_donation_project_1 on donation (project_id);
-alter table donation add constraint fk_donation_donationType_2 foreign key (donation_type_id) references donation_type (id) on delete restrict on update restrict;
+alter table donation add constraint fk_donation_AfrikaUser_1 foreign key (user_id) references AfrikaUser (id);
+create index ix_donation_AfrikaUser_1 on donation (user_id);
+alter table donation add constraint fk_donation_donationType_2 foreign key (donation_type_id) references donation_type (id);
 create index ix_donation_donationType_2 on donation (donation_type_id);
-alter table donation_goal add constraint fk_donation_goal_project_3 foreign key (project_id) references project (id) on delete restrict on update restrict;
+alter table donation_goal add constraint fk_donation_goal_project_3 foreign key (project_id) references project (id);
 create index ix_donation_goal_project_3 on donation_goal (project_id);
-alter table news add constraint fk_news_project_4 foreign key (project_id) references project (id) on delete restrict on update restrict;
+alter table news add constraint fk_news_project_4 foreign key (project_id) references project (id);
 create index ix_news_project_4 on news (project_id);
-alter table project add constraint fk_project_AfrikaUser_5 foreign key (user_id) references AfrikaUser (id) on delete restrict on update restrict;
+alter table project add constraint fk_project_AfrikaUser_5 foreign key (user_id) references AfrikaUser (id);
 create index ix_project_AfrikaUser_5 on project (user_id);
-alter table project add constraint fk_project_address_6 foreign key (address_id) references address (id) on delete restrict on update restrict;
+alter table project add constraint fk_project_address_6 foreign key (address_id) references address (id);
 create index ix_project_address_6 on project (address_id);
 
 
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+drop table if exists address cascade;
 
-drop table if exists address;
+drop table if exists donation cascade;
 
-drop table if exists donation;
+drop table if exists donation_goal cascade;
 
-drop table if exists donation_goal;
+drop table if exists donation_type cascade;
 
-drop table if exists donation_type;
+drop table if exists news cascade;
 
-drop table if exists news;
+drop table if exists project cascade;
 
-drop table if exists project;
-
-drop table if exists AfrikaUser;
-
-SET REFERENTIAL_INTEGRITY TRUE;
+drop table if exists AfrikaUser cascade;
 
 drop sequence if exists address_seq;
 
