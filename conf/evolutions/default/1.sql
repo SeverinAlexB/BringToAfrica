@@ -9,7 +9,7 @@ create table address (
 
 create table donation (
   id                        bigint not null,
-  user_id                   bigint not null,
+  project_id                bigint not null,
   description               varchar(255),
   date                      date,
   amount                    integer,
@@ -77,8 +77,8 @@ create sequence project_seq;
 
 create sequence AfrikaUser_seq;
 
-alter table donation add constraint fk_donation_AfrikaUser_1 foreign key (user_id) references AfrikaUser (id);
-create index ix_donation_AfrikaUser_1 on donation (user_id);
+alter table donation add constraint fk_donation_project_1 foreign key (project_id) references project (id);
+create index ix_donation_project_1 on donation (project_id);
 alter table donation add constraint fk_donation_donationType_2 foreign key (donation_type_id) references donation_type (id);
 create index ix_donation_donationType_2 on donation (donation_type_id);
 alter table donation_goal add constraint fk_donation_goal_project_3 foreign key (project_id) references project (id);

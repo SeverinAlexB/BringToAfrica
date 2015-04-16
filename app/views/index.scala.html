@@ -1,4 +1,4 @@
-@(projects: List[Project])
+@(widgets: List[viewmodels.ProjectWidget])
 
 @main("BringToAfrica") {
         <div class="content-wrapper cause-page-section" id="page-info">
@@ -9,8 +9,8 @@
                         <div class="row">
                             <!-- Article Section Srart Here -->
                             <div class="article-list progressbar">
-                                @for(project <- projects) {
-                                    @ProjectManagement.widget(project)
+                                @for(widget <- widgets) {
+                                    @ProjectManagement.widget(widget)
                                 }
                             </div>
                         </div>

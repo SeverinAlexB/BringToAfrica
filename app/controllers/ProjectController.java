@@ -1,15 +1,20 @@
 package controllers;
 
+import com.avaje.ebean.Page;
+import com.avaje.ebean.PagingList;
 import exceptions.AfricaException;
 import models.*;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import services.DonationTypeService;
 import viewmodels.DateConverter;
 import play.mvc.Security;
 import viewmodels.ProjectData;
+import viewmodels.ProjectWidget;
 import views.html.newProject;
 
+import java.util.ArrayList;
 import java.util.List;
 import services.ProjectService;
 import services.ConsumerService;
@@ -19,8 +24,16 @@ public class ProjectController extends Controller {
 
 
     public static Result getProjects() {
-        List<Project> projects = ProjectService.getAllProjects();
-        return ok(views.html.index.render(projects));
+        PagingList<Project> pagingList = ProjectService.getPageingListOfProjects(10);
+        pagingList.getFutureRowCount();
+        Page<Project> page = pagingList.getPage(0);
+        List<Project> projects = page.getList();
+        List<ProjectWidget> widgets = new ArrayList<>();
+
+        for(Project p :projects) {
+            widgets.add(new ProjectWidget(p));
+        }
+        return ok(views.html.index.render(widgets));
     }
 
     public static Result getProject(long id) {
@@ -45,11 +58,11 @@ public class ProjectController extends Controller {
             project.setContact(projectDataForm.get().contactInformation);
 
             for (int i = 0; i < projectDataForm.get().amounts.size(); i++) {
-                DonationType donationType = new DonationType();
+                DonationType donationType = DonationTypeService.getOrSetDonationType(projectDataForm.get().donations.get(i));
                 DonationGoal donationGoal = new DonationGoal();
-                donationType.setName(projectDataForm.get().donations.get(i));
                 donationGoal.setAmount(Integer.parseInt(projectDataForm.get().amounts.get(i)));
-                donationGoal.setDonationType(donationType);
+                //donationGoal.setDonationType(donationType);
+                donationType.addDonationGoal(donationGoal);
                 project.addDonationGoal(donationGoal);
             }
 

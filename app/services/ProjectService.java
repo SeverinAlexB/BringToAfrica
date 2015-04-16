@@ -1,5 +1,6 @@
 package services;
 
+import com.avaje.ebean.PagingList;
 import models.Donation;
 import models.DonationGoal;
 import models.Project;
@@ -24,8 +25,12 @@ public class ProjectService {
         return Project.find.all();
     }
 
+    public static PagingList<Project> getPageingListOfProjects(int pageSize){
+        return Project.find.where().findPagingList(pageSize);
+    }
+
     public static int getStateOfProjectInPercent(Long id){
-        Project p = getProjectById(id);
+        models.Project p = getProjectById(id);
         int goal = 0;
         int state = 0;
         for(DonationGoal dg: p.getDonationGoals()){
