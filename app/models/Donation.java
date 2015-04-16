@@ -12,13 +12,27 @@ public class Donation extends Model{
     private Long id;
     private String description;
     private Date date;
+    private int amount;
     private String messageToCollector;
 
-    //@ManyToOne
-    //private Project project;
-
     @ManyToOne
-    private DonationType donationType;
+    User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 
     public Long getId() {
         return id;
