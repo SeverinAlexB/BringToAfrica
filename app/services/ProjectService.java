@@ -4,7 +4,6 @@ import com.avaje.ebean.PagingList;
 import models.Donation;
 import models.DonationGoal;
 import models.Project;
-
 import java.util.List;
 
 public class ProjectService {
@@ -44,5 +43,4 @@ public class ProjectService {
         if(state == 0)return 0;
         return 100 / goal * state;
     };
-
 }

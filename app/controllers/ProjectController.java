@@ -50,31 +50,41 @@ public class ProjectController extends Controller {
             return badRequest(newProject.render(projectDataForm));
         } else {
             User user = ConsumerService.getConsumerByEmail(request().username());
-            models.Project project = new models.Project();
-            Address address = new models.Address();
-            project.setTitle(projectDataForm.get().title);
-            project.setDescription(projectDataForm.get().description);
-            project.setImageURL(projectDataForm.get().imageURL);
-            project.setEndsAt(DateConverter.stringToSqlDate(projectDataForm.get().endsAt));
-            project.setStartsAt(DateConverter.stringToSqlDate(projectDataForm.get().startsAt));
-            project.setContact(projectDataForm.get().contactInformation);
-
-            for (int i = 0; i < projectDataForm.get().amounts.size(); i++) {
-                DonationType donationType = DonationTypeService.getOrSetDonationType(projectDataForm.get().donations.get(i));
-                DonationGoal donationGoal = new DonationGoal();
-                donationGoal.setAmount(Integer.parseInt(projectDataForm.get().amounts.get(i)));
-                //donationGoal.setDonationType(donationType);
-                donationType.addDonationGoal(donationGoal);
-                project.addDonationGoal(donationGoal);
-            }
-
-            address.setCountry(projectDataForm.get().country);
-            address.setCity(projectDataForm.get().city);
-            project.setAddress(address);
+            models.Project project = createProject(projectDataForm);
+            addDonationGoals(project, projectDataForm);
+            addAddress(project, projectDataForm);
             user.addProject(project);
             user.save();
             return redirect(routes.ProjectController.getProjects());
         }
+    }
+
+    private static Project createProject(Form<ProjectData> projectDataForm) throws AfricaException {
+        models.Project project = new Project();
+        project.setTitle(projectDataForm.get().title);
+        project.setDescription(projectDataForm.get().description);
+        project.setImageURL(projectDataForm.get().imageURL);
+        project.setEndsAt(DateConverter.stringToSqlDate(projectDataForm.get().endsAt));
+        project.setStartsAt(DateConverter.stringToSqlDate(projectDataForm.get().startsAt));
+        project.setContact(projectDataForm.get().contactInformation);
+        return project;
+    }
+
+    private static void addDonationGoals(Project project, Form<ProjectData> projectDataForm) {
+        for (int i = 0; i < projectDataForm.get().amounts.size(); i++) {
+            DonationType donationType = DonationTypeService.getOrSetDonationType(projectDataForm.get().donations.get(i));
+            DonationGoal donationGoal = new DonationGoal();
+            donationGoal.setAmount(Integer.parseInt(projectDataForm.get().amounts.get(i)));
+            donationType.addDonationGoal(donationGoal);
+            project.addDonationGoal(donationGoal);
+        }
+    }
+
+    private static void addAddress(Project project, Form<ProjectData> projectDataForm ) {
+        Address address = new models.Address();
+        address.setCountry(projectDataForm.get().country);
+        address.setCity(projectDataForm.get().city);
+        project.setAddress(address);
     }
 
     @Security.Authenticated(AuthenticationController.class)
