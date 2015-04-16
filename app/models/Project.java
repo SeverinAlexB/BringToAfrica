@@ -18,9 +18,6 @@ public class Project extends Model {
     private Date endsAt;
     private String contact;
 
-    //@ManyToOne
-    //private Consumer consumer;
-
     @OneToMany(cascade=CascadeType.ALL)
     private List<News> news;
 

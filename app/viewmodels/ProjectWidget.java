@@ -15,7 +15,7 @@ public class ProjectWidget {
         this.id = project.getId();
         this.description = project.getDescription();
         this.imageLink = project.getImageURL();
-        this.state = ProjectService.getStateOfProjectInPercent(id);
+        this.state = ProjectService.getStateOfProjectInPercent(project);
     }
 
     public int getState() {

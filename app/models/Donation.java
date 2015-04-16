@@ -15,8 +15,16 @@ public class Donation extends Model{
     private int amount;
     private String messageToCollector;
 
-    //@ManyToOne(cascade=CascadeType.ALL)
-    //private DonationType donationType;
+    @ManyToOne
+    User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public int getAmount() {
         return amount;

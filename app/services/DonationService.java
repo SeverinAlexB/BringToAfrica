@@ -9,5 +9,4 @@ public class DonationService {
     public static Donation getProjectById(Long id){
         return Donation.find.byId(id);
     }
-
 }

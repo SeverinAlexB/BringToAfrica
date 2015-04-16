@@ -1,48 +1,23 @@
-# Donation
-- &don !!models.Donation
-    id:             100
-    description:    Test Spende
-    date:           2015-02-02
-    amount:         5
-
-# DonationGoal
-- &donGoal !!models.DonationGoal
-    id:             10
-    amount:         100
-
-# DonationType
-- &donType !!models.DonationType
-    id:             11
-    name:           DonTypeTest
-    donationGoals:
-        - *donGoal
-
-#Project
-- &proj !!models.Project
-    id:             1
-    title:          Test Projekt
-    description:    Test Description
-    imageURL:       http://test.ch
-    startsAt:       2015-01-01
-    endsAt:         2016-01-01
-    contact:        Email
-    donationGoals:
-            - *donGoal
-    donations:
-            - *don
-
 # User
-- &bob !!models.User
-    id:         99
+- !!models.User
+    id:         1
     firstName:  bob
     lastName:   Test
     email:      bob@gmail.com
     passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
     projects:
-        - *proj
-    donations:
-        - *don
-
+        - !!models.Project
+            id:             10
+            title:          Test Projekt
+            description:    Test Description
+            imageURL:       http://test.ch
+            startsAt:       2015-01-01
+            endsAt:         2016-01-01
+            contact:        Email
+            donationGoals:
+               - !!models.DonationGoal
+                    id:     100
+                    amount: 100
 
 
 
