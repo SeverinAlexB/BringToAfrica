@@ -12,6 +12,38 @@ public class DonationType extends Model{
     private Long id;
     private String name;
 
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<Donation> donations;
+
+    public void addDonation(Donation donation){
+        donations.add(donation);
+    }
+
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<DonationGoal> donationGoals;
+
+    public void addDonationGoal(DonationGoal donationGoal){
+        donationGoals.add(donationGoal);
+    }
+
+
+    public List<Donation> getDonations() {
+        return donations;
+    }
+
+
+    public void setDonations(List<Donation> donations) {
+        this.donations = donations;
+    }
+
+    public List<DonationGoal> getDonationGoals() {
+        return donationGoals;
+    }
+
+    public void setDonationGoals(List<DonationGoal> donationGoals) {
+        this.donationGoals = donationGoals;
+    }
+
     public String getName() {
         return name;
     }

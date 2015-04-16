@@ -11,8 +11,8 @@ public class DonationGoal extends Model{
     private Long id;
     private int amount;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    private DonationType donationType;
+    //@OneToMany(cascade=CascadeType.ALL)
+    //private DonationType donationType;
 
     public Long getId() {
         return id;
@@ -30,14 +30,6 @@ public class DonationGoal extends Model{
         this.amount = amount;
     }
 
-
-    public DonationType getDonationType() {
-        return donationType;
-    }
-
-    public void setDonationType(DonationType donationType) {
-        this.donationType = donationType;
-    }
 
     public static Finder<Long,DonationGoal> find = new Finder<>(
             Long.class, DonationGoal.class

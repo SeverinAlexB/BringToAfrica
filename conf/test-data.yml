@@ -1,3 +1,24 @@
+# User
 - !!models.User
+    id:         1
+    firstName:  bob
+    lastName:   Test
     email:      bob@gmail.com
     passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
+    projects:
+        - !!models.Project
+            id:             10
+            title:          Test Projekt
+            description:    Test Description
+            imageURL:       http://test.ch
+            startsAt:       2015-01-01
+            endsAt:         2016-01-01
+            contact:        Email
+            donationGoals:
+               - !!models.DonationGoal
+                    id:     100
+                    amount: 100
+
+
+
+
