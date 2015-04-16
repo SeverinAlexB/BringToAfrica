@@ -1,5 +1,6 @@
 package viewmodels;
 
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import play.data.validation.Constraints;
 import services.ConsumerService;
 
@@ -12,7 +13,8 @@ public class RegistrationData {
     @Constraints.Email(message = "Bitte gib eine gültige Emailadresse an")
     public String email;
     @Constraints.Required(message = "Bitte gib eine Passwort zum ersten Mal an.")
-    @Constraints.MinLength(8)
+    //@Constraints.MinLength(8)
+    //@Constraints.Pattern(value="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!]).{8,20}", message = "Ihre Eingabe muss mit dem geforderten Format überreinstimmen.")
     public String password1;
     @Constraints.Required(message = "Bitte gib eine Passwort zum zweiten Mal an.")
     public String password2;
