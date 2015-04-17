@@ -1,16 +1,17 @@
 package services;
 
 import models.Donation;
+<<<<<<< HEAD
 import models.User;
+=======
+import models.DonationGoal;
+>>>>>>> origin/ProjectWidget
 
 import java.util.List;
 
-/**
- * Created by SKU on 13.04.2015.
- */
 public class DonationService {
-    public static Donation getProjectById(Long id){
-        return Donation.find.byId(id);
+    public static List<Donation> getDonationsOfDonationGoal(DonationGoal donationGoal){
+        return Donation.find.where().eq("donationGoal", donationGoal).findList();
     }
     public static List<Donation> getByUser(User user){
         return Donation.find.where().eq("user",user).findList();

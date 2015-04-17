@@ -1,4 +1,4 @@
-@(widgets: List[viewmodels.ProjectWidget])
+@(widgets: List[viewmodels.ProjectWidget], pageSize: Int, currentPage: Int)
 
 @main("BringToAfrica") {
         <div class="content-wrapper cause-page-section" id="page-info">
@@ -20,24 +20,19 @@
                 <!--Pagination Section Start Here-->
                 <div class="cols-xs-12 anim-section text-center animate">
                     <ul class="pagination">
-                        <li>
-                            <a href="#">Zurück</a>
-                        </li>
-                        <li class="active">
-                            <a href="#">1</a>
-                        </li>
-                        <li>
-                            <a href="#">2</a>
-                        </li>
-                        <li>
-                            <a href="#">3</a>
-                        </li>
-                        <li>
-                            <a href="#">4</a>
-                        </li>
-                        <li>
-                            <a href="#">Weiter</a>
-                        </li>
+                            @if(pageSize > 1) {
+                                <li>
+                                    <a href="@ProjectController.getProjects(currentPage - 1)">Zurück</a>
+                                </li>
+
+                                @for(i <- currentPage + 1 to pageSize) {
+                                    <li><a href="@ProjectController.getProjects(i + 1)">@i</a></li>
+                                }
+
+                                <li class="active">
+                                    <a href="@ProjectController.getProjects(currentPage + 1)">Weiter</a>
+                                </li>
+                            }
                     </ul>
                 </div>
             </div>

@@ -22,18 +22,22 @@ import services.ConsumerService;
 
 public class ProjectController extends Controller {
 
+    private static int PAGE_SIZE = 10;
 
-    public static Result getProjects() {
-        PagingList<Project> pagingList = ProjectService.getPageingListOfProjects(10);
-        pagingList.getFutureRowCount();
-        Page<Project> page = pagingList.getPage(0);
-        List<Project> projects = page.getList();
-        List<ProjectWidget> widgets = new ArrayList<>();
+    public static Result getProjects(int page) {
+        Page<Project> projectPage = ProjectService.getProjectPage(PAGE_SIZE,page);
 
-        for(Project p :projects) {
-            widgets.add(new ProjectWidget(p));
+        if(projectPage == null){
+            System.out.println("null");
+            return badRequest();
+        }else{
+            List<ProjectWidget> widgets = new ArrayList<>();
+            for(Project p :projectPage.getList()) {
+                widgets.add(new ProjectWidget(p));
+            }
+            return ok(views.html.index.render(widgets, projectPage.getTotalPageCount(), page));
         }
-        return ok(views.html.index.render(widgets));
+
     }
 
     public static Result getProject(long id) {
@@ -59,11 +63,9 @@ public class ProjectController extends Controller {
 
             for (int i = 0; i < projectDataForm.get().amounts.size(); i++) {
                 DonationType donationType = DonationTypeService.getOrSetDonationType(projectDataForm.get().donations.get(i));
-                DonationGoal donationGoal = new DonationGoal();
+                DonationGoal donationGoal = new DonationGoal(project);
                 donationGoal.setAmount(Integer.parseInt(projectDataForm.get().amounts.get(i)));
-                //donationGoal.setDonationType(donationType);
                 donationType.addDonationGoal(donationGoal);
-                project.addDonationGoal(donationGoal);
             }
 
             address.setCountry(projectDataForm.get().country);
@@ -71,7 +73,7 @@ public class ProjectController extends Controller {
             project.setAddress(address);
             user.addProject(project);
             user.save();
-            return redirect(routes.ProjectController.getProjects());
+            return redirect(routes.ProjectController.getProjects(0));
         }
     }
 

@@ -14,10 +14,6 @@
             startsAt:       2015-01-01
             endsAt:         2016-01-01
             contact:        Email
-            donationGoals:
-               - !!models.DonationGoal
-                    id:     100
-                    amount: 100
 
 
 
