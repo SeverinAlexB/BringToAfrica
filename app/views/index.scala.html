@@ -23,15 +23,15 @@
                             @if(pageSize > 1) {
                                 @if(currentPage > 1) {
                                     <li>
-                                        <a href="@ProjectController.getProjectWidgets(currentPage - 1)">Zurück</a>
+                                        <a href="@routes.ProjectController.getProjectWidgets(currentPage - 1)">Zurück</a>
                                     </li>
                                 }
-                                @for(i <- currentPage + 1 to pageSize) {
-                                    <li><a href="@ProjectController.getProjectWidgets(i + 1)">@i</a></li>
+                                @for(i <- 0 to pageSize - 1) {
+                                    <li @if(currentPage == i){class="active"}><a href="@routes.ProjectController.getProjectWidgets(i)">@i</a></li>
                                 }
                                 @if(currentPage < pageSize) {
                                     <li class="active">
-                                        <a href="@ProjectController.getProjectWidgets(currentPage + 1)">Weiter</a>
+                                        <a href="@routes.ProjectController.getProjectWidgets(currentPage + 1)">Weiter</a>
                                     </li>
                                 }
                             }

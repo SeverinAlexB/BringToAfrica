@@ -30,7 +30,7 @@ public class ProjectService {
 
     public static Page<Project> getProjectPage(int pageSize, int page){
         PagingList<Project> projectPagingList = Project.find.where().orderBy("endsAt DESC").findPagingList(pageSize);
-        if(projectPagingList.getPageSize() > page){
+        if(projectPagingList.getTotalPageCount() > page){
             return projectPagingList.getPage(page);
         }else{
             return null;

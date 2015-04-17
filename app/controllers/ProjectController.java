@@ -26,10 +26,10 @@ public class ProjectController extends Controller {
     private static int PAGE_SIZE = 10;
 
     public static Result getProjectWidgets(int page) {
-        Page<Project> projectPage = ProjectService.getProjectPage(PAGE_SIZE,page);
+        Page<Project> projectPage = ProjectService.getProjectPage(PAGE_SIZE, page);
         if(projectPage == null){
             System.out.println("null");
-            return badRequest();
+            return badRequest("Bad Request 404");
         }else{
             List<ProjectWidget> widgets = new ArrayList<>();
             for(Project p :projectPage.getList()) {
