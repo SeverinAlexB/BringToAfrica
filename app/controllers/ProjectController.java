@@ -61,7 +61,7 @@ public class ProjectController extends Controller {
             User user = ConsumerService.getConsumerByEmail(request().username());
             models.Project project = createProject(projectDataForm);
             addDonationGoals(project, projectDataForm);
-            addAddress(project, projectDataForm);
+            setAddress(project, projectDataForm);
 
             user.addProject(project);
             user.save();
@@ -89,7 +89,7 @@ public class ProjectController extends Controller {
         }
     }
 
-    private static void addAddress(Project project, Form<ProjectData> projectDataForm ) {
+    private static void setAddress(Project project, Form<ProjectData> projectDataForm) {
         Address address = new models.Address();
         address.setCountry(projectDataForm.get().country);
         address.setCity(projectDataForm.get().city);
