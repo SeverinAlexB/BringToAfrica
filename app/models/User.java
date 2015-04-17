@@ -15,20 +15,28 @@ public class User extends Model{
     private String lastName;
     private String email;
     private String passwordHashedSalted;
+    @OneToMany(mappedBy = "owner")
+    private List<Project> myProjects;
+    @OneToMany(mappedBy = "user")
+    private List<Donation> donations;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    private List<Project> projects;
+    public List<Donation> getDonations() {
+        return donations;
+    }
 
+    public void setDonations(List<Donation> donations) {
+        this.donations = donations;
+    }
     public void addProject(Project project){
-        projects.add(project);
+        myProjects.add(project);
     }
 
-    public List<Project> getProjects() {
-        return projects;
+    public List<Project> getMyProjects() {
+        return myProjects;
     }
 
-    public void setProjects(List<Project> projects) {
-        this.projects = projects;
+    public void setMyProjects(List<Project> myProjects) {
+        this.myProjects = myProjects;
     }
 
     public Long getId() {

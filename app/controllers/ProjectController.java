@@ -51,28 +51,36 @@ public class ProjectController extends Controller {
         if (projectDataForm.hasErrors()) {
             return badRequest(newProject.render(projectDataForm));
         } else {
-            User user = ConsumerService.getConsumerByEmail(request().username());
-            models.Project project = new models.Project();
+            User user = ApplicationController.getCurrentUser();
+
             Address address = new models.Address();
+            address.setCountry(projectDataForm.get().country);
+            address.setCity(projectDataForm.get().city);
+            address.save();
+
+            models.Project project = new models.Project();
             project.setTitle(projectDataForm.get().title);
             project.setDescription(projectDataForm.get().description);
             project.setImageURL(projectDataForm.get().imageURL);
             project.setEndsAt(DateConverter.stringToSqlDate(projectDataForm.get().endsAt));
             project.setStartsAt(DateConverter.stringToSqlDate(projectDataForm.get().startsAt));
             project.setContact(projectDataForm.get().contactInformation);
+            project.setAddress(address);
+            project.setOwner(user);
+            project.save();
+
+
 
             for (int i = 0; i < projectDataForm.get().amounts.size(); i++) {
                 DonationType donationType = DonationTypeService.getOrSetDonationType(projectDataForm.get().donations.get(i));
+
                 DonationGoal donationGoal = new DonationGoal(project);
                 donationGoal.setAmount(Integer.parseInt(projectDataForm.get().amounts.get(i)));
-                donationType.addDonationGoal(donationGoal);
+                donationGoal.setType(donationType);
+                donationGoal.setProject(project);
+                donationGoal.save();
             }
 
-            address.setCountry(projectDataForm.get().country);
-            address.setCity(projectDataForm.get().city);
-            project.setAddress(address);
-            user.addProject(project);
-            user.save();
             return redirect(routes.ProjectController.getProjects(0));
         }
     }

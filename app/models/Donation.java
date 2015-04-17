@@ -10,7 +10,6 @@ public class Donation extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private String description;
     private Date date;
     private int amount;
     private String messageToCollector;
@@ -57,14 +56,6 @@ public class Donation extends Model{
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Date getDate() {
