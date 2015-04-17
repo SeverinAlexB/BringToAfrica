@@ -1,5 +1,6 @@
 package services;
 
+import com.avaje.ebean.Page;
 import com.avaje.ebean.PagingList;
 import models.Donation;
 import models.DonationGoal;
@@ -24,23 +25,26 @@ public class ProjectService {
         return Project.find.all();
     }
 
-    public static PagingList<Project> getPageingListOfProjects(int pageSize){
-        return Project.find.where().findPagingList(pageSize);
+    public static Page<Project> getProjectPage(int pageSize, int page){
+        PagingList<Project> projectPagingList = Project.find.where().orderBy("endsAt DESC").findPagingList(pageSize);
+        if(projectPagingList.getTotalPageCount() > page){
+            return projectPagingList.getPage(page);
+        }else{
+            return null;
+        }
+
     }
 
     public static int getStateOfProjectInPercent(Project project){
         int goal = 0;
         int state = 0;
-        for(DonationGoal dg: project.getDonationGoals()){
-            System.out.println(dg.getAmount());
+        for(DonationGoal dg: DonationGoalService.getDonationGoalsOfProject(project)){
             goal += dg.getAmount();
+            for(Donation d: DonationService.getDonationsOfDonationGoal(dg)){
+                state += d.getAmount();
+            }
         }
-        if(goal == 0)return 0;
-        for(Donation d: project.getDonations()){
-            System.out.println(d.getAmount());
-            state += d.getAmount();
-        }
-        if(state == 0)return 0;
+        if(goal == 0 || state == 0)return 0;
         return 100 / goal * state;
     };
 }

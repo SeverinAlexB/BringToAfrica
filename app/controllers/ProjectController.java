@@ -1,12 +1,12 @@
 package controllers;
 
 import com.avaje.ebean.Page;
-import com.avaje.ebean.PagingList;
 import exceptions.AfricaException;
 import models.*;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.twirl.api.Html;
 import services.DonationTypeService;
 import viewmodels.DateConverter;
 import play.mvc.Security;
@@ -23,18 +23,27 @@ import services.ConsumerService;
 
 public class ProjectController extends Controller {
 
+    private static int PAGE_SIZE = 10;
 
-    public static Result getProjects() {
-        PagingList<Project> pagingList = ProjectService.getPageingListOfProjects(10);
-        pagingList.getFutureRowCount();
-        Page<Project> page = pagingList.getPage(0);
-        List<Project> projects = page.getList();
-        List<ProjectWidget> widgets = new ArrayList<>();
-
-        for(Project p :projects) {
-            widgets.add(new ProjectWidget(p));
+    public static Result getProjectWidgets(int page) {
+        Page<Project> projectPage = ProjectService.getProjectPage(PAGE_SIZE, page);
+        if(projectPage == null){
+            System.out.println("null");
+            return badRequest("Bad Request 404");
+        }else{
+            List<ProjectWidget> widgets = new ArrayList<>();
+            for(Project p :projectPage.getList()) {
+                widgets.add(new ProjectWidget(p));
+            }
+            return ok(views.html.index.render(widgets, projectPage.getTotalPageCount(), page));
         }
-        return ok(views.html.index.render(widgets));
+
+    }
+
+    public static Html getProjectWidget(long id) {
+        Project project = ProjectService.getProjectById(id);
+        ProjectWidget projectWidget = new ProjectWidget(project);
+        return views.html.ProjectManagement.widget.render(projectWidget);
     }
 
     public static Result getProject(long id) {
@@ -53,9 +62,10 @@ public class ProjectController extends Controller {
             models.Project project = createProject(projectDataForm);
             addDonationGoals(project, projectDataForm);
             addAddress(project, projectDataForm);
+
             user.addProject(project);
             user.save();
-            return redirect(routes.ProjectController.getProjects());
+            return redirect(routes.ProjectController.getProjectWidgets(0));
         }
     }
 
@@ -73,10 +83,9 @@ public class ProjectController extends Controller {
     private static void addDonationGoals(Project project, Form<ProjectData> projectDataForm) {
         for (int i = 0; i < projectDataForm.get().amounts.size(); i++) {
             DonationType donationType = DonationTypeService.getOrSetDonationType(projectDataForm.get().donations.get(i));
-            DonationGoal donationGoal = new DonationGoal();
+            DonationGoal donationGoal = new DonationGoal(project);
             donationGoal.setAmount(Integer.parseInt(projectDataForm.get().amounts.get(i)));
             donationType.addDonationGoal(donationGoal);
-            project.addDonationGoal(donationGoal);
         }
     }
 
