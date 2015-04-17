@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.util.List;
 
 @Entity
+@Table(name="Project")
 public class Project extends Model {
 
     @Id
@@ -17,12 +18,26 @@ public class Project extends Model {
     private Date startsAt;
     private Date endsAt;
     private String contact;
-
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "project")
     private List<News> news;
-
     @OneToOne(cascade=CascadeType.ALL)
     private Address address;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
+    private List<DonationGoal> donationGoals;
+    @ManyToOne
+    private User owner;
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public List<DonationGoal> getDonationGoals() {
+        return donationGoals;
+    }
 
     public void addNews(News news){
         this.news.add(news);

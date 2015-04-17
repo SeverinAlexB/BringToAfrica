@@ -58,18 +58,15 @@ public class ProjectController extends Controller {
         if (projectDataForm.hasErrors()) {
             return badRequest(newProject.render(projectDataForm));
         } else {
-            User user = ConsumerService.getConsumerByEmail(request().username());
-            models.Project project = createProject(projectDataForm);
+            User user = ApplicationController.getCurrentUser();
+            Address address = setAddress(projectDataForm);
+            models.Project project = createProject(projectDataForm, address, user);
             addDonationGoals(project, projectDataForm);
-            setAddress(project, projectDataForm);
-
-            user.addProject(project);
-            user.save();
-            return redirect(routes.ProjectController.getProjectWidgets(0));
+            return redirect(routes.ProjectController.getProjects(0));
         }
     }
 
-    private static Project createProject(Form<ProjectData> projectDataForm) throws AfricaException {
+    private static Project createProject(Form<ProjectData> projectDataForm, Address address, User user) throws AfricaException {
         models.Project project = new Project();
         project.setTitle(projectDataForm.get().title);
         project.setDescription(projectDataForm.get().description);
@@ -77,6 +74,9 @@ public class ProjectController extends Controller {
         project.setEndsAt(DateConverter.stringToSqlDate(projectDataForm.get().endsAt));
         project.setStartsAt(DateConverter.stringToSqlDate(projectDataForm.get().startsAt));
         project.setContact(projectDataForm.get().contactInformation);
+        project.setAddress(address);
+        project.setOwner(user);
+        project.save();
         return project;
     }
 
@@ -85,15 +85,18 @@ public class ProjectController extends Controller {
             DonationType donationType = DonationTypeService.getOrSetDonationType(projectDataForm.get().donations.get(i));
             DonationGoal donationGoal = new DonationGoal(project);
             donationGoal.setAmount(Integer.parseInt(projectDataForm.get().amounts.get(i)));
-            donationType.addDonationGoal(donationGoal);
+            donationGoal.setType(donationType);
+            donationGoal.setProject(project);
+            donationGoal.save();
         }
     }
 
-    private static void setAddress(Project project, Form<ProjectData> projectDataForm) {
+    private static Address setAddress(Form<ProjectData> projectDataForm) {
         Address address = new models.Address();
         address.setCountry(projectDataForm.get().country);
         address.setCity(projectDataForm.get().city);
-        project.setAddress(address);
+        address.save();
+        return address;
     }
 
     @Security.Authenticated(AuthenticationController.class)

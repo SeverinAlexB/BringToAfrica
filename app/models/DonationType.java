@@ -12,7 +12,7 @@ public class DonationType extends Model{
     private Long id;
     private String name;
 
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "type")
     private List<DonationGoal> donationGoals;
 
     public void addDonationGoal(DonationGoal donationGoal){

@@ -34,17 +34,16 @@ create table donation_type (
 
 create table news (
   id                        bigint not null,
-  project_id                bigint not null,
   title                     varchar(255),
   description               varchar(255),
   date                      date,
   image_url                 varchar(255),
+  project_id                bigint,
   constraint pk_news primary key (id))
 ;
 
-create table project (
+create table Project (
   id                        bigint not null,
-  user_id                   bigint not null,
   title                     varchar(255),
   description               varchar(255),
   image_url                 varchar(255),
@@ -52,7 +51,8 @@ create table project (
   ends_at                   date,
   contact                   varchar(255),
   address_id                bigint,
-  constraint pk_project primary key (id))
+  owner_id                  bigint,
+  constraint pk_Project primary key (id))
 ;
 
 create table AfrikaUser (
@@ -74,42 +74,46 @@ create sequence donation_type_seq;
 
 create sequence news_seq;
 
-create sequence project_seq;
+create sequence Project_seq;
 
 create sequence AfrikaUser_seq;
 
-alter table donation add constraint fk_donation_user_1 foreign key (user_id) references AfrikaUser (id);
+alter table donation add constraint fk_donation_user_1 foreign key (user_id) references AfrikaUser (id) on delete restrict on update restrict;
 create index ix_donation_user_1 on donation (user_id);
-alter table donation add constraint fk_donation_donationGoal_2 foreign key (donation_goal_id) references donation_goal (id);
+alter table donation add constraint fk_donation_donationGoal_2 foreign key (donation_goal_id) references donation_goal (id) on delete restrict on update restrict;
 create index ix_donation_donationGoal_2 on donation (donation_goal_id);
-alter table donation_goal add constraint fk_donation_goal_donation_type_3 foreign key (donation_type_id) references donation_type (id);
-create index ix_donation_goal_donation_type_3 on donation_goal (donation_type_id);
-alter table donation_goal add constraint fk_donation_goal_project_4 foreign key (project_id) references project (id);
-create index ix_donation_goal_project_4 on donation_goal (project_id);
-alter table news add constraint fk_news_project_5 foreign key (project_id) references project (id);
+alter table donation_goal add constraint fk_donation_goal_project_3 foreign key (project_id) references Project (id) on delete restrict on update restrict;
+create index ix_donation_goal_project_3 on donation_goal (project_id);
+alter table donation_goal add constraint fk_donation_goal_type_4 foreign key (type_id) references donation_type (id) on delete restrict on update restrict;
+create index ix_donation_goal_type_4 on donation_goal (type_id);
+alter table news add constraint fk_news_project_5 foreign key (project_id) references Project (id) on delete restrict on update restrict;
 create index ix_news_project_5 on news (project_id);
-alter table project add constraint fk_project_AfrikaUser_6 foreign key (user_id) references AfrikaUser (id);
-create index ix_project_AfrikaUser_6 on project (user_id);
-alter table project add constraint fk_project_address_7 foreign key (address_id) references address (id);
-create index ix_project_address_7 on project (address_id);
+alter table Project add constraint fk_Project_address_6 foreign key (address_id) references address (id) on delete restrict on update restrict;
+create index ix_Project_address_6 on Project (address_id);
+alter table Project add constraint fk_Project_owner_7 foreign key (owner_id) references AfrikaUser (id) on delete restrict on update restrict;
+create index ix_Project_owner_7 on Project (owner_id);
 
 
 
 # --- !Downs
 
-drop table if exists address cascade;
+SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table if exists donation cascade;
+drop table if exists address;
 
-drop table if exists donation_goal cascade;
+drop table if exists donation;
 
-drop table if exists donation_type cascade;
+drop table if exists donation_goal;
 
-drop table if exists news cascade;
+drop table if exists donation_type;
 
-drop table if exists project cascade;
+drop table if exists news;
 
-drop table if exists AfrikaUser cascade;
+drop table if exists Project;
+
+drop table if exists AfrikaUser;
+
+SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists address_seq;
 
@@ -121,7 +125,7 @@ drop sequence if exists donation_type_seq;
 
 drop sequence if exists news_seq;
 
-drop sequence if exists project_seq;
+drop sequence if exists Project_seq;
 
 drop sequence if exists AfrikaUser_seq;
 

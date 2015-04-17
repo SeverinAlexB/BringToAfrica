@@ -98,6 +98,9 @@ public class DatabaseTest {
     public void testFakeDataBaseFull() {
         runInFilledApp((TestBrowser t) -> {
             assertThat(User.find.findUnique() != null);
+            User testUser = User.find.where().like("email", "bob@gmail.com").findUnique();
+            assertThat(testUser.getEmail().equals("bob@gmail.com"));
+
         });
     }
 }
