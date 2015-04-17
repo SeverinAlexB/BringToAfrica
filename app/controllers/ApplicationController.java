@@ -8,7 +8,7 @@ import services.ConsumerService;
 public class ApplicationController extends Controller {
 
     public static Result index() {
-        return redirect(routes.ProjectController.getProjects(0));
+        return redirect(routes.ProjectController.getProjectWidgets(0));
     }
 
     public static User getCurrent() {

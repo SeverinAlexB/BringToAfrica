@@ -21,17 +21,19 @@
                 <div class="cols-xs-12 anim-section text-center animate">
                     <ul class="pagination">
                             @if(pageSize > 1) {
-                                <li>
-                                    <a href="@ProjectController.getProjects(currentPage - 1)">Zurück</a>
-                                </li>
-
-                                @for(i <- currentPage + 1 to pageSize) {
-                                    <li><a href="@ProjectController.getProjects(i + 1)">@i</a></li>
+                                @if(currentPage > 1) {
+                                    <li>
+                                        <a href="@ProjectController.getProjectWidgets(currentPage - 1)">Zurück</a>
+                                    </li>
                                 }
-
-                                <li class="active">
-                                    <a href="@ProjectController.getProjects(currentPage + 1)">Weiter</a>
-                                </li>
+                                @for(i <- currentPage + 1 to pageSize) {
+                                    <li><a href="@ProjectController.getProjectWidgets(i + 1)">@i</a></li>
+                                }
+                                @if(currentPage < pageSize) {
+                                    <li class="active">
+                                        <a href="@ProjectController.getProjectWidgets(currentPage + 1)">Weiter</a>
+                                    </li>
+                                }
                             }
                     </ul>
                 </div>

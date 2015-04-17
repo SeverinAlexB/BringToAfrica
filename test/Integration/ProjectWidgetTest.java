@@ -1,9 +1,11 @@
 package Integration;
 
+import controllers.ProjectController;
 import models.*;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import play.mvc.Result;
+import play.twirl.api.Html;
 import services.DonationGoalService;
 import services.ProjectService;
 
@@ -34,10 +36,25 @@ public class ProjectWidgetTest {
             user.addProject(project);
             user.save();
             int state = ProjectService.getStateOfProjectInPercent(project);
-            System.out.println(state);
             assertEquals(5, state);
         }));
     }
 
 
+    @Test
+    public void  getProjectWidgetTest(){
+        DatabaseTest.runInCleanApp((browser -> {
+            User user = new User();
+            user.setFirstName("bob");
+            Project project = new Project();
+            project.setTitle("TestProject");
+            user.addProject(project);
+            user.save();
+
+            Html widget = ProjectController.getProjectWidget(Project.find.findUnique().getId());
+            assertTrue(widget.body().contains("TestProject"));
+
+        }));
+
+    }
 }
