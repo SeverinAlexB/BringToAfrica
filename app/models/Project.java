@@ -24,6 +24,7 @@ public class Project extends Model {
     private Address address;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private List<DonationGoal> donationGoals;
+
     @ManyToOne
     private User owner;
 
