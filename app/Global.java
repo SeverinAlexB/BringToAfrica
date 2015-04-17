@@ -8,10 +8,12 @@ import viewmodels.DateConverter;
 import java.util.*;
 
 public class Global extends GlobalSettings {
-  List<Map<String, String>> projects = new ArrayList<>();
+  static List<Project>  projects = new ArrayList<>();
+  static User testUser;
+
   /*@Override
   public void onStart(Application app) {
-    User testUser = createTestUser();
+    testUser = createTestUser();
     Address address = createAddress();
 
     try {
@@ -43,7 +45,7 @@ public class Global extends GlobalSettings {
     hondurasMap.put("startsAt", "2015-05-17");
     hondurasMap.put("endsAt", "2015-05-25");
     hondurasMap.put("contact", "Bitte per Email melden (honduras@honduras.com)");
-    addTestProject(hondurasMap, address, testUser);
+    projects.add(addTestProject(hondurasMap, address, testUser));
 
     Map<String, String> venezuelaMap = new HashMap<>();
     venezuelaMap.put("title", "Velos nach Venezuela");
@@ -52,7 +54,7 @@ public class Global extends GlobalSettings {
     venezuelaMap.put("startsAt", "2015-05-14");
     venezuelaMap.put("endsAt", "2015-05-22");
     venezuelaMap.put("contact", "Bitte per Email melden (velos@venelzuela.com)");
-    addTestProject(venezuelaMap, address, testUser);
+    projects.add(addTestProject(venezuelaMap, address, testUser));
 
     Map<String, String> australienMap = new HashMap<>();
     australienMap.put("title", "Autos nach Australien");
@@ -61,7 +63,7 @@ public class Global extends GlobalSettings {
     australienMap.put("startsAt", "2015-06-13");
     australienMap.put("endsAt", "2015-09-19");
     australienMap.put("contact", "Bitte per Email melden (autos@australien.com)");
-    addTestProject(australienMap, address, testUser);
+    projects.add(addTestProject(australienMap, address, testUser));
 
     Map<String, String> zimbabweMap = new HashMap<>();
     zimbabweMap.put("title", "Ziegel nach Zimbabwe");
@@ -70,7 +72,7 @@ public class Global extends GlobalSettings {
     zimbabweMap.put("startsAt", "2015-07-09");
     zimbabweMap.put("endsAt", "2015-010-21");
     zimbabweMap.put("contact", "Bitte per Email melden (ziegel@zimbabwe.com)");
-    addTestProject(zimbabweMap, address, testUser);
+    projects.add(addTestProject(zimbabweMap, address, testUser));
 
   }
 
@@ -109,9 +111,11 @@ public class Global extends GlobalSettings {
     return address;
   }
   
-  @Override
+  /*@Override
   public void onStop(Application app) {
-
-  }  
-    
+    for (Project project : projects){
+      project.delete();
+    }
+    testUser.delete();
+  }*/
 }
