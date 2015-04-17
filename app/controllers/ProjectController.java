@@ -62,7 +62,7 @@ public class ProjectController extends Controller {
             Address address = setAddress(projectDataForm);
             models.Project project = createProject(projectDataForm, address, user);
             addDonationGoals(project, projectDataForm);
-            return redirect(routes.ProjectController.getProjects(0));
+            return redirect(routes.ProjectController.getProject(0));
         }
     }
 

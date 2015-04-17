@@ -1,3 +1,6 @@
+# --- Created by Ebean DDL
+# To stop Ebean DDL generation, remove this comment and start using Evolutions
+
 # --- !Ups
 
 create table address (
@@ -9,7 +12,6 @@ create table address (
 
 create table donation (
   id                        bigint not null,
-  description               varchar(255),
   date                      date,
   amount                    integer,
   message_to_collector      varchar(255),
@@ -20,9 +22,9 @@ create table donation (
 
 create table donation_goal (
   id                        bigint not null,
-  donation_type_id          bigint not null,
   amount                    integer,
   project_id                bigint,
+  type_id                   bigint,
   constraint pk_donation_goal primary key (id))
 ;
 
