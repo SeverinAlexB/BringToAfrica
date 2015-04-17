@@ -24,20 +24,6 @@ public class Project extends Model {
     @OneToOne(cascade=CascadeType.ALL)
     private Address address;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    private List<DonationGoal> donationGoals;
-
-    @OneToMany(cascade=CascadeType.ALL)
-    private List<Donation> donations;
-
-    public void addDonation(Donation donation){
-        donations.add(donation);
-    }
-
-    public void addDonationGoal(DonationGoal donationGoal){
-        donationGoals.add(donationGoal);
-    }
-
     public void addNews(News news){
         this.news.add(news);
     }
@@ -111,21 +97,6 @@ public class Project extends Model {
         this.address = address;
     }
 
-    public List<DonationGoal> getDonationGoals() {
-        return donationGoals;
-    }
-
-    public void setDonationGoals(List<DonationGoal> donationGoals) {
-        this.donationGoals = donationGoals;
-    }
-
-    public List<Donation> getDonations() {
-        return donations;
-    }
-
-    public void setDonations(List<Donation> donations) {
-        this.donations = donations;
-    }
 
     public static Finder<Long,Project> find = new Finder<Long,Project>(
             Long.class, Project.class

@@ -19,16 +19,9 @@ public class User extends Model{
     @OneToMany(cascade=CascadeType.ALL)
     private List<Project> projects;
 
-    //@OneToMany(cascade=CascadeType.ALL)
-    //private List<Donation> donations;
-
-
-
     public void addProject(Project project){
         projects.add(project);
     }
-
-
 
     public List<Project> getProjects() {
         return projects;

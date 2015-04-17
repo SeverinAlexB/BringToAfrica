@@ -18,6 +18,22 @@ public class Donation extends Model{
     @ManyToOne
     User user;
 
+    @ManyToOne
+    DonationGoal donationGoal;
+
+    public Donation(User user, DonationGoal donationGoal){
+        this.user = user;
+        this.donationGoal = donationGoal;
+    }
+
+    public DonationGoal getDonationGoal() {
+        return donationGoal;
+    }
+
+    public void setDonationGoal(DonationGoal donationGoal) {
+        this.donationGoal = donationGoal;
+    }
+
     public User getUser() {
         return user;
     }
