@@ -18,8 +18,10 @@ GET         /logout                        controllers.LoginController.logout()
 GET         /registration                  controllers.RegistrationController.registration()
 POST        /registration                  controllers.RegistrationController.register()
 
-GET         /mydonations          controllers.MyDonationsController.myDonations()
+GET         /mydonations                   controllers.MyDonationsController.myDonations()
 
+GET         /myprofile                     controllers.MyProfileController.myProfile()
+GET         /myprofiel/save                controllers.MyProfileController.saveMyProfile()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                  controllers.Assets.at(path="/public", file)
