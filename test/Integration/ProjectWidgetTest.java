@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 
 public class ProjectWidgetTest {
 
-    @Test
+    /*@Test
     public void WidgetTest(){
         DatabaseTest.runInFilledApp((browser -> {
             assertTrue(Project.find.all().size() == 1);
@@ -56,5 +56,5 @@ public class ProjectWidgetTest {
 
         }));
 
-    }
+    }*/
 }

@@ -18,7 +18,6 @@ import views.html.newProject;
 import java.util.ArrayList;
 import java.util.List;
 import services.ProjectService;
-import services.ConsumerService;
 
 
 public class ProjectController extends Controller {
@@ -62,7 +61,7 @@ public class ProjectController extends Controller {
             Address address = setAddress(projectDataForm);
             models.Project project = createProject(projectDataForm, address, user);
             addDonationGoals(project, projectDataForm);
-            return redirect(routes.ProjectController.getProject(0));
+            return redirect(routes.ApplicationController.index());
         }
     }
 
