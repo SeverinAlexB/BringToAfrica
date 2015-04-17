@@ -11,7 +11,7 @@ public class ApplicationController extends Controller {
         return redirect(routes.ProjectController.getProjects(0));
     }
 
-    public static User getCurrent() {
+    public static User getCurrentUser() {
         String username = play.mvc.Controller.session().get("email");
         return ConsumerService.getConsumerByEmail(username);
     }

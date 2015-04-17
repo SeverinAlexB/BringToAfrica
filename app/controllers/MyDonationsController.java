@@ -2,10 +2,8 @@ package controllers;
 
 import models.Donation;
 import models.User;
-import play.data.Form;
 import play.mvc.Result;
 import play.mvc.Security;
-import viewmodels.LoginData;
 import viewmodels.MyDonations.MyDonationsData;
 
 import java.util.List;
@@ -21,7 +19,7 @@ public class MyDonationsController {
     }
 
     public static MyDonationsData getData() {
-        User user = ApplicationController.getCurrent();
+        User user = ApplicationController.getCurrentUser();
         List<Donation> donations = Donation.find.where().eq("user",user).findList();
         return null;
     }

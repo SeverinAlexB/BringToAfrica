@@ -32,14 +32,7 @@ public class ProjectWidgetTest {
             donation.save();
             donation.setUser(user);
             user.addProject(project);
-<<<<<<< HEAD
-            project.addDonation(donation);
-            assertEquals(1,Donation.find.all().size());
-            System.out.println(project.getDonationGoals().get(0).getAmount());
-            System.out.println(project.getDonations().get(0).getAmount());
-=======
             user.save();
->>>>>>> origin/ProjectWidget
             int state = ProjectService.getStateOfProjectInPercent(project);
             System.out.println(state);
             assertEquals(5, state);

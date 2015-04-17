@@ -39,7 +39,7 @@
                     <h1>BringToAfrica</h1>
                 </a>
                 <div class="social-links col-xs-12 col-sm-10">
-                    @if(ApplicationController.getCurrent() == null) {
+                    @if(ApplicationController.getCurrentUser() == null) {
                         <a href="@routes.LoginController.login()" class="btn btn-default btn-volunteer">Login</a>
                     } else {
                         <a href="@routes.LoginController.logout()" class="btn btn-default btn-volunteer">Logout</a>

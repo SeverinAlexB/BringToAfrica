@@ -1,11 +1,8 @@
 package services;
 
 import models.Donation;
-<<<<<<< HEAD
 import models.User;
-=======
 import models.DonationGoal;
->>>>>>> origin/ProjectWidget
 
 import java.util.List;
 

@@ -25,6 +25,7 @@ public class Donation extends Model{
         this.user = user;
         this.donationGoal = donationGoal;
     }
+    public Donation() {}
 
     public DonationGoal getDonationGoal() {
         return donationGoal;
