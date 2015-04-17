@@ -57,4 +57,5 @@ public class ProjectWidget {
     public void setImageLink(String imageLink) {
         this.imageLink = imageLink;
     }
+
 }

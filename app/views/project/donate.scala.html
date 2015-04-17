@@ -7,7 +7,20 @@
                     ×
                 </button>
                 <header class="page-header">
-                    <h2>You are donating to. <strong>Example Causes name</strong></h2>
+                    <h2>Spenden</h2>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label for="add-note">Wie funktioniert die Kontaktaufnahme?</label>
+                            <h5><p>Sende mir die Güter einfach per Post an die folgende Adresse:
+                                Claudia Hofstetter
+                                Holzrai 7
+                                Kreis 999
+                                8000 Zürich
+                            </p>
+
+                            </h5>
+                        </div>
+                    </div>
                 </header>
             </div>
             <div class="modal-body">
@@ -16,21 +29,21 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group col-xs-12 col-sm-6">
-                                <label>How much would you like to donate ?</label>
+                                <label>Wieviel möchtest du spenden?</label>
 
                                 <div class="choose-pricing">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-default active">
-                                            $12
+                                            1
                                         </button>
                                         <button type="button" class="btn btn-default">
-                                            $22
+                                            2
                                         </button>
                                         <button type="button" class="btn btn-default">
-                                            $32
+                                            3
                                         </button>
 
-                                        <input placeholder="Custom" class="inpt-first form-control" type="text">
+                                        <input placeholder="Eingabe" class="inpt-first form-control" type="number">
 
                                     </div>
                                 </div>
@@ -44,65 +57,35 @@
                             <div class="form-group col-xs-12 col-sm-6">
                                 <div class="dropdown">
                                     <button class="btn btn-width dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <small> Donation Type</small>
+                                        <small>Spendenkategorie</small>
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                         <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#">Every Monthly (Recurring)</a>
+                                            <a role="menuitem" tabindex="-1" href="#">Laptop</a>
                                         </li>
                                         <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#">One Time Donation</a>
+                                            <a role="menuitem" tabindex="-1" href="#">Maus</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="#">Tastatur</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="form-group col-xs-12 col-sm-6">
-                                <label for="name">Name<span>*</span></label>
-                                <input class="form-control" id="name" type="text">
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-6">
-                                <label for="last-name">Last Name<span>*</span></label>
-                                <input class="form-control" id="last-name" type="text">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="form-group col-xs-12 col-sm-6">
-                                <label for="name">Email<span>*</span></label>
-                                <input class="form-control" id="email" type="text">
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-6">
-                                <label for="phone">Phone<span>*</span></label>
-                                <input class="form-control" id="phone" type="text">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="form-group col-xs-12 col-sm-6">
-                                <label for="message">Address<span>*</span></label>
-                                <textarea class="form-control" id="message"></textarea>
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-6">
-                                <label for="add-note">Additional Note</label>
-                                <textarea class="form-control" id="add-note"></textarea>
-                            </div>
+                            <label for="add-note">Zusätzliche Notiz</label>
+                            <textarea class="form-control" id="add-note"></textarea>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group col-xs-12">
-                                <input value="DONATE" class="btn btn-default pull-right" type="submit">
+                                <input value="Spenden" class="btn btn-default pull-right" type="submit">
                             </div>
                         </div>
                     </div>
@@ -111,7 +94,7 @@
                         <div class="col-xs-12">
                             <div class="form-group col-xs-12">
                                 <p class="forms-notes">
-                                    Note: Lorem ipsum dolor sit amet
+                                    Fehlermeldung: Keine Spendenkategorie gewählt
                                 </p>
                             </div>
                         </div>
