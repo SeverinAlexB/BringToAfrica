@@ -1,6 +1,3 @@
-# --- Created by Ebean DDL
-# To stop Ebean DDL generation, remove this comment and start using Evolutions
-
 # --- !Ups
 
 create table address (
@@ -12,7 +9,6 @@ create table address (
 
 create table donation (
   id                        bigint not null,
-  project_id                bigint not null,
   description               varchar(255),
   date                      date,
   amount                    integer,
@@ -26,6 +22,7 @@ create table donation_goal (
   id                        bigint not null,
   donation_type_id          bigint not null,
   amount                    integer,
+  project_id                bigint,
   constraint pk_donation_goal primary key (id))
 ;
 
@@ -81,14 +78,14 @@ create sequence project_seq;
 
 create sequence AfrikaUser_seq;
 
-alter table donation add constraint fk_donation_project_1 foreign key (project_id) references project (id);
-create index ix_donation_project_1 on donation (project_id);
-alter table donation add constraint fk_donation_user_2 foreign key (user_id) references AfrikaUser (id);
-create index ix_donation_user_2 on donation (user_id);
-alter table donation add constraint fk_donation_donationGoal_3 foreign key (donation_goal_id) references donation_goal (id);
-create index ix_donation_donationGoal_3 on donation (donation_goal_id);
-alter table donation_goal add constraint fk_donation_goal_donation_type_4 foreign key (donation_type_id) references donation_type (id);
-create index ix_donation_goal_donation_type_4 on donation_goal (donation_type_id);
+alter table donation add constraint fk_donation_user_1 foreign key (user_id) references AfrikaUser (id);
+create index ix_donation_user_1 on donation (user_id);
+alter table donation add constraint fk_donation_donationGoal_2 foreign key (donation_goal_id) references donation_goal (id);
+create index ix_donation_donationGoal_2 on donation (donation_goal_id);
+alter table donation_goal add constraint fk_donation_goal_donation_type_3 foreign key (donation_type_id) references donation_type (id);
+create index ix_donation_goal_donation_type_3 on donation_goal (donation_type_id);
+alter table donation_goal add constraint fk_donation_goal_project_4 foreign key (project_id) references project (id);
+create index ix_donation_goal_project_4 on donation_goal (project_id);
 alter table news add constraint fk_news_project_5 foreign key (project_id) references project (id);
 create index ix_news_project_5 on news (project_id);
 alter table project add constraint fk_project_AfrikaUser_6 foreign key (user_id) references AfrikaUser (id);
