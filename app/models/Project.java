@@ -18,7 +18,7 @@ public class Project extends Model {
     private Date endsAt;
     private String contact;
 
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(cascade=CascadeType.REMOVE)
     private List<News> news;
 
     @OneToOne(cascade=CascadeType.ALL)
