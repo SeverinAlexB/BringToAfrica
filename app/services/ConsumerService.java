@@ -27,5 +27,20 @@ public class ConsumerService {
         play.mvc.Controller.session("email", email);
     }
 
+    public static boolean changePassword(User user, String oldPassword, String newPassword){
+        if(isValid(user.getEmail(), oldPassword)){
+            String hash = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            user.setPasswordHashedSalted(hash);
+            user.save();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static boolean validatePasswords(String password1, String password2){
+        return password1.equals(password2) && !password1.isEmpty();
+    }
+
 
 }

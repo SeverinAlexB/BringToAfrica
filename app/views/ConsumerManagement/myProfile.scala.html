@@ -2,48 +2,56 @@
 @import helper._
 
 @main("BringToAfrica") {
+  <script type='text/javascript' src='@routes.Assets.at("js/changePassword.js")'></script>
   <ul id="projects"></ul>
   <div class="container" id="page-info">
     <div class="row">
       <div class="col-xs-12">
         <section class="checkout anim-section animate">
-          <div id="myId" class="hidden">@myProfileForm("id").value</div>
           <div class="row">
             @helper.form(action = routes.MyProfileController.saveMyProfile()) {
+              <input class="hidden" type="text" name="id" placeholder="id" value='@myProfileForm("id").value' required>
               <h1>Profil @myProfileForm("firstname").value @myProfileForm("lastname").value bearbeiten</h1>
               <div class="row">
                 <div class="col-xs-11 col-sm-6">
                   <p>
-                    <input class="form-control" type="text" name="firstname" placeholder="Vorname" value="@myProfileForm("firstname").value" required>
+                    <input class="form-control" type="text" name="firstname" placeholder="Vorname" value='@myProfileForm("firstname").value' required>
                   </p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-xs-11 col-sm-6">
                   <p>
-                    <input class="form-control" type="text" name="lastname" placeholder="Nachname" value="@myProfileForm("lastname").value" required>
+                    <input class="form-control" type="text" name="lastname" placeholder="Nachname" value='@myProfileForm("lastname").value' required>
                   </p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-xs-11 col-sm-6">
                   <p>
-                    <input class="form-control" type="email" name="email" placeholder="Email" value="@myProfileForm("email").value" required>
+                    <input class="form-control" type="email" name="email" placeholder="Email" value='@myProfileForm("email").value' required>
                   </p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-xs-11 col-sm-6">
-                  <p>Gibt dein altes Passwort an.</p>
+                  <p>Gibt dein aktuelles Passwort an.</p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-xs-11 col-sm-6">
                   <p>
-                    <input class="form-control" type="password" name="oldPassword" placeholder="Altes Passwort" value="@myProfileForm("oldPassword").value">
+                    <input class="form-control" type="password" name="oldPassword" placeholder="Aktuelles Passwort" value="@myProfileForm("oldPassword").value">
                   </p>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-xs-11 col-sm-6">
+                  <br> Passwort ändern?
+                  @checkbox(field = myProfileForm("changePassword"), 'id -> "cbx", '_label -> null, '_error -> null, '_info -> null)
+                </div>
+              </div>
+              <div id="showPasswordField">
               <div class="row">
                 <div class="col-xs-11 col-sm-6">
                   <p>Wähle ein neues Passwort, dass mindestens 8 Zeichen lang ist und mindestens eine Zahl, ein Gross-/Kleinbuchstaben und ein Sonderzeichen(&#64;&#35;&#36;&#37;&#33;) enthält.</p>
@@ -52,16 +60,17 @@
               <div class="row">
                 <div class="col-xs-11 col-sm-6">
                   <p>
-                    <input class="form-control" type="password" name="password1" placeholder="Passwort" value="@myProfileForm("password1").value">
+                    <input class="form-control" type="password" name="password1" placeholder="Passwort" value='@myProfileForm("password1").value'>
                   </p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-xs-11 col-sm-6">
                   <p>
-                    <input class="form-control" type="password" name="password2" placeholder="Passwort bestätigen" value="@myProfileForm("password2").value">
+                    <input class="form-control" type="password" name="password2" placeholder="Passwort bestätigen" value='@myProfileForm("password2").value'>
                   </p>
                 </div>
+              </div>
               </div>
               <div class="row">
                 <div class="col-xs-11 col-sm-6">

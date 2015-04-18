@@ -1,9 +1,11 @@
 package viewmodels;
 
+import models.User;
 import play.data.validation.Constraints;
+import services.ConsumerService;
 
 public class MyProfile {
-    @Constraints.Required
+    @Constraints.Required(message = "Profil hat keine id")
     public String id;
     @Constraints.Required(message = "Bitte gib deinen Vornamen hier an.")
     public String firstname;
@@ -13,19 +15,18 @@ public class MyProfile {
     @Constraints.Email(message = "Bitte gib eine gültige Emailadresse an")
     public String email;
 
-    @Constraints.Required(message = "Bitte gib dein altes Passwort an.")
+    @Constraints.Required(message = "Bitte gib dein aktuelles Passwort an.")
     public String oldPassword;
 
-    @Constraints.Required(message = "Bitte gib eine neues Passwort zum ersten Mal an.")
     public String password1;
-    @Constraints.Required(message = "Bitte gib eine neues Passwort zum zweiten Mal an.")
     public String password2;
+    public String changePassword;
 
     public String validate() {
-        if (!password1.equals(password2)) {
-            password1 = "";
-            password2 = "";
-            return "Die beiden Passwörter stimmen nicht überein.";
+        long id = Long.parseLong(this.id);
+        User user = User.find.byId(id);
+        if (!ConsumerService.isValid(user.getEmail(), this.oldPassword)) {
+            return "aktuelles Passwort ungültig";
         }
         return null;
     }
