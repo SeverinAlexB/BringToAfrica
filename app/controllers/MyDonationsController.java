@@ -10,6 +10,7 @@ import viewmodels.MyDonations.DonationData;
 import viewmodels.MyDonations.MyDonationsData;
 import viewmodels.MyDonations.ProjectDonationData;
 import viewmodels.ProjectData;
+import viewmodels.RegistrationData;
 
 import java.util.List;
 
@@ -19,10 +20,13 @@ import java.util.List;
 public class MyDonationsController {
     @Security.Authenticated(AuthenticationController.class)
     public static Result myDonations() {
-        return play.mvc.Controller.ok(views.html.myDonations.render(Form.form(MyDonationsData.class)));
+        MyDonationsData data = getData();
+        Form<MyDonationsData> form = Form.form(MyDonationsData.class).fill(data);
+
+        return play.mvc.Controller.ok(views.html.myDonations.render(data));
     }
 
-    public static MyDonationsData getData() {
+    private static MyDonationsData getData() {
         User user = ApplicationController.getCurrentUser();
         return getFormData(user);
     }

@@ -81,7 +81,7 @@ public class DatabaseTest {
     private static FakeApplication getApp(String yamlFile) {
         HashMap<String,String> database = getH2TestDB();
         cleanDatabase(database);
-        if(yamlFile == null) fillDatabase(database,"test-data.yml");
+        if(yamlFile == null) fillDatabase(database, "testFiles/test-data.yml");
         else fillDatabase(database, yamlFile);
         return fakeApplication(database);
     }

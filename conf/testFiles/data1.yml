@@ -95,5 +95,11 @@ Donations:
         date:           2015-06-30
         amount:         5
         messageToCollector: haben sie spass an diese
+        user:           *user1
+        donationGoal:   *goal3
+    - &donation4 !!models.Donation
+        date:           2015-06-30
+        amount:         5
+        messageToCollector: haben sie spass an diese
         user:           *user2
-        donationGoal:   *goal2
+        donationGoal:   *goal3

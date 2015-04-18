@@ -53,8 +53,9 @@ public class ProjectWidgetTest {
             user.setFirstName("bob");
             Project project = new Project();
             project.setTitle("TestProject");
-            user.addProject(project);
+            project.setOwner(user);
             user.save();
+            project.save();
 
             Html widget = ProjectController.getProjectWidget(Project.find.findUnique().getId());
             assertTrue(widget.body().contains("TestProject"));
