@@ -7,6 +7,7 @@ import com.avaje.ebean.config.dbplatform.H2Platform;
 import com.avaje.ebeaninternal.api.SpiEbeanServer;
 import com.avaje.ebeaninternal.server.ddl.DdlGenerator;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
+import models.Project;
 import models.User;
 import org.junit.Test;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
@@ -18,8 +19,13 @@ import play.test.TestBrowser;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static play.test.Helpers.*;
 
 public class DatabaseTest {
@@ -54,25 +60,38 @@ public class DatabaseTest {
         ddl.runScript(false, ddl.generateCreateDdl());
         assert User.find.all().size() == 0;
     }
-    private static void fillDatabase(HashMap<String,String> database) {
+    private static void fillDatabase(HashMap<String,String> database, String yamlFile) {
         FakeApplication app = fakeApplication(database);
         Helpers.start(app);
-        Ebean.save((List) Yaml.load("test-data.yml"));
+        Map<String,List<Object>> yam = (Map) Yaml.load(yamlFile);
+        for(String s: yam.keySet()){
+            Ebean.save(yam.get(s));
+        }
+
     }
 
 
-    private static FakeApplication getApp(Boolean filledWithTestData) {
+    private static FakeApplication getApp(String yamlFile) {
         HashMap<String,String> database = getH2TestDB();
         cleanDatabase(database);
-        if(filledWithTestData) fillDatabase(database);
+        if(yamlFile == null) fillDatabase(database,"test-data.yml");
+        else fillDatabase(database, yamlFile);
+        return fakeApplication(database);
+    }
+    private static FakeApplication getApp() {
+        HashMap<String,String> database = getH2TestDB();
+        cleanDatabase(database);
         return fakeApplication(database);
     }
 
     public static void runInCleanApp(F.Callback<TestBrowser> run) {
-        running(testServer(3333, getApp(false)), new HtmlUnitDriver(BrowserVersion.CHROME), run);
+        running(testServer(3333, getApp()), new HtmlUnitDriver(BrowserVersion.CHROME), run);
     }
     public static void runInFilledApp(F.Callback<TestBrowser> run) {
-        running(testServer(3333, getApp(true)), new HtmlUnitDriver(BrowserVersion.CHROME), run);
+        running(testServer(3333, getApp(null)), new HtmlUnitDriver(BrowserVersion.CHROME), run);
+    }
+    public static void runInFilledApp(String yamlFile,F.Callback<TestBrowser> run) {
+        running(testServer(3333, getApp(yamlFile)), new HtmlUnitDriver(BrowserVersion.CHROME), run);
     }
 
     @Test
@@ -97,10 +116,12 @@ public class DatabaseTest {
     @Test
     public void testFakeDataBaseFull() {
         runInFilledApp((TestBrowser t) -> {
-            assertThat(User.find.findUnique() != null);
+            assertThat(User.find.all().size() >0);
             User testUser = User.find.where().like("email", "bob@gmail.com").findUnique();
             assertThat(testUser.getEmail().equals("bob@gmail.com"));
-
+            assertTrue(User.find.all().size() > 0);
+            assertTrue(Project.find.all().size() > 0);
+            assertNotNull(Project.find.all().get(0).getOwner());
         });
     }
 }

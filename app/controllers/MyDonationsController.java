@@ -3,11 +3,13 @@ package controllers;
 import models.Donation;
 import models.Project;
 import models.User;
+import play.data.Form;
 import play.mvc.Result;
 import play.mvc.Security;
 import viewmodels.MyDonations.DonationData;
 import viewmodels.MyDonations.MyDonationsData;
 import viewmodels.MyDonations.ProjectDonationData;
+import viewmodels.ProjectData;
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ import java.util.List;
 public class MyDonationsController {
     @Security.Authenticated(AuthenticationController.class)
     public static Result myDonations() {
-        return play.mvc.Controller.ok(views.html.myDonations.render());
+        return play.mvc.Controller.ok(views.html.myDonations.render(Form.form(MyDonationsData.class)));
     }
 
     public static MyDonationsData getData() {

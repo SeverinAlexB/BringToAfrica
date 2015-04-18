@@ -11,7 +11,7 @@ public class LoginTest {
     @Test
     public void LoginTest(){
         DatabaseTest.runInFilledApp((browser -> {
-            assertTrue(User.find.all().size() == 1);
+            assertTrue(User.find.all().size() > 0);
             assertTrue(browser.getCookies().size() == 0);
 
             browser.goTo("http://localhost:3333/login");
@@ -26,7 +26,7 @@ public class LoginTest {
     @Test
     public void wrongLoginTest(){
         DatabaseTest.runInFilledApp((browser -> {
-            assertTrue(User.find.all().size() == 1);
+            assertTrue(User.find.all().size() > 0);
             assertTrue(browser.getCookies().size() == 0);
 
             browser.goTo("http://localhost:3333/login");
