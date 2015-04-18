@@ -17,6 +17,7 @@ import play.test.FakeApplication;
 import play.test.Helpers;
 import play.test.TestBrowser;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,11 +64,17 @@ public class DatabaseTest {
     private static void fillDatabase(HashMap<String,String> database, String yamlFile) {
         FakeApplication app = fakeApplication(database);
         Helpers.start(app);
-        Map<String,List<Object>> yam = (Map) Yaml.load(yamlFile);
-        for(String s: yam.keySet()){
-            Ebean.save(yam.get(s));
-        }
 
+        Object yam = Yaml.load(yamlFile);
+
+        if(yam instanceof ArrayList) {
+            Ebean.save((List)yam);
+        } else {
+            Map<String,List<Object>> yamMap = (Map) yam;
+            for(String s: yamMap.keySet()){
+                Ebean.save(yamMap.get(s));
+            }
+        }
     }
 
 
@@ -116,12 +123,9 @@ public class DatabaseTest {
     @Test
     public void testFakeDataBaseFull() {
         runInFilledApp((TestBrowser t) -> {
-            assertThat(User.find.all().size() >0);
-            User testUser = User.find.where().like("email", "bob@gmail.com").findUnique();
-            assertThat(testUser.getEmail().equals("bob@gmail.com"));
             assertTrue(User.find.all().size() > 0);
             assertTrue(Project.find.all().size() > 0);
-            assertNotNull(Project.find.all().get(0).getOwner());
+
         });
     }
 }
