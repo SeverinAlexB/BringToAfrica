@@ -6,9 +6,7 @@ import org.mindrot.jbcrypt.BCrypt;
 public class ConsumerService {
 
     public static User getConsumerByEmail(String email){
-        if(email == null) {
-            return null;
-        }
+        if(email == null)return null;
         return User.find.where().like("email", email.toLowerCase()).findUnique();
     }
 
@@ -39,7 +37,8 @@ public class ConsumerService {
     }
 
     public static boolean validatePasswords(String password1, String password2){
-        return password1.equals(password2) && !password1.isEmpty();
+        String pattern = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!]).{8,20})";
+        return password1.equals(password2) && !password1.isEmpty() && password1.matches(pattern);
     }
 
 
