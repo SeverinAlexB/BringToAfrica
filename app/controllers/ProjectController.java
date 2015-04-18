@@ -7,6 +7,7 @@ import models.*;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.twirl.api.Html;
 import services.DonationTypeService;
 import viewmodels.DateConverter;
 import play.mvc.Security;
@@ -24,12 +25,11 @@ public class ProjectController extends Controller {
 
     private static int PAGE_SIZE = 10;
 
-    public static Result getProjects(int page) {
-        Page<Project> projectPage = ProjectService.getProjectPage(PAGE_SIZE,page);
-
+    public static Result getProjectWidgets(int page) {
+        Page<Project> projectPage = ProjectService.getProjectPage(PAGE_SIZE, page);
         if(projectPage == null){
             System.out.println("null");
-            return badRequest();
+            return badRequest("Bad Request 404");
         }else{
             List<ProjectWidget> widgets = new ArrayList<>();
             for(Project p :projectPage.getList()) {
@@ -38,6 +38,12 @@ public class ProjectController extends Controller {
             return ok(views.html.index.render(widgets, projectPage.getTotalPageCount(), page));
         }
 
+    }
+
+    public static Html getProjectWidget(long id) {
+        Project project = ProjectService.getProjectById(id);
+        ProjectWidget projectWidget = new ProjectWidget(project);
+        return views.html.ProjectManagement.widget.render(projectWidget);
     }
 
     public static Result getProject(long id) {
@@ -80,8 +86,13 @@ public class ProjectController extends Controller {
                 donationGoal.setProject(project);
                 donationGoal.save();
             }
+            address.setCountry(projectDataForm.get().country);
+            address.setCity(projectDataForm.get().city);
+            project.setAddress(address);
+            user.addProject(project);
+            user.save();
+            return redirect(routes.ProjectController.getProjectWidgets(0));
 
-            return redirect(routes.ProjectController.getProjects(0));
         }
     }
 
