@@ -1,10 +1,10 @@
 package services;
 
 import com.avaje.ebean.Page;
-import com.avaje.ebean.PagingList;
 import models.Donation;
 import models.DonationGoal;
 import models.Project;
+
 import java.util.List;
 
 public class ProjectService {
@@ -38,7 +38,7 @@ public class ProjectService {
                 state += d.getAmount();
             }
         }
-        if(goal == 0 || state == 0)return 0;
+        if (goal == 0 || state == 0) return 0;
         return 100 / goal * state;
     }
 }

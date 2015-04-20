@@ -1,6 +1,5 @@
 package viewmodels;
 
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import play.data.validation.Constraints;
 import services.ConsumerService;
 

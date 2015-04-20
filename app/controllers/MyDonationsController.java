@@ -9,8 +9,6 @@ import play.mvc.Security;
 import viewmodels.MyDonations.DonationData;
 import viewmodels.MyDonations.MyDonationsData;
 import viewmodels.MyDonations.ProjectDonationData;
-import viewmodels.ProjectData;
-import viewmodels.RegistrationData;
 
 import java.util.List;
 

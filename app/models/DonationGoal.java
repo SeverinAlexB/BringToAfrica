@@ -35,8 +35,6 @@ public class DonationGoal extends Model{
         return donations;
     }
 
-
-
     public Project getProject() {
         return project;
     }
@@ -60,7 +58,6 @@ public class DonationGoal extends Model{
     public void setAmount(int amount) {
         this.amount = amount;
     }
-
 
     public static Finder<Long,DonationGoal> find = new Finder<>(
             Long.class, DonationGoal.class

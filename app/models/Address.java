@@ -26,6 +26,7 @@ public class Address extends Model {
     public void setCountry(String country) {
         this.country = country;
     }
+
     public String getCity() {
         return city;
     }
@@ -34,7 +35,7 @@ public class Address extends Model {
         this.city = city;
     }
 
-    public static Finder<Long,Address> find = new Finder<Long,Address>(
+    public static Finder<Long,Address> find = new Finder<>(
             Long.class, Address.class
     );
 }

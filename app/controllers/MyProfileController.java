@@ -1,17 +1,11 @@
 package controllers;
 
-import models.Donation;
 import models.User;
-import org.mindrot.jbcrypt.BCrypt;
 import play.data.Form;
 import play.mvc.Result;
 import play.mvc.Security;
 import services.ConsumerService;
-import viewmodels.MyDonations.MyDonationsData;
 import viewmodels.MyProfile;
-import viewmodels.RegistrationData;
-
-import java.util.List;
 
 public class MyProfileController {
     @Security.Authenticated(AuthenticationController.class)
@@ -53,8 +47,8 @@ public class MyProfileController {
         String oldPassword = myProfileForm.get().oldPassword;
         String newPassword1 = myProfileForm.get().password1;
         String newPassword2 = myProfileForm.get().password2;
-        if(!ConsumerService.validatePasswords(newPassword1, newPassword2))return false;
-        if(!ConsumerService.changePassword(user, oldPassword, newPassword1))return false;
-        return true;
+
+        return ConsumerService.validatePasswords(newPassword1, newPassword2) &&
+                ConsumerService.changePassword(user, oldPassword, newPassword1);
     }
 }

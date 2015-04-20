@@ -11,9 +11,7 @@ import java.sql.Date;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by Severin on 17.04.2015.
- */
+
 public class MyDonationControllerTest extends MyDonationsController {
     public User getFilledDataStructure() {
         User user = new User();
