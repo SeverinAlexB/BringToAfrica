@@ -30,7 +30,7 @@ import static play.test.Helpers.*;
 
 public class DatabaseTest {
     private static HashMap<String,String> getPgTestDB() {
-        final HashMap<String,String> postgres = new HashMap<String, String>();
+        final HashMap<String,String> postgres = new HashMap<>();
         postgres.put("db.default.driver","org.postgresql.Driver");
         postgres.put("db.default.url","jdbc:postgresql://152.96.56.71:40000/bringtoafricatest");
         postgres.put("db.default.user", "postgres");
@@ -40,7 +40,7 @@ public class DatabaseTest {
         return postgres;
     }
     private static HashMap<String,String> getH2TestDB() {
-        final HashMap<String,String> postgres = new HashMap<String, String>();
+        final HashMap<String,String> postgres = new HashMap<>();
         postgres.put("db.default.driver", "org.h2.Driver");
         postgres.put("db.default.url","jdbc:h2:~/test");
         postgres.put("db.default.user", "sa");

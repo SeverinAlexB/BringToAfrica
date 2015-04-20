@@ -78,7 +78,7 @@ public class User extends Model{
         this.passwordHashedSalted = passwordHashedSalted;
     }
 
-    public static Finder<Long, User> find = new Finder<Long, User>(
+    public static Finder<Long, User> find = new Finder<>(
             Long.class, User.class
     );
 }

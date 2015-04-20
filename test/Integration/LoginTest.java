@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 public class LoginTest {
 
     @Test
-    public void LoginTest(){
+    public void loginWithCorrectEmailAndPasswordSetsCookie(){
         DatabaseTest.runInFilledApp((browser -> {
             assertTrue(User.find.all().size() > 0);
             assertTrue(browser.getCookies().size() == 0);
@@ -24,7 +24,7 @@ public class LoginTest {
     }
 
     @Test
-    public void wrongLoginTest(){
+    public void loginWithIncorrectPasswordDoesNotSetCookie(){
         DatabaseTest.runInFilledApp((browser -> {
             assertTrue(User.find.all().size() > 0);
             assertTrue(browser.getCookies().size() == 0);
