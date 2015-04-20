@@ -74,7 +74,7 @@ public class Donation extends Model{
         this.messageToCollector = messageToCollector;
     }
 
-    public static Finder<Long,Donation> find = new Finder<>(
+    public static Finder<Long, Donation> find = new Finder<>(
             Long.class, Donation.class
     );
 }

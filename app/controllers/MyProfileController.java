@@ -28,8 +28,8 @@ public class MyProfileController {
         } else {
             long id = Long.parseLong(myProfileForm.get().id);
             User user = User.find.byId(id);
-            if(myProfileForm.get().changePassword != null && myProfileForm.get().changePassword.equals("true")){
-                if(!editPassword(myProfileForm, user)){
+            if (myProfileForm.get().changePassword != null && myProfileForm.get().changePassword.equals("true")) {
+                if (!editPassword(myProfileForm, user)) {
                     myProfileForm.reject("password", "Konnte Passwort nicht ändern!");
                     return play.mvc.Controller.badRequest(views.html.ConsumerManagement.myProfile.render(myProfileForm));
                 }

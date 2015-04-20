@@ -35,7 +35,7 @@ public class Address extends Model {
         this.city = city;
     }
 
-    public static Finder<Long,Address> find = new Finder<>(
+    public static Finder<Long, Address> find = new Finder<>(
             Long.class, Address.class
     );
 }

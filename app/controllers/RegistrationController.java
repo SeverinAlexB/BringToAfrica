@@ -19,7 +19,7 @@ public class RegistrationController {
         if (form.hasErrors()) {
             return play.mvc.Controller.badRequest(views.html.ConsumerManagement.registration.render(form));
         } else {
-            String hash = BCrypt.hashpw(form.get().password1,BCrypt.gensalt());
+            String hash = BCrypt.hashpw(form.get().password1, BCrypt.gensalt());
 
             User c = new User();
             c.setEmail(form.get().email.toLowerCase());

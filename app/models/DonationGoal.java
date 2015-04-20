@@ -59,7 +59,7 @@ public class DonationGoal extends Model{
         this.amount = amount;
     }
 
-    public static Finder<Long,DonationGoal> find = new Finder<>(
+    public static Finder<Long, DonationGoal> find = new Finder<>(
             Long.class, DonationGoal.class
     );
 }

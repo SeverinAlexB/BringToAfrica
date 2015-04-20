@@ -58,7 +58,7 @@ public class News extends Model{
     public void setDate(Date date) {
         this.date = date;
     }
-    public static Finder<Long,News> find = new Finder<>(
+    public static Finder<Long, News> find = new Finder<>(
             Long.class, News.class
     );
 }

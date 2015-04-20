@@ -13,7 +13,7 @@ import java.util.*;
 public class Global extends GlobalSettings {
     @Override
     public void onStart(Application app) {
-        if(!isJUnitTest()) {
+        if (!isJUnitTest()) {
             cleanDatabase();
             fillDatabase("testFiles/data1.yml");
             Logger.info("test data loaded");
@@ -37,11 +37,11 @@ public class Global extends GlobalSettings {
 
     private  void fillDatabase(String yamlFile) {
         Object yaml = Yaml.load(yamlFile);
-        if(yaml instanceof ArrayList) {
+        if (yaml instanceof ArrayList) {
             Ebean.save((List) yaml);
         } else {
             Map<String,List<Object>> yamlMap = (Map<String, List<Object>>) yaml;
-            for(String s: yamlMap.keySet()){
+            for (String s: yamlMap.keySet()) {
                 Ebean.save(yamlMap.get(s));
             }
         }
@@ -57,4 +57,3 @@ public class Global extends GlobalSettings {
         }
         return false;
     }
-}

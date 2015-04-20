@@ -30,7 +30,7 @@ public class MyDonationsController {
         List<Donation> donations = user.getDonations();
         MyDonationsData result = new MyDonationsData();
 
-        for(Donation donation: donations){
+        for (Donation donation: donations) {
             Project project = donation.getDonationGoal().getProject();
             String date = donation.getDate().toString();
 

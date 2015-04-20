@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class MyDonationsData {
     public ArrayList<ProjectDonationData> donations = new ArrayList<>();
     public ProjectDonationData getOrSetData(Project project, String date, String notice){
-        for(ProjectDonationData data: donations){
-            if(project.getId() == data.project.getId() && date.equals(data.date)){
+        for (ProjectDonationData data: donations) {
+            if (project.getId() == data.project.getId() && date.equals(data.date)) {
                 return data;
             }
         }

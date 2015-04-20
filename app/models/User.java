@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="AfrikaUser")
+@Table(name = "AfrikaUser")
 public class User extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

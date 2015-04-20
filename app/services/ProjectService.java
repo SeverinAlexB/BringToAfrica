@@ -18,7 +18,7 @@ public class ProjectService {
     }
 
     public static Project getProjectByName(String name){
-       return  Project.find.where().eq("name",name).findUnique();
+       return  Project.find.where().eq("name", name).findUnique();
     }
 
     public static List<Project> getAllProjects(){
@@ -32,13 +32,15 @@ public class ProjectService {
     public static int getStateOfProjectInPercent(Project project){
         int goal = 0;
         int state = 0;
-        for(DonationGoal dg: DonationGoalService.getDonationGoalsOfProject(project)){
+        for (DonationGoal dg: DonationGoalService.getDonationGoalsOfProject(project)) {
             goal += dg.getAmount();
-            for(Donation d: DonationService.getDonationsOfDonationGoal(dg)){
+            for (Donation d: DonationService.getDonationsOfDonationGoal(dg)) {
                 state += d.getAmount();
             }
         }
-        if (goal == 0 || state == 0) return 0;
+        if (goal == 0 || state == 0) {
+            return 0;
+        }
         return 100 / goal * state;
     }
 }
