@@ -14,9 +14,7 @@ import viewmodels.RegistrationData;
 
 import java.util.List;
 
-/**
- * Created by Severin on 14.04.2015.
- */
+
 public class MyDonationsController {
     @Security.Authenticated(AuthenticationController.class)
     public static Result myDonations() {

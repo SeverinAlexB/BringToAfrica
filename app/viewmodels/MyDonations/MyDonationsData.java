@@ -4,9 +4,7 @@ import models.Project;
 
 import java.util.ArrayList;
 
-/**
- * Created by Severin on 16.04.2015.
- */
+
 public class MyDonationsData {
     public ArrayList<ProjectDonationData> donations = new ArrayList<>();
     public ProjectDonationData getOrSetData(Project project, String date, String notice){
