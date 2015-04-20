@@ -2,6 +2,7 @@ import de.johoop.cpd4sbt.CopyPasteDetector._
 import de.johoop.cpd4sbt.Language._
 import de.johoop.cpd4sbt.ReportType._
 import de.johoop.findbugs4sbt.FindBugs._
+import de.johoop.findbugs4sbt.ReportType._
 import com.etsy.sbt.Checkstyle._
 import de.johoop.jacoco4sbt._
 import JacocoPlugin._
@@ -33,6 +34,10 @@ cpdMinimumTokens := 30
 cpdSkipDuplicateFiles := true
 
 findbugsSettings
+
+findbugsReportType := Some(FancyHtml)
+
+findbugsReportPath := Some(crossTarget.value / "findbugs" / "report.html")
 
 checkstyleSettings
 
