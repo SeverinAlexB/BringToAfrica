@@ -59,7 +59,8 @@ public class ProjectController extends Controller {
         }
     }
 
-    private static Project createProject(Form<ProjectData> projectDataForm, Address address, User user) throws AfricaException {
+    private static Project createProject(
+            Form<ProjectData> projectDataForm, Address address, User user) throws AfricaException {
         models.Project project = new Project();
         project.setTitle(projectDataForm.get().title);
         project.setDescription(projectDataForm.get().description);
@@ -75,7 +76,9 @@ public class ProjectController extends Controller {
 
     private static void addDonationGoals(Project project, Form<ProjectData> projectDataForm) {
         for (int i = 0; i < projectDataForm.get().amounts.size(); i++) {
-            DonationType donationType = DonationTypeService.getOrSetDonationType(projectDataForm.get().donations.get(i));
+            DonationType donationType = DonationTypeService.getOrSetDonationType(
+                projectDataForm.get().donations.get(i)
+            );
             DonationGoal donationGoal = new DonationGoal(project);
             donationGoal.setAmount(Integer.parseInt(projectDataForm.get().amounts.get(i)));
             donationGoal.setType(donationType);

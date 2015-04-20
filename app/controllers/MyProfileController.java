@@ -17,21 +17,28 @@ public class MyProfileController {
         myProfile.firstname = user.getFirstName();
         myProfile.lastname = user.getLastName();
         Form<MyProfile> myProfileForm = Form.form(MyProfile.class).fill(myProfile);
-        return play.mvc.Controller.ok(views.html.ConsumerManagement.myProfile.render(myProfileForm));
+        return play.mvc.Controller.ok(
+            views.html.ConsumerManagement.myProfile.render(myProfileForm)
+        );
     }
 
     @Security.Authenticated(AuthenticationController.class)
     public static Result saveMyProfile() {
         Form<MyProfile> myProfileForm = Form.form(MyProfile.class).bindFromRequest();
         if (myProfileForm.hasErrors()) {
-            return play.mvc.Controller.badRequest(views.html.ConsumerManagement.myProfile.render(myProfileForm));
+            return play.mvc.Controller.badRequest(
+                views.html.ConsumerManagement.myProfile.render(myProfileForm)
+            );
         } else {
             long id = Long.parseLong(myProfileForm.get().id);
             User user = User.find.byId(id);
-            if (myProfileForm.get().changePassword != null && myProfileForm.get().changePassword.equals("true")) {
+            if (myProfileForm.get().changePassword != null &&
+                myProfileForm.get().changePassword.equals("true")) {
                 if (!editPassword(myProfileForm, user)) {
                     myProfileForm.reject("password", "Konnte Passwort nicht ändern!");
-                    return play.mvc.Controller.badRequest(views.html.ConsumerManagement.myProfile.render(myProfileForm));
+                    return play.mvc.Controller.badRequest(
+                        views.html.ConsumerManagement.myProfile.render(myProfileForm)
+                    );
                 }
             }
             user.setEmail(myProfileForm.get().email.toLowerCase());

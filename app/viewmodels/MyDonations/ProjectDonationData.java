@@ -11,5 +11,4 @@ public class ProjectDonationData {
     public ArrayList<DonationData> donations = new ArrayList<>();
     public String contact;
     public String notice;
-
 }

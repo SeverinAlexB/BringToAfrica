@@ -34,7 +34,9 @@ public class MyDonationsController {
             Project project = donation.getDonationGoal().getProject();
             String date = donation.getDate().toString();
 
-            ProjectDonationData projectdata = result.getOrSetData(project, date, donation.getMessageToCollector());
+            ProjectDonationData projectdata = result.getOrSetData(
+                project, date, donation.getMessageToCollector()
+            );
             projectdata.donations.add(new DonationData(donation));
         }
         return result;
