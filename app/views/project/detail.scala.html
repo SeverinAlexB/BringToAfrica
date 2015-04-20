@@ -1,4 +1,4 @@
-@(project: Project, donateForm: Form[viewmodels.DonationData])
+@(project: Project, donateForm: Form[viewmodels.MyDonations.CreateDonationData])
 
 @main("BringToAfrica") {
     <div class="cause-page" id="page-info">
@@ -44,5 +44,5 @@
         </div>
     </div>
 } {
-    @donate(donateForm)
+    @donate(project, donateForm)
 }

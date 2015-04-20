@@ -11,6 +11,7 @@ import services.DonationTypeService;
 import viewmodels.DateConverter;
 import play.mvc.Security;
 import viewmodels.DonationData;
+import viewmodels.MyDonations.CreateDonationData;
 import viewmodels.ProjectData;
 import viewmodels.ProjectWidget;
 import views.html.newProject;
@@ -40,9 +41,14 @@ public class ProjectController extends Controller {
     }
 
     public static Result getProject(long id) {
-        Form<DonationData> donationForm = Form.form(DonationData.class);
         Project project = ProjectService.getProjectById(id);
-        return ok(views.html.project.detail.render(project, donationForm));
+        return ok(views.html.project.detail.render(project, createDonationForm(project)));
+    }
+
+    private static Form<CreateDonationData> createDonationForm(Project project) {
+        List<DonationGoal> goals = project.getDonationGoals();
+        CreateDonationData data = new CreateDonationData(goals);
+        return Form.form(CreateDonationData.class).fill(data);
     }
 
     @Security.Authenticated(AuthenticationController.class)

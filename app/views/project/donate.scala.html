@@ -1,4 +1,4 @@
-@(donateForm: Form[viewmodels.DonationData])
+@(project: Project, donateForm: Form[viewmodels.MyDonations.CreateDonationData])
 <div aria-hidden="true" style="display: none;" class="modal donate-form">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -7,7 +7,7 @@
                     ×
                 </button>
                 <header class="page-header">
-                    <h2>You are donating to. <strong>Example Causes name</strong></h2>
+                    <h2>Du spendest für <strong>@project.getTitle()</strong></h2>
                 </header>
             </div>
             <div class="modal-body">
@@ -31,94 +31,14 @@
                                         </button>
 
                                         <input placeholder="Custom" class="inpt-first form-control" type="text">
-
                                     </div>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-
-                    <div class="row display">
-                        <div class="col-xs-12">
-                            <div class="form-group col-xs-12 col-sm-6">
-                                <div class="dropdown">
-                                    <button class="btn btn-width dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <small> Donation Type</small>
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#">Every Monthly (Recurring)</a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#">One Time Donation</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="form-group col-xs-12 col-sm-6">
-                                <label for="name">Name<span>*</span></label>
-                                <input class="form-control" id="name" type="text">
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-6">
-                                <label for="last-name">Last Name<span>*</span></label>
-                                <input class="form-control" id="last-name" type="text">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="form-group col-xs-12 col-sm-6">
-                                <label for="name">Email<span>*</span></label>
-                                <input class="form-control" id="email" type="text">
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-6">
-                                <label for="phone">Phone<span>*</span></label>
-                                <input class="form-control" id="phone" type="text">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="form-group col-xs-12 col-sm-6">
-                                <label for="message">Address<span>*</span></label>
-                                <textarea class="form-control" id="message"></textarea>
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-6">
-                                <label for="add-note">Additional Note</label>
-                                <textarea class="form-control" id="add-note"></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="form-group col-xs-12">
-                                <input value="DONATE" class="btn btn-default pull-right" type="submit">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="form-group col-xs-12">
-                                <p class="forms-notes">
-                                    Note: Lorem ipsum dolor sit amet
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
                 </form>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+    </div>
 </div>
