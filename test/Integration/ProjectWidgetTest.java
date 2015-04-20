@@ -1,9 +1,17 @@
 package Integration;
 
 
+import controllers.ProjectController;
+import models.*;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import play.twirl.api.Html;
+import services.ProjectService;
+
 public class ProjectWidgetTest {
 
-    /*@Test
+    @Test
     public void WidgetTest(){
         DatabaseTest.runInFilledApp((browser -> {
             assertTrue(Project.find.all().size() > 0);
@@ -50,5 +58,5 @@ public class ProjectWidgetTest {
 
         }));
 
-    }*/
+    }
 }
