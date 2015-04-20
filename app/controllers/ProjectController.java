@@ -22,7 +22,7 @@ import services.ProjectService;
 
 public class ProjectController extends Controller {
 
-    private static int PAGE_SIZE = 10;
+    private static final int PAGE_SIZE = 10;
 
     public static Result getProjectWidgets(int page) {
         Page<Project> projectPage = ProjectService.getProjectPage(PAGE_SIZE, page);

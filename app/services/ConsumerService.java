@@ -14,7 +14,7 @@ public class ConsumerService {
         User user = getConsumerByEmail(email);
         if(user == null) {
             return false;
-        } else if(!BCrypt.checkpw(password, user.getPasswordHashedSalted())) {;
+        } else if(!BCrypt.checkpw(password, user.getPasswordHashedSalted())) {
             return false;
         }else{
             return true;

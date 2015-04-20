@@ -40,5 +40,5 @@ public class ProjectService {
         }
         if(goal == 0 || state == 0)return 0;
         return 100 / goal * state;
-    };
+    }
 }

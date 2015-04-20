@@ -114,7 +114,7 @@ public class Project extends Model {
     }
 
 
-    public static Finder<Long,Project> find = new Finder<Long,Project>(
+    public static Finder<Long,Project> find = new Finder<>(
             Long.class, Project.class
     );
 
