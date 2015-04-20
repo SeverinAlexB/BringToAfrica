@@ -1,6 +1,3 @@
-/**
- * Created by Severin on 18.04.2015.
- */
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.EbeanServer;
 import com.avaje.ebean.config.ServerConfig;
@@ -14,10 +11,9 @@ import play.libs.Yaml;
 import java.util.*;
 
 public class Global extends GlobalSettings {
-    private boolean loadTestData = true;
     @Override
     public void onStart(Application app) {
-        if(loadTestData && !isJUnitTest()) {
+        if(!isJUnitTest()) {
             cleanDatabase();
             fillDatabase("testFiles/data1.yml");
             Logger.info("test data loaded");
@@ -38,17 +34,19 @@ public class Global extends GlobalSettings {
         ddl.runScript(false, ddl.generateCreateDdl());
         assert User.find.all().size() == 0;
     }
+
     private  void fillDatabase(String yamlFile) {
-        Object yam = Yaml.load(yamlFile);
-        if(yam instanceof ArrayList) {
-            Ebean.save((List) yam);
+        Object yaml = Yaml.load(yamlFile);
+        if(yaml instanceof ArrayList) {
+            Ebean.save((List) yaml);
         } else {
-            Map<String,List<Object>> yamMap = (Map) yam;
-            for(String s: yamMap.keySet()){
-                Ebean.save(yamMap.get(s));
+            Map<String,List<Object>> yamlMap = (Map<String, List<Object>>) yaml;
+            for(String s: yamlMap.keySet()){
+                Ebean.save(yamlMap.get(s));
             }
         }
     }
+
     private  boolean isJUnitTest() {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         List<StackTraceElement> list = Arrays.asList(stackTrace);
