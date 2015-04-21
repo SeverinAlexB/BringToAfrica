@@ -8,9 +8,7 @@ import services.ConsumerService;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created by SKU on 18.04.2015.
- */
+
 public class MyProfileTest {
     @Test
     public void changeNameTest(){
