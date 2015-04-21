@@ -1,0 +1,125 @@
+Users:
+    - &user1 !!models.User
+        firstName:  bob
+        lastName:   bobmann
+        email:      bob@gmail.com
+        passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
+    - &user2 !!models.User
+        firstName:  Max
+        lastName:   Muster
+        email:      max@gmail.com
+        passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
+
+DonationTypes:
+    - &type1 !!models.DonationType
+        name:       Laptop
+    - &type2 !!models.DonationType
+        name:       Maus
+    - &type3 !!models.DonationType
+        name:       Tastatur
+
+Addresses:
+    - &address1 !!models.Address
+        country:    Nigeria
+        city:       Abuja
+    - &address2 !!models.Address
+        country:    South Africa
+        city:       Johannesburg
+
+Projects:
+    - &project1 !!models.Project
+        title:          Handys nach Honduras
+        description:    Honduras bracht Handys
+        imageURL:       http://images.nationalgeographic.com/wpf/media-live/photos/000/030/cache/honduras_3022_600x450.jpg
+        startsAt:       2015-05-17
+        endsAt:         2015-05-25
+        contact:        Bitte per Email melden (honduras@honduras.com)
+        address:        *address1
+        owner:          *user1
+    - &project2 !!models.Project
+        title:          Velos nach Venezuela
+        description:    Venezuela bracht Velos, damit sie wirder etwas fitter in den Beinen werden
+        imageURL:       http://www.couch-mag.de/sites/default/files/styles/large/public/Artikelbild_4.jpg?itok=wgOi2O5f
+        startsAt:       2015-05-14
+        endsAt:         2015-05-22
+        contact:        Bitte per Email melden (velos@venelzuela.com)
+        address:        *address2
+        owner:          *user2
+    - &project3 !!models.Project
+        title:          Autos nach Australien
+        description:    Die Australier sind viel zu sportlich, spendet Autos damit sie wieder dicker werden
+        imageURL:       http://www.in-australien.com/wp-content/uploads/2010/09/Campervan-Australien2.jpg
+        startsAt:       2015-06-13
+        endsAt:         2015-09-19
+        contact:        Bitte per Email melden (autos@australien.com)
+        address:        *address2
+        owner:          *user1
+    - &project4 !!models.Project
+        title:          Ziegel nach Zimbabwe
+        description:    Spendet Ziegel damit Zimbabwe bei Regen trocken schlafen kann
+        imageURL:       http://www.planetstillalive.com/wp-content/uploads/2012/07/African-sunset1-1024x680.jpg
+        startsAt:       2015-07-09
+        endsAt:         2015-10-12
+        contact:        Bitte per Email melden (ziegel@zimbabwe.com)
+        address:        *address2
+        owner:          *user1
+
+News:
+    - &news1 !!models.News
+        title:          Handys sind unterwegs
+        description:    Vielen Dank für die zahlreichen Spenden!
+        date:           2015-06-12
+        imageURL:       http://upload.wikimedia.org/wikipedia/commons/4/4c/Lufthansa_Cargo_MD11_Beladung.JPG
+        project:        *project1
+    - &news2 !!models.News
+        title:          Handys sind angekommen
+        description:    Die Empfänger haben grosse Freude an den neuen Handys
+        date:           2015-06-20
+        imageURL:       http://www.abendblatt.de/img/ausland/crop105490967/0282604747-w820-cv16_9-q85/honduras-HA-Politik-Tegucigalpa.jpg
+        project:        *project1
+    - &news3 !!models.News
+        title:          Autos sind in Australien angekommen
+        description:    Vielen Dank für die zahlreichen Spenden!
+        date:           2025-01-06
+        imageURL:       http://s6.postimg.org/d5a0dq0y9/P3021326.jpg
+        project:        *project3
+
+DonationGoals:
+    - &goal1 !!models.DonationGoal
+        amount:         10
+        project:        *project1
+        type:           *type1
+    - &goal2 !!models.DonationGoal
+        amount:         100
+        project:        *project1
+        type:           *type2
+    - &goal3 !!models.DonationGoal
+        amount:         50
+        project:        *project2
+        type:           *type1
+
+Donations:
+    - &donation1 !!models.Donation
+        date:           2015-06-30
+        amount:         5
+        messageToCollector: Der Akku des Laptops ist sehr schwach
+        user:           *user1
+        donationGoal:   *goal1
+    - &donation2 !!models.Donation
+        date:           2015-07-29
+        amount:         1
+        messageToCollector: Die Maus ist noch fast neuwertig!
+        user:           *user1
+        donationGoal:   *goal2
+    - &donation3 !!models.Donation
+        date:           2015-06-30
+        amount:         5
+        messageToCollector: Der Laptop ist noch fast neuwertig
+        user:           *user1
+        donationGoal:   *goal3
+    - &donation4 !!models.Donation
+        date:           2015-06-30
+        amount:         5
+        messageToCollector: Habe leider kein Aufladekabel für den Laptop
+        user:           *user2
+        donationGoal:   *goal3
