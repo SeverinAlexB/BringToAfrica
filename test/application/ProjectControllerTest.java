@@ -1,4 +1,4 @@
-package Application;
+package application;
 
 import controllers.ProjectController;
 import org.junit.Assert;

@@ -1,6 +1,6 @@
-package Service;
+package service;
 
-import Integration.DatabaseTest;
+import integration.DatabaseTest;
 import models.Donation;
 import models.DonationType;
 import org.junit.Test;

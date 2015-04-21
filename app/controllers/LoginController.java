@@ -11,7 +11,7 @@ public class LoginController {
 
     public static Result login() {
         return play.mvc.Controller.ok(
-            views.html.ConsumerManagement.login.render(Form.form(LoginData.class))
+            views.html.user.login.render(Form.form(LoginData.class))
         );
     }
 
@@ -19,7 +19,7 @@ public class LoginController {
         Form<LoginData> loginForm = Form.form(LoginData.class).bindFromRequest();
         if (loginForm.hasErrors()) {
             return play.mvc.Controller.badRequest(
-                views.html.ConsumerManagement.login.render(loginForm)
+                views.html.user.login.render(loginForm)
             );
         } else {
             String email = loginForm.get().email;
@@ -29,7 +29,7 @@ public class LoginController {
                 return play.mvc.Controller.redirect(routes.ApplicationController.index());
             } else {
                 return play.mvc.Controller.badRequest(
-                    views.html.ConsumerManagement.login.render(loginForm)
+                    views.html.user.login.render(loginForm)
                 );
             }
         }

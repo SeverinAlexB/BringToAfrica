@@ -37,12 +37,13 @@ public class ProjectController extends Controller {
     public static Html getProjectWidget(long id) {
         Project project = ProjectService.getProjectById(id);
         ProjectWidget projectWidget = new ProjectWidget(project);
-        return views.html.ProjectManagement.widget.render(projectWidget);
+        return views.html.project.widget.render(projectWidget);
     }
 
     public static Result getProject(long id) {
         Project project = ProjectService.getProjectById(id);
-        return ok(views.html.project.detail.render(project, createDonationForm(project)));
+        ProjectWidget widget = new ProjectWidget(project);
+        return ok(views.html.project.detail.render(widget, project, createDonationForm(project)));
     }
 
     private static Form<CreateDonationData> createDonationForm(Project project) {

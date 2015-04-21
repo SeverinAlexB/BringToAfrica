@@ -18,7 +18,7 @@ public class MyProfileController {
         myProfile.lastname = user.getLastName();
         Form<MyProfile> myProfileForm = Form.form(MyProfile.class).fill(myProfile);
         return play.mvc.Controller.ok(
-            views.html.ConsumerManagement.myProfile.render(myProfileForm)
+            views.html.user.myProfile.render(myProfileForm)
         );
     }
 
@@ -27,7 +27,7 @@ public class MyProfileController {
         Form<MyProfile> myProfileForm = Form.form(MyProfile.class).bindFromRequest();
         if (myProfileForm.hasErrors()) {
             return play.mvc.Controller.badRequest(
-                views.html.ConsumerManagement.myProfile.render(myProfileForm)
+                views.html.user.myProfile.render(myProfileForm)
             );
         } else {
             long id = Long.parseLong(myProfileForm.get().id);
@@ -37,7 +37,7 @@ public class MyProfileController {
                 if (!editPassword(myProfileForm, user)) {
                     myProfileForm.reject("password", "Konnte Passwort nicht ändern!");
                     return play.mvc.Controller.badRequest(
-                        views.html.ConsumerManagement.myProfile.render(myProfileForm)
+                        views.html.user.myProfile.render(myProfileForm)
                     );
                 }
             }
