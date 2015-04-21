@@ -2,29 +2,29 @@ package integration;
 
 
 import models.Donation;
-import models.User;
+import models.Project;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class DonateTest {
     @Test
     public void CreateDonationTest(){
-        DatabaseTest.runInCleanApp(browser -> {
+        DatabaseTest.runInFilledApp("testFiles/data1.yml", browser -> {
 
             browser.goTo("http://localhost:3333/projects/2");
             browser.getDriver().findElement(By.name("amounts[0]")).sendKeys("2");
             browser.getDriver().findElement(By.name("remarks")).sendKeys("Die Schuhe sind etwas kaputt");
             browser.getDriver().findElement(By.id("donate-submit")).click();
 
-            assertTrue(Donation.find.all().size() == 1);
-            Donation donation = Donation.find.findUnique();
+            Project project = Project.find.byId(2l);
+            Donation donation = project
+                    .getDonationGoals().get(0)
+                    .getDonations().get(2);
 
-            assertEquals(2, donation.getAmount());
-            assertEquals("Schuhe", donation.getDonationGoal().getType().getName());
-            assertEquals(new Long(2), donation.getDonationGoal().getProject().getId());
+            assertThat(donation.getDonationGoal().getType().getName()).isEqualTo("Schuhe");
+            assertThat(donation.getAmount()).isEqualTo(2);
         });
     }
 
