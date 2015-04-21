@@ -22,27 +22,21 @@ import services.ProjectService;
 
 public class ProjectController extends Controller {
 
-    private static int PAGE_SIZE = 10;
+    private static final int PAGE_SIZE = 10;
 
     public static Result getProjectWidgets(int page) {
         Page<Project> projectPage = ProjectService.getProjectPage(PAGE_SIZE, page);
-        if(projectPage == null){
-            System.out.println("null");
-            return badRequest("Bad Request 404");
-        }else{
-            List<ProjectWidget> widgets = new ArrayList<>();
-            for(Project p :projectPage.getList()) {
-                widgets.add(new ProjectWidget(p));
-            }
-            return ok(views.html.index.render(widgets, projectPage.getTotalPageCount(), page));
+        List<ProjectWidget> widgets = new ArrayList<>();
+        for (Project p :projectPage.getList()) {
+            widgets.add(new ProjectWidget(p));
         }
-
+        return ok(views.html.index.render(widgets, projectPage.getTotalPageCount(), page));
     }
 
     public static Html getProjectWidget(long id) {
         Project project = ProjectService.getProjectById(id);
         ProjectWidget projectWidget = new ProjectWidget(project);
-        return views.html.ProjectManagement.widget.render(projectWidget);
+        return views.html.project.widget.render(projectWidget);
     }
 
     public static Result getProject(long id) {
@@ -66,7 +60,8 @@ public class ProjectController extends Controller {
         }
     }
 
-    private static Project createProject(Form<ProjectData> projectDataForm, Address address, User user) throws AfricaException {
+    private static Project createProject(
+            Form<ProjectData> projectDataForm, Address address, User user) throws AfricaException {
         models.Project project = new Project();
         project.setTitle(projectDataForm.get().title);
         project.setDescription(projectDataForm.get().description);
@@ -82,7 +77,9 @@ public class ProjectController extends Controller {
 
     private static void addDonationGoals(Project project, Form<ProjectData> projectDataForm) {
         for (int i = 0; i < projectDataForm.get().amounts.size(); i++) {
-            DonationType donationType = DonationTypeService.getOrSetDonationType(projectDataForm.get().donations.get(i));
+            DonationType donationType = DonationTypeService.getOrSetDonationType(
+                projectDataForm.get().donations.get(i)
+            );
             DonationGoal donationGoal = new DonationGoal(project);
             donationGoal.setAmount(Integer.parseInt(projectDataForm.get().amounts.get(i)));
             donationGoal.setType(donationType);

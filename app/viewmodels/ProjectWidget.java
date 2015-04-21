@@ -1,6 +1,5 @@
 package viewmodels;
 
-import models.Project;
 import services.ProjectService;
 
 public class ProjectWidget {

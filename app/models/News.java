@@ -19,21 +19,27 @@ public class News extends Model{
     public Project getProject() {
         return project;
     }
+
+
     public void setProject(Project project) {
         this.project = project;
     }
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getTitle() {
         return title;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
+
     public String getDescription() {
         return description;
     }
@@ -52,7 +58,7 @@ public class News extends Model{
     public void setDate(Date date) {
         this.date = date;
     }
-    public static Finder<Long,News> find = new Finder<Long,News>(
+    public static Finder<Long, News> find = new Finder<>(
             Long.class, News.class
     );
 }

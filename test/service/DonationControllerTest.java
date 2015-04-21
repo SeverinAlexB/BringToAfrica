@@ -1,11 +1,9 @@
-package Service;
+package service;
 
-import Integration.DatabaseTest;
+import integration.DatabaseTest;
 import models.Donation;
 import models.DonationType;
 import org.junit.Test;
-
-import javax.xml.crypto.Data;
 
 /**
  * Created by Severin on 16.04.2015.

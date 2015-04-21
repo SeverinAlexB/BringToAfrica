@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="AfrikaUser")
+@Table(name = "AfrikaUser")
 public class User extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -78,7 +78,7 @@ public class User extends Model{
         this.passwordHashedSalted = passwordHashedSalted;
     }
 
-    public static Finder<Long, User> find = new Finder<Long, User>(
+    public static Finder<Long, User> find = new Finder<>(
             Long.class, User.class
     );
 }

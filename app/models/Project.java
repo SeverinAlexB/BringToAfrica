@@ -6,7 +6,7 @@ import java.sql.Date;
 import java.util.List;
 
 @Entity
-@Table(name="Project")
+@Table(name = "Project")
 public class Project extends Model {
 
     @Id
@@ -18,12 +18,13 @@ public class Project extends Model {
     private Date startsAt;
     private Date endsAt;
     private String contact;
-    @OneToMany(cascade=CascadeType.ALL, mappedBy = "project")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private List<News> news;
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private List<DonationGoal> donationGoals;
+
     @ManyToOne
     private User owner;
 
@@ -67,9 +68,13 @@ public class Project extends Model {
         this.description = description;
     }
 
-    public String getImageURL() { return imageURL; }
+    public String getImageURL() { 
+        return imageURL; 
+    }
 
-    public void setImageURL(String imageURL) { this.imageURL = imageURL; }
+    public void setImageURL(String imageURL) { 
+        this.imageURL = imageURL; 
+    }
 
     public Date getEndsAt() {
         return endsAt;
@@ -113,7 +118,7 @@ public class Project extends Model {
     }
 
 
-    public static Finder<Long,Project> find = new Finder<Long,Project>(
+    public static Finder<Long, Project> find = new Finder<>(
             Long.class, Project.class
     );
 

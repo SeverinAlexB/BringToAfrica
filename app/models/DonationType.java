@@ -43,7 +43,7 @@ public class DonationType extends Model{
         this.id = id;
     }
 
-    public static Finder<Long,DonationType> find = new Finder<Long,DonationType>(
+    public static Finder<Long, DonationType> find = new Finder<>(
             Long.class, DonationType.class
     );
 }

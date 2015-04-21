@@ -1,10 +1,10 @@
 package services;
 
 import com.avaje.ebean.Page;
-import com.avaje.ebean.PagingList;
 import models.Donation;
 import models.DonationGoal;
 import models.Project;
+
 import java.util.List;
 
 public class ProjectService {
@@ -18,7 +18,7 @@ public class ProjectService {
     }
 
     public static Project getProjectByName(String name){
-       return  Project.find.where().eq("name",name).findUnique();
+       return  Project.find.where().eq("name", name).findUnique();
     }
 
     public static List<Project> getAllProjects(){
@@ -26,25 +26,21 @@ public class ProjectService {
     }
 
     public static Page<Project> getProjectPage(int pageSize, int page){
-        PagingList<Project> projectPagingList = Project.find.where().orderBy("endsAt DESC").findPagingList(pageSize);
-        if(projectPagingList.getTotalPageCount() > page){
-            return projectPagingList.getPage(page);
-        }else{
-            return null;
-        }
-
+        return Project.find.where().orderBy("endsAt DESC").findPagingList(pageSize).getPage(page);
     }
 
     public static int getStateOfProjectInPercent(Project project){
         int goal = 0;
         int state = 0;
-        for(DonationGoal dg: DonationGoalService.getDonationGoalsOfProject(project)){
+        for (DonationGoal dg: DonationGoalService.getDonationGoalsOfProject(project)) {
             goal += dg.getAmount();
-            for(Donation d: DonationService.getDonationsOfDonationGoal(dg)){
+            for (Donation d: DonationService.getDonationsOfDonationGoal(dg)) {
                 state += d.getAmount();
             }
         }
-        if(goal == 0 || state == 0)return 0;
+        if (goal == 0 || state == 0) {
+            return 0;
+        }
         return 100 / goal * state;
     }
 }

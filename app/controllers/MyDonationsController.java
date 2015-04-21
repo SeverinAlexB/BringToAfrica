@@ -1,27 +1,46 @@
 package controllers;
 
 import models.Donation;
+import models.Project;
 import models.User;
+import play.data.Form;
 import play.mvc.Result;
 import play.mvc.Security;
-import viewmodels.MyDonations.MyDonationsData;
+import viewmodels.donation.DonationData;
+import viewmodels.donation.MyDonationsData;
+import viewmodels.donation.ProjectDonationData;
 
 import java.util.List;
 
-/**
- * Created by Severin on 14.04.2015.
- */
+
 public class MyDonationsController {
     @Security.Authenticated(AuthenticationController.class)
     public static Result myDonations() {
+        MyDonationsData data = getData();
+        Form<MyDonationsData> form = Form.form(MyDonationsData.class).fill(data);
 
-        return play.mvc.Controller.ok(views.html.myDonations.render());
+        return play.mvc.Controller.ok(views.html.myDonations.render(data));
     }
 
-    public static MyDonationsData getData() {
+    private static MyDonationsData getData() {
         User user = ApplicationController.getCurrentUser();
-        List<Donation> donations = Donation.find.where().eq("user",user).findList();
-        return null;
+        return getFormData(user);
     }
+    protected static MyDonationsData getFormData(User user){
+        List<Donation> donations = user.getDonations();
+        MyDonationsData result = new MyDonationsData();
+
+        for (Donation donation: donations) {
+            Project project = donation.getDonationGoal().getProject();
+            String date = donation.getDate().toString();
+
+            ProjectDonationData projectdata = result.getOrSetData(
+                project, date, donation.getMessageToCollector()
+            );
+            projectdata.donations.add(new DonationData(donation));
+        }
+        return result;
+    }
+
 
 }

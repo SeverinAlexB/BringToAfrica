@@ -1,6 +1,6 @@
-package Service;
+package service;
 
-import Integration.DatabaseTest;
+import integration.DatabaseTest;
 import models.User;
 import org.junit.Test;
 import org.mindrot.jbcrypt.BCrypt;
