@@ -8,11 +8,8 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.twirl.api.Html;
 import services.DonationTypeService;
-import viewmodels.DateConverter;
+import viewmodels.*;
 import play.mvc.Security;
-import viewmodels.DonationData;
-import viewmodels.ProjectData;
-import viewmodels.ProjectWidget;
 import views.html.newProject;
 
 import java.util.ArrayList;
@@ -42,8 +39,8 @@ public class ProjectController extends Controller {
     public static Result getProject(long id) {
         Form<DonationData> donationForm = Form.form(DonationData.class);
         Project project = ProjectService.getProjectById(id);
-        ProjectWidget widget = new ProjectWidget(project);
-        return ok(views.html.project.detail.render(widget, project, donationForm));
+        ProjectDetail projectDetail = new ProjectDetail(project);
+        return ok(views.html.project.detail.render(projectDetail, donationForm));
     }
 
     @Security.Authenticated(AuthenticationController.class)
