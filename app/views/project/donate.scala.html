@@ -33,11 +33,11 @@
 
                                 <div class="choose-pricing">
                                     <div class="btn-group">
-                                        <input type="hidden" name="amounts[@i]" value="0">
-                                        <button type="button" class="btn btn-default active">1</button>
-                                        <button type="button" class="btn btn-default">2</button>
-                                        <button type="button" class="btn btn-default">3</button>
-                                        <input placeholder="Custom" class="inpt-first form-control" type="text">
+                                        <input type="hidden" id="amounts_@i" name="amounts[@i]" value="0">
+                                        <button type="button" data-target="amounts_@i" class="btn btn-default active">1</button>
+                                        <button type="button" data-target="amounts_@i" class="btn btn-default">2</button>
+                                        <button type="button" data-target="amounts_@i" class="btn btn-default">3</button>
+                                        <input placeholder="Custom" data-target="amounts_@i" class="inpt-first form-control" type="text">
                                     </div>
                                 </div>
                             </div>
