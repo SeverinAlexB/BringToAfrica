@@ -12,7 +12,7 @@ public class RegistrationController {
 
     public static Result registration() {
         return play.mvc.Controller.ok(
-            views.html.ConsumerManagement.registration.render(Form.form(RegistrationData.class))
+                views.html.user.registration.render(Form.form(RegistrationData.class))
         );
     }
 
@@ -20,7 +20,7 @@ public class RegistrationController {
         Form<RegistrationData> form = Form.form(RegistrationData.class).bindFromRequest();
         if (form.hasErrors()) {
             return play.mvc.Controller.badRequest(
-                views.html.ConsumerManagement.registration.render(form)
+                views.html.user.registration.render(form)
             );
         } else {
             String hash = BCrypt.hashpw(form.get().password1, BCrypt.gensalt());

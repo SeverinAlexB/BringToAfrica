@@ -4,8 +4,8 @@ import Integration.DatabaseTest;
 import controllers.MyDonationsController;
 import models.*;
 import org.junit.Test;
-import viewmodels.MyDonations.MyDonationsData;
-import viewmodels.MyDonations.ProjectDonationData;
+import viewmodels.donation.MyDonationsData;
+import viewmodels.donation.ProjectDonationData;
 
 import java.sql.Date;
 

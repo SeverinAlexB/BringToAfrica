@@ -36,7 +36,7 @@ public class ProjectController extends Controller {
     public static Html getProjectWidget(long id) {
         Project project = ProjectService.getProjectById(id);
         ProjectWidget projectWidget = new ProjectWidget(project);
-        return views.html.ProjectManagement.widget.render(projectWidget);
+        return views.html.project.widget.render(projectWidget);
     }
 
     public static Result getProject(long id) {
