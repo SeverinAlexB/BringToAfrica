@@ -40,7 +40,7 @@ public class Global extends GlobalSettings {
         if (yaml instanceof ArrayList) {
             Ebean.save((List) yaml);
         } else {
-            Map<String,List<Object>> yamlMap = (Map<String, List<Object>>) yaml;
+            Map<String, List<Object>> yamlMap = (Map<String, List<Object>>) yaml;
             for (String s: yamlMap.keySet()) {
                 Ebean.save(yamlMap.get(s));
             }

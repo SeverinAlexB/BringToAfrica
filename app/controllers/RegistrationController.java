@@ -11,13 +11,17 @@ public class RegistrationController {
 
 
     public static Result registration() {
-        return play.mvc.Controller.ok(views.html.ConsumerManagement.registration.render(Form.form(RegistrationData.class)));
+        return play.mvc.Controller.ok(
+            views.html.ConsumerManagement.registration.render(Form.form(RegistrationData.class))
+        );
     }
 
     public static Result register() {
         Form<RegistrationData> form = Form.form(RegistrationData.class).bindFromRequest();
         if (form.hasErrors()) {
-            return play.mvc.Controller.badRequest(views.html.ConsumerManagement.registration.render(form));
+            return play.mvc.Controller.badRequest(
+                views.html.ConsumerManagement.registration.render(form)
+            );
         } else {
             String hash = BCrypt.hashpw(form.get().password1, BCrypt.gensalt());
 
