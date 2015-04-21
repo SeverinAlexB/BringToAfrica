@@ -2,6 +2,7 @@ import com.avaje.ebean.Ebean;
 import com.avaje.ebean.EbeanServer;
 import com.avaje.ebean.config.ServerConfig;
 import com.avaje.ebean.config.dbplatform.H2Platform;
+import com.avaje.ebean.config.dbplatform.PostgresPlatform;
 import com.avaje.ebeaninternal.api.SpiEbeanServer;
 import com.avaje.ebeaninternal.server.ddl.DdlGenerator;
 import models.User;
@@ -16,7 +17,7 @@ public class Global extends GlobalSettings {
     public void onStart(Application app) {
         if(loadTestData && !isJUnitTest()) {
             cleanDatabase();
-            fillDatabase("testFiles/data1.yml");
+            fillDatabase("testFiles/placeholder-data.yml");
             Logger.info("test data loaded");
         }
     }
@@ -30,11 +31,17 @@ public class Global extends GlobalSettings {
         EbeanServer server = Ebean.getServer("default");
         ServerConfig config = new ServerConfig();
         DdlGenerator ddl = new DdlGenerator();
-        ddl.setup((SpiEbeanServer) server, new H2Platform(), config);
+        String databaseType = Play.application().configuration().getString("databaseType");
+        if(databaseType.equals("postgres")) {
+            ddl.setup((SpiEbeanServer) server, new PostgresPlatform(), config);
+        } else {
+            ddl.setup((SpiEbeanServer) server, new H2Platform(), config);
+        }
         ddl.runScript(false, ddl.generateDropDdl());
         ddl.runScript(false, ddl.generateCreateDdl());
         assert User.find.all().size() == 0;
     }
+
     private  void fillDatabase(String yamlFile) {
         Object yam = Yaml.load(yamlFile);
         if(yam instanceof ArrayList) {
