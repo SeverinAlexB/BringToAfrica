@@ -1,4 +1,4 @@
-package Application;
+package application;
 
 import org.junit.Test;
 import services.ConsumerService;

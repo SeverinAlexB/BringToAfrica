@@ -1,4 +1,4 @@
-package Integration;
+package integration;
 
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.EbeanServer;

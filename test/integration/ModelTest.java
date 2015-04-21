@@ -1,4 +1,4 @@
-package Integration;
+package integration;
 
 import models.*;
 import org.junit.Test;

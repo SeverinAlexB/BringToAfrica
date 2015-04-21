@@ -1,6 +1,6 @@
-package Application;
+package application;
 
-import Integration.DatabaseTest;
+import integration.DatabaseTest;
 import controllers.MyDonationsController;
 import models.*;
 import org.junit.Test;
