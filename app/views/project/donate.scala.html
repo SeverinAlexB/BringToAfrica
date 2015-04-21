@@ -1,5 +1,4 @@
 @(project: Project, donateForm: Form[viewmodels.donation.CreateDonationData])
-<div aria-hidden="true" style="display: none;" class="modal donate-form">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -24,7 +23,7 @@
                 </header>
             </div>
             <div class="modal-body">
-                @helper.form(action = routes.ProjectController.donate, 'role -> "form") {
+                @helper.form(action = routes.ProjectController.donate, 'role -> "form", 'id -> "donate-form") {
                     <input type="hidden" name="projectId" value="@project.getId()">
                     @for(i <- 0 until donateForm.get().donations.size){
                     <div class="row">
@@ -60,4 +59,3 @@
             </div>
         </div>
     </div>
-</div>

@@ -8,4 +8,7 @@ $(document).ready(function () {
         var target = $(this).attr('data-target');
         $(target).attr('value', $(this).val());
     });
+    $(document).on('submit', '#donate-form', function(event) {
+        $.pjax.submit(event, '#pjax-container');
+    })
 });

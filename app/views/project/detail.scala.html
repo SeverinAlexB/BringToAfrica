@@ -216,6 +216,8 @@
 
 </div>
 } {
-    @donate(project, donateForm)
+    <div aria-hidden="true" style="display: none;" class="modal donate-form" id="pjax-container">
+        @donate(project, donateForm)
+    </div>
     <script src="@routes.Assets.at("js/donate.js")"></script>
 }
