@@ -1,4 +1,4 @@
-package viewmodels.MyDonations;
+package viewmodels.donation;
 
 
 import models.DonationGoal;
