@@ -12,29 +12,25 @@
             </div>
             <div class="modal-body">
                 <form role="form">
+                    @for(i <- 0 until donateForm.get().donations.size){
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group">
-                                <h4>How many shoes would you like to donate ?</h4>
+                                <h4>Wie viele @donateForm.get().donations(i) möchtest du spenden?</h4>
 
                                 <div class="choose-pricing">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-default active">
-                                            1
-                                        </button>
-                                        <button type="button" class="btn btn-default">
-                                            2
-                                        </button>
-                                        <button type="button" class="btn btn-default">
-                                            3
-                                        </button>
-
+                                        <input type="hidden" name="amounts[@i]">
+                                        <button type="button" class="btn btn-default active">1</button>
+                                        <button type="button" class="btn btn-default">2</button>
+                                        <button type="button" class="btn btn-default">3</button>
                                         <input placeholder="Custom" class="inpt-first form-control" type="text">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    }
                     <div class="row">
                         <div class="col-xs-12">
                             <button type="submit" class="btn btn-default">Spenden</button>
