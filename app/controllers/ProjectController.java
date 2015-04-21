@@ -13,10 +13,14 @@ import play.mvc.Security;
 import viewmodels.donation.CreateDonationData;
 import viewmodels.ProjectData;
 import viewmodels.ProjectWidget;
+import viewmodels.donation.DonationData;
+import viewmodels.donation.ProjectDonationData;
 import views.html.newProject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import services.ProjectService;
 
 
@@ -48,10 +52,34 @@ public class ProjectController extends Controller {
     public static Result donate() {
         Form<CreateDonationData> form = Form.form(CreateDonationData.class).bindFromRequest();
         Project project = ProjectService.getProjectById(form.get().projectId);
+
         if (form.hasErrors()) {
             return badRequest(views.html.project.donate.render(project, form));
         } else {
-            return ok(views.html.project.donate.render(project, form));
+            List<DonationGoal> goals = project.getDonationGoals();
+            ArrayList<DonationData> donations = new ArrayList<>();
+            for (int i = 0; i < form.get().amounts.size(); i++) {
+                String typeName = form.get().donations.get(i);
+                String amount = form.get().amounts.get(i);
+                DonationType type = DonationTypeService.getDonationTypeByName(typeName);
+
+                User user = ApplicationController.getCurrentUser();
+                DonationGoal goal = goals.stream()
+                        .filter(g -> g.getType().getName() == type.getName())
+                        .limit(2)
+                        .collect(Collectors.toList()).get(0);
+
+                Donation donation = new Donation(user, goal);
+                donation.setAmount(Integer.parseInt(amount));
+                donation.save();
+
+                donations.add(new DonationData(donation));
+            }
+
+            ProjectDonationData donation = new ProjectDonationData();
+            donation.project = project;
+            donation.donations = donations;
+            return ok(views.html.project.donateSuccess.render(donation));
         }
     }
 
