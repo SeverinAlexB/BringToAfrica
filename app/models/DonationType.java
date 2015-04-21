@@ -12,6 +12,21 @@ public class DonationType extends Model{
     private Long id;
     private String name;
 
+    @OneToMany(mappedBy = "type")
+    private List<DonationGoal> donationGoals;
+
+    public void addDonationGoal(DonationGoal donationGoal){
+        donationGoals.add(donationGoal);
+    }
+
+    public List<DonationGoal> getDonationGoals() {
+        return donationGoals;
+    }
+
+    public void setDonationGoals(List<DonationGoal> donationGoals) {
+        this.donationGoals = donationGoals;
+    }
+
     public String getName() {
         return name;
     }
@@ -28,7 +43,7 @@ public class DonationType extends Model{
         this.id = id;
     }
 
-    public static Finder<Long,DonationType> find = new Finder<Long,DonationType>(
+    public static Finder<Long, DonationType> find = new Finder<>(
             Long.class, DonationType.class
     );
 }

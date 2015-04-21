@@ -16,7 +16,6 @@ public class DateConverter {
         } catch (ParseException ex) {
             throw new AfricaException("stringToSqlDate()", ex);
         }
-        java.sql.Date sqlStartDate = new Date(dateUtil.getTime());
-        return sqlStartDate;
+        return new Date(dateUtil.getTime());
     }
 }

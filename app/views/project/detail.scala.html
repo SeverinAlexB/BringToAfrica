@@ -1,4 +1,4 @@
-@(project: Project)
+@(project: Project, donateForm: Form[viewmodels.DonationData])
 
 @main("BringToAfrica") {
     <div class="cause-page" id="page-info">
@@ -17,15 +17,13 @@
                                 <span class="date-desc">06 august, 2014 </span><span class="palce-name">Africa, Child care</span>
                             </div>
                             <figure class="article-pic">
-                                <img src="@routes.Assets.at("img/detail-big-01.jpg")" alt="">
+                                <img src="@project.getImageURL()" alt="">
                             </figure>
                             <div class="progress">
                                 <div style="width: 72%;" class="progress-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
                                     <span class="progress-value">72% </span>
                                 </div>
                             </div>
-
-
 
                             <div class="detail-description">
                                 <div class="donation-details">
@@ -43,9 +41,8 @@
                     </div>
                 </div>
             </div>
-
-            <!-- our causes detail-->
-
         </div>
     </div>
+} {
+    @donate(donateForm)
 }

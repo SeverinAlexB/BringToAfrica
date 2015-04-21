@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "Project")
 public class Project extends Model {
 
     @Id
@@ -17,28 +18,26 @@ public class Project extends Model {
     private Date startsAt;
     private Date endsAt;
     private String contact;
-
-    //@ManyToOne
-    //private Consumer consumer;
-
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private List<News> news;
-
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
-
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private List<DonationGoal> donationGoals;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    private List<Donation> donations;
+    @ManyToOne
+    private User owner;
 
-    public void addDonation(Donation donation){
-        donations.add(donation);
+    public User getOwner() {
+        return owner;
     }
 
-    public void addDonationGoal(DonationGoal donationGoal){
-        donationGoals.add(donationGoal);
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public List<DonationGoal> getDonationGoals() {
+        return donationGoals;
     }
 
     public void addNews(News news){
@@ -69,9 +68,13 @@ public class Project extends Model {
         this.description = description;
     }
 
-    public String getImageURL() { return imageURL; }
+    public String getImageURL() { 
+        return imageURL; 
+    }
 
-    public void setImageURL(String imageURL) { this.imageURL = imageURL; }
+    public void setImageURL(String imageURL) { 
+        this.imageURL = imageURL; 
+    }
 
     public Date getEndsAt() {
         return endsAt;
@@ -114,23 +117,8 @@ public class Project extends Model {
         this.address = address;
     }
 
-    public List<DonationGoal> getDonationGoals() {
-        return donationGoals;
-    }
 
-    public void setDonationGoals(List<DonationGoal> donationGoals) {
-        this.donationGoals = donationGoals;
-    }
-
-    public List<Donation> getDonations() {
-        return donations;
-    }
-
-    public void setDonations(List<Donation> donations) {
-        this.donations = donations;
-    }
-
-    public static Finder<Long,Project> find = new Finder<Long,Project>(
+    public static Finder<Long, Project> find = new Finder<>(
             Long.class, Project.class
     );
 

@@ -1578,8 +1578,8 @@ border:none;
 		.AddtoCart .table > tbody > tr > td{border-bottom: none;}
 		.AddtoCart .table > tbody > tr{border-bottom: 2px solid #e7e2de;}
 		
-		#main-table td:nth-of-type(1):before { content: "#Item"; }
-		#main-table td:nth-of-type(2):before { content: "Product"; }
+		#main-table td:nth-of-type(1):before { content: "Anzahl"; }
+		#main-table td:nth-of-type(2):before { content: "Spendengut"; }
 		#main-table td:nth-of-type(3):before { content: "Price"; }
 		#main-table td:nth-of-type(4):before { content: "Quantity"; }
 		#main-table td:nth-of-type(5):before { content: "Total"; }

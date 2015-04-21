@@ -3,21 +3,25 @@
 # ~~~~
 
 # Home page
-GET         /                     controllers.ApplicationController.index()
+GET         /                              controllers.ApplicationController.index()
 
-GET         /projects             controllers.ProjectController.getProjects()
-GET         /projects/new         controllers.ProjectController.createProject()
-GET         /projects/:id         controllers.ProjectController.getProject(id: Long)
-POST        /projects/data        controllers.ProjectController.addProjectData()
+GET         /projects/widgets/:page        controllers.ProjectController.getProjectWidgets(page:Int)
+GET         /projects/new                  controllers.ProjectController.createProject()
+GET         /projects/:id                  controllers.ProjectController.getProject(id: Long)
+POST        /projects/data                 controllers.ProjectController.addProjectData()
 
 
-GET         /login                controllers.LoginController.login()
-POST        /login                controllers.LoginController.authenticate()
-GET         /logout               controllers.LoginController.logout()
+GET         /login                         controllers.LoginController.login()
+POST        /login                         controllers.LoginController.authenticate()
+GET         /logout                        controllers.LoginController.logout()
 
-GET         /registration         controllers.RegistrationController.registration()
-POST        /registration         controllers.RegistrationController.register()
+GET         /registration                  controllers.RegistrationController.registration()
+POST        /registration                  controllers.RegistrationController.register()
 
+GET         /mydonations                   controllers.MyDonationsController.myDonations()
+
+GET         /myprofile                     controllers.MyProfileController.myProfile()
+GET         /myprofiel/save                controllers.MyProfileController.saveMyProfile()
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file         controllers.Assets.at(path="/public", file)
+GET         /assets/*file                  controllers.Assets.at(path="/public", file)

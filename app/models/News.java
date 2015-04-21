@@ -13,7 +13,17 @@ public class News extends Model{
     private String description;
     private Date date;
     private String imageURL;
+    @ManyToOne
+    private Project project;
 
+    public Project getProject() {
+        return project;
+    }
+
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
     public Long getId() {
         return id;
     }
@@ -33,27 +43,22 @@ public class News extends Model{
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
-
     public String getImageURL() {
         return imageURL;
     }
-
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
-
     public Date getDate() {
         return date;
     }
-
     public void setDate(Date date) {
         this.date = date;
     }
-    public static Finder<Long,News> find = new Finder<Long,News>(
+    public static Finder<Long, News> find = new Finder<>(
             Long.class, News.class
     );
 }

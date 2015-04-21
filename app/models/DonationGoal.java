@@ -3,6 +3,7 @@ package models;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class DonationGoal extends Model{
@@ -10,9 +11,37 @@ public class DonationGoal extends Model{
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private int amount;
+    @ManyToOne
+    private Project project;
+    @OneToMany(mappedBy = "donationGoal")
+    private List<Donation> donations;
+    @ManyToOne
+    private DonationType type;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    private DonationType donationType;
+    public DonationGoal(Project project){
+        this.project = project;
+    }
+    public DonationGoal(){}
+
+    public DonationType getType() {
+        return type;
+    }
+
+    public void setType(DonationType type) {
+        this.type = type;
+    }
+
+    public List<Donation> getDonations() {
+        return donations;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
 
     public Long getId() {
         return id;
@@ -30,16 +59,7 @@ public class DonationGoal extends Model{
         this.amount = amount;
     }
 
-
-    public DonationType getDonationType() {
-        return donationType;
-    }
-
-    public void setDonationType(DonationType donationType) {
-        this.donationType = donationType;
-    }
-
-    public static Finder<Long,DonationGoal> find = new Finder<>(
+    public static Finder<Long, DonationGoal> find = new Finder<>(
             Long.class, DonationGoal.class
     );
 }

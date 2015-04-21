@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String)(content: Html)(scripts: Html)
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -39,7 +39,7 @@
                     <h1>BringToAfrica</h1>
                 </a>
                 <div class="social-links col-xs-12 col-sm-10">
-                    @if(ApplicationController.getCurrent() == null) {
+                    @if(ApplicationController.getCurrentUser() == null) {
                         <a href="@routes.LoginController.login()" class="btn btn-default btn-volunteer">Login</a>
                     } else {
                         <a href="@routes.LoginController.logout()" class="btn btn-default btn-volunteer">Logout</a>
@@ -69,10 +69,16 @@
                     <nav>
                         <ul class="nav navbar-nav">
                             <li class="active">
-                                <a href="@routes.ProjectController.getProjects()">Projekte</a>
+                                <a href="@routes.ProjectController.getProjectWidgets(0)">Projekte</a>
                             </li>
                             <li>
                                 <a href="@routes.ProjectController.createProject()">Projekt erstellen</a>
+                            </li>
+                            <li>
+                                <a href="@routes.MyDonationsController.myDonations()">Meine Spenden</a>
+                            </li>
+                            <li>
+                                <a href="@routes.MyProfileController.myProfile()">Meine Profil</a>
                             </li>
                         </ul>
                     </nav>
@@ -104,6 +110,8 @@
     </footer>
 </div>
 <!-- donation form popup -->
+
+@scripts
 
 <script src="@routes.Assets.at("js/jquery.min.js")"></script>
 <script src="@routes.Assets.at("js/bootstrap.min.js")"></script>

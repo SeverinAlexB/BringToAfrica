@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="AfrikaUser")
+@Table(name = "AfrikaUser")
 public class User extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -15,27 +15,28 @@ public class User extends Model{
     private String lastName;
     private String email;
     private String passwordHashedSalted;
-
-    @OneToMany(cascade=CascadeType.ALL)
-    private List<Project> projects;
-
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "owner")
+    private List<Project> myProjects;
+    @OneToMany(mappedBy = "user")
     private List<Donation> donations;
 
+    public List<Donation> getDonations() {
+        return donations;
+    }
+
+    public void setDonations(List<Donation> donations) {
+        this.donations = donations;
+    }
     public void addProject(Project project){
-        projects.add(project);
+        myProjects.add(project);
     }
 
-    public void addDonation(Donation donation){
-        donations.add(donation);
+    public List<Project> getMyProjects() {
+        return myProjects;
     }
 
-    public List<Project> getProjects() {
-        return projects;
-    }
-
-    public void setProjects(List<Project> projects) {
-        this.projects = projects;
+    public void setMyProjects(List<Project> myProjects) {
+        this.myProjects = myProjects;
     }
 
     public Long getId() {
@@ -77,7 +78,7 @@ public class User extends Model{
         this.passwordHashedSalted = passwordHashedSalted;
     }
 
-    public static Finder<Long, User> find = new Finder<Long, User>(
+    public static Finder<Long, User> find = new Finder<>(
             Long.class, User.class
     );
 }
