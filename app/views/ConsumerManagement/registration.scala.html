@@ -2,83 +2,95 @@
 @import helper._
 
 @main("BringToAfrica") {
-  <ul id="projects"></ul>
-  <div class="container" id="page-info">
+<ul id="projects"></ul>
+<div class="container" id="page-info">
     <div class="row">
-      <div class="col-xs-12">
-        <section class="checkout anim-section animate">
-          <div class="row">
-            @helper.form(action = routes.RegistrationController.register()) {
-            <h1>Neues Profil erstellen</h1>
-            <div class="row">
-              <div class="col-xs-11 col-sm-6">
-                <p>
-                  <input class="form-control" type="text" name="firstname" placeholder="Vorname" value="@registerForm("firstname").value" required>
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-11 col-sm-6">
-                <p>
-                  <input class="form-control" type="text" name="lastname" placeholder="Nachname" value="@registerForm("lastname").value" required>
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-11 col-sm-6">
-                <p>
-                  <input class="form-control" type="email" name="email" placeholder="Email" value="@registerForm("email").value" required>
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-11 col-sm-6">
-                <p>Wähle ein Passwort, dass mindestens 8 Zeichen lang ist und mindestens eine Zahl, ein Gross-/Kleinbuchstaben und ein Sonderzeichen(&#64;&#35;&#36;&#37;&#33;) enthält.</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-11 col-sm-6">
-                <p>
-                 <!-- <input class="form-control" type="password" name="password1" placeholder="Passwort" value="@registerForm("password1").value" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[&#64;&#35;&#36;&#37;&#33;]).{8,20}" required>
-                  -->
-                  <input class="form-control" type="password" name="password1" placeholder="Passwort" value="@registerForm("password1").value">
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-11 col-sm-6">
-                <p>
-                  <input class="form-control" type="password" name="password2" placeholder="Passwort bestätigen" value="@registerForm("password2").value">
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-11 col-sm-6">
-                <p>
-                  <button id="btnRegistieren" type="submit" class="btn btn-default pull-right">Registrieren</button>
-                </p>
-              </div>
-            </div>
+        <div class="col-xs-12">
+            <section class="checkout anim-section animate">
+                <div class="row">
+                    @helper.form(action = routes.RegistrationController.register()) {
+                    <h1>Neues Profil erstellen</h1>
 
-            }
-            @if(registerForm.errors.size() > 0) {
-            <p>
-            <div class="col-xs-11 col-sm-6">
-              <div class="alert alert-danger" role="alert">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                <span class="sr-only">Error:</span>
-                @for((key, value) <- registerForm.errors) {
-                  @for(err <- value) {
-                    @err.message().toString() <br/>
-                  }
-                }
-              </div>
-            </div>
-            </p>
-            }
-          </div>
-        </section>
-      </div>
+                    <div class="row">
+                        <div class="col-xs-11 col-sm-6">
+                            <p>
+                                <input class="form-control" type="text" name="firstname" placeholder="Vorname"
+                                       value="@registerForm(" firstname").value" required>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-11 col-sm-6">
+                            <p>
+                                <input class="form-control" type="text" name="lastname" placeholder="Nachname"
+                                       value="@registerForm(" lastname").value" required>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-11 col-sm-6">
+                            <p>
+                                <input class="form-control" type="email" name="email" placeholder="Email"
+                                       value="@registerForm(" email").value" required>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-11 col-sm-6">
+                            <p>Wähle ein Passwort, dass mindestens 8 Zeichen lang ist und mindestens eine Zahl, ein
+                                Gross-/Kleinbuchstaben und ein Sonderzeichen(&#64;&#35;&#36;&#37;&#33;) enthält.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-11 col-sm-6">
+                            <p>
+                                <input class="form-control" type="password" name="password1" placeholder="Passwort"
+                                       value="@registerForm(" password1").value"
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[&#64;&#35;&#36;&#37;&#33;]).{8,20}"
+                                required>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-11 col-sm-6">
+                            <p>
+                                <input class="form-control" type="password" name="password2"
+                                       placeholder="Passwort bestätigen" value="@registerForm(" password2").value"
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[&#64;&#35;&#36;&#37;&#33;]).{8,20}"
+                                required>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-11 col-sm-6">
+                            <p>
+                                <button id="btnRegistieren" type="submit" class="btn btn-default pull-right">
+                                    Registrieren
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+
+                    }
+                    @if(registerForm.errors.size() > 0) {
+                    <p>
+
+                    <div class="col-xs-11 col-sm-6">
+                        <div class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                            @for((key, value) <- registerForm.errors) {
+                            @for(err <- value) {
+                            @err.message().toString() <br/>
+                            }
+                            }
+                        </div>
+                    </div>
+                    </p>
+                    }
+                </div>
+            </section>
+        </div>
     </div>
-  </div>
+</div>
 } { }
