@@ -35,10 +35,10 @@
                                 <div class="choose-pricing">
                                     <div class="btn-group">
                                         <input type="hidden" id="amounts_@i" name="amounts[@i]">
-                                        <button type="button" data-target="amounts_@i" class="btn btn-default active">1</button>
-                                        <button type="button" data-target="amounts_@i" class="btn btn-default">2</button>
-                                        <button type="button" data-target="amounts_@i" class="btn btn-default">3</button>
-                                        <input placeholder="Custom" data-target="amounts_@i" class="inpt-first form-control" type="text">
+                                        <button type="button" data-target="#amounts_@i" class="btn btn-default active">1</button>
+                                        <button type="button" data-target="#amounts_@i" class="btn btn-default">2</button>
+                                        <button type="button" data-target="#amounts_@i" class="btn btn-default">3</button>
+                                        <input placeholder="Custom" data-target="#amounts_@i" class="inpt-first form-control" type="text">
                                     </div>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <label for="add-note">Zusätzliche Notiz</label>
-                            <textarea class="form-control" id="add-note"></textarea>
+                            <textarea class="form-control" name="remarks" id="add-note">@donateForm("remarks").value</textarea>
                         </div>
                     </div>
                     <div class="row">
