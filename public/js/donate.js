@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('.choose-pricing button').on('click', function () {
-        var valueHolder = $(this).closest('input [type="hidden"]')
-        valueHolder.val($(this).text());
+        var target = $(this).attr('data-target');
+        $(target).val($(this).text());
     });
 });

@@ -45,6 +45,16 @@ public class ProjectController extends Controller {
         return ok(views.html.project.detail.render(widget, project, createDonationForm(project)));
     }
 
+    public static Result donate() {
+        Form<CreateDonationData> form = Form.form(CreateDonationData.class).bindFromRequest();
+        Project project = ProjectService.getProjectById(form.get().projectId);
+        if (form.hasErrors()) {
+            return badRequest(views.html.project.donate.render(project, form));
+        } else {
+            return ok(views.html.project.donate.render(project, form));
+        }
+    }
+
     private static Form<CreateDonationData> createDonationForm(Project project) {
         List<DonationGoal> goals = project.getDonationGoals();
         CreateDonationData data = new CreateDonationData(goals);
