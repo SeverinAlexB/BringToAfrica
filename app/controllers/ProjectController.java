@@ -42,7 +42,8 @@ public class ProjectController extends Controller {
     public static Result getProject(long id) {
         Form<DonationData> donationForm = Form.form(DonationData.class);
         Project project = ProjectService.getProjectById(id);
-        return ok(views.html.project.detail.render(project, donationForm));
+        ProjectWidget widget = new ProjectWidget(project);
+        return ok(views.html.project.detail.render(widget, project, donationForm));
     }
 
     @Security.Authenticated(AuthenticationController.class)
