@@ -8,9 +8,7 @@ import java.sql.Date;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by Severin on 17.04.2015.
- */
+
 public class ModelTest {
     private Address addAddress() {
         Address a = new Address();

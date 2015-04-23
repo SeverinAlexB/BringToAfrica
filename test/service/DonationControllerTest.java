@@ -5,9 +5,7 @@ import models.Donation;
 import models.DonationType;
 import org.junit.Test;
 
-/**
- * Created by Severin on 16.04.2015.
- */
+
 public class DonationControllerTest {
 
     @Test

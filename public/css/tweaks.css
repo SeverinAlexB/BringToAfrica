@@ -23,3 +23,7 @@
 .btn-default:hover, .btn-default:focus, {
     border-color: #ecc731;
 }
+
+h4 {
+    margin-bottom: 0;
+}

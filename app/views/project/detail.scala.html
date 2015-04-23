@@ -1,4 +1,4 @@
-@(widget: viewmodels.ProjectWidget, project: models.Project, donateForm: Form[viewmodels.DonationData])
+@(widget: viewmodels.ProjectWidget, project: models.Project, donateForm: Form[viewmodels.donation.CreateDonationData])
 
 @main("BringToAfrica") {
 <div class="cause-page content-wrapper" id="page-info">
@@ -216,5 +216,8 @@
 
 </div>
 } {
-    @donate(donateForm)
+    <div aria-hidden="true" style="display: none;" class="modal donate-form" id="pjax-container">
+        @donate(project, donateForm)
+    </div>
+    <script src="@routes.Assets.at("js/donate.js")"></script>
 }

@@ -10,13 +10,17 @@ import play.twirl.api.Html;
 import services.DonationTypeService;
 import viewmodels.DateConverter;
 import play.mvc.Security;
-import viewmodels.DonationData;
+import viewmodels.donation.CreateDonationData;
 import viewmodels.ProjectData;
 import viewmodels.ProjectWidget;
+import viewmodels.donation.DonationData;
+import viewmodels.donation.ProjectDonationData;
 import views.html.newProject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import services.ProjectService;
 
 
@@ -40,10 +44,59 @@ public class ProjectController extends Controller {
     }
 
     public static Result getProject(long id) {
-        Form<DonationData> donationForm = Form.form(DonationData.class);
         Project project = ProjectService.getProjectById(id);
         ProjectWidget widget = new ProjectWidget(project);
-        return ok(views.html.project.detail.render(widget, project, donationForm));
+        return ok(views.html.project.detail.render(widget, project, createDonationForm(project)));
+    }
+
+    public static Result donate() {
+        Form<CreateDonationData> form = Form.form(CreateDonationData.class).bindFromRequest();
+        Project project = ProjectService.getProjectById(form.get().projectId);
+
+        if (form.hasErrors()) {
+            return badRequest(views.html.project.donate.render(project, form));
+        } else {
+            List<DonationGoal> goals = project.getDonationGoals();
+            ArrayList<DonationData> donations = createDonations(form, goals);
+
+            ProjectDonationData donation = new ProjectDonationData();
+            donation.project = project;
+            donation.donations = donations;
+            return ok(views.html.project.donateSuccess.render(donation));
+        }
+    }
+
+    private static ArrayList<DonationData> createDonations(Form<CreateDonationData> form, List<DonationGoal> goals) {
+        ArrayList<DonationData> donations = new ArrayList<>();
+
+        for (int i = 0; i < form.get().amounts.size(); i++) {
+            String typeName = form.get().donations.get(i);
+            int amount = Integer.parseInt(form.get().amounts.get(i));
+
+            User user = ApplicationController.getCurrentUser();
+            DonationGoal goal = getGoalByType(goals, typeName);
+
+            Donation donation = new Donation(user, goal);
+            donation.setAmount(amount);
+            donation.save();
+
+            donations.add(new DonationData(donation));
+        }
+        return donations;
+    }
+
+    private static DonationGoal getGoalByType(List<DonationGoal> goals, String typeName) {
+        DonationType type = DonationTypeService.getDonationTypeByName(typeName);
+        return goals.stream()
+                .filter(g -> g.getType().getName().equals(type.getName()))
+                .limit(2)
+                .collect(Collectors.toList()).get(0);
+    }
+
+    private static Form<CreateDonationData> createDonationForm(Project project) {
+        List<DonationGoal> goals = project.getDonationGoals();
+        CreateDonationData data = new CreateDonationData(goals);
+        return Form.form(CreateDonationData.class).fill(data);
     }
 
     @Security.Authenticated(AuthenticationController.class)

@@ -1,5 +1,4 @@
-@(donateForm: Form[viewmodels.DonationData])
-<div aria-hidden="true" style="display: none;" class="modal donate-form">
+@(project: Project, donateForm: Form[viewmodels.donation.CreateDonationData])
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,101 +6,44 @@
                     ×
                 </button>
                 <header class="page-header">
-                    <h2>Spenden</h2>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <label for="add-note">Wie funktioniert die Kontaktaufnahme?</label>
-                            <h5><p>Sende mir die Güter einfach per Post an die folgende Adresse:
-                                Claudia Hofstetter
-                                Holzrai 7
-                                Kreis 999
-                                8000 Zürich
-                            </p>
-
-                            </h5>
-                        </div>
-                    </div>
+                    <h2>Du spendest für <strong>@project.getTitle()</strong></h2>
                 </header>
             </div>
             <div class="modal-body">
-                <form role="form">
-
+                @helper.form(action = routes.ProjectController.donate, 'role -> "form", 'id -> "donate-form") {
+                    <input type="hidden" name="projectId" value="@project.getId()">
+                    @for(i <- 0 until donateForm.get().donations.size){
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="form-group col-xs-12 col-sm-6">
-                                <label>Wieviel möchtest du spenden?</label>
+                            <div class="form-group">
+                                <h4>Wie viele @donateForm.get().donations(i) möchtest du spenden?</h4>
 
                                 <div class="choose-pricing">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-default active">
-                                            1
-                                        </button>
-                                        <button type="button" class="btn btn-default">
-                                            2
-                                        </button>
-                                        <button type="button" class="btn btn-default">
-                                            3
-                                        </button>
-
-                                        <input placeholder="Eingabe" class="inpt-first form-control" type="number">
-
+                                        <input type="hidden" id="amounts_@i" name="amounts[@i]">
+                                        <input type="hidden" name="donations[@i]" value="@donateForm.get().donations(i)">
+                                        <button type="button" data-target="#amounts_@i" class="btn btn-default active">1</button>
+                                        <button type="button" data-target="#amounts_@i" class="btn btn-default">2</button>
+                                        <button type="button" data-target="#amounts_@i" class="btn btn-default">3</button>
+                                        <input placeholder="Custom" data-target="#amounts_@i" class="inpt-first form-control" type="text">
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
-                    <div class="row display">
-                        <div class="col-xs-12">
-                            <div class="form-group col-xs-12 col-sm-6">
-                                <div class="dropdown">
-                                    <button class="btn btn-width dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        <small>Spendenkategorie</small>
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#">Laptop</a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#">Maus</a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#">Tastatur</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
                     <div class="row">
                         <div class="col-xs-12">
                             <label for="add-note">Zusätzliche Notiz</label>
-                            <textarea class="form-control" id="add-note"></textarea>
+                            <textarea class="form-control" name="remarks" id="add-note">@donateForm("remarks").value</textarea>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="form-group col-xs-12">
-                                <input value="Spenden" class="btn btn-default pull-right" type="submit">
-                            </div>
+                            <button id="donate-submit" type="submit" class="btn btn-default">Spenden</button>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="form-group col-xs-12">
-                                <p class="forms-notes">
-                                    Fehlermeldung: Keine Spendenkategorie gewählt
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
+                }
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>
+        </div>
+    </div>

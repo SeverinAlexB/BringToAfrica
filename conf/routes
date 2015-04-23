@@ -9,6 +9,7 @@ GET         /projects/widgets/:page        controllers.ProjectController.getProj
 GET         /projects/new                  controllers.ProjectController.createProject()
 GET         /projects/:id                  controllers.ProjectController.getProject(id: Long)
 POST        /projects/data                 controllers.ProjectController.addProjectData()
+POST        /donations                     controllers.ProjectController.donate()
 
 
 GET         /login                         controllers.LoginController.login()
