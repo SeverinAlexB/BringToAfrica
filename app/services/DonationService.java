@@ -13,4 +13,6 @@ public class DonationService {
     public static List<Donation> getByUser(User user){
         return Donation.find.where().eq("user", user).findList();
     }
+
+
 }

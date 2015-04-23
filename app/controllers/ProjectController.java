@@ -8,7 +8,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.twirl.api.Html;
 import services.DonationTypeService;
-import viewmodels.DateConverter;
+import viewmodels.*;
 import play.mvc.Security;
 import viewmodels.donation.CreateDonationData;
 import viewmodels.ProjectData;
@@ -45,8 +45,8 @@ public class ProjectController extends Controller {
 
     public static Result getProject(long id) {
         Project project = ProjectService.getProjectById(id);
-        ProjectWidget widget = new ProjectWidget(project);
-        return ok(views.html.project.detail.render(widget, project, createDonationForm(project)));
+        ProjectDetail projectDetail = new ProjectDetail(project);
+        return ok(views.html.project.detail.render(project, projectDetail, createDonationForm(project)));
     }
 
     public static Result donate() {

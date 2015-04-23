@@ -1,4 +1,4 @@
-@(widget: viewmodels.ProjectWidget, project: models.Project, donateForm: Form[viewmodels.donation.CreateDonationData])
+@(project: models.Project, projectDetail: viewmodels.ProjectDetail, donateForm: Form[viewmodels.donation.CreateDonationData])
 
 @main("BringToAfrica") {
 <div class="cause-page content-wrapper" id="page-info">
@@ -15,18 +15,18 @@
                         <div class="anim-section">
 
                             <figure>
-                                <img src="@project.getImageURL()" alt="">
+                                <img src="@projectDetail.getImageURL()" alt="">
                             </figure>
 
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="@widget.getState()" aria-valuemin="0" aria-valuemax="100">
-                                    <span class="progress-value">@widget.getState()%</span>
+                                <div class="progress-bar" role="progressbar" aria-valuenow="@projectDetail.getState()" aria-valuemin="0" aria-valuemax="100">
+                                    <span class="progress-value">@projectDetail.getState()%</span>
                                 </div>
                             </div>
 
                             <div class="heading-sec text-left">
-                                <h3 class="h4">@project.getTitle()</h3>
-                                <span class="date-desc">Start: @project.getStartsAt()  |  Ende:@project.getEndsAt()</span>
+                                <h3 class="h4">@projectDetail.getTitle()</h3>
+                                <span class="date-desc">Start: @projectDetail.getStartsAt()  |  Ende:@projectDetail.getEndsAt()</span>
                                 <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
                             </div>
                             <!-- product-detail tab Section -->
@@ -42,27 +42,17 @@
                                     <!-- Tab panes -->
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="first_title">
-                                            <h5>@project.getDescription()</h5>
+                                            <h5>@projectDetail.getDescription()</h5>
                                         </div>
                                         <div class="tab-pane" id="second_title">
-                                            <h5>Laptop (35 von 100 Stück)</h5>
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="progress-value">35%</span>
+                                            @for(donationGoal <- projectDetail.getDonationGoals()) {
+                                                <h5>@donationGoal.getType().getName() (@donationGoal.getDonations().size() von @donationGoal.getAmount() Stück)</h5>
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" aria-valuenow="@projectDetail.getStateOfDonationGoal(donationGoal)" aria-valuemin="0" aria-valuemax="100">
+                                                        <span class="progress-value">@projectDetail.getStateOfDonationGoal(donationGoal) %</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <h5>Maus (60 von 100 Stück)</h5>
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="progress-value">60%</span>
-                                                </div>
-                                            </div>
-                                            <h5>Tastatur (90 von 100 Stück)</h5>
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" aria-valuenow="90">
-                                                    <span class="progress-value">90%</span>
-                                                </div>
-                                            </div>
+                                            }
                                         </div>
                                         <div class="tab-pane" id="third_title">
                                             <span> 25.04.2014 </span>
