@@ -31,7 +31,7 @@ public class NewsController {
             news.setDate(new java.sql.Date(new java.util.Date().getTime()));
             news.setProject(project);
             news.save();
-
+            System.out.println("url: " + news.getImageURL());
             System.out.println(news.getTitle());
             System.out.println(project.getTitle());
             ProjectWidget widget = new ProjectWidget(project);

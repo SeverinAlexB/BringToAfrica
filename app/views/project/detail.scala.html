@@ -1,226 +1,196 @@
-@(widget: viewmodels.ProjectWidget, project: models.Project, donateForm: Form[viewmodels.donation.CreateDonationData], newNewsForm: Form[viewmodels.NewsData])
+@(widget: viewmodels.ProjectWidget, project: models.Project, donateForm: Form[viewmodels.donation.CreateDonationData], newsDataForm: Form[viewmodels.NewsData])
 
 @main("BringToAfrica") {
-<div class="cause-page content-wrapper" id="page-info">
-    <div class="container">
+    <div class="cause-page content-wrapper" id="page-info">
+        <div class="container">
 
-        <!-- our causes detail-->
+                <!-- our causes detail-->
 
-        <div class="anim-section">
-            <div class="row">
-                <div class="col-xs-12 col-sm-9 left-block">
+            <div class="anim-section">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-9 left-block">
 
-                    <div class="article-list-large causes-description progressbar">
+                        <div class="article-list-large causes-description progressbar">
 
-                        <div class="anim-section">
+                            <div class="anim-section">
 
-                            <figure>
-                                <img src="@project.getImageURL()" alt="">
-                            </figure>
+                                <figure>
+                                    <img src="@project.getImageURL()" alt="">
+                                </figure>
 
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="@widget.getState()" aria-valuemin="0" aria-valuemax="100">
-                                    <span class="progress-value">@widget.getState()%</span>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="@widget.getState()" aria-valuemin="0" aria-valuemax="100">
+                                        <span class="progress-value">@widget.getState()%</span>
+                                    </div>
+                                </div>
+
+                                <div class="heading-sec text-left">
+                                    <h3 class="h4">@project.getTitle()</h3>
+                                    <span class="date-desc">Start: @project.getStartsAt()  |  Ende:@project.getEndsAt()</span>
+                                    <a data-toggle="modal" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
+                                </div>
+                                    <!-- product-detail tab Section -->
+                                <div class="row tab-wrap">
+                                    <div class="col-sm-12">
+                                            <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
+                                            <li class="active"><a href="#first_title" role="tab" data-toggle="tab">Beschreibung</a></li>
+                                            <li><a href="#second_title" role="tab" data-toggle="tab">Spendenübersicht</a></li>
+                                            <li><a href="#third_title" role="tab" data-toggle="tab">Spender</a></li>
+                                        </ul>
+
+                                            <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="first_title">
+                                                <h5>@project.getDescription()</h5>
+                                            </div>
+                                            <div class="tab-pane" id="second_title">
+                                                <h5>Laptop (35 von 100 Stück)</h5>
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">
+                                                        <span class="progress-value">35%</span>
+                                                    </div>
+                                                </div>
+                                                <h5>Maus (60 von 100 Stück)</h5>
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                                                        <span class="progress-value">60%</span>
+                                                    </div>
+                                                </div>
+                                                <h5>Tastatur (90 von 100 Stück)</h5>
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" aria-valuenow="90">
+                                                        <span class="progress-value">90%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="third_title">
+                                                <span> 25.04.2014 </span>
+                                                <h5>Claudia Hofstetter</h5>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">
+                                                        <span class="badge">10</span>
+                                                        Laptop
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <span class="badge">5</span>
+                                                        Maus
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <span class="badge">20</span>
+                                                        Tastatur
+                                                    </li>
+                                                </ul>
+                                                <span> 14.05.2014 </span>
+                                                <h5>Manuel Stoikovic</h5>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">
+                                                        <span class="badge">20</span>
+                                                        Laptop
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <span class="badge">4</span>
+                                                        Maus
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <span class="badge">15</span>
+                                                        Tastatur
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <!--step donation-->
+                                <div class="step-donation sec-step-med causes-details-step anim-section">
+
+                                    <header class="page-header section-header">
+                                        <h2>Spende in <strong>drei einfachen Schritten</strong></h2>
+                                    </header>
+
+                                    <div class="col-xs-12 text-center">
+
+                                        <div class="cols-xs-12 col-sm-4">
+                                            <div class="sec-step-desc">
+                                                <span class="number-count">1</span>
+                                                <h4 class="normal-text">Wähle aus was du Spenden möchtest</h4>
+                                                <p>
+                                                    Gib an wieviel du pro Spendenkategorie spenden möchtest.
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="cols-xs-12 col-sm-4">
+                                            <div class="sec-step-desc">
+                                                <span class="number-count">2</span>
+                                                <h4 class="normal-text">Klick auf Spende erfassen</h4>
+                                                <p>
+                                                    So einfach gehts!
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="cols-xs-12 col-sm-4">
+                                            <div class="sec-step-desc">
+                                                <span class="number-count">3</span>
+                                                <h4 class="normal-text">Kontaktiere den Organisator des Spendenprojekts</h4>
+                                                <p>
+                                                    Der Organisator hat vorab angegeben, wie du mit ihm/ihr in Kontakt treten kannst.
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                        <!--step donation-->
+
                                 </div>
                             </div>
 
-                            <div class="heading-sec text-left">
-                                <h3 class="h4">@project.getTitle()</h3>
-                                <span class="date-desc">Start: @project.getStartsAt()  |  Ende:@project.getEndsAt()</span>
-                                <a data-toggle="modal" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
-                            </div>
-                            <!-- product-detail tab Section -->
-                            <div class="row tab-wrap">
-                                <div class="col-sm-12">
-                                    <!-- Nav tabs -->
-                                    <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
-                                        <li class="active"><a href="#first_title" role="tab" data-toggle="tab">Beschreibung</a></li>
-                                        <li><a href="#second_title" role="tab" data-toggle="tab">Spendenübersicht</a></li>
-                                        <li><a href="#third_title" role="tab" data-toggle="tab">Spender</a></li>
-                                    </ul>
-
-                                    <!-- Tab panes -->
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="first_title">
-                                            <h5>@project.getDescription()</h5>
-                                        </div>
-                                        <div class="tab-pane" id="second_title">
-                                            <h5>Laptop (35 von 100 Stück)</h5>
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="progress-value">35%</span>
-                                                </div>
-                                            </div>
-                                            <h5>Maus (60 von 100 Stück)</h5>
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="progress-value">60%</span>
-                                                </div>
-                                            </div>
-                                            <h5>Tastatur (90 von 100 Stück)</h5>
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" aria-valuenow="90">
-                                                    <span class="progress-value">90%</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane" id="third_title">
-                                            <span> 25.04.2014 </span>
-                                            <h5>Claudia Hofstetter</h5>
-                                            <ul class="list-group">
-                                                <li class="list-group-item">
-                                                    <span class="badge">10</span>
-                                                    Laptop
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <span class="badge">5</span>
-                                                    Maus
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <span class="badge">20</span>
-                                                    Tastatur
-                                                </li>
-                                            </ul>
-                                            <span> 14.05.2014 </span>
-                                            <h5>Manuel Stoikovic</h5>
-                                            <ul class="list-group">
-                                                <li class="list-group-item">
-                                                    <span class="badge">20</span>
-                                                    Laptop
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <span class="badge">4</span>
-                                                    Maus
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <span class="badge">15</span>
-                                                    Tastatur
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--step donation-->
-                            <div class="step-donation sec-step-med causes-details-step anim-section">
-
-                                <header class="page-header section-header">
-                                    <h2>Spende in <strong>drei einfachen Schritten</strong></h2>
-                                </header>
-
-                                <div class="col-xs-12 text-center">
-
-                                    <div class="cols-xs-12 col-sm-4">
-                                        <div class="sec-step-desc">
-                                            <span class="number-count">1</span>
-                                            <h4 class="normal-text">Wähle aus was du Spenden möchtest</h4>
-                                            <p>
-                                                Gib an wieviel du pro Spendenkategorie spenden möchtest.
-                                            </p>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="cols-xs-12 col-sm-4">
-                                        <div class="sec-step-desc">
-                                            <span class="number-count">2</span>
-                                            <h4 class="normal-text">Klick auf Spende erfassen</h4>
-                                            <p>
-                                                So einfach gehts!
-                                            </p>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="cols-xs-12 col-sm-4">
-                                        <div class="sec-step-desc">
-                                            <span class="number-count">3</span>
-                                            <h4 class="normal-text">Kontaktiere den Organisator des Spendenprojekts</h4>
-                                            <p>
-                                                Der Organisator hat vorab angegeben, wie du mit ihm/ihr in Kontakt treten kannst.
-                                            </p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!--step donation-->
-
-                            </div>
                         </div>
 
                     </div>
 
+                    <div class="col-xs-12 col-sm-3 left-block ">
+                        <aside class="media">
+                            <h3 class="space-top">News</h3>
+                            @for(news <- project.getNews) {
+                                <li>
+                                    <a href="#" class="pull-left">
+                                        <figure>
+                                            <img src="@news.getImageURL()" alt="" height="98" width="98"/>
+                                        </figure>
+                                    </a>
+                                    <div class="media-body">
+                                        <p>
+                                            <a href="#">
+                                            @news.getTitle
+                                            </a>
+                                        </p>
+                                        <span> @news.getDate </span>
+                                    </div>
+                                </li>
+                            }
+                            <ul>
+                                <li>
+                                    <a data-toggle="modal" data-target=".news-form" class="btn btn-default btn-xs pull-right">News erfassen</a>
+                                </li>
+                            </ul>
+                        </aside>
+                    </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-3 left-block ">
-                    <aside class="media">
-                        <h3 class="space-top">News</h3>
-                        <ul>
-                            <li>
-                                <a href="#" class="pull-left">
-                                    <figure>
-                                        <img src="http://coiffure-anja.ch/wp-content/uploads/2014/02/News_765x350px.jpg" alt="" height="98" width="98"/>
-                                    </figure>
-                                </a>
-                                <div class="media-body">
-                                    <p>
-                                        <a href="#">
-                                            Fusce mauris enim faci lisis sceler
-                                        </a>
-                                    </p>
-                                    <span> 23, March’14 </span>
-                                </div>
-                            </li>
-
-                            <li>
-                                <a href="#" class="pull-left">
-                                    <figure>
-                                        <img src="http://coiffure-anja.ch/wp-content/uploads/2014/02/News_765x350px.jpg" alt="" height="98" width="98" />
-                                    </figure>
-                                </a>
-                                <div class="media-body">
-                                    <p>
-                                        <a href="#">
-                                            Mauris enim faci lisis sceler isque non
-                                        </a>
-                                    </p>
-                                    <span> 23, March’14 </span>
-                                </div>
-                            </li>
-
-                            <li>
-                                <a href="#" class="pull-left">
-                                    <figure>
-                                        <img src="http://coiffure-anja.ch/wp-content/uploads/2014/02/News_765x350px.jpg" alt="" height="98" width="98" />
-                                    </figure>
-                                </a>
-                                <div class="media-body">
-                                    <p>
-                                        <a href="#">
-                                            Enim faci lisis sceler isque nonmauris
-                                        </a>
-                                    </p>
-                                    <span> 23, March’14 </span>
-                                </div>
-                            </li>
-                            <li>
-                                <a data-toggle="modal" data-target=".news-form" class="btn btn-default btn-xs pull-right">News erfassen</a>
-                            </li>
-                        </ul>
-                    </aside>
-                </div>
             </div>
-
         </div>
-    </div>
 
-</div>
+    </div>
 } {
     <div aria-hidden="true" style="display: none;" class="modal donate-form" id="pjax-container">
-        @donate(project, donateForm)
+    @donate(project, donateForm)
     </div>
     <div aria-hidden="true" style="display: none;" class="modal news-form" id="pjax-containerNews">
-        @newNews(project, newNewsForm)
+    @newNews(project, newsDataForm)
     </div>
     <script src="@routes.Assets.at("js/donate.js")"></script>
     <script src="@routes.Assets.at("js/newNews.js")"></script>
