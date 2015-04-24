@@ -10,7 +10,7 @@
       </header>
     </div>
     <div class="modal-body">
-    @helper.form(action = routes.NewsController.addNews(), 'role -> "form", 'id -> "news-form") {
+    @helper.form(action = routes.NewsController.addNews(), 'role -> "form", 'id -> "news-form", 'type -> "POST", 'method -> "POST") {
       <input type="hidden" name="projectId" value="@project.getId()">
 
       <div class="row">

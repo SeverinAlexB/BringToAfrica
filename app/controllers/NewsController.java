@@ -7,8 +7,13 @@ import play.mvc.Result;
 import services.ProjectService;
 import play.mvc.Security;
 import viewmodels.NewsData;
+import viewmodels.ProjectWidget;
+import viewmodels.donation.CreateDonationData;
+
+import java.util.List;
 
 import static play.mvc.Results.badRequest;
+import static play.mvc.Results.ok;
 
 public class NewsController {
 
@@ -19,7 +24,6 @@ public class NewsController {
         if (newsDataForm.hasErrors()) {
             return badRequest(views.html.newNews.render(project, newsDataForm));
         } else {
-
             News news = new News();
             news.setTitle(newsDataForm.get().title);
             news.setDescription(newsDataForm.get().description);
@@ -27,7 +31,18 @@ public class NewsController {
             news.setDate(new java.sql.Date(new java.util.Date().getTime()));
             news.setProject(project);
             news.save();
-            return play.mvc.Controller.redirect(routes.ApplicationController.index());
+
+            System.out.println(news.getTitle());
+            System.out.println(project.getTitle());
+            ProjectWidget widget = new ProjectWidget(project);
+            return ok(views.html.project.detail.render(widget, project, createDonationForm(project), Form.form(NewsData.class)));
         }
     }
+
+    private static Form<CreateDonationData> createDonationForm(Project project) {
+        List<DonationGoal> goals = project.getDonationGoals();
+        CreateDonationData data = new CreateDonationData(goals);
+        return Form.form(CreateDonationData.class).fill(data);
+    }
+
 }

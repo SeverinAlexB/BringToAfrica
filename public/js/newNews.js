@@ -1,5 +1,12 @@
 $(document).ready(function () {
     $(document).on('submit', '#news-form', function(event) {
-        $.pjax.submit(event, '#pjax-containerNews');
+        //event.preventDefault();
+        $.pjax({
+            type: 'POST',
+            //url: "/news",
+            container: '#pjax-containerNews',
+            data: this,
+            dataType: 'application/json'
+        })
     })
 });
