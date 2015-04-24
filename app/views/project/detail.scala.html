@@ -1,4 +1,4 @@
-@(widget: viewmodels.ProjectWidget, project: models.Project, donateForm: Form[viewmodels.donation.CreateDonationData])
+@(widget: viewmodels.ProjectWidget, project: models.Project, donateForm: Form[viewmodels.donation.CreateDonationData], newNewsForm: Form[viewmodels.NewsData])
 
 @main("BringToAfrica") {
 <div class="cause-page content-wrapper" id="page-info">
@@ -27,7 +27,7 @@
                             <div class="heading-sec text-left">
                                 <h3 class="h4">@project.getTitle()</h3>
                                 <span class="date-desc">Start: @project.getStartsAt()  |  Ende:@project.getEndsAt()</span>
-                                <a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
+                                <a data-toggle="modal" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
                             </div>
                             <!-- product-detail tab Section -->
                             <div class="row tab-wrap">
@@ -204,7 +204,7 @@
                                 </div>
                             </li>
                             <li>
-                                <button type="button" data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default btn-xs pull-right">News erfassen</button>
+                                <button type="button" data-toggle="modal" href="external.html" data-target=".news-form" class="btn btn-default btn-xs pull-right">News erfassen</button>
                             </li>
                         </ul>
                     </aside>
@@ -219,5 +219,9 @@
     <div aria-hidden="true" style="display: none;" class="modal donate-form" id="pjax-container">
         @donate(project, donateForm)
     </div>
+    <div aria-hidden="true" style="display: none;" class="modal news-form" id="pjax-containerNews">
+        @newNews(project, newNewsForm)
+    </div>
     <script src="@routes.Assets.at("js/donate.js")"></script>
+    <script src="@routes.Assets.at("js/newNews.js")"></script>
 }

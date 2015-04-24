@@ -1,23 +1,25 @@
 package controllers;
 
 import exceptions.AfricaException;
-import models.News;
-import play.mvc.Controller;
-import play.twirl.api.Html;
+import models.*;
 import play.data.Form;
 import play.mvc.Result;
-import play.mvc.Security;
 import services.ProjectService;
+import play.mvc.Security;
 import viewmodels.NewsData;
+
+import static play.mvc.Results.badRequest;
+
 public class NewsController {
 
     @Security.Authenticated(AuthenticationController.class)
-    public static Result addNewsToProject(long id) throws AfricaException {
+    public static Result addNews() throws AfricaException {
         Form<NewsData> newsDataForm = Form.form(NewsData.class).bindFromRequest();
+        models.Project project = ProjectService.getProjectById(Long.valueOf(newsDataForm.get().projectId));
         if (newsDataForm.hasErrors()) {
-            return badRequest(views.html.newNews.render(newsDataForm));
+            return badRequest(views.html.newNews.render(project, newsDataForm));
         } else {
-            models.Project project = ProjectService.getProjectById(id);
+
             News news = new News();
             news.setTitle(newsDataForm.get().title);
             news.setDescription(newsDataForm.get().description);
@@ -25,7 +27,7 @@ public class NewsController {
             news.setDate(new java.sql.Date(new java.util.Date().getTime()));
             news.setProject(project);
             news.save();
-            return redirect(routes.ApplicationController.index());
+            return play.mvc.Controller.redirect(routes.ApplicationController.index());
         }
     }
 }

@@ -8,6 +8,9 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class NewsData {
+    @Constraints.Required
+    public String projectId;
+
     @Constraints.Required(message = "Bitte gib einen Titel ein")
     public String title;
     @Constraints.Required(message = "Bitte gib eine kurze Beschreibung an")
