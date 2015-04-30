@@ -2,21 +2,35 @@
 @import helper._
 
 @main("BringToAfrica") {
+<div class="container">
+
 
     <div class="row">
         <div class="col-xs-12">
             <h2 class="h4">Meine Spenden</h2>
         </div>
-
-
-    <div class="article-list progressbar">
-        @for(projectdata <- donationsData.donations) {
-        <div class="row">
-            <div class="col-xs-12">
-                @ProjectController.getProjectWidget(projectdata.project.getId())
-            </div>
-        </div>
     </div>
-    }
+
+        <div class="article-list">
+            @for(projectdata <- donationsData.donations) {
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                @ProjectController.getProjectWidget(projectdata.project.getId())
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <ul class="list-group mydonation">
+                        <p>@projectdata.date</p>
+                        @for(donation <- projectdata.donations) {
+                        <li class="list-group-item">
+                            <span class="badge">@donation.getAmount()</span>
+                            @donation.getType()
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            }
+        </div>
 </div>
+
 } { }
