@@ -2,6 +2,7 @@ package service;
 
 import integration.DatabaseTest;
 import models.User;
+import org.junit.Assert;
 import org.junit.Test;
 import org.mindrot.jbcrypt.BCrypt;
 import services.ConsumerService;
@@ -9,6 +10,7 @@ import services.ConsumerService;
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
 import static junit.framework.TestCase.assertNull;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class ConsumerServiceTest {
 
@@ -76,6 +78,25 @@ public class ConsumerServiceTest {
         });
     }
 
+    @Test
+    public void validatePasswordsTest(){
+        String password1 = "Test123!";
+        String password2 = "Test123!";
+        Assert.assertTrue(ConsumerService.validatePasswords(password1, password2));
+    }
 
+    @Test
+    public void validatePasswordsFailsTest(){
+        String password1 = "Test123";
+        String password2 = "Test123";
+        assertFalse(ConsumerService.validatePasswords(password1, password2));
+    }
+
+    @Test
+    public void validatePasswordsFailShortTest(){
+        String password1 = "Test1!";
+        String password2 = "Test1!";
+        assertFalse(ConsumerService.validatePasswords(password1, password2));
+    }
 
 }
