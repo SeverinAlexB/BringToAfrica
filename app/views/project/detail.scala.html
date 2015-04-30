@@ -1,4 +1,4 @@
-@(project: models.Project, projectDetail: viewmodels.ProjectDetail, donateForm: Form[viewmodels.donation.CreateDonationData], newsDataForm: Form[viewmodels.NewsData], isProjectOwner: Boolean)
+@(project: models.Project, projectDetail: viewmodels.ProjectDetail, donateForm: Form[viewmodels.donation.CreateDonationData], newsDataForm: Form[viewmodels.NewsData], isAuthenticated: Boolean, isProjectOwner: Boolean)
 
 @main("BringToAfrica") {
     <div class="cause-page content-wrapper" id="page-info">
@@ -25,7 +25,9 @@
                                 <div class="heading-sec text-left">
                                     <h3 class="h4">@projectDetail.getTitle()</h3>
                                     <span class="date-desc">Start: @projectDetail.getStartsAt()  |  Ende: @projectDetail.getEndsAt()</span>
-                                    <a data-toggle="modal" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
+                                    @if(isAuthenticated) {
+                                        <a data-toggle="modal" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
+                                    }
                                 </div>
                                     <!-- product-detail tab Section -->
                                 <div class="row tab-wrap">

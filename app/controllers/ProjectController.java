@@ -4,29 +4,20 @@ import com.avaje.ebean.Page;
 import exceptions.AfricaException;
 import models.*;
 import play.data.Form;
-import play.mvc.Controller;
 import play.mvc.Result;
-import play.twirl.api.Html;
-import services.ConsumerService;
-import services.DonationTypeService;
-import viewmodels.*;
 import play.mvc.Security;
-import viewmodels.NewsData;
+import play.twirl.api.Html;
+import services.DonationTypeService;
+import services.ProjectService;
+import viewmodels.*;
 import viewmodels.donation.CreateDonationData;
-import viewmodels.ProjectData;
-import viewmodels.ProjectWidget;
-import viewmodels.donation.DonationData;
-import viewmodels.donation.ProjectDonationData;
 import views.html.newProject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import services.ProjectService;
 
 
-public class ProjectController extends Controller {
+public class ProjectController extends DonationController {
 
     private static final int PAGE_SIZE = 10;
 
@@ -49,54 +40,11 @@ public class ProjectController extends Controller {
         Project project = ProjectService.getProjectById(id);
         ProjectDetail projectDetail = new ProjectDetail(project);
         User user = ApplicationController.getCurrentUser();
-        Boolean isProjectOwner = user != null && user.getId().equals(project.getOwner().getId());
+        Boolean isAuthenticated = user != null;
+        Boolean isProjectOwner = isAuthenticated && user.getId().equals(project.getOwner().getId());
         return ok(views.html.project.detail.render(
-            project, projectDetail, createDonationForm(project), Form.form(NewsData.class), isProjectOwner)
-        );
-    }
-
-    public static Result donate() {
-        Form<CreateDonationData> form = Form.form(CreateDonationData.class).bindFromRequest();
-        Project project = ProjectService.getProjectById(form.get().projectId);
-
-        if (form.hasErrors()) {
-            return badRequest(views.html.project.donate.render(project, form));
-        } else {
-            List<DonationGoal> goals = project.getDonationGoals();
-            ArrayList<DonationData> donations = createDonations(form, goals);
-
-            ProjectDonationData donation = new ProjectDonationData();
-            donation.project = project;
-            donation.donations = donations;
-            return ok(views.html.project.donateSuccess.render(donation));
-        }
-    }
-
-    private static ArrayList<DonationData> createDonations(Form<CreateDonationData> form, List<DonationGoal> goals) {
-        ArrayList<DonationData> donations = new ArrayList<>();
-
-        for (int i = 0; i < form.get().amounts.size(); i++) {
-            String typeName = form.get().donations.get(i);
-            int amount = Integer.parseInt(form.get().amounts.get(i));
-
-            User user = ApplicationController.getCurrentUser();
-            DonationGoal goal = getGoalByType(goals, typeName);
-
-            Donation donation = new Donation(user, goal);
-            donation.setAmount(amount);
-            donation.save();
-
-            donations.add(new DonationData(donation));
-        }
-        return donations;
-    }
-
-    private static DonationGoal getGoalByType(List<DonationGoal> goals, String typeName) {
-        DonationType type = DonationTypeService.getDonationTypeByName(typeName);
-        return goals.stream()
-                .filter(g -> g.getType().getName().equals(type.getName()))
-                .limit(2)
-                .collect(Collectors.toList()).get(0);
+            project, projectDetail, createDonationForm(project), Form.form(NewsData.class), isAuthenticated, isProjectOwner
+        ));
     }
 
     private static Form<CreateDonationData> createDonationForm(Project project) {

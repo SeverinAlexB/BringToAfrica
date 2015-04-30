@@ -10,7 +10,7 @@
                 </header>
             </div>
             <div class="modal-body">
-                @helper.form(action = routes.ProjectController.donate, 'role -> "form", 'id -> "donate-form") {
+                @helper.form(action = routes.DonationController.donate, 'role -> "form", 'id -> "donate-form") {
                     <input type="hidden" name="projectId" value="@project.getId()">
                     @for(i <- 0 until donateForm.get().donations.size){
                     <div class="row">
