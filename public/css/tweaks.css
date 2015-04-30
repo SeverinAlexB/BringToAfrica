@@ -27,3 +27,16 @@
 h4 {
     margin-bottom: 0;
 }
+
+.pull-down {
+    display: table-cell;
+    vertical-align: bottom;
+    float: none;
+}
+
+.projectWidget {
+
+}
+div.projectWidget h3 {
+    margin-bottom:17px;
+}
