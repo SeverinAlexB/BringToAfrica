@@ -19,7 +19,6 @@ public class DonationGoalService {
         }
         double state = donations / (double)donationGoal.getAmount();
         if(state > 1) state = 1;
-
         return (int)(state * 100);
     }
 }
