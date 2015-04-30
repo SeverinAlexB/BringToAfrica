@@ -1,4 +1,4 @@
-@(project: models.Project, projectDetail: viewmodels.ProjectDetail, donateForm: Form[viewmodels.donation.CreateDonationData], newsDataForm: Form[viewmodels.NewsData])
+@(project: models.Project, projectDetail: viewmodels.ProjectDetail, donateForm: Form[viewmodels.donation.CreateDonationData], newsDataForm: Form[viewmodels.NewsData], isProjectOwner: Boolean)
 
 @main("BringToAfrica") {
     <div class="cause-page content-wrapper" id="page-info">
@@ -160,9 +160,11 @@
                                     </div>
                                 </li>
                             }
-                                <li>
-                                    <a data-toggle="modal" data-target=".news-form" class="btn btn-default btn-xs pull-right">News erfassen</a>
-                                </li>
+                                @if(isProjectOwner) {
+                                    <li>
+                                        <a data-toggle="modal" data-target=".news-form" class="btn btn-default btn-xs pull-right">News erfassen</a>
+                                    </li>
+                                }
                             </ul>
                         </aside>
                     </div>

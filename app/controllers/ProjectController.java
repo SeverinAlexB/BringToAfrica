@@ -47,7 +47,8 @@ public class ProjectController extends Controller {
     public static Result getProject(long id) {
         Project project = ProjectService.getProjectById(id);
         ProjectDetail projectDetail = new ProjectDetail(project);
-        return ok(views.html.project.detail.render(project, projectDetail, createDonationForm(project), Form.form(NewsData.class)));
+        Boolean isProjectOwner = ApplicationController.getCurrentUser().getId().equals(project.getOwner().getId());
+        return ok(views.html.project.detail.render(project, projectDetail, createDonationForm(project), Form.form(NewsData.class)), isProjectOwner);
     }
 
     public static Result donate() {
