@@ -8,7 +8,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.twirl.api.Html;
 import services.DonationTypeService;
-import viewmodels.DateConverter;
+import viewmodels.*;
 import play.mvc.Security;
 import viewmodels.NewsData;
 import viewmodels.donation.CreateDonationData;

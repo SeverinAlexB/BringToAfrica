@@ -11,4 +11,7 @@ public class DonationGoalService {
         return DonationGoal.find.where().eq("project", project).findList();
     }
 
+    public static int getState(DonationGoal donationGoal){
+        return (donationGoal.getDonations().size() / donationGoal.getAmount()) * 100;
+    }
 }
