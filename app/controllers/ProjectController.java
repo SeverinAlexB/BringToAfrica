@@ -4,6 +4,7 @@ import com.avaje.ebean.Page;
 import exceptions.AfricaException;
 import models.*;
 import play.data.Form;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 import play.twirl.api.Html;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProjectController extends DonationController {
+public class ProjectController extends Controller {
 
     private static final int PAGE_SIZE = 10;
 

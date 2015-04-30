@@ -4,6 +4,7 @@ import models.*;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 import services.DonationTypeService;
 import services.ProjectService;
 import viewmodels.donation.CreateDonationData;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DonationController extends Controller {
+    @Security.Authenticated(AuthenticationController.class)
     public static Result donate() {
         Form<CreateDonationData> form = Form.form(CreateDonationData.class).bindFromRequest();
         Project project = ProjectService.getProjectById(form.get().projectId);

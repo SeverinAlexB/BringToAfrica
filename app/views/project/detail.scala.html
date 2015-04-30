@@ -3,15 +3,10 @@
 @main("BringToAfrica") {
     <div class="cause-page content-wrapper" id="page-info">
         <div class="container">
-
-                <!-- our causes detail-->
-
             <div class="anim-section">
                 <div class="row">
                     <div class="col-xs-12 col-sm-9 left-block">
-
                         <div class="article-list-large causes-description progressbar">
-
                             <div class="anim-section">
                                 <figure>
                                     <img src="@projectDetail.getImageURL()" alt="">
@@ -22,6 +17,7 @@
                                         <span class="progress-value">@projectDetail.getState()%</span>
                                     </div>
                                 </div>
+
                                 <div class="heading-sec text-left">
                                     <h3 class="h4">@projectDetail.getTitle()</h3>
                                     <span class="date-desc">Start: @projectDetail.getStartsAt()  |  Ende: @projectDetail.getEndsAt()</span>
@@ -29,30 +25,31 @@
                                         <a data-toggle="modal" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
                                     }
                                 </div>
-                                    <!-- product-detail tab Section -->
-                                <div class="row tab-wrap">
-                                    <div class="col-sm-12">
-                                            <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
-                                            <li class="active"><a href="#first_title" role="tab" data-toggle="tab">Beschreibung</a></li>
-                                            <li><a href="#second_title" role="tab" data-toggle="tab">Spendenübersicht</a></li>
-                                            <li><a href="#third_title" role="tab" data-toggle="tab">Spender</a></li>
-                                        </ul>
+                            </div>
+                            <!-- product-detail tab Section -->
+                            <div class="row tab-wrap">
+                                <div class="col-sm-12">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
+                                        <li class="active"><a href="#first_title" role="tab" data-toggle="tab">Beschreibung</a></li>
+                                        <li><a href="#second_title" role="tab" data-toggle="tab">Spendenübersicht</a></li>
+                                        <li><a href="#third_title" role="tab" data-toggle="tab">Spender</a></li>
+                                    </ul>
 
-                                            <!-- Tab panes -->
-                                        <div class="tab-content">
-                                            <div class="tab-pane active" id="first_title">
-                                                <h5>@projectDetail.getDescription()</h5>
-                                            </div>
-                                            <div class="tab-pane" id="second_title">
-                                                @for(donationGoal <- projectDetail.getDonationGoals()) {
-                                                    <h5>@donationGoal.getType().getName() (@donationGoal.getDonations().size() von @donationGoal.getAmount() Stück)</h5>
-                                                    <div class="progress">
-                                                        <div class="progress-bar" role="progressbar" aria-valuenow="@projectDetail.getStateOfDonationGoal(donationGoal)" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="progress-value">@projectDetail.getStateOfDonationGoal(donationGoal) %</span>
-                                                        </div>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="first_title">
+                                            <h5>@projectDetail.getDescription()</h5>
+                                        </div>
+                                        <div class="tab-pane" id="second_title">
+                                            @for(donationGoal <- projectDetail.getDonationGoals()) {
+                                                <h5>@donationGoal.getType().getName() (@donationGoal.getDonations().size() von @donationGoal.getAmount() Stück)</h5>
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" aria-valuenow="@projectDetail.getStateOfDonationGoal(donationGoal)" aria-valuemin="0" aria-valuemax="100">
+                                                        <span class="progress-value">@projectDetail.getStateOfDonationGoal(donationGoal) %</span>
                                                     </div>
-                                                }
+                                                </div>
+                                            }
                                             </div>
                                             <div class="tab-pane" id="third_title">
                                                 <span> 25.04.2014 </span>
@@ -108,7 +105,6 @@
                                                     Gib an wieviel du pro Spendenkategorie spenden möchtest.
                                                 </p>
                                             </div>
-
                                         </div>
 
                                         <div class="cols-xs-12 col-sm-4">
@@ -119,7 +115,6 @@
                                                     So einfach gehts!
                                                 </p>
                                             </div>
-
                                         </div>
 
                                         <div class="cols-xs-12 col-sm-4">
