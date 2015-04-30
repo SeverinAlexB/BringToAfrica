@@ -12,6 +12,7 @@ POST        /projects/data                 controllers.ProjectController.addProj
 POST        /donations                     controllers.DonationController.donate()
 
 POST        /news                          controllers.NewsController.addNews()
+GET         /news/:id                      controllers.NewsController.getNews(id: Long)
 
 
 GET         /login                         controllers.LoginController.login()
