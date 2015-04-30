@@ -84,8 +84,6 @@ public class RegistrationDataTest {
             browser.getDriver().findElement(By.name("password1")).sendKeys("thePass6%");
             browser.getDriver().findElement(By.name("password2")).sendKeys("thePass6%");
             browser.getDriver().findElement(By.id("btnRegistieren")).click();
-
-            System.out.println(User.find.all().size());
             assertTrue(User.find.all().size() == 1);
         }));
     }

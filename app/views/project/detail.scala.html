@@ -26,27 +26,27 @@
                                     }
                                 </div>
                             </div>
-                            <!-- product-detail tab Section -->
-                            <div class="row tab-wrap">
-                                <div class="col-sm-12">
-                                    <!-- Nav tabs -->
-                                    <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
-                                        <li class="active"><a href="#first_title" role="tab" data-toggle="tab">Beschreibung</a></li>
-                                        <li><a href="#second_title" role="tab" data-toggle="tab">Spendenübersicht</a></li>
-                                        <li><a href="#third_title" role="tab" data-toggle="tab">Spender</a></li>
-                                    </ul>
+                                <div class="row tab-wrap">
+                                    <div class="col-sm-12">
+                                            <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
+                                            <li class="active"><a href="#first_title" role="tab" data-toggle="tab">Beschreibung</a></li>
+                                            <li><a href="#second_title" role="tab" data-toggle="tab">Spendenübersicht</a></li>
+                                            <li><a href="#third_title" role="tab" data-toggle="tab">Spender</a></li>
+                                        </ul>
 
-                                    <!-- Tab panes -->
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="first_title">
-                                            <h5>@projectDetail.getDescription()</h5>
-                                        </div>
-                                        <div class="tab-pane" id="second_title">
-                                            @for(donationGoal <- projectDetail.getDonationGoals()) {
-                                                <h5>@donationGoal.getType().getName() (@donationGoal.getDonations().size() von @donationGoal.getAmount() Stück)</h5>
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" aria-valuenow="@projectDetail.getStateOfDonationGoal(donationGoal)" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="progress-value">@projectDetail.getStateOfDonationGoal(donationGoal) %</span>
+                                            <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="first_title">
+                                                <h5>@projectDetail.getDescription()</h5>
+                                            </div>
+                                            <div class="tab-pane" id="second_title">
+                                                @for(donationGoal <- projectDetail.getDonationGoals()) {
+                                                    <h5>@donationGoal.getType().getName() (@projectDetail.getStateOfDonationGoal(donationGoal) von @donationGoal.getAmount() Stück)</h5>
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" aria-valuenow="@projectDetail.getStateOfDonationGoalInPercent(donationGoal)" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="progress-value">@projectDetail.getStateOfDonationGoalInPercent(donationGoal) %</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             }

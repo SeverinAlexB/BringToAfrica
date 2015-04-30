@@ -1,4 +1,4 @@
-package service;
+package application;
 
 import integration.DatabaseTest;
 import models.Donation;

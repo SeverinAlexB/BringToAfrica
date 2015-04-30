@@ -54,6 +54,10 @@ public class ProjectDetail {
         return donationGoals;
     }
 
+    public int getStateOfDonationGoalInPercent(DonationGoal donationGoal) {
+        return DonationGoalService.getStateInPercent(donationGoal);
+    }
+
     public int getStateOfDonationGoal(DonationGoal donationGoal) {
         return DonationGoalService.getState(donationGoal);
     }

@@ -1,5 +1,6 @@
 package services;
 
+import models.Donation;
 import models.DonationGoal;
 import models.Project;
 
@@ -11,7 +12,21 @@ public class DonationGoalService {
         return DonationGoal.find.where().eq("project", project).findList();
     }
 
-    public static int getState(DonationGoal donationGoal){
-        return (donationGoal.getDonations().size() / donationGoal.getAmount()) * 100;
+    public static int getStateInPercent(DonationGoal donationGoal){
+        double donations = 0.0;
+        for(Donation donation : donationGoal.getDonations()) {
+            donations += donation.getAmount();
+        }
+        double state = donations / (double)donationGoal.getAmount();
+        if(state > 1) state = 1;
+        return (int)(state * 100);
+    }
+
+    public static int getState(DonationGoal donationGoal) {
+        int state = 0;
+        for(Donation donation : donationGoal.getDonations()) {
+            state += donation.getAmount();
+        }
+        return state;
     }
 }
