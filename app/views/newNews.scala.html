@@ -1,0 +1,61 @@
+@(project: Project, newsDataForm: Form[viewmodels.NewsData])
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        ×
+      </button>
+      <header class="page-header">
+        <h2>Du erfasst News für <strong>@project.getTitle()</strong></h2>
+      </header>
+    </div>
+    <div class="modal-body">
+    @helper.form(action = routes.NewsController.addNews(), 'role -> "form", 'id -> "news-form", 'type -> "POST", 'method -> "POST") {
+      <input type="hidden" name="projectId" value="@project.getId()">
+
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="add-note">Titel</label>
+            <input class="form-control" type="text" name="title" placeholder="Titel" value="@newsDataForm("title").value" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="add-note">Beschreibung</label>
+          <textarea class="form-control" name="description" placeholder="Beschreibung" id="add-note">@newsDataForm("description").value</textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="add-note">Image URL</label>
+          <input class="form-control" type="text" name="imageUrl" placeholder="BildURL" value="@newsDataForm("imageUrl").value" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button id="news-submit" type="submit" class="btn btn-default">Erstellen</button>
+        </div>
+      </div>
+    }
+      @if(newsDataForm.hasErrors()) {
+        <p></p>
+        <div class="col-xs-11 col-sm-6">
+          <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            @for((key, value) <- newsDataForm.errors) {
+              @for(err <- value) {
+                @err.message().toString() <br/>
+              }
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>
+
+

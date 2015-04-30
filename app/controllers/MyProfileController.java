@@ -41,14 +41,19 @@ public class MyProfileController {
                     );
                 }
             }
-            user.setEmail(myProfileForm.get().email.toLowerCase());
-            user.setFirstName(myProfileForm.get().firstname);
-            user.setLastName(myProfileForm.get().lastname);
-            user.save();
+            saveProfile(user, myProfileForm);
             ConsumerService.logIn(user.getEmail());
             return play.mvc.Controller.redirect(routes.ApplicationController.index());
         }
     }
+
+    private static void saveProfile(User user, Form<MyProfile> myProfileForm){
+        user.setEmail(myProfileForm.get().email.toLowerCase());
+        user.setFirstName(myProfileForm.get().firstname);
+        user.setLastName(myProfileForm.get().lastname);
+        user.save();
+    }
+
 
     private static boolean editPassword(Form<MyProfile> myProfileForm, User user) {
         String oldPassword = myProfileForm.get().oldPassword;
