@@ -12,7 +12,7 @@ public class DonationGoalService {
         return DonationGoal.find.where().eq("project", project).findList();
     }
 
-    public static int getState(DonationGoal donationGoal){
+    public static int getStateInPercent(DonationGoal donationGoal){
         double donations = 0.0;
         for(Donation donation : donationGoal.getDonations()) {
             donations += donation.getAmount();
@@ -20,5 +20,13 @@ public class DonationGoalService {
         double state = donations / (double)donationGoal.getAmount();
         if(state > 1) state = 1;
         return (int)(state * 100);
+    }
+
+    public static int getState(DonationGoal donationGoal) {
+        int state = 0;
+        for(Donation donation : donationGoal.getDonations()) {
+            state += donation.getAmount();
+        }
+        return state;
     }
 }

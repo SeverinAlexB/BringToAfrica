@@ -39,7 +39,6 @@ public class ProjectService {
                 state += d.getAmount();
             }
         }
-        System.out.println("Goal: "+goal+" State: "+state);
         if (goal == 0.0 || state == 0.0) return 0;
         if(state > goal) return 100;
         return (int) ((100 / goal) * state);

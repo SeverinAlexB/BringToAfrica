@@ -44,10 +44,10 @@
                                             </div>
                                             <div class="tab-pane" id="second_title">
                                                 @for(donationGoal <- projectDetail.getDonationGoals()) {
-                                                    <h5>@donationGoal.getType().getName() (@donationGoal.getDonations().size() von @donationGoal.getAmount() Stück)</h5>
+                                                    <h5>@donationGoal.getType().getName() (@projectDetail.getStateOfDonationGoal(donationGoal) von @donationGoal.getAmount() Stück)</h5>
                                                     <div class="progress">
-                                                        <div class="progress-bar" role="progressbar" aria-valuenow="@projectDetail.getStateOfDonationGoal(donationGoal)" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="progress-value">@projectDetail.getStateOfDonationGoal(donationGoal) %</span>
+                                                        <div class="progress-bar" role="progressbar" aria-valuenow="@projectDetail.getStateOfDonationGoalInPercent(donationGoal)" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="progress-value">@projectDetail.getStateOfDonationGoalInPercent(donationGoal) %</span>
                                                         </div>
                                                     </div>
                                                 }
