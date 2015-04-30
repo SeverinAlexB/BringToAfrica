@@ -7,6 +7,7 @@ import play.mvc.Result;
 import services.ProjectService;
 import play.mvc.Security;
 import viewmodels.NewsData;
+import viewmodels.ProjectDetail;
 import viewmodels.ProjectWidget;
 import viewmodels.donation.CreateDonationData;
 
@@ -31,11 +32,8 @@ public class NewsController {
             news.setDate(new java.sql.Date(new java.util.Date().getTime()));
             news.setProject(project);
             news.save();
-            System.out.println("url: " + news.getImageURL());
-            System.out.println(news.getTitle());
-            System.out.println(project.getTitle());
-            ProjectWidget widget = new ProjectWidget(project);
-            return ok(views.html.project.detail.render(widget, project, createDonationForm(project), Form.form(NewsData.class)));
+            ProjectDetail projectDetail = new ProjectDetail(project);
+            return ok(views.html.project.detail.render(project, projectDetail, createDonationForm(project), Form.form(NewsData.class)));
         }
     }
 

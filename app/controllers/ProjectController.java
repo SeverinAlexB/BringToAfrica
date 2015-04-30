@@ -46,8 +46,8 @@ public class ProjectController extends Controller {
 
     public static Result getProject(long id) {
         Project project = ProjectService.getProjectById(id);
-        ProjectWidget widget = new ProjectWidget(project);
-        return ok(views.html.project.detail.render(widget, project, createDonationForm(project), Form.form(NewsData.class)));
+        ProjectDetail projectDetail = new ProjectDetail(project);
+        return ok(views.html.project.detail.render(project, projectDetail, createDonationForm(project), Form.form(NewsData.class)));
     }
 
     public static Result donate() {
