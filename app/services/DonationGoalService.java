@@ -1,5 +1,6 @@
 package services;
 
+import models.Donation;
 import models.DonationGoal;
 import models.Project;
 
@@ -12,6 +13,13 @@ public class DonationGoalService {
     }
 
     public static int getState(DonationGoal donationGoal){
-        return (donationGoal.getDonations().size() / donationGoal.getAmount()) * 100;
+        double donations = 0.0;
+        for(Donation donation : donationGoal.getDonations()) {
+            donations += donation.getAmount();
+        }
+        double state = donations / (double)donationGoal.getAmount();
+        if(state > 1) state = 1;
+
+        return (int)(state * 100);
     }
 }
