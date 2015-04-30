@@ -7,6 +7,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.twirl.api.Html;
+import services.ConsumerService;
 import services.DonationTypeService;
 import viewmodels.*;
 import play.mvc.Security;
@@ -47,8 +48,11 @@ public class ProjectController extends Controller {
     public static Result getProject(long id) {
         Project project = ProjectService.getProjectById(id);
         ProjectDetail projectDetail = new ProjectDetail(project);
-        Boolean isProjectOwner = ApplicationController.getCurrentUser().getId().equals(project.getOwner().getId());
-        return ok(views.html.project.detail.render(project, projectDetail, createDonationForm(project), Form.form(NewsData.class)), isProjectOwner);
+        User user = ApplicationController.getCurrentUser();
+        Boolean isProjectOwner = user != null && user.getId().equals(project.getOwner().getId());
+        return ok(views.html.project.detail.render(
+            project, projectDetail, createDonationForm(project), Form.form(NewsData.class), isProjectOwner)
+        );
     }
 
     public static Result donate() {

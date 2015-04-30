@@ -15,6 +15,7 @@ import java.util.List;
 
 import static play.mvc.Results.badRequest;
 import static play.mvc.Results.ok;
+import static play.mvc.Results.redirect;
 
 public class NewsController {
 
@@ -32,8 +33,7 @@ public class NewsController {
             news.setDate(new java.sql.Date(new java.util.Date().getTime()));
             news.setProject(project);
             news.save();
-            ProjectDetail projectDetail = new ProjectDetail(project);
-            return ok(views.html.project.detail.render(project, projectDetail, createDonationForm(project), Form.form(NewsData.class)));
+            return redirect(routes.ProjectController.getProject(project.getId()));
         }
     }
 
