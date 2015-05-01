@@ -2,14 +2,16 @@
 
 
   <div class="anim-section animate projectWidget text-center progressbar ">
-    <div class="panel panel-default">
+    <div class="">
       <div class="panel-body">
 
         <div>
             <h3 class="h5">@widget.getTitle()</h3>
             <a href="@routes.ProjectController.getProject(widget.getId())" class="img-thumb">
               <figure>
-                <img src="@widget.getImageLink()" alt="" class="img-responsive">
+                  <div class="crop">
+                    <img src="@widget.getImageLink()" alt="" class="img-responsive ">
+                  </div>
               </figure>
             </a>
         </div>
@@ -25,4 +27,10 @@
         </div>
       </div>
     </div>
+      <script>
+           //Change image size
+           var width = $(".projectWidget").width();
+           var newHeight = width*(18/33);
+           $(".projectWidget .crop").height(newHeight);
+      </script>
   </div>
