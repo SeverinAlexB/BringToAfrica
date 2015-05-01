@@ -8,6 +8,7 @@ import viewmodels.donation.MyDonationsData;
 import viewmodels.donation.ProjectDonationData;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import static org.junit.Assert.assertEquals;
 
@@ -87,12 +88,13 @@ public class MyDonationControllerTest extends MyDonationsController {
             ProjectDonationData actual = data.donations.get(0);
             Project expectedProject = user.getDonations().get(0).getDonationGoal().getProject();
             Donation expectedDonation = user.getDonations().get(0);
+            String expectedDate = new SimpleDateFormat("dd.MM.yyyy").format(expectedDonation.getDate());
 
             assertEquals("2 project",2,data.donations.size());
             assertEquals(expectedProject.getId(), actual.project.getId());
             assertEquals(expectedProject.getContact(),actual.contact);
             assertEquals(expectedDonation.getMessageToCollector(),actual.notice);
-            assertEquals(expectedDonation.getDate().toString(),actual.date);
+            assertEquals(expectedDate,actual.date);
             assertEquals(2,data.donations.get(0).donations.size());
             assertEquals(expectedDonation.getAmount(), actual.donations.get(0).amount);
             assertEquals(expectedDonation.getDonationGoal().getType().getName(), actual.donations.get(0).type);
