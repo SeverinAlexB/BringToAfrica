@@ -48,8 +48,7 @@
                                                             <span class="progress-value">@projectDetail.getStateOfDonationGoalInPercent(donationGoal) %</span>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            }
+                                                }
                                             </div>
                                             <div class="tab-pane" id="third_title">
                                                 <span> 25.04.2014 </span>
@@ -133,16 +132,13 @@
                             </div>
 
                         </div>
-
-                    </div>
-
                     <div class="col-xs-12 col-sm-3 left-block ">
                         <aside class="media">
                             <h3 class="space-top">News</h3>
                             <ul>
                             @for(news <- project.getNews) {
                                 <li>
-                                    <a href="#" class="pull-left">
+                                    <a href="@routes.NewsController.getNews(news.getId())" class="pull-left">
                                         <figure>
                                             <img src="@news.getImageURL()" alt="" height="98" width="98"/>
                                         </figure>
@@ -157,11 +153,16 @@
                                     </div>
                                 </li>
                             }
-                                @if(isProjectOwner) {
-                                    <li>
-                                        <a data-toggle="modal" data-target=".news-form" class="btn btn-default btn-xs pull-right">News erfassen</a>
-                                    </li>
-                                }
+                            @if(project.getNews().isEmpty()) {
+                                <li>
+                                    <p>Es sind noch keine News erfasst worden.</p>
+                                </li>
+                            }
+                            @if(isProjectOwner) {
+                                <li>
+                                    <a data-toggle="modal" data-target=".news-form" class="btn btn-default btn-xs pull-right">News erfassen</a>
+                                </li>
+                            }
                             </ul>
                         </aside>
                     </div>
