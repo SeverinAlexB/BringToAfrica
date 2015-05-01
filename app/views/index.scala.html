@@ -34,6 +34,10 @@
                                         <a href="@routes.ProjectController.getProjectWidgets(currentPage + 1)">Weiter</a>
                                     </li>
                                 }
+                            } else {
+                                    <li class="active">
+                                        <a href="@routes.ApplicationController.index()">@pageSize</a>
+                                    </li>
                             }
                     </ul>
                 </div>
