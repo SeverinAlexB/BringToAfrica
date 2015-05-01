@@ -11,10 +11,10 @@
         </div>
     </div>
 
-        <div class="article-list">
+        <div class="article-list  progressbar">
             @for(projectdata <- donationsData.donations) {
             <div class="row">
-                <div class="col-xs-12 col-sm-4">
+                <div class="col-xs-12 col-sm-4 text-center">
                 @ProjectController.getProjectWidget(projectdata.project.getId())
                 </div>
                 <div class="col-xs-12 col-sm-8">

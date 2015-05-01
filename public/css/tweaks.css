@@ -28,11 +28,6 @@ h4 {
     margin-bottom: 0;
 }
 
-.pull-down {
-    display: table-cell;
-    vertical-align: bottom;
-    float: none;
-}
 
 .projectWidget {
 
