@@ -1,0 +1,28 @@
+@(errorCode:Integer, errorMessage:String)
+@main("BringToAfrica") {
+<div class="container">
+
+
+    <section class="container" id="page-info">
+        <div class="row">
+            <!-- Table Section Start Here -->
+            <div class="col-xs-12 col-md-8 col-md-offset-2 four-zero-four">
+                <strong>@errorCode</strong>
+
+                <header class="page-header">
+                    <h2>Etwas ging schief :-(</h2>
+                    <p>
+                        @errorMessage
+                    </p>
+                </header>
+                <a class="btn btn-default" href="@routes.ApplicationController.index()">ZURÜCK ZUR STARTSEITE</a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+} { }
