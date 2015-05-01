@@ -7,11 +7,21 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <h2 class="h4">Meine Spenden</h2>
+            <h2 class="h2"><strong>Meine Spenden</strong></h2>
         </div>
     </div>
+    @if(donationsData.donations.size() == 0) {
+        <div class="row">
+            <div class="col-xs-12">
+                <h4>Du hast bis jetzt noch keine Spende getätigt.
+                    <a href="@routes.ProjectController.getProjectWidgets(0)">Jetzt zu den Projekten</a>
+                </h4>
+            </div>
+        </div>
+    }
 
-        <div class="article-list  progressbar">
+
+        <div class="article-list  ">
             @for(projectdata <- donationsData.donations) {
             <div class="row">
                 <div class="col-xs-12 col-sm-4 text-center">
