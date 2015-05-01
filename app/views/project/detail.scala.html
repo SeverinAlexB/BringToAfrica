@@ -43,82 +43,13 @@
                                 </div>
                                     <!--step donation-->
                                 <div class="step-donation sec-step-med causes-details-step anim-section">
-
-                                    <header class="page-header section-header">
-                                        <h2>Spende in <strong>drei einfachen Schritten</strong></h2>
-                                    </header>
-
-                                    <div class="col-xs-12 text-center">
-
-                                        <div class="cols-xs-12 col-sm-4">
-                                            <div class="sec-step-desc">
-                                                <span class="number-count">1</span>
-                                                <h4 class="normal-text">Wähle aus was du Spenden möchtest</h4>
-                                                <p>
-                                                    Gib an wieviel du pro Spendenkategorie spenden möchtest.
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="cols-xs-12 col-sm-4">
-                                            <div class="sec-step-desc">
-                                                <span class="number-count">2</span>
-                                                <h4 class="normal-text">Klick auf Spende erfassen</h4>
-                                                <p>
-                                                    So einfach gehts!
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="cols-xs-12 col-sm-4">
-                                            <div class="sec-step-desc">
-                                                <span class="number-count">3</span>
-                                                <h4 class="normal-text">Kontaktiere den Organisator des Spendenprojekts</h4>
-                                                <p>
-                                                    Der Organisator hat vorab angegeben, wie du mit ihm/ihr in Kontakt treten kannst.
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                        <!--step donation-->
+                                    @description()
                                 </div>
                             </div>
 
                         </div>
                     <div class="col-xs-12 col-sm-3 left-block ">
-                        <aside class="media">
-                            <h3 class="space-top">News</h3>
-                            <ul>
-                            @for(news <- project.getNews) {
-                                <li>
-                                    <a href="@routes.NewsController.getNews(news.getId())" class="pull-left">
-                                        <figure>
-                                            <img src="@news.getImageURL()" alt="" height="98" width="98"/>
-                                        </figure>
-                                    </a>
-                                    <div class="media-body">
-                                        <p>
-                                            <a href="@routes.NewsController.getNews(news.getId())">
-                                            @news.getTitle
-                                            </a>
-                                        </p>
-                                        <span> @news.getDate </span>
-                                    </div>
-                                </li>
-                            }
-                            @if(project.getNews().isEmpty()) {
-                                <li>
-                                    <p>Es sind noch keine News erfasst worden.</p>
-                                </li>
-                            }
-                            @if(isProjectOwner) {
-                                <li>
-                                    <a data-toggle="modal" data-target=".news-form" class="btn btn-default btn-xs pull-right">News erfassen</a>
-                                </li>
-                            }
-                            </ul>
-                        </aside>
+                        @sidebar(project, isProjectOwner)
                     </div>
                 </div>
             </div>
