@@ -1,0 +1,49 @@
+@(projectDetail: viewmodels.ProjectDetail)
+
+    <div class="tab-pane active" id="first_title">
+        <h5>@projectDetail.getDescription()</h5>
+    </div>
+    <div class="tab-pane" id="second_title">
+        @for(donationGoal <- projectDetail.getDonationGoals()) {
+        <h5>@donationGoal.getType().getName() (@projectDetail.getStateOfDonationGoal(donationGoal) von @donationGoal.getAmount() Stück)</h5>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="@projectDetail.getStateOfDonationGoalInPercent(donationGoal)" aria-valuemin="0" aria-valuemax="100">
+                <span class="progress-value">@projectDetail.getStateOfDonationGoalInPercent(donationGoal) %</span>
+            </div>
+        </div>
+        }
+    </div>
+    <div class="tab-pane" id="third_title">
+        <span> 25.04.2014 </span>
+        <h5>Claudia Hofstetter</h5>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <span class="badge">10</span>
+                Laptop
+            </li>
+            <li class="list-group-item">
+                <span class="badge">5</span>
+                Maus
+            </li>
+            <li class="list-group-item">
+                <span class="badge">20</span>
+                Tastatur
+            </li>
+        </ul>
+        <span> 14.05.2014 </span>
+        <h5>Manuel Stoikovic</h5>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <span class="badge">20</span>
+                Laptop
+            </li>
+            <li class="list-group-item">
+                <span class="badge">4</span>
+                Maus
+            </li>
+            <li class="list-group-item">
+                <span class="badge">15</span>
+                Tastatur
+            </li>
+        </ul>
+    </div>
