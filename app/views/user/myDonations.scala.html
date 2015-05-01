@@ -31,14 +31,14 @@
                     <p>@projectdata.date</p>
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
-                            <li class="active"><a href="#first_title" role="tab" data-toggle="tab">Spenden</a></li>
-                            <li><a href="#second_title" role="tab" data-toggle="tab">Notiz an Projektleiter</a></li>
-                            <li><a href="#third_title" role="tab" data-toggle="tab">Kontakt</a></li>
+                            <li class="active"><a href="#tabSpenden@donationsData.donations.indexOf(projectdata)" role="tab" data-toggle="tab">Spenden</a></li>
+                            <li><a href="#tabNotiz@donationsData.donations.indexOf(projectdata)" role="tab" data-toggle="tab">Notiz an Projektleiter</a></li>
+                            <li><a href="#tabKontakt@donationsData.donations.indexOf(projectdata)" role="tab" data-toggle="tab">Kontakt</a></li>
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="first_title">
+                            <div class="tab-pane active" id="tabSpenden@donationsData.donations.indexOf(projectdata)">
                                 <h5>Meine Spenden</h5>
                                 <ul class="list-group mydonation">
                                     @for(donation <- projectdata.donations) {
@@ -49,11 +49,11 @@
                                     }
                                 </ul>
                             </div>
-                            <div class="tab-pane" id="second_title">
+                            <div class="tab-pane" id="tabNotiz@donationsData.donations.indexOf(projectdata)">
                                 <h5>Notizen</h5>
                                 <p>@projectdata.notice</p>
                             </div>
-                            <div class="tab-pane" id="third_title">
+                            <div class="tab-pane" id="tabKontakt@donationsData.donations.indexOf(projectdata)">
                                 <h5>Kontaktinformationen</h5>
                                 <p>@projectdata.contact</p>
                             </div>
