@@ -19,7 +19,7 @@ public class MyDonationsController {
         MyDonationsData data = getData();
         Form<MyDonationsData> form = Form.form(MyDonationsData.class).fill(data);
 
-        return play.mvc.Controller.ok(views.html.myDonations.render(data));
+        return play.mvc.Controller.ok(views.html.user.myDonations.render(data));
     }
 
     private static MyDonationsData getData() {

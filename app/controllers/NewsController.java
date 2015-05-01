@@ -24,7 +24,7 @@ public class NewsController {
         Form<NewsData> newsDataForm = Form.form(NewsData.class).bindFromRequest();
         models.Project project = ProjectService.getProjectById(Long.valueOf(newsDataForm.get().projectId));
         if (newsDataForm.hasErrors()) {
-            return badRequest(views.html.project.newNews.render(project, newsDataForm));
+            return badRequest(views.html.project.news.newNews.render(project, newsDataForm));
         } else {
             News news = new News();
             news.setTitle(newsDataForm.get().title);
@@ -39,7 +39,7 @@ public class NewsController {
 
     public static Result getNews(Long id) {
         News news = News.find.byId(id);
-        return ok(views.html.news.detail.render(news));
+        return ok(views.html.project.news.detail.render(news));
     }
 
     private static Form<CreateDonationData> createDonationForm(Project project) {

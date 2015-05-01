@@ -37,19 +37,19 @@
 
                                             <!-- Tab panes -->
                                         <div class="tab-content">
-                                            @tabs(projectDetail)
+                                            @details.tabs(projectDetail)
                                         </div>
                                     </div>
                                 </div>
                                     <!--step donation-->
                                 <div class="step-donation sec-step-med causes-details-step anim-section">
-                                    @description()
+                                    @details.description()
                                 </div>
                             </div>
 
                         </div>
                     <div class="col-xs-12 col-sm-3 left-block ">
-                        @sidebar(project, isProjectOwner)
+                        @details.sidebar(project, isProjectOwner)
                     </div>
                 </div>
             </div>
@@ -58,10 +58,10 @@
     </div>
 } {
     <div aria-hidden="true" style="display: none;" class="modal donate-form" id="pjax-container">
-    @donate(project, donateForm)
+    @donation.donate(project, donateForm)
     </div>
     <div aria-hidden="true" style="display: none;" class="modal news-form" id="pjax-containerNews">
-    @newNews(project, newsDataForm)
+    @news.newNews(project, newsDataForm)
     </div>
     <script src="@routes.Assets.at("js/donate.js")"></script>
     <script src="@routes.Assets.at("js/newNews.js")"></script>

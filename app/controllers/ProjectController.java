@@ -12,7 +12,6 @@ import services.DonationTypeService;
 import services.ProjectService;
 import viewmodels.*;
 import viewmodels.donation.CreateDonationData;
-import views.html.newProject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +42,7 @@ public class ProjectController extends Controller {
         User user = ApplicationController.getCurrentUser();
         Boolean isAuthenticated = user != null;
         Boolean isProjectOwner = isAuthenticated && user.getId().equals(project.getOwner().getId());
-        return ok(views.html.project.detail.render(
+        return ok(views.html.project.projectdetails.render(
             project, projectDetail, createDonationForm(project), Form.form(NewsData.class), isAuthenticated, isProjectOwner
         ));
     }
@@ -58,7 +57,7 @@ public class ProjectController extends Controller {
     public static Result addProjectData() throws AfricaException {
         Form<ProjectData> projectDataForm = Form.form(ProjectData.class).bindFromRequest();
         if (projectDataForm.hasErrors()) {
-            return badRequest(newProject.render(projectDataForm));
+            return badRequest(views.html.project.newProject.render(projectDataForm));
         } else {
             User user = ApplicationController.getCurrentUser();
             Address address = setAddress(projectDataForm);
@@ -106,7 +105,7 @@ public class ProjectController extends Controller {
 
     @Security.Authenticated(AuthenticationController.class)
     public static Result createProject() {
-        return ok(newProject.render(Form.form(ProjectData.class)));
+        return ok(views.html.project.newProject.render(Form.form(ProjectData.class)));
     }
 
 }
