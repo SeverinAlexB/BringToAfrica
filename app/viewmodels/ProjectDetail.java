@@ -1,57 +1,31 @@
 package viewmodels;
 
+import models.Donation;
 import models.DonationGoal;
+import models.Project;
+import models.User;
 import services.DonationGoalService;
 import services.ProjectService;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ProjectDetail {
-    private String title;
-    private String description;
-    private String imageURL;
     private int state;
-    private Date startsAt;
-    private Date endsAt;
-    private List<DonationGoal> donationGoals;
+    private Project project;
 
     public ProjectDetail(models.Project project) {
-        this.title = project.getTitle();
-        this.description = project.getDescription();
-        this.imageURL = project.getImageURL();
         this.state = ProjectService.getStateOfProjectInPercent(project);
-        this.startsAt = project.getStartsAt();
-        this.endsAt = project.getEndsAt();
-        this.donationGoals = project.getDonationGoals();
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getImageURL() {
-        return imageURL;
+        this.project = project;
     }
 
     public int getState() {
         return state;
     }
 
-    public Date getStartsAt() {
-        return startsAt;
-    }
-
-    public Date getEndsAt() {
-        return endsAt;
-    }
-
-    public List<DonationGoal> getDonationGoals() {
-        return donationGoals;
+    public Project getProject() {
+        return project;
     }
 
     public int getStateOfDonationGoalInPercent(DonationGoal donationGoal) {
@@ -60,5 +34,21 @@ public class ProjectDetail {
 
     public int getStateOfDonationGoal(DonationGoal donationGoal) {
         return DonationGoalService.getState(donationGoal);
+    }
+
+    public Set<User> getDonators() {
+        return ProjectService.getDonators(this.project);
+    }
+
+    public List<Donation> getDonationsForUser(User user) {
+        List<Donation> donations = new ArrayList<>();
+        for(DonationGoal donationGoal : project.getDonationGoals()) {
+            for(Donation donation : donationGoal.getDonations()) {
+                if(donation.getUser().equals(user)) {
+                    donations.add(donation);
+                }
+            }
+        }
+        return donations;
     }
 }

@@ -9,7 +9,7 @@
                         <div class="article-list-large causes-description progressbar">
                             <div class="anim-section">
                                 <figure>
-                                    <img src="@projectDetail.getImageURL()" alt="">
+                                    <img src="@projectDetail.getProject().getImageURL()" alt="">
                                 </figure>
 
                                 <div class="progress">
@@ -19,8 +19,8 @@
                                 </div>
 
                                 <div class="heading-sec text-left">
-                                    <h3 class="h4">@projectDetail.getTitle()</h3>
-                                    <span class="date-desc">Start: @projectDetail.getStartsAt()  |  Ende: @projectDetail.getEndsAt()</span>
+                                    <h3 class="h4">@project.getTitle()</h3>
+                                    <span class="date-desc">Start: @project.getStartsAt()  |  Ende: @project.getEndsAt()</span>
                                     @if(isAuthenticated) {
                                         <a data-toggle="modal" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
                                     }

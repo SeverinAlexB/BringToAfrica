@@ -1,7 +1,7 @@
 Users:
     - &user1 !!models.User
-        firstName:  bob
-        lastName:   bobmann
+        firstName:  Bob
+        lastName:   Bobmann
         email:      bob@gmail.com
         passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
     - &user2 !!models.User
@@ -96,30 +96,36 @@ DonationGoals:
     - &goal3 !!models.DonationGoal
         amount:         50
         project:        *project2
-        type:           *type1
+        type:           *type3
 
 Donations:
     - &donation1 !!models.Donation
         date:           2015-06-30
-        amount:         5
+        amount:         4
         messageToCollector: Der Akku des Laptops ist sehr schwach
         user:           *user1
         donationGoal:   *goal1
     - &donation2 !!models.Donation
         date:           2015-07-29
-        amount:         1
+        amount:         60
         messageToCollector: Die Maus ist noch fast neuwertig!
-        user:           *user1
+        user:           *user2
         donationGoal:   *goal2
     - &donation3 !!models.Donation
-        date:           2015-06-30
-        amount:         5
+        date:           2015-08-14
+        amount:         34
         messageToCollector: Der Laptop ist noch fast neuwertig
         user:           *user1
         donationGoal:   *goal3
     - &donation4 !!models.Donation
-        date:           2015-06-30
-        amount:         5
+        date:           2015-07-11
+        amount:         21
         messageToCollector: Habe leider kein Aufladekabel für den Laptop
         user:           *user2
         donationGoal:   *goal3
+    - &donation5 !!models.Donation
+        date:           2015-06-30
+        amount:         19
+        messageToCollector: Die Maus funktioniert einwandfrei
+        user:           *user1
+        donationGoal:   *goal2
