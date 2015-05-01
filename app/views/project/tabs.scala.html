@@ -1,4 +1,4 @@
-@(projectDetail: viewmodels.ProjectDetail)
+@(projectDetail: viewmodels.ProjectDetail, isProjectOwner: Boolean)
 
     <div class="tab-pane active" id="first_title">
         <h5>@projectDetail.getDescription()</h5>
@@ -13,6 +13,7 @@
         </div>
         }
     </div>
+    @if(isProjectOwner) {
     <div class="tab-pane" id="third_title">
         <span> 25.04.2014 </span>
         <h5>Claudia Hofstetter</h5>
@@ -47,3 +48,4 @@
             </li>
         </ul>
     </div>
+    }

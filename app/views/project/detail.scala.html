@@ -32,12 +32,12 @@
                                         <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
                                             <li class="active"><a href="#first_title" role="tab" data-toggle="tab">Beschreibung</a></li>
                                             <li><a href="#second_title" role="tab" data-toggle="tab">Spendenübersicht</a></li>
-                                            <li><a href="#third_title" role="tab" data-toggle="tab">Spender</a></li>
+                                            @if(isProjectOwner) { <li><a href="#third_title" role="tab" data-toggle="tab">Spender</a></li> }
                                         </ul>
 
                                             <!-- Tab panes -->
                                         <div class="tab-content">
-                                            @tabs(projectDetail)
+                                            @tabs(projectDetail, isProjectOwner)
                                         </div>
                                     </div>
                                 </div>
