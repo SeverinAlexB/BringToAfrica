@@ -18,19 +18,42 @@
                 @ProjectController.getProjectWidget(projectdata.project.getId())
                 </div>
                 <div class="col-xs-12 col-sm-8">
-                    <ul class="list-group mydonation">
-                        <p>@projectdata.date</p>
-                        @for(donation <- projectdata.donations) {
-                        <li class="list-group-item">
-                            <span class="badge">@donation.getAmount()</span>
-                            @donation.getType()
-                        </li>
-                        }
-                    </ul>
-                </div>
+                    <p>@projectdata.date</p>
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
+                            <li class="active"><a href="#first_title" role="tab" data-toggle="tab">Spenden</a></li>
+                            <li><a href="#second_title" role="tab" data-toggle="tab">Notiz an Projektleiter</a></li>
+                            <li><a href="#third_title" role="tab" data-toggle="tab">Kontakt</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="first_title">
+                                <h5>Meine Spenden</h5>
+                                <ul class="list-group mydonation">
+                                    @for(donation <- projectdata.donations) {
+                                    <li class="list-group-item">
+                                        <span class="badge">@donation.getAmount()</span>
+                                        @donation.getType()
+                                    </li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="tab-pane" id="second_title">
+                                <h5>Notizen</h5>
+                                <p>@projectdata.notice</p>
+                            </div>
+                            <div class="tab-pane" id="third_title">
+                                <h5>Kontaktinformationen</h5>
+                                <p>@projectdata.contact</p>
+                            </div>
+                        </div>
+                    </div>
             </div>
+            <hr>
             }
         </div>
+
 </div>
 
 } { }

@@ -105,6 +105,12 @@ Donations:
         messageToCollector: Der Akku des Laptops ist sehr schwach
         user:           *user1
         donationGoal:   *goal1
+    - &donation11 !!models.Donation
+        date:           2015-06-30
+        amount:         5
+        messageToCollector: Der Akku des Laptops ist sehr schwach
+        user:           *user1
+        donationGoal:   *goal2
     - &donation2 !!models.Donation
         date:           2015-07-29
         amount:         1
