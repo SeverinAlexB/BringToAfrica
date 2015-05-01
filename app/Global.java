@@ -18,6 +18,7 @@ import play.libs.F.*;
 import java.util.*;
 
 import static play.mvc.Results.badRequest;
+import static play.mvc.Results.internalServerError;
 import static play.mvc.Results.notFound;
 
 public class Global extends GlobalSettings {
@@ -40,8 +41,16 @@ public class Global extends GlobalSettings {
     public F.Promise<Result> onBadRequest(RequestHeader request, String error) {
         return F.Promise.<Result>pure(ApplicationController.errorBadRequest(error));
     }
+    @Override
     public F.Promise<Result> onHandlerNotFound(RequestHeader request) {
         return F.Promise.<Result>pure(ApplicationController.errorNotFound("Die Seite '" + request.path() + "' wurde nicht gefunden."));
+    }
+    @Override
+    public F.Promise<Result> onError(RequestHeader request, Throwable t) {
+        Logger.error(t.toString());
+        return F.Promise.<Result>pure(internalServerError(
+                views.html.error.render(500,t.toString())
+        ));
     }
 
 

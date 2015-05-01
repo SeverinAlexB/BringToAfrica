@@ -45,11 +45,7 @@
                         <a href="@routes.LoginController.login()" class="btn btn-default btn-volunteer">Login</a>
                     } else {
                         <a href="@routes.LoginController.logout()" class="btn btn-default btn-volunteer">Logout</a>
-                    }
-                    @if(flash.contains("success")) {
-                    <p class="success">
-                        @flash.get("success")
-                    </p>
+                        <p class="social-icons">Willkommen @ApplicationController.getCurrentUser().getFirstName()</p>
                     }
                 </div>
             </div>
