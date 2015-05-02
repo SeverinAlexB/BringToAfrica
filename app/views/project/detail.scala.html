@@ -1,17 +1,12 @@
-@(project: models.Project, projectDetail: viewmodels.ProjectDetail, donateForm: Form[viewmodels.donation.CreateDonationData], newsDataForm: Form[viewmodels.NewsData], isProjectOwner: Boolean)
+@(project: models.Project, projectDetail: viewmodels.ProjectDetail, donateForm: Form[viewmodels.donation.CreateDonationData], newsDataForm: Form[viewmodels.NewsData], isAuthenticated: Boolean, isProjectOwner: Boolean)
 
 @main("BringToAfrica") {
     <div class="cause-page content-wrapper" id="page-info">
         <div class="container">
-
-                <!-- our causes detail-->
-
             <div class="anim-section">
                 <div class="row">
                     <div class="col-xs-12 col-sm-9 left-block">
-
                         <div class="article-list-large causes-description progressbar">
-
                             <div class="anim-section">
                                 <figure>
                                     <img src="@projectDetail.getImageURL()" alt="">
@@ -22,12 +17,15 @@
                                         <span class="progress-value">@projectDetail.getState()%</span>
                                     </div>
                                 </div>
+
                                 <div class="heading-sec text-left">
                                     <h3 class="h4">@projectDetail.getTitle()</h3>
                                     <span class="date-desc">Start: @projectDetail.getStartsAt()  |  Ende: @projectDetail.getEndsAt()</span>
-                                    <a data-toggle="modal" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
+                                    @if(isAuthenticated) {
+                                        <a data-toggle="modal" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
+                                    }
                                 </div>
-                                    <!-- product-detail tab Section -->
+                            </div>
                                 <div class="row tab-wrap">
                                     <div class="col-sm-12">
                                             <!-- Nav tabs -->
@@ -44,10 +42,10 @@
                                             </div>
                                             <div class="tab-pane" id="second_title">
                                                 @for(donationGoal <- projectDetail.getDonationGoals()) {
-                                                    <h5>@donationGoal.getType().getName() (@donationGoal.getDonations().size() von @donationGoal.getAmount() Stück)</h5>
+                                                    <h5>@donationGoal.getType().getName() (@projectDetail.getStateOfDonationGoal(donationGoal) von @donationGoal.getAmount() Stück)</h5>
                                                     <div class="progress">
-                                                        <div class="progress-bar" role="progressbar" aria-valuenow="@projectDetail.getStateOfDonationGoal(donationGoal)" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="progress-value">@projectDetail.getStateOfDonationGoal(donationGoal) %</span>
+                                                        <div class="progress-bar" role="progressbar" aria-valuenow="@projectDetail.getStateOfDonationGoalInPercent(donationGoal)" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="progress-value">@projectDetail.getStateOfDonationGoalInPercent(donationGoal) %</span>
                                                         </div>
                                                     </div>
                                                 }
@@ -106,7 +104,6 @@
                                                     Gib an wieviel du pro Spendenkategorie spenden möchtest.
                                                 </p>
                                             </div>
-
                                         </div>
 
                                         <div class="cols-xs-12 col-sm-4">
@@ -117,7 +114,6 @@
                                                     So einfach gehts!
                                                 </p>
                                             </div>
-
                                         </div>
 
                                         <div class="cols-xs-12 col-sm-4">
@@ -136,23 +132,20 @@
                             </div>
 
                         </div>
-
-                    </div>
-
                     <div class="col-xs-12 col-sm-3 left-block ">
                         <aside class="media">
                             <h3 class="space-top">News</h3>
                             <ul>
                             @for(news <- project.getNews) {
                                 <li>
-                                    <a href="#" class="pull-left">
+                                    <a href="@routes.NewsController.getNews(news.getId())" class="pull-left">
                                         <figure>
                                             <img src="@news.getImageURL()" alt="" height="98" width="98"/>
                                         </figure>
                                     </a>
                                     <div class="media-body">
                                         <p>
-                                            <a href="#">
+                                            <a href="@routes.NewsController.getNews(news.getId())">
                                             @news.getTitle
                                             </a>
                                         </p>
@@ -160,11 +153,16 @@
                                     </div>
                                 </li>
                             }
-                                @if(isProjectOwner) {
-                                    <li>
-                                        <a data-toggle="modal" data-target=".news-form" class="btn btn-default btn-xs pull-right">News erfassen</a>
-                                    </li>
-                                }
+                            @if(project.getNews().isEmpty()) {
+                                <li>
+                                    <p>Es sind noch keine News erfasst worden.</p>
+                                </li>
+                            }
+                            @if(isProjectOwner) {
+                                <li>
+                                    <a data-toggle="modal" data-target=".news-form" class="btn btn-default btn-xs pull-right">News erfassen</a>
+                                </li>
+                            }
                             </ul>
                         </aside>
                     </div>

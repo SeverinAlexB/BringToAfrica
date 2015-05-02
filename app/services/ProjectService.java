@@ -31,17 +31,16 @@ public class ProjectService {
     }
 
     public static int getStateOfProjectInPercent(Project project){
-        int goal = 0;
-        int state = 0;
+        double goal = 0.0;
+        double state = 0.0;
         for (DonationGoal dg: DonationGoalService.getDonationGoalsOfProject(project)) {
             goal += dg.getAmount();
             for (Donation d: DonationService.getDonationsOfDonationGoal(dg)) {
                 state += d.getAmount();
             }
         }
-        if (goal == 0 || state == 0) {
-            return 0;
-        }
-        return 100 / goal * state;
+        if (goal == 0.0 || state == 0.0) return 0;
+        if(state > goal) return 100;
+        return (int) ((100 / goal) * state);
     }
 }

@@ -37,6 +37,11 @@ public class NewsController {
         }
     }
 
+    public static Result getNews(Long id) {
+        News news = News.find.byId(id);
+        return ok(views.html.news.detail.render(news));
+    }
+
     private static Form<CreateDonationData> createDonationForm(Project project) {
         List<DonationGoal> goals = project.getDonationGoals();
         CreateDonationData data = new CreateDonationData(goals);

@@ -1,0 +1,21 @@
+@(news: models.News)
+
+@main("BringToAfrica") {
+<div class="content-wrapper container" id="page-info">
+    <div class="row">
+        <div class="col-xs-12">
+            <article class="blog blog-details anim-section animate">
+                <figure>
+                    <img src="@news.getImageURL()">
+                </figure>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 caption">
+                        <h2 class="h1">@news.getTitle()</h2>
+                        @news.getDescription()
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+} { }
