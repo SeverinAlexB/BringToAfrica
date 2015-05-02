@@ -27,3 +27,14 @@
 h4 {
     margin-bottom: 0;
 }
+
+.projectWidget .crop {
+    overflow:hidden;
+}
+.projectWidget img {
+    cursor: pointer;
+    cursor: hand;
+}
+.projectWidget h3 {
+    margin-bottom:17px;
+}

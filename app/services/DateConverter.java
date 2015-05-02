@@ -1,4 +1,4 @@
-package viewmodels;
+package services;
 
 import exceptions.AfricaException;
 

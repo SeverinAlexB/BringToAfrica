@@ -10,6 +10,7 @@ import viewmodels.donation.DonationData;
 import viewmodels.donation.MyDonationsData;
 import viewmodels.donation.ProjectDonationData;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 
@@ -19,7 +20,7 @@ public class MyDonationsController {
         MyDonationsData data = getData();
         Form<MyDonationsData> form = Form.form(MyDonationsData.class).fill(data);
 
-        return play.mvc.Controller.ok(views.html.myDonations.render(data));
+        return play.mvc.Controller.ok(views.html.user.myDonations.render(data));
     }
 
     private static MyDonationsData getData() {
@@ -32,13 +33,14 @@ public class MyDonationsController {
 
         for (Donation donation: donations) {
             Project project = donation.getDonationGoal().getProject();
-            String date = donation.getDate().toString();
+            String date = new SimpleDateFormat("dd.MM.yyyy").format(donation.getDate());
 
             ProjectDonationData projectdata = result.getOrSetData(
                 project, date, donation.getMessageToCollector()
             );
             projectdata.donations.add(new DonationData(donation));
         }
+
         return result;
     }
 

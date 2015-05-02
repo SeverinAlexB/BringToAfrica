@@ -3,6 +3,7 @@ package viewmodels.donation;
 import models.Project;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class MyDonationsData {
@@ -19,6 +20,7 @@ public class MyDonationsData {
         pdata.contact = project.getContact();
         pdata.notice = notice;
         donations.add(pdata);
+        Collections.sort(donations);
         return pdata;
     }
 

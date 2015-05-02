@@ -23,6 +23,7 @@ GET         /registration                  controllers.RegistrationController.re
 POST        /registration                  controllers.RegistrationController.register()
 
 GET         /mydonations                   controllers.MyDonationsController.myDonations()
+GET         /myprojects                    controllers.MyProjectController.myProjects()
 
 GET         /myprofile                     controllers.MyProfileController.myProfile()
 GET         /myprofiel/save                controllers.MyProfileController.saveMyProfile()

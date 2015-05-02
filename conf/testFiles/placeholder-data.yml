@@ -9,6 +9,11 @@ Users:
         lastName:   Muster
         email:      max@gmail.com
         passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
+    - &user3 !!models.User
+        firstName:  Hans
+        lastName:   Heiri
+        email:      hh@gmail.com
+        passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
 
 DonationTypes:
     - &type1 !!models.DonationType
@@ -105,6 +110,12 @@ Donations:
         messageToCollector: Der Akku des Laptops ist sehr schwach
         user:           *user1
         donationGoal:   *goal1
+    - &donation11 !!models.Donation
+        date:           2015-06-30
+        amount:         5
+        messageToCollector: Der Akku des Laptops ist sehr schwach
+        user:           *user1
+        donationGoal:   *goal2
     - &donation2 !!models.Donation
         date:           2015-07-29
         amount:         1

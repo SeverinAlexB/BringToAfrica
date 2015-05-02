@@ -11,4 +11,11 @@ public class DonationData {
     }
     public String type;
     public int amount;
+    public String getType() {
+        return type;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
 }

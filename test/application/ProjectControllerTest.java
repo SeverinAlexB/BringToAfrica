@@ -3,7 +3,7 @@ package application;
 import controllers.ProjectController;
 import org.junit.Assert;
 import org.junit.Test;
-import viewmodels.DateConverter;
+import services.DateConverter;
 import viewmodels.ProjectData;
 
 public class ProjectControllerTest extends ProjectController {

@@ -1,0 +1,30 @@
+@(projects: List[models.Project])
+
+@main("BringToAfrica") {
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="h2"><strong>Meine Projekte</strong></h2>
+        </div>
+    </div>
+
+    @if(projects.size() == 0) {
+        <div class="row">
+            <div class="col-xs-12">
+                <h4>Du hast bis jetzt noch kein Projekt erstellt.
+                    <a href="@routes.ProjectController.createProject()">Jetzt ein Projekt erstellen</a>
+                </h4>
+            </div>
+        </div>
+    }
+    <div class="row article-list">
+    @for(project <- projects) {
+        <div class="col-xs-12 col-sm-6">
+            @ProjectController.getProjectWidget(project.getId())
+        </div>
+    }
+    </div>
+
+} { }
