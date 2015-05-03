@@ -3,19 +3,24 @@ package service;
 import integration.DatabaseTest;
 import models.*;
 import org.junit.Test;
-import services.DonationGoalService;
 import services.ProjectService;
+import viewmodels.ProjectDetail;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ProjectServiceTest {
+    private User user;
+    private List<Donation> donations = new ArrayList<>();
+
     public List<Project> getFilledDataStructure() {
         List<Project> projectList = new ArrayList<>();
-        User user = new User();
+        user = new User();
         user.save();
 
         DonationType type1 = new DonationType();
@@ -48,6 +53,7 @@ public class ProjectServiceTest {
         donation1.setUser(user);
         donation1.setMessageToCollector("123456");
         donation1.save();
+        donations.add(donation1);
 
         Donation donation2 = new Donation();
         donation2.setAmount(10);
@@ -56,6 +62,7 @@ public class ProjectServiceTest {
         donation2.setUser(user);
         donation2.setMessageToCollector("123456");
         donation2.save();
+        donations.add(donation2);
 
         Donation donation3 = new Donation();
         donation3.setAmount(5);
@@ -64,6 +71,7 @@ public class ProjectServiceTest {
         donation3.setUser(user);
         donation3.setMessageToCollector("123456");
         donation3.save();
+        donations.add(donation3);
 
         Project project2 = new Project();
         project2.save();
@@ -105,6 +113,25 @@ public class ProjectServiceTest {
             List<Project> projectList = getFilledDataStructure();
             int state1 = ProjectService.getStateOfProjectInPercent(projectList.get(1));
             assertEquals(100, state1);
+        });
+    }
+
+    @Test
+    public void testGetDonators() {
+        DatabaseTest.runInCleanApp(testBrowser -> {
+            List<Project> projectList = getFilledDataStructure();
+            Set<User> donators = ProjectService.getDonators(projectList.get(0));
+            assertTrue(donators.contains(user));
+        });
+    }
+
+    @Test
+    public void testGetDonationsForUser() {
+        DatabaseTest.runInCleanApp(testBrowser -> {
+            List<Project> projectList = getFilledDataStructure();
+            ProjectDetail projectDetail = new ProjectDetail(projectList.get(0));
+            List<Donation> donationsForUser = projectDetail.getDonationsForUser(user);
+            assertTrue(donationsForUser.equals(donations));
         });
     }
 }

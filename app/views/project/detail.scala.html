@@ -9,7 +9,7 @@
                         <div class="article-list-large causes-description progressbar">
                             <div class="anim-section">
                                 <figure>
-                                    <img src="@projectDetail.getImageURL()" alt="">
+                                    <img src="@projectDetail.getProject().getImageURL()" alt="">
                                 </figure>
 
                                 <div class="progress">
@@ -19,8 +19,8 @@
                                 </div>
 
                                 <div class="heading-sec text-left">
-                                    <h3 class="h4">@projectDetail.getTitle()</h3>
-                                    <span class="date-desc">Start: @projectDetail.getStartsAt()  |  Ende: @projectDetail.getEndsAt()</span>
+                                    <h3 class="h4">@project.getTitle()</h3>
+                                    <span class="date-desc">Start: @project.getStartsAt()  |  Ende: @project.getEndsAt()</span>
                                     @if(isAuthenticated) {
                                         <a data-toggle="modal" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
                                     }
@@ -32,139 +32,24 @@
                                         <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
                                             <li class="active"><a href="#first_title" role="tab" data-toggle="tab">Beschreibung</a></li>
                                             <li><a href="#second_title" role="tab" data-toggle="tab">Spendenübersicht</a></li>
-                                            <li><a href="#third_title" role="tab" data-toggle="tab">Spender</a></li>
+                                            @if(isProjectOwner) { <li><a href="#third_title" role="tab" data-toggle="tab">Spender</a></li> }
                                         </ul>
 
                                             <!-- Tab panes -->
                                         <div class="tab-content">
-                                            <div class="tab-pane active" id="first_title">
-                                                <h5>@projectDetail.getDescription()</h5>
-                                            </div>
-                                            <div class="tab-pane" id="second_title">
-                                                @for(donationGoal <- projectDetail.getDonationGoals()) {
-                                                    <h5>@donationGoal.getType().getName() (@projectDetail.getStateOfDonationGoal(donationGoal) von @donationGoal.getAmount() Stück)</h5>
-                                                    <div class="progress">
-                                                        <div class="progress-bar" role="progressbar" aria-valuenow="@projectDetail.getStateOfDonationGoalInPercent(donationGoal)" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="progress-value">@projectDetail.getStateOfDonationGoalInPercent(donationGoal) %</span>
-                                                        </div>
-                                                    </div>
-                                                }
-                                            </div>
-                                            <div class="tab-pane" id="third_title">
-                                                <span> 25.04.2014 </span>
-                                                <h5>Claudia Hofstetter</h5>
-                                                <ul class="list-group">
-                                                    <li class="list-group-item">
-                                                        <span class="badge">10</span>
-                                                        Laptop
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <span class="badge">5</span>
-                                                        Maus
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <span class="badge">20</span>
-                                                        Tastatur
-                                                    </li>
-                                                </ul>
-                                                <span> 14.05.2014 </span>
-                                                <h5>Manuel Stoikovic</h5>
-                                                <ul class="list-group">
-                                                    <li class="list-group-item">
-                                                        <span class="badge">20</span>
-                                                        Laptop
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <span class="badge">4</span>
-                                                        Maus
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <span class="badge">15</span>
-                                                        Tastatur
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                            @tabs(projectDetail, isProjectOwner)
                                         </div>
                                     </div>
                                 </div>
                                     <!--step donation-->
                                 <div class="step-donation sec-step-med causes-details-step anim-section">
-
-                                    <header class="page-header section-header">
-                                        <h2>Spende in <strong>drei einfachen Schritten</strong></h2>
-                                    </header>
-
-                                    <div class="col-xs-12 text-center">
-
-                                        <div class="cols-xs-12 col-sm-4">
-                                            <div class="sec-step-desc">
-                                                <span class="number-count">1</span>
-                                                <h4 class="normal-text">Wähle aus was du Spenden möchtest</h4>
-                                                <p>
-                                                    Gib an wieviel du pro Spendenkategorie spenden möchtest.
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="cols-xs-12 col-sm-4">
-                                            <div class="sec-step-desc">
-                                                <span class="number-count">2</span>
-                                                <h4 class="normal-text">Klick auf Spende erfassen</h4>
-                                                <p>
-                                                    So einfach gehts!
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="cols-xs-12 col-sm-4">
-                                            <div class="sec-step-desc">
-                                                <span class="number-count">3</span>
-                                                <h4 class="normal-text">Kontaktiere den Organisator des Spendenprojekts</h4>
-                                                <p>
-                                                    Der Organisator hat vorab angegeben, wie du mit ihm/ihr in Kontakt treten kannst.
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                        <!--step donation-->
+                                    @description()
                                 </div>
                             </div>
 
                         </div>
                     <div class="col-xs-12 col-sm-3 left-block ">
-                        <aside class="media">
-                            <h3 class="space-top">News</h3>
-                            <ul>
-                            @for(news <- project.getNews) {
-                                <li>
-                                    <a href="@routes.NewsController.getNews(news.getId())" class="pull-left">
-                                        <figure>
-                                            <img src="@news.getImageURL()" alt="" height="98" width="98"/>
-                                        </figure>
-                                    </a>
-                                    <div class="media-body">
-                                        <p>
-                                            <a href="@routes.NewsController.getNews(news.getId())">
-                                            @news.getTitle
-                                            </a>
-                                        </p>
-                                        <span> @news.getDate </span>
-                                    </div>
-                                </li>
-                            }
-                            @if(project.getNews().isEmpty()) {
-                                <li>
-                                    <p>Es sind noch keine News erfasst worden.</p>
-                                </li>
-                            }
-                            @if(isProjectOwner) {
-                                <li>
-                                    <a data-toggle="modal" data-target=".news-form" class="btn btn-default btn-xs pull-right">News erfassen</a>
-                                </li>
-                            }
-                            </ul>
-                        </aside>
+                        @sidebar(project, isProjectOwner)
                     </div>
                 </div>
             </div>
