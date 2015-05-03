@@ -22,7 +22,7 @@ public class DonationController extends Controller {
         Project project = ProjectService.getProjectById(form.get().projectId);
 
         if (form.hasErrors()) {
-            return badRequest(views.html.project.donate.render(project, form));
+            return badRequest(views.html.project.donation.donate.render(project, form));
         } else {
             List<DonationGoal> goals = project.getDonationGoals();
             ArrayList<DonationData> donations = createDonations(form, goals);
@@ -30,7 +30,7 @@ public class DonationController extends Controller {
             ProjectDonationData donation = new ProjectDonationData();
             donation.project = project;
             donation.donations = donations;
-            return ok(views.html.project.donateSuccess.render(donation));
+            return ok(views.html.project.donation.donateSuccess.render(donation));
         }
     }
 

@@ -11,12 +11,14 @@ import models.Project;
 import models.User;
 import org.junit.Test;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import play.Play;
 import play.libs.F;
 import play.libs.Yaml;
 import play.test.FakeApplication;
 import play.test.Helpers;
 import play.test.TestBrowser;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -63,7 +65,7 @@ public class DatabaseTest {
     private static void fillDatabase(HashMap<String,String> database, String yamlFile) {
         FakeApplication app = fakeApplication(database);
         Helpers.start(app);
-
+        InputStream inputStream = Play.application().resourceAsStream("testFiles/data1.yml");
         Object yam = Yaml.load(yamlFile);
 
         if(yam instanceof ArrayList) {

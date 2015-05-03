@@ -30,7 +30,7 @@ public class Global extends GlobalSettings {
             fillDatabase("testFiles/placeholder-data.yml");
             Logger.info("test data loaded");
         }
-        System.out.println("Play version: " + play.core.PlayVersion.current());
+        //System.out.println("Play version: " + play.core.PlayVersion.current());
     }
 
     @Override
