@@ -1,9 +1,8 @@
 $(function() {
-    var display = false;
+    var display = true;
     if ($('#cbx').is(":checked")){
         display = true;
     }
-
     $(document).ready(function () {
         $("#showPasswordField").toggle(display);
         $("#cbx").change(function () {
