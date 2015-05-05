@@ -9,27 +9,12 @@ $('.btn-group *').click(function(){
 });
 
 $('.dropdown-menu a').click(function(){
-		var donation_type = $(this).text();
-		$('#dropdownMenu1 small').text(donation_type);
+	var donation_type = $(this).text();
+	$('#dropdownMenu1 small').text(donation_type);
 });
 
-if(!isMobile){
-	//Progressbar
-	if ($('.progressbar').length) {
-		$(window).scroll(function() {
-			if ($(window).scrollTop() > ($('.progressbar').offset().top - $(window).height() /1.4)) {
-				$('.progressbar').find('.progress').each(function() {
-					var val = parseInt($(this).find('.progress-bar').attr('aria-valuenow'));
-					$(this).find('.progress-bar').width(val + "%")
-				});
-			}
-		})
-	}
-}
-else {
-	$('.progressbar').find('.progress').each(function() {
-		var val = parseInt($(this).find('.progress-bar').attr('aria-valuenow'));
-		$(this).find('.progress-bar').width(val + "%")
-	});
-}
+$('.progressbar').find('.progress').each(function() {
+	var val = parseInt($(this).find('.progress-bar').attr('aria-valuenow'));
+	$(this).find('.progress-bar').width(val + "%")
+});
 });
