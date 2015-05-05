@@ -48,8 +48,7 @@ public class MyProfileController {
 
     private static boolean editPassword(Form<MyProfile> myProfileForm, User user) {
         String oldPassword = myProfileForm.get().oldPassword;
-        String newPassword1 = myProfileForm.get().password1;
-        String newPassword2 = myProfileForm.get().password2;
-        return ConsumerService.changePassword(user, oldPassword, newPassword1);
+        String newPassword = myProfileForm.get().password1;
+        return ConsumerService.changePassword(user, oldPassword, newPassword);
     }
 }

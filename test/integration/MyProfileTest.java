@@ -35,7 +35,6 @@ public class MyProfileTest {
             browser.goTo("http://localhost:3333/myprofile");
             browser.getDriver().findElement(By.name("firstname")).clear();
             browser.getDriver().findElement(By.name("firstname")).sendKeys("Hans");
-            browser.getDriver().findElement(By.name("lastname")).sendKeys("Muster");
             browser.getDriver().findElement(By.name("oldPassword")).sendKeys(password);
             browser.getDriver().findElement(By.id("btnSave")).click();
 
@@ -69,7 +68,6 @@ public class MyProfileTest {
             browser.goTo("http://localhost:3333/myprofile");
             browser.getDriver().findElement(By.name("firstname")).clear();
             browser.getDriver().findElement(By.name("firstname")).sendKeys("Hans");
-            browser.getDriver().findElement(By.name("lastname")).sendKeys("Muster");
             browser.getDriver().findElement(By.name("oldPassword")).sendKeys(password);
             browser.getDriver().findElement(By.id("cbx")).click();
             browser.getDriver().findElement(By.name("password1")).sendKeys(newPassword);

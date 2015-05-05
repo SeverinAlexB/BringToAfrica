@@ -22,8 +22,9 @@ public class MyProfile {
     public String password2;
     public String changePassword;
 
+    //TODO why is at checkbox value=ture -> null
     public boolean changePw(){
-        if(changePassword == "true")return true;
+        if(changePassword == null)return true;
         return false;
     }
 
