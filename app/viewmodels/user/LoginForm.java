@@ -1,13 +1,13 @@
-package viewmodels;
+package viewmodels.user;
 
 import play.data.validation.Constraints;
 import services.ConsumerService;
 
-public class LoginData {
-
+public class LoginForm {
     @Constraints.Required(message = "Bitte gib eine Emailadresse an.")
     @Constraints.Email(message = "Bitte gib eine gültige Emailadresse an.")
     public String email;
+
     @Constraints.Required(message = "Bitte gib eine Passwort an.")
     public String password;
 
