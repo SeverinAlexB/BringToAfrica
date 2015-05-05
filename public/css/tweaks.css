@@ -53,3 +53,7 @@ h4 {
 #footer, #push {
     height: 8em;
 }
+
+p.social-icons {
+    margin-top: 3px;
+}
