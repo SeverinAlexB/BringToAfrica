@@ -1,193 +1,3 @@
-jQuery(function($) {"use strict";
-	var Site = {
-
-		initialized : false,
-
-		initialize : function() {
-
-			if (this.initialized)
-				return;
-			this.initialized = true;
-
-			this.build();
-			this.validation();
-			//this.events();
-			},
-
-		build : function() {
-			var revSlider;
-			if ($(".banner-slider").length) {				
-				if ($('.banner-slider').revolution == undefined)
-					revslider_showDoubleJqueryError('.banner-slider');
-				else {
-					revSlider = $('.banner-slider').revolution({
-						delay : 9000,
-						startheight : 600,
-						startwidth : 1442,
-						navigationType : "bullet",
-						onHoverStop : "on",
-						navigationVOffset : 40
-					});
-					//$('.rev_slider_wrapper').show();
-				}
-			}
-			
-			
-		},
-		//form validation
-		validateForm : function() {
-			$('#submit').click(function() {
-				var email = $('#email').val();
-				if (email == '') {
-					$('#email').parents('.form-group').addClass('error')
-					return false;
-				}
-				if (IsEmail(email) == false) {
-					$('#email').parents('.form-group').addClass('error')
-					return false;
-				}
-			});
-			function IsEmail(email) {
-				var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-				if (!regex.test(email)) {
-					return false;
-				} else {
-					$('#email').parents('.form-group').removeClass('error')
-				}
-			}
-
-		},
-		validation : function() {
-			var bool=true;
-
-			$('#name,#sub,#email,#msg').blur(function() {
-				validateForm2(this);
-			});
-
-			$('#submit').click(function() {
-				var i = 0;
-				var x = $('#name').val();
-				
-				if (x == null || x == "" || x == "Name") {
-
-					$('#name').closest('.form-group').addClass('error')
-					bool = false;
-
-				} else {
-					i++;
-					$('#name').closest('.form-group').removeClass('error');
-					name_val = $('#name').val();
-
-				}
-
-				var x = $('#sub').val();
-				
-				if (x == null || x == "" || x == "Name") {
-					$('#sub').closest('.form-group').addClass('error')
-					bool = false;
-
-				} else {
-					i++;
-					$('#sub').closest('.form-group').removeClass('error');
-					comp_val = $('#sub').val();
-
-				}
-
-				var x = $('#email').val();
-				
-				var atpos = x.indexOf("@");
-				var dotpos = x.lastIndexOf(".");
-				if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length || x == 'Email') {
-					$('#email').closest('.form-group').addClass('error')
-					bool = false;
-				} else {
-
-					i++;
-					$('#email').closest('.form-group').removeClass('error');
-					email_val = $('#email').val();
-
-				}
-				
-				msg_val = $('#message').val();
-				
-				if (i == 4) {
-
-					bool = true;
-				}
-				
-				if (!bool) {
-				
-					return false;
-				} else {
-					
-					$.post('mail.php', {
-						name : name_val,
-						email : email_val,
-						company : comp_val,
-						msg : msg_val,
-					}, function(data) {
-						
-						if (data == 1) {
-							setTimeout(function() {
-								$('#name').val('');
-								$('#email').val('');
-								$('#sub').val('');
-								$('#message').val('');
-								$('#name,#sub,#email,#msg').next().removeClass("focussed");
-								$('.ch').css('top', 0)
-								$('#success').fadeIn(500);
-								$('#success').append('<div role="alert" class="alert alert-success"><strong>Thanks</strong> for using our template. Your message has been sent.</div>')
-								setTimeout(function(){
-									$('#success').find('div').remove();
-									
-								},2500)
-							}, 500);
-							
-						}
-					})
-					
-				}
-
-			});
-
-			function validateForm2(abc) {
-
-				if ($(abc).val() != "") {
-					$(abc).parent().removeClass('error');
-
-				} else {
-					$(abc).parent().addClass('error');
-
-				}
-				//email
-				if ($(abc).attr('id') == 'email') {
-					if (($(abc).val() != "" || $(abc).val() != null) && ($(abc).val().match(emailRegex))) {
-						$(abc).parent().removeClass('error');
-
-					} else {
-						$(abc).parent().addClass('error');
-					}
-				}
-
-			}
-
-			var name_val = ''
-			var email_val = '';
-
-			var msg_val = '';
-			var comp_val = '';
-			var emailRegex = /^[a-zA-Z0-9._]+[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/;
-			var numericExpression = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
-		}
-
-
-		
-	};
-
-	Site.initialize();
-})
-
-
 $(window).ready(function() {
 	isMobile = navigator.userAgent.match(/(iPhone|iPod|Android|BlackBerry|iPad|IEMobile|Opera Mini)/);
 	$('img.svg').each(function(){
@@ -324,7 +134,9 @@ if($(window).width()>=768){
 			$('.bottom-line').removeClass('bottom-line');
 			
 			$('.header-second nav>ul').fadeIn();
-		}
+		}
+
+
 	})
 }
 //Donate form button
@@ -372,7 +184,8 @@ $( "#slider-range" ).slider({
 			}
 		});
 		$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-			" - $" + $( "#slider-range" ).slider( "values", 1 ) ); 	}
+			" - $" + $( "#slider-range" ).slider( "values", 1 ) ); 	
+}
 //video-placeholder function
        $('.embed-responsive-16by9 img').click(function(){
         video = '<iframe src="'+ $(this).attr('data-video') +'"></iframe>';
@@ -386,7 +199,9 @@ $( "#slider-range" ).slider({
         $('.video-section img').after(video1);
      return false; 	
      
-    });if(!isMobile){
+    });
+
+if(!isMobile){
 			var animSection = function() {
 				$('.anim-section').each(function() {
 					if ($(window).scrollTop() > ($(this).offset().top - $(window).height() / 1.15)) {
