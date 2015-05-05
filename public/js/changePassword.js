@@ -1,5 +1,6 @@
 $(function() {
-    var display = true;
+    var display = false;
+    $('#cbx').bootstrapToggle('on')
     if ($('#cbx').is(":checked")){
         display = true;
     }

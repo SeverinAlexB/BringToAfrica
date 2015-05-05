@@ -1,6 +1,7 @@
 package service;
 
 import integration.DatabaseTest;
+import junit.framework.TestCase;
 import models.User;
 import org.junit.Assert;
 import org.junit.Test;
@@ -97,6 +98,27 @@ public class ConsumerServiceTest {
         String password1 = "Test1!";
         String password2 = "Test1!";
         assertFalse(ConsumerService.validatePasswords(password1, password2));
+    }
+
+    @Test
+    public void changePasswordTest(){
+        DatabaseTest.runInCleanApp(browser -> {
+            String mail = "marc.oberholzer@hotmail.com";
+            String password = "MeinPw5#";
+            String newPassword = "Test123!";
+            String hash = BCrypt.hashpw(password, BCrypt.gensalt());
+
+            User c = new User();
+            c.setEmail(mail);
+            c.setPasswordHashedSalted(hash);
+            c.save();
+            assertTrue(ConsumerService.isValid(mail.toUpperCase(), password));
+            assertTrue(ConsumerService.validatePasswords(newPassword, newPassword));
+
+            ConsumerService.changePassword(c, password, newPassword);
+            assertTrue(ConsumerService.isValid(c.getEmail(), newPassword));
+        });
+
     }
 
 }

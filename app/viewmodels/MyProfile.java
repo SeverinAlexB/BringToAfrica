@@ -22,11 +22,19 @@ public class MyProfile {
     public String password2;
     public String changePassword;
 
+    //TODO why is at checkbox value=ture -> null
+    public boolean changePw(){
+        if(changePassword == null || changePassword == "true")return true;
+        return false;
+    }
+
     public String validate() {
-        long id = Long.parseLong(this.id);
-        User user = User.find.byId(id);
+        User user = User.find.byId(Long.parseLong(this.id));
+        if(user == null)return "User ungültig";
         if (!ConsumerService.isValid(user.getEmail(), this.oldPassword)) {
             return "aktuelles Passwort ungültig";
+        }else if(this.changePw()){
+            if(!ConsumerService.validatePasswords(password1,password2))return "neues Passwort ungültig";
         }
         return null;
     }
