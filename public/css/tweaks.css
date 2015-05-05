@@ -57,3 +57,7 @@ h4 {
 p.social-icons {
     margin-top: 3px;
 }
+
+.AddtoCart .table tbody td.product-image {
+    width: auto;
+}
