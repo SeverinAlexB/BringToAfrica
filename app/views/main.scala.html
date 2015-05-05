@@ -25,47 +25,13 @@
 <body>
 
 <div id="wrapper">
-    <!--Header Section Start Here -->
-    <header id="header">
-        <div class="container">
-            <div class="row primary-header">
-                <a href="@routes.ApplicationController.index()" class="col-xs-12 col-sm-2 brand title" title="Welcome to Charity">
-                    <h1>BringToAfrica</h1>
-                </a>
-                <div class="social-links col-xs-12 col-sm-10">
-                    @if(ApplicationController.getCurrentUser() == null) {
-                        <a href="@routes.LoginController.login()" class="btn btn-default btn-volunteer">Login</a>
-                    } else {
-                        <a href="@routes.LoginController.logout()" class="btn btn-default btn-volunteer">Logout</a>
-                        <p class="social-icons">Willkommen @ApplicationController.getCurrentUser().getFirstName()</p>
-                    }
-                </div>
-            </div>
-        </div>
-        @layout.navbar()
-
-    </header>
-    <!-- Header Section End Here -->
-
-    <!-- Site Content -->
+    @layout.header()
     <div id="main">
         <div class="breadcrumb-section">
         </div>
-
         @content
-    </div><!-- /.modal-dialog -->
-    <footer id="footer">
-        <div class="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <span> © Copyright 2015, All Rights Reserved by BringToAfrica.
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    </div>
+    @layout.footer()
 </div>
 <!-- donation form popup -->
 
