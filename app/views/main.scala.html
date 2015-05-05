@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>@title</title>
     <link rel="shortcut icon" type="image/x-icon" href="@routes.Assets.at("img/favicon.ico")" rel="image/x-icon">
-    <!-- google fonts -->
+    <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lato:400,300italic,300,700%7CPlayfair+Display:400,700italic%7CRoboto:300%7CMontserrat:400,700%7COpen+Sans:400,300%7CLibre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <!-- Bootstrap -->
@@ -27,16 +27,12 @@
 <div id="wrapper">
     @layout.header()
     <div id="main">
-        <div class="breadcrumb-section">
-        </div>
         @content
     </div>
     @layout.footer()
 </div>
-<!-- donation form popup -->
 
 @scripts
-
 <script src="@routes.Assets.at("js/jquery.min.js")"></script>
 <script src="@routes.Assets.at("js/bootstrap.min.js")"></script>
 <script src="//cdn.jsdelivr.net/jquery.pjax/1.9.5/jquery.pjax.min.js"></script>
