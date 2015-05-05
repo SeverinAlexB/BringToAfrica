@@ -75,8 +75,6 @@ public class MyProfileTest {
             browser.getDriver().findElement(By.name("password1")).sendKeys(newPassword);
             browser.getDriver().findElement(By.name("password2")).sendKeys(newPassword);
             browser.getDriver().findElement(By.id("btnSave")).click();
-            ConsumerService.isValid(user.getEmail(), newPassword);
-
             assertTrue(ConsumerService.isValid(user.getEmail(), newPassword));
         }));
     }

@@ -14,9 +14,8 @@ public class ConsumerService {
 
     public static boolean isValid(String email, String password) {
         User user = getConsumerByEmail(email);
-        if (user == null) {
-            return false;
-        } else if (!BCrypt.checkpw(password, user.getPasswordHashedSalted())) {
+        if (user == null)return false;
+        if (!BCrypt.checkpw(password, user.getPasswordHashedSalted())) {
             return false;
         } else {
             return true;

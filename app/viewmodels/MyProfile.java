@@ -6,7 +6,7 @@ import services.ConsumerService;
 
 public class MyProfile {
     @Constraints.Required(message = "Profil hat keine id")
-    public String id;
+    public Long id;
     @Constraints.Required(message = "Bitte gib deinen Vornamen hier an.")
     public String firstname;
     @Constraints.Required(message = "Bitte gib eine Nachnamen hier an.")
@@ -22,11 +22,18 @@ public class MyProfile {
     public String password2;
     public String changePassword;
 
+    public boolean changePw(){
+        if(changePassword == "true")return true;
+        return false;
+    }
+
     public String validate() {
-        long id = Long.parseLong(this.id);
-        User user = User.find.byId(id);
+        User user = User.find.byId(this.id);
+        if(user == null)return "User ungültig";
         if (!ConsumerService.isValid(user.getEmail(), this.oldPassword)) {
             return "aktuelles Passwort ungültig";
+        }else if(this.changePw()){
+            if(!ConsumerService.validatePasswords(password1,password2))return "neues Passwort ungültig";
         }
         return null;
     }

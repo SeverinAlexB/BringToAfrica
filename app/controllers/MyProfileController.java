@@ -12,7 +12,7 @@ public class MyProfileController {
     public static Result myProfile() {
         User user = ApplicationController.getCurrentUser();
         MyProfile myProfile = new MyProfile();
-        myProfile.id = user.getId().toString();
+        myProfile.id = user.getId();
         myProfile.email = user.getEmail();
         myProfile.firstname = user.getFirstName();
         myProfile.lastname = user.getLastName();
@@ -30,17 +30,8 @@ public class MyProfileController {
                 views.html.user.myProfile.render(myProfileForm)
             );
         } else {
-            long id = Long.parseLong(myProfileForm.get().id);
-            User user = User.find.byId(id);
-            if (myProfileForm.get().changePassword != null &&
-                myProfileForm.get().changePassword.equals("true")) {
-                if (!editPassword(myProfileForm, user)) {
-                    myProfileForm.reject("password", "Konnte Passwort nicht ändern!");
-                    return play.mvc.Controller.badRequest(
-                        views.html.user.myProfile.render(myProfileForm)
-                    );
-                }
-            }
+            User user = User.find.byId(myProfileForm.get().id);
+            if (myProfileForm.get().changePw())editPassword(myProfileForm, user);
             saveProfile(user, myProfileForm);
             ConsumerService.logIn(user.getEmail());
             return play.mvc.Controller.redirect(routes.ApplicationController.index());
@@ -59,8 +50,6 @@ public class MyProfileController {
         String oldPassword = myProfileForm.get().oldPassword;
         String newPassword1 = myProfileForm.get().password1;
         String newPassword2 = myProfileForm.get().password2;
-
-        return ConsumerService.validatePasswords(newPassword1, newPassword2) &&
-                ConsumerService.changePassword(user, oldPassword, newPassword1);
+        return ConsumerService.changePassword(user, oldPassword, newPassword1);
     }
 }
