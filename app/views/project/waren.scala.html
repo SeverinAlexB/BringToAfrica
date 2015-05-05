@@ -1,0 +1,43 @@
+@(projektDataForm: Form[viewmodels.ProjectData])
+<section class="anim-section AddtoCart animate">
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table" id="main-table">
+                <thead>
+                <tr>
+                    <th>Anzahl</th>
+                    <th>Spendengut</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="product-image">
+                        <input type="number" id="amount" name="amounts[0]" value="" class="form-control" required>
+                    </td>
+                    <td class="product-image">
+                        <input type="text" id="donation" name="donations[0]" value="" class="form-control" required>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="btns-wrapper">
+                <div class="form-group">
+                    <button id="addGood" type="button" class="btn btn-default" aria-label="Center Align">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <button id="deleteGood" type="button" class="btn btn-default" aria-label="Center Align">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="btns-wrapper">
+                <div class="form-group">
+                    <a href="#contact" role="tab" data-toggle="tab">
+                        <button id="btnContinue2" class="btn btn-default btn-lg">Weiter</button>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,33 @@
+@(projektDataForm: Form[viewmodels.ProjectData])
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label for="title">Gib deinem Projekt einen Namen<span>*</span></label>
+            <input class="form-control" id="title" type="text" name="title" value="@projektDataForm("title").value" required>
+        </div>
+        <div class="form-group">
+            <label for="imageURL">Füge ein Titelbild hinzu<span>*</span></label>
+            <input class="form-control" id="imageURL" type="url" name="imageURL" value="@projektDataForm("imageURL").value" required>
+        </div>
+        <div class="form-group">
+            <label for="description">
+                Beschreibe dein Projekt in ein paar kurzen Sätzen<span>*</span>
+            </label>
+            <textarea class="form-control" rows="5" cols="10" id="description" name="description" value="@projektDataForm("description").value" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="startsAt">Wann soll deine Spendenaktion starten?<span>
+                                                        *</span></label>
+            <input class="form-control" id="startsAt" type="text" name="startsAt" value="@projektDataForm("startsAt").value" required>
+        </div>
+        <div class="form-group">
+            <label for="endsAt">Wan soll deine Spendenaktion enden?</label>
+            <input class="form-control" id="endsAt" type="text" name="endsAt" value="@projektDataForm("endsAt").value" required>
+        </div>
+        <div class="form-group">
+            <a href="#waren" role="tab" data-toggle="tab">
+                <button id="btnContinue1" class="btn btn-default btn-lg">Weiter</button>
+            </a>
+        </div>
+    </div>
+</div>
