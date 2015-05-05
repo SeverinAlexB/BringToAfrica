@@ -14,7 +14,7 @@
             <input class="form-control" type="password" placeholder="Passwort" name="password" id="password" required>
           </div>
           <div class="form-group btns-wrapper">
-            <button type="submit" class="btn btn-default pull-right">Login</button>
+            <button id="btnLogin" type="submit" class="btn btn-default pull-right">Login</button>
             @helper.form(action = routes.RegistrationController.registration()) {
               <button style="margin-right: 0.5em;"  class="btn btn-default pull-right">Registrieren</button>
             }
