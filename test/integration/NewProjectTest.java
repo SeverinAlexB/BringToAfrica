@@ -47,7 +47,6 @@ public class NewProjectTest {
             Result result = callAction(
                     controllers.routes.ref.ProjectController.addProjectData(),
                     fakeRequest().withSession("email", email).withFormUrlEncodedBody(map));
-            String test = contentAsString(result);
             assertEquals(BAD_REQUEST, status(result));
             assertTrue(contentAsString(result).contains("Bitte fülle deine Kontaktmöglichkeiten aus"));
         }));

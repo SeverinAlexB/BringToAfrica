@@ -7,12 +7,13 @@ import play.mvc.Security;
 import services.ConsumerService;
 import viewmodels.MyProfile;
 
+
 public class MyProfileController {
     @Security.Authenticated(AuthenticationController.class)
     public static Result myProfile() {
         User user = ApplicationController.getCurrentUser();
         MyProfile myProfile = new MyProfile();
-        myProfile.id = user.getId();
+        myProfile.id = user.getId().toString();
         myProfile.email = user.getEmail();
         myProfile.firstname = user.getFirstName();
         myProfile.lastname = user.getLastName();
@@ -30,7 +31,7 @@ public class MyProfileController {
                 views.html.user.myProfile.render(myProfileForm)
             );
         } else {
-            User user = User.find.byId(myProfileForm.get().id);
+            User user = User.find.byId(Long.parseLong(myProfileForm.get().id));
             if (myProfileForm.get().changePw())editPassword(myProfileForm, user);
             saveProfile(user, myProfileForm);
             ConsumerService.logIn(user.getEmail());

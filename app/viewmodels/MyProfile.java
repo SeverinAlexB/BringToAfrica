@@ -6,7 +6,7 @@ import services.ConsumerService;
 
 public class MyProfile {
     @Constraints.Required(message = "Profil hat keine id")
-    public Long id;
+    public String id;
     @Constraints.Required(message = "Bitte gib deinen Vornamen hier an.")
     public String firstname;
     @Constraints.Required(message = "Bitte gib eine Nachnamen hier an.")
@@ -24,12 +24,12 @@ public class MyProfile {
 
     //TODO why is at checkbox value=ture -> null
     public boolean changePw(){
-        if(changePassword == null)return true;
+        if(changePassword == null || changePassword == "true")return true;
         return false;
     }
 
     public String validate() {
-        User user = User.find.byId(this.id);
+        User user = User.find.byId(Long.parseLong(this.id));
         if(user == null)return "User ungültig";
         if (!ConsumerService.isValid(user.getEmail(), this.oldPassword)) {
             return "aktuelles Passwort ungültig";
