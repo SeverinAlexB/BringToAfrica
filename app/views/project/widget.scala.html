@@ -1,10 +1,8 @@
 @(widget: viewmodels.ProjectWidget)
 
-
-  <div class="anim-section animate projectWidget text-center progressbar ">
+  <div class="projectWidget text-center progressbar ">
     <div class="">
       <div class="panel-body">
-
         <div>
             <h3 class="h5">@widget.getTitle()</h3>
             <a href="@routes.ProjectController.getProject(widget.getId())" class="img-thumb">
