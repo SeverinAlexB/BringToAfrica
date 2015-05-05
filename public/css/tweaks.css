@@ -43,6 +43,13 @@ h4 {
     min-height: 45px;
 }
 
+.brand img {
+    max-width: 32px;
+    float: left;
+    margin-right: 0.5em;
+    margin-top: -2px;
+}
+
 #footer, #push {
     height: 8em;
 }
