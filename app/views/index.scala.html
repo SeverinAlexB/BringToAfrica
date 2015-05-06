@@ -5,22 +5,20 @@
             <div class="container">
                 <!-- Our Causes Section-->
                 <section class="our-causes">
-                    <div class="anim-section animate">
                         <div class="row">
                             <!-- Article Section Srart Here -->
                             <div class="article-list progressbar">
                                 @for(widget <- widgets) {
-                                <div class="cols-xs-12 col-sm-4 ">
+                                <div class="cols-xs-12 col-sm-4">
                                     @project.widget(widget)
                                 </div>
                                 }
                             </div>
                         </div>
-                    </div>
                 </section>
                 <!-- Our Causes Section End-->
                 <!--Pagination Section Start Here-->
-                <div class="cols-xs-12 anim-section text-center animate">
+                <div class="cols-xs-12 text-center">
                     <ul class="pagination">
                             @if(pageSize > 1) {
                                 @if(currentPage > 1) {

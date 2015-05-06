@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>@title</title>
     <link rel="shortcut icon" type="image/x-icon" href="@routes.Assets.at("img/favicon.ico")" rel="image/x-icon">
-    <!-- google fonts -->
+    <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lato:400,300italic,300,700%7CPlayfair+Display:400,700italic%7CRoboto:300%7CMontserrat:400,700%7COpen+Sans:400,300%7CLibre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <!-- Bootstrap -->
@@ -14,127 +14,29 @@
     <link href="@routes.Assets.at("css/bootstrap.min.css")" rel="stylesheet">
     <link href="@routes.Assets.at("css/bootstrap-theme.css")" rel="stylesheet">
     <link href="@routes.Assets.at("css/font-awesome.min.css")" rel="stylesheet">
-    <link href="@routes.Assets.at("revolution-slider/css/settings.css")" rel="stylesheet">
     <link href="@routes.Assets.at("css/global.css")" rel="stylesheet">
     <link href="@routes.Assets.at("css/style.css")" rel="stylesheet">
     <link href="@routes.Assets.at("css/responsive.css")" rel="stylesheet">
     <link href="@routes.Assets.at("css/skin.css")" rel="stylesheet">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
     <script src="@routes.Assets.at("js/jquery.min.js")" type="text/javascript"></script>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-
-
-    <![endif]-->
-
+    @layout.ie()
 </head>
 <body>
 
 <div id="wrapper">
-    <!--Header Section Start Here -->
-    <header id="header">
-        <div class="container">
-            <div class="row primary-header">
-                <a href="@routes.ApplicationController.index()" class="col-xs-12 col-sm-2 brand title" title="Welcome to Charity">
-                    <h1>BringToAfrica</h1>
-                </a>
-                <div class="social-links col-xs-12 col-sm-10">
-                    @if(ApplicationController.getCurrentUser() == null) {
-                        <a href="@routes.LoginController.login()" class="btn btn-default btn-volunteer">Login</a>
-                    } else {
-                        <a href="@routes.LoginController.logout()" class="btn btn-default btn-volunteer">Logout</a>
-                        <p class="social-icons">Willkommen @ApplicationController.getCurrentUser().getFirstName()</p>
-                    }
-                </div>
-            </div>
-        </div>
-        <div class="navbar navbar-default" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <nav>
-                        <ul class="nav navbar-nav">
-                            <li class="active">
-                                <a href="@routes.ProjectController.getProjectWidgets(0)">Projekte</a>
-                            </li>
-                            <li>
-                                <a href="@routes.ProjectController.createProject()">Projekt erstellen</a>
-                            </li>
-
-                            <li>
-                                <a href="javascript:;" data-toggle="dropdown" class="submenu-icon">Mein Profil <span class="glyphicon glyphicon-chevron-down"></span> <span class="glyphicon glyphicon-chevron-up"></span> </a>
-                                <!-- Drop Down  -->
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li>
-                                            <a href="@routes.MyDonationsController.myDonations()">Meine Spenden</a>
-                                        </li>
-                                        <li>
-                                            <a href="@routes.MyProjectController.myProjects()">Meine Projekte</a>
-                                        </li>
-                                        <li>
-                                            <a href="@routes.MyProfileController.myProfile()">Profileinstellungen</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </div>
-
-    </header>
-    <!-- Header Section End Here -->
-
-    <!-- Site Content -->
+    @layout.header()
     <div id="main">
-        <div class="breadcrumb-section">
-        </div>
-
         @content
-    </div><!-- /.modal-dialog -->
-    <footer id="footer">
-        <div class="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <span> © Copyright 2015, All Rights Reserved by BringToAfrica.
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    </div>
+    @layout.footer()
 </div>
-<!-- donation form popup -->
 
 @scripts
-
 <script src="@routes.Assets.at("js/jquery.min.js")"></script>
 <script src="@routes.Assets.at("js/bootstrap.min.js")"></script>
-<script src="@routes.Assets.at("js/jquery.easing.min.js")"></script>
 <script src="//cdn.jsdelivr.net/jquery.pjax/1.9.5/jquery.pjax.min.js"></script>
-<!--Main Slider Js-->
-<script src="@routes.Assets.at("revolution-slider/js/jquery.themepunch.plugins.min.js")"></script>
-<script src="@routes.Assets.at("revolution-slider/js/jquery.themepunch.revolution.js")"></script>
-<!--Main Slider End Js-->
-<script src="@routes.Assets.at("js/jquery.flexslider.js")"></script>
 <script src="@routes.Assets.at("js/site.js")"></script>
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
 </body>
 </html>

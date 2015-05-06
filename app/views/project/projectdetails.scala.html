@@ -3,11 +3,9 @@
 @main("BringToAfrica") {
     <div class="cause-page content-wrapper" id="page-info">
         <div class="container">
-            <div class="anim-section">
                 <div class="row">
                     <div class="col-xs-12 col-sm-9 left-block">
                         <div class="article-list-large causes-description progressbar">
-                            <div class="anim-section">
                                 <figure>
                                     <img src="@projectDetail.getProject().getImageURL()" alt="">
                                 </figure>
@@ -25,7 +23,6 @@
                                         <a data-toggle="modal" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
                                     }
                                 </div>
-                            </div>
                                 <div class="row tab-wrap">
                                     <div class="col-sm-12">
                                             <!-- Nav tabs -->
@@ -45,16 +42,13 @@
                                 <div class="step-donation sec-step-med causes-details-step anim-section">
                                     @details.description()
                                 </div>
-                            </div>
-
                         </div>
+                    </div>
                     <div class="col-xs-12 col-sm-3 left-block ">
                         @details.sidebar(project, isProjectOwner)
                     </div>
                 </div>
-            </div>
         </div>
-
     </div>
 } {
     <div aria-hidden="true" style="display: none;" class="modal donate-form" id="pjax-container">
