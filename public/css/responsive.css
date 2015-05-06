@@ -563,7 +563,13 @@ aside  .shoping-filter > ul > li{
 	margin-bottom: 20px;
 	margin-right: 0;
 }
-.checkout ul.nav-tabs li a{font-size: 16px;}
+.checkout ul.nav-tabs li a{
+	font-size: 16px;
+}
+
+.checkout ul.nav-tabs li {
+	min-height: 60px;
+}
 
 
 }
@@ -989,7 +995,7 @@ margin-top:10px;
 .shop-today p{width: 100%;}
 .product-detail .nav-tabs li{float: left;}
 .product-detail .tab-content{padding: 20px;}
-.checkout ul.nav-tabs{margin-bottom:0;}
+.checkout ul.nav-tabs{margin-bottom:40px;}
 .checkout ul.nav-tabs li.active:after{border-color: #fff;}
 .checkout ul.nav-tabs li a{padding: 8px 20px; font-size: 16px;}
 .checkout .tab-content a.grouped{

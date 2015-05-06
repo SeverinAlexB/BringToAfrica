@@ -53,3 +53,11 @@ h4 {
 #footer, #push {
     height: 8em;
 }
+
+p.social-icons {
+    margin-top: 3px;
+}
+
+.AddtoCart .table tbody td.product-image {
+    width: auto;
+}

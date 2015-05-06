@@ -1,0 +1,26 @@
+@(projektDataForm: Form[viewmodels.ProjectData])
+<div class="row">
+    <div class="col-sm-6 col-xs-12">
+        <div class="form-group">
+            <label for="country">In welchem Land werden die Spenden verteilt?<span>
+                                                        *</span></label>
+            <input class="form-control" id="country" type="text" name="country" value="@projektDataForm("country").value" required>
+            <label for="city">In welcher Stadt soll gespendet werden?<span>
+                                                        *</span></label>
+            <input class="form-control" id="city" type="text" name="city" value="@projektDataForm("city").value" required>
+        </div>
+        <div class="form-group">
+            <label for="contactInformation">
+                Wie sollen die Spender mit dir in Kontakt treten?<span>
+                                                        *</span></label>
+            <textarea class="form-control" rows="5" cols="10" id="contactInformation" name="contactInformation" value="@projektDataForm("contact").value" required></textarea>
+        </div>
+
+
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group">
+            <button id="btnContinue3" type="submit" class="btn btn-default btn-lg pull-right">Projekt erstellen</button>
+        </div>
+    </div>
+</div>
