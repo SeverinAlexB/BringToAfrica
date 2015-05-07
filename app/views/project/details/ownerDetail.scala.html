@@ -10,6 +10,8 @@
             <div class="tab-pane active" id="first_title">
                 <h5>@projectDetail.getProject().getDescription()</h5>
             </div>
+
+            @if(projectDetail.getProject().getDonationGoals().size() > 0) {
             <div class="tab-pane" id="second_title">
                 @for(donationGoal <- projectDetail.getProject().getDonationGoals()) {
                 <h5>@donationGoal.getType().getName() (@projectDetail.getStateOfDonationGoal(donationGoal) von @donationGoal.getAmount() Stück)</h5>
@@ -20,6 +22,8 @@
                 </div>
                 }
             </div>
+            }
+
             <div class="tab-pane AddtoCart" id="third_title">
                 @if(projectDetail.getDonators().isEmpty()) {
                 <h5>Es hat leider noch niemand für dein Projekt gespendet.</h5>
