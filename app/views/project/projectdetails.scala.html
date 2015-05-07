@@ -4,7 +4,7 @@
     <div class="cause-page content-wrapper" id="page-info">
         <div class="container">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-9 left-block">
+                    <div class="col-xs-12 col-sm-8 left-block">
                         <div class="article-list-large causes-description progressbar">
                                 <figure>
                                     <img src="@projectDetail.getProject().getImageURL()" alt="">
@@ -23,28 +23,17 @@
                                         <a data-toggle="modal" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
                                     }
                                 </div>
-                                <div class="row tab-wrap">
-                                    <div class="col-sm-12">
-                                            <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
-                                            <li class="active"><a href="#first_title" role="tab" data-toggle="tab">Beschreibung</a></li>
-                                            <li><a href="#second_title" role="tab" data-toggle="tab">Spendenübersicht</a></li>
-                                            @if(isProjectOwner) { <li><a href="#third_title" role="tab" data-toggle="tab">Spender</a></li> }
-                                        </ul>
-
-                                            <!-- Tab panes -->
-                                        <div class="tab-content">
-                                            @details.tabs(projectDetail, isProjectOwner)
-                                        </div>
-                                    </div>
-                                </div>
-                                    <!--step donation-->
-                                <div class="step-donation sec-step-med causes-details-step anim-section">
-                                    @details.description()
+                                @if(isProjectOwner) {
+                                    @details.ownerDetail(projectDetail)
+                                } else {
+                                    @details.userDetail(projectDetail)
+                                }
+                                <div class="step-donation sec-step-med" style="padding-bottom: 0px;">
+                                    @details.help()
                                 </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-3 left-block ">
+                    <div class="col-xs-12 col-sm-4 left-block ">
                         @details.sidebar(project, isProjectOwner)
                     </div>
                 </div>
