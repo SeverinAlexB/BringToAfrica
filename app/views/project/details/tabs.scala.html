@@ -1,5 +1,5 @@
-@(projectDetail: viewmodels.ProjectDetail, isProjectOwner: Boolean)
-
+@(projectDetail: viewmodels.ProjectDetail, isProjectOwner: Boolean)(implicit lang: play.api.i18n.Lang)
+@import java.util.Locale
     <div class="tab-pane active" id="first_title">
         <h5>@projectDetail.getProject().getDescription()</h5>
     </div>
@@ -14,24 +14,40 @@
         }
     </div>
     @if(isProjectOwner) {
-        <div class="tab-pane" id="third_title">
+        <div class="tab-pane AddtoCart" id="third_title">
             @if(projectDetail.getDonators().isEmpty()) {
                 <h5>Es hat leider noch niemand für dein Projekt gespendet.</h5>
             }
             @for(user <- projectDetail.getDonators()) {
-                <h5>@user.getFirstName() @user.getLastName()</h5>
-                @for(donation <- projectDetail.getDonationsForUser(user)) {
-                    <span> @donation.getDate() </span>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <span class="badge">@donation.getAmount()</span>
-                            @donation.getDonationGoal().getType().getName()
-                        </li>
-                        <li class="list-group-item">
-                            @donation.getMessageToCollector()
-                        </li>
-                    </ul>
-                }
+                <h3>@user.getFirstName() @user.getLastName()</h3>
+                      <table class="table">
+                            <thead>
+                            <tr>
+                                <th width="50">Datum</th>
+                                <th width="50">Anzahl</th>
+                                <th>Spendengut</th>
+                                <th>Notiz</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @for(donation <- projectDetail.getDonationsForUser(user)) {
+                            <tr>
+                                <td class="product-image">
+                                 @donation.getDate().format("d.M")
+                                </td>
+                                <td class="product-image">
+                                  @donation.getAmount()
+                                </td>
+                                <td class="product-image">
+                                  @donation.getDonationGoal().getType().getName()
+                                </td>
+                                <td class="product-image">
+                                  @donation.getMessageToCollector()
+                                </td>
+                            </tr>
+                            }
+                            </tbody>
+                        </table>
             }
         </div>
     }
