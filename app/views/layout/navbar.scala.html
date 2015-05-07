@@ -43,7 +43,15 @@
                                 </ul>
                             </div>
                         </li>
+
                     }
+                    <li class="visible-xs">
+                        @if(ApplicationController.getCurrentUser() == null) {
+                        <a href="@routes.LoginController.login()">Login</a>
+                        } else {
+                        <a href="@routes.LoginController.logout()">Logout</a>
+                        }
+                    </li>
 
 
                 </ul>
