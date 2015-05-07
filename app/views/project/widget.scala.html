@@ -19,11 +19,4 @@
             <p>@widget.getDescription()</p>
             <a data-toggle="modal" href="@routes.ProjectController.getProject(widget.getId())" class="btn btn-default">Details</a>
       </div>
-      <script>
-           $(function changeImageSize() {
-               var width = $(".projectWidget").width();
-               var newHeight = width*(18/33);
-               $(".projectWidget .crop").height(newHeight);
-           });
-      </script>
   </div>
