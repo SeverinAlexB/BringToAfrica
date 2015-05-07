@@ -101,3 +101,7 @@ p.social-icons {
 ul.nav-tabs li a {
     background-color: #FFE682;
 }
+
+.projectUserView {
+    padding: 10px;
+}
