@@ -1,13 +1,13 @@
 <header id="header">
     <div class="container">
         <div class="row primary-header">
-            <a href="@routes.ApplicationController.index()" class="col-xs-12 col-sm-6 brand title"
-               title="Welcome to Charity">
-                <img src="@routes.Assets.at("img/give_white.png")"/>
-                <h1>BringToAfrica</h1>
-            </a>
-
-            <div class="social-links col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-6 col-md-6 brand">
+                <a href="@routes.ApplicationController.index()" class="brand title" title="Welcome to BringToAfrica">
+                    <img src="@routes.Assets.at("img/give_white.png")"/>
+                    <h1>BringToAfrica</h1>
+                </a>
+            </div>
+            <div class="social-links hidden-xs col-sm-6 col-md-6">
                 @if(ApplicationController.getCurrentUser() == null) {
                 <a href="@routes.LoginController.login()" class="btn btn-default btn-volunteer">Login</a>
                 } else {
