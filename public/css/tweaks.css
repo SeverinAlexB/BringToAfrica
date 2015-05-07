@@ -28,6 +28,10 @@ h4 {
     margin-bottom: 0;
 }
 
+.projectWidget {
+    height: 310px;
+}
+
 .projectWidget .crop {
     overflow:hidden;
 }
@@ -40,7 +44,9 @@ h4 {
 }
 
 .projectWidget p {
-    min-height: 45px;
+    max-height: 25px;
+    overflow: hidden;
+    margin: 0;
 }
 
 .brand img {
@@ -60,4 +66,38 @@ p.social-icons {
 
 .AddtoCart .table tbody td.product-image {
     width: auto;
+}
+    
+.article-list-large > figure {
+    max-height: 360px;
+    overflow: hidden;
+}
+
+.progressbar img {
+    width: 100%;
+}
+
+.projectWidget {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.projectWidget .panel-body {
+    padding: 0;
+}
+
+.navbar-default {
+    background: #ECC731;
+}
+
+.navbar-nav > li > .dropdown-menu, .navbar-nav .open .dropdown-menu {
+    background-color: #EAC11A;
+}
+
+.donation-info h3 {
+    margin-bottom: 20px;
+}
+
+ul.nav-tabs li a {
+    background-color: #FFE682;
 }

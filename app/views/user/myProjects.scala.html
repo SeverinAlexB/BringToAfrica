@@ -21,7 +21,7 @@
     }
     <div class="row article-list">
     @for(project <- projects) {
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-4">
             @ProjectController.getProjectWidget(project.getId())
         </div>
     }
