@@ -1,0 +1,18 @@
+@(projectDetail: viewmodels.ProjectDetail)
+<div class="projectUserView">
+    <h5>@projectDetail.getProject().getDescription()</h5>
+    <hr/>
+    <h3>Projektfortschritt</h3>
+    <div class="row">
+        @for(donationGoal <- projectDetail.getProject().getDonationGoals()) {
+        <div class="col-sm-6">
+            <h6>@donationGoal.getType().getName() (@projectDetail.getStateOfDonationGoal(donationGoal) von @donationGoal.getAmount() Stück)</h6>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="@projectDetail.getStateOfDonationGoalInPercent(donationGoal)" aria-valuemin="0" aria-valuemax="100">
+                    <span class="progress-value">@projectDetail.getStateOfDonationGoalInPercent(donationGoal) %</span>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
