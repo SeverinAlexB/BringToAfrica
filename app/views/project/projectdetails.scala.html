@@ -18,7 +18,7 @@
 
                                 <div class="heading-sec text-left">
                                     <h3 class="h4">@project.getTitle()</h3>
-                                    <span class="date-desc">Start: @project.getStartsAt()  |  Ende: @project.getEndsAt()</span>
+                                    <span class="date-desc">Start: @project.getStartsAt().format("d.M.Y")  |  Ende: @project.getEndsAt().format("d.M.Y")</span>
                                     @if(isAuthenticated) {
                                         <a data-toggle="modal" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
                                     }
