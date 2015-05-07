@@ -13,10 +13,10 @@
             <div class="media-body">
                 <p>
                     <a href="@routes.NewsController.getNews(news.getId())">
-                        @news.getTitle
+                        @news.getTitle()
                     </a>
                 </p>
-                <span> @news.getDate </span>
+                <span> @news.getDate().format("d.M.Y") </span>
             </div>
         </li>
         }

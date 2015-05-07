@@ -13,7 +13,7 @@
                         <h2 class="h1">@news.getTitle()</h2>
                         <ul class="post-in">
                           <li>
-                            <span> @news.getDate </span>
+                            <span> @news.getDate().format("d.M.Y") </span>
                           </li>
                         </ul>
                         @news.getDescription()
