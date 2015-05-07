@@ -3,28 +3,28 @@
     <div class="col-sm-6 col-xs-12">
         <div class="form-group">
             <label for="title">Gib deinem Projekt einen Namen<span>*</span></label>
-            <input class="form-control" id="title" type="text" name="title" value="@projektDataForm("title").value" required>
+            <input class="form-control" id="title" type="text" name="title" value="@projektDataForm("title").value" parsley-required="true">
         </div>
         <div class="form-group">
             <label for="imageURL">Füge ein Titelbild hinzu<span>*</span></label>
-            <input class="form-control" id="imageURL" type="url" name="imageURL" value="@projektDataForm("imageURL").value" required>
+            <input class="form-control" id="imageURL" type="url" name="imageURL" value="@projektDataForm("imageURL").value" parsley-required="true">
         </div>
         <div class="form-group">
             <label for="description">
                 Beschreibe dein Projekt in ein paar kurzen Sätzen<span>*</span>
             </label>
-            <textarea class="form-control" rows="5" cols="10" id="description" name="description" value="@projektDataForm("description").value" required></textarea>
+            <textarea class="form-control" rows="5" cols="10" id="description" name="description" value="@projektDataForm("description").value" parsley-required="true"></textarea>
         </div>
     </div>
     <div class="col-sm-6 col-xs-12">
         <div class="form-group">
             <label for="startsAt">Wann soll deine Spendenaktion starten?<span>
                                                         *</span></label>
-            <input class="form-control" id="startsAt" type="text" name="startsAt" value="@projektDataForm("startsAt").value" required>
+            <input class="form-control" id="startsAt" type="text" name="startsAt" value="@projektDataForm("startsAt").value" parsley-required="true">
         </div>
         <div class="form-group">
             <label for="endsAt">Wann soll deine Spendenaktion enden?</label>
-            <input class="form-control" id="endsAt" type="text" name="endsAt" value="@projektDataForm("endsAt").value" required>
+            <input class="form-control" id="endsAt" type="text" name="endsAt" value="@projektDataForm("endsAt").value" parsley-required="true">
         </div>
     </div>
     <div class="col-sm-12 col-xs-12">

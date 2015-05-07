@@ -10,7 +10,7 @@
                                 <li class="col-sm-4"><a href="#waren" role="tab" data-toggle="tab">2. Waren</a></li>
                                 <li class="col-sm-4"><a href="#contact" role="tab" data-toggle="tab">3. Kontakt</a></li>
                             </ul>
-                            @helper.form(action = routes.ProjectController.addProjectData, 'role -> "form") {
+                            @helper.form(action = routes.ProjectController.addProjectData, 'id -> "newProjectForm", 'role -> "form", Symbol("data-parsley-validate") -> "") {
                                     <!-- Tab panes -->
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="projectdata">
@@ -40,5 +40,6 @@
         </div>
     </div>
 } {
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.0.7/parsley.js'></script>
     <script type='text/javascript' src='@routes.Assets.at("js/newProject.js")'></script>
 }

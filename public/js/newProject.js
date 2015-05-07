@@ -1,4 +1,10 @@
 $(function() {
+    (function($){
+        $(function(){
+            $('#newProjectForm').parsley();
+        });
+    })(jQuery);
+
     $('#addGood').click(function(){
         var rows = $('#main-table >tbody >tr').length;
         var amount = "amounts[" + rows + "]";
@@ -13,10 +19,18 @@ $(function() {
     });
 
     $('#btnContinue1').click(function(){
-  		$('.nav-tabs > .active').next('li').find('a').trigger('click');
+        $( '#newProjectForm' ).parsley('validate');
+        if($( '#newProjectForm' ).parsley( 'isValid' )) {
+            $('.nav-tabs > .active').next('li').find('a').trigger('click');
+        }
 	});
 
 	$('#btnContinue2').click(function(){
+        $( '#newProjectForm' ).parsley().validate();
   		$('.nav-tabs > .active').next('li').find('a').trigger('click');
 	});
+    $('#btnContinue3').click(function(){
+        $( '#newProjectForm' ).parsley().validate();
+    });
+
 });
