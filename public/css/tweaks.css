@@ -114,3 +114,9 @@ ul.nav-tabs li a {
     max-height: 200px;
     overflow: hidden;
 }
+
+.blog-details figure {
+    max-height: 350px;
+    overflow: hidden;
+    width: 100%;
+}
