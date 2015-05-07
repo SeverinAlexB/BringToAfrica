@@ -19,7 +19,7 @@
                                 <h4>Wie viele @donateForm.get().donations(i) möchtest du spenden?</h4>
 
                                 <div class="choose-pricing">
-                                    <div class="btn-group">
+                                    <div id="donationamount@donateForm.get().donations(i)" class="donationbtn-group">
                                         <input type="hidden" id="amounts_@i" name="amounts[@i]">
                                         <input type="hidden" name="donations[@i]" value="@donateForm.get().donations(i)">
                                         <button type="button" data-target="#amounts_@i" class="btn btn-default active">1</button>
@@ -45,5 +45,15 @@
                     </div>
                 }
             </div>
+            <script>
+            $(".donationbtn-group .btn").click(function(){
+                var btngroup = $(this).parent();
+                var activeButton = $(this);
+
+                $('#' + btngroup.attr('id') + ' .btn').removeClass('active');
+                activeButton.addClass('active');
+            });
+        </script>
         </div>
+
     </div>

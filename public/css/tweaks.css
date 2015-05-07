@@ -61,3 +61,19 @@ p.social-icons {
 .AddtoCart .table tbody td.product-image {
     width: auto;
 }
+.donationbtn-group {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.donationbtn-group>.btn {
+  position: relative;
+  float: left;
+}
+.donationbtn-group .btn.active {
+  border-radius: 0;
+  border-color: #e7bd15;
+ }
+ .donationbtn-group>.btn:focus{
+   outline: 0;
+ }
