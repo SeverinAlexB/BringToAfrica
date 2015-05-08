@@ -23,6 +23,7 @@ public class Donation extends Model{
     public Donation(User user, DonationGoal donationGoal){
         this.user = user;
         this.donationGoal = donationGoal;
+        this.date = new Date((new java.util.Date()).getTime());
     }
     public Donation() {}
 

@@ -1,0 +1,79 @@
+Users:
+    - &user1 !!models.User
+        firstName:  bob
+        lastName:   Test
+        email:      bob@gmail.com
+        passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
+    - &user2 !!models.User
+        firstName:  Thomas
+        lastName:   Willi
+        email:      t.w@bluewin.com
+        passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
+
+DonationTypes:
+    - &type1 !!models.DonationType
+        name:       Schuhe
+    - &type2 !!models.DonationType
+        name:       Hose
+
+Addresses:
+    - &address1 !!models.Address
+        country:    Nigeria
+        city:       Abuja
+    - &address2 !!models.Address
+        country:    South Africa
+        city:       Johannesburg
+
+Projects:
+    - &project1 !!models.Project
+        title:          Test Projekt
+        description:    Test Description
+        imageURL:       http://test.ch
+        startsAt:       2015-01-01
+        endsAt:         2016-01-01
+        contact:        Email
+        address:        *address1
+        owner:          *user1
+    - &project2 !!models.Project
+        title:          clothes to middlee arth
+        description:    blasssssblaaa
+        imageURL:       http://test.ch
+        startsAt:       2015-03-01
+        endsAt:         2016-05-06
+        contact:        adfsasdf asdf adsf asdf adsf
+        address:        *address2
+        owner:          *user2
+
+News:
+    - &news1 !!models.News
+        title:          Ali Kebab back in town
+        description:    Durum, Doener and fresh patetoes!!!
+        date:           2016-01-06
+        imageURL:       http://www.wtf.com
+        project:        *project1
+    - &news2 !!models.News
+        title:          The queen of england died
+        description:    Durum, Doener and fresh patetoes2
+        date:           2020-01-06
+        imageURL:       http://www.wth.com
+        project:        *project1
+    - &news3 !!models.News
+        title:          The queen of england died the second time
+        description:    Durum, Doener and fresh patetoes3
+        date:           2025-01-06
+        imageURL:       http://www.whyTheHell.com
+        project:        *project2
+
+DonationGoals:
+    - &goal1 !!models.DonationGoal
+        amount:         10
+        project:        *project1
+        type:           *type1
+    - &goal2 !!models.DonationGoal
+        amount:         100
+        project:        *project1
+        type:           *type2
+    - &goal3 !!models.DonationGoal
+        amount:         50
+        project:        *project2
+        type:           *type1
