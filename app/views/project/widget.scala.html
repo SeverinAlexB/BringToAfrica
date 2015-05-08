@@ -1,9 +1,11 @@
 @(widget: viewmodels.ProjectWidget)
 
-  <div class="projectWidget text-center progressbar ">
+  <div class="projectWidget progressbar ">
 
       <div class="panel-body">
-            <h3 class="h5">@widget.getTitle()</h3>
+            <a href="@routes.ProjectController.getProject(widget.getId())">
+              <h3>@widget.getTitle()</h3>
+            </a>
             <a href="@routes.ProjectController.getProject(widget.getId())" class="img-thumb">
               <figure>
                   <div class="crop">
@@ -12,18 +14,11 @@
               </figure>
             </a>
             <div class="progress">
-              <div style="width: 72%;" class="progress-bar" role="progressbar" aria-valuenow="@widget.getState()" aria-valuemin="0" aria-valuemax="100">
+              <div style="width: @widget.getState()%;" class="progress-bar" role="progressbar" aria-valuenow="@widget.getState()" aria-valuemin="0" aria-valuemax="100">
                 <span class="progress-value">@widget.getState() % </span>
               </div>
             </div>
             <p>@widget.getDescription()</p>
-            <a data-toggle="modal" href="@routes.ProjectController.getProject(widget.getId())" class="btn btn-default">Details</a>
+            <!--<a data-toggle="modal" href="@routes.ProjectController.getProject(widget.getId())" class="btn btn-default">Details</a>-->
       </div>
-      <script>
-           $(function changeImageSize() {
-               var width = $(".projectWidget").width();
-               var newHeight = width*(18/33);
-               $(".projectWidget .crop").height(newHeight);
-           });
-      </script>
   </div>
