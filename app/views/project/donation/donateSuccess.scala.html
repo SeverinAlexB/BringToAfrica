@@ -1,4 +1,4 @@
-@(donation: viewmodels.donation.ProjectDonationData) {
+@(projectTitle : String, contact : String) {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -6,18 +6,14 @@
                     ×
                 </button>
                 <header class="page-header">
-                    <h2>Du hast für <strong>@donation.project.getTitle()</strong> gespendet</h2>
+                    <h2>Du hast für <strong>@projectTitle</strong> gespendet</h2>
                 </header>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-xs-12">
                         <label for="add-note">Wie funktioniert die Kontaktaufnahme?</label>
-                        <h5><p>Sende mir die Güter einfach per Post an die folgende Adresse:
-                            Claudia Hofstetter
-                            Holzrai 7
-                            Kreis 999
-                            8000 Zürich
+                        <h5><p>@contact
                         </p>
                         </h5>
                     </div>

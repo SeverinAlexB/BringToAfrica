@@ -11,7 +11,9 @@ import viewmodels.donation.CreateDonationData;
 import viewmodels.donation.DonationData;
 import viewmodels.donation.ProjectDonationData;
 
+import java.sql.Date;
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,41 +21,45 @@ public class DonationController extends Controller {
     @Security.Authenticated(AuthenticationController.class)
     public static Result donate() {
         Form<CreateDonationData> form = Form.form(CreateDonationData.class).bindFromRequest();
-        Project project = ProjectService.getProjectById(form.get().projectId);
+        Project project = ProjectService.getProjectById(Long.parseLong(form.data().get("projectId")));
 
         if (form.hasErrors()) {
             return badRequest(views.html.project.donation.donate.render(project, form));
         } else {
-            List<DonationGoal> goals = project.getDonationGoals();
-            ArrayList<DonationData> donations = createDonations(form, goals);
-
-            ProjectDonationData donation = new ProjectDonationData();
-            donation.project = project;
-            donation.donations = donations;
-            return ok(views.html.project.donation.donateSuccess.render(donation));
+            createDonations(form, ApplicationController.getCurrentUser());
+            return ok(views.html.project.donation.donateSuccess.render(project.getTitle(),project.getContact()));
         }
     }
 
-    private static ArrayList<DonationData> createDonations(Form<CreateDonationData> form, List<DonationGoal> goals) {
-        ArrayList<DonationData> donations = new ArrayList<>();
+    protected static void createDonations(Form<CreateDonationData> form, User user) {
+        Project project = ProjectService.getProjectById(form.get().projectId);
+        String messageToCollector = form.get().remarks;
+
 
         for (int i = 0; i < form.get().amounts.size(); i++) {
             String typeName = form.get().donations.get(i);
-            int amount = Integer.parseInt(form.get().amounts.get(i));
+            int amount = form.get().amounts.get(i);
+            DonationGoal goal = getGoalByType(project.getDonationGoals(), typeName);
 
-            User user = ApplicationController.getCurrentUser();
-            DonationGoal goal = getGoalByType(goals, typeName);
-
-            Donation donation = new Donation(user, goal);
-            donation.setAmount(amount);
-            donation.save();
-
-            donations.add(new DonationData(donation));
+            if(amount > 0) {
+                createDonation(user, goal, amount, messageToCollector);
+                goal.refresh();
+                assert goal.getDonations().size() > 0;
+            }
         }
-        return donations;
+
     }
 
-    private static DonationGoal getGoalByType(List<DonationGoal> goals, String typeName) {
+    protected static Donation createDonation(User user, DonationGoal goal, int amount, String messageToCollector) {
+        Donation donation = new Donation(user, goal);
+        donation.setAmount(amount);
+        donation.setDate(new Date((new java.util.Date()).getTime()));
+        donation.setMessageToCollector(messageToCollector);
+        donation.save();
+        return donation;
+    }
+
+    protected static DonationGoal getGoalByType(List<DonationGoal> goals, String typeName) {
         DonationType type = DonationTypeService.getDonationTypeByName(typeName);
         return goals.stream()
                 .filter(g -> g.getType().getName().equals(type.getName()))
