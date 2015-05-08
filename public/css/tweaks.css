@@ -150,4 +150,6 @@ ul.nav-tabs li a {
 .myDonation {
     margin-bottom:60px;
 }
-
+.tab-content {
+    padding: 30px 20px 30px;
+}
