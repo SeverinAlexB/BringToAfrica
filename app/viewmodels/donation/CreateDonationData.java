@@ -2,6 +2,7 @@ package viewmodels.donation;
 
 
 import models.DonationGoal;
+import play.data.validation.Constraints;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +15,18 @@ public class CreateDonationData {
     public CreateDonationData(List<DonationGoal> goals) {
         for (DonationGoal goal : goals) {
             donations.add(goal.getType().getName());
-            amounts.add("0");
+            amounts.add(0);
         }
     }
 
     public long projectId;
-    public List<String> amounts = new ArrayList<>();
+    public List<Integer> amounts = new ArrayList<>();
     public List<String> donations = new ArrayList<>();
     public String remarks;
+    public String validate() {
+        for(int amount: amounts){
+           if(amount<0) return "Anzahl muss grösser gleich 0 sein.";
+        }
+        return null;
+    }
 }

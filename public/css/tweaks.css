@@ -74,6 +74,11 @@ p.social-icons {
   border-radius: 0;
   border-color: #e7bd15;
  }
+ .donationbtn-group .inpt-first.active {
+   border-radius: 0;
+   border-color: #e7bd15;
+   background: #e7bd15;
+  }
  .donationbtn-group>.btn:focus{
    outline: 0;
  }
