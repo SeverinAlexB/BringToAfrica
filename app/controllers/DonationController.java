@@ -46,10 +46,11 @@ public class DonationController extends Controller {
             String typeName = form.get().donations.get(i);
             int amount = form.get().amounts.get(i);
             DonationGoal goal = getGoalByType(goals, typeName);
-
-            Donation donation = createDonation(user, goal, amount, messageToCollector);
-
-            donations.add(new DonationData(donation));
+            
+            if(amount > 0) {
+                Donation donation = createDonation(user, goal, amount, messageToCollector);
+                donations.add(new DonationData(donation));
+            }
         }
         return donations;
     }
