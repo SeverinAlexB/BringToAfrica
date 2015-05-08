@@ -4,14 +4,13 @@
     <div class="container" id="page-info">
         <div class="row">
             <div class="col-xs-12">
-                <section class="checkout anim-section animate">
+                <section class="checkout">
                             <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
                                 <li class="col-sm-4 active"><a href="#projectdata" role="tab" data-toggle="tab">1. Projektdaten</a></li>
                                 <li class="col-sm-4"><a href="#waren" role="tab" data-toggle="tab">2. Waren</a></li>
                                 <li class="col-sm-4"><a href="#contact" role="tab" data-toggle="tab">3. Kontakt</a></li>
                             </ul>
                             @helper.form(action = routes.ProjectController.addProjectData, 'id -> "newProjectForm", 'role -> "form", Symbol("data-parsley-validate") -> "") {
-                                    <!-- Tab panes -->
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="projectdata">
                                         @projectdata(projektDataForm)

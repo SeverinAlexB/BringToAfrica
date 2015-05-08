@@ -11,6 +11,11 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 caption">
                         <h2 class="h1">@news.getTitle()</h2>
+                        <ul class="post-in">
+                          <li>
+                            <span> @news.getDate().format("d.M.Y") </span>
+                          </li>
+                        </ul>
                         @news.getDescription()
                     </div>
                 </div>
