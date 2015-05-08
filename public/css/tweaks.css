@@ -41,6 +41,7 @@ h4 {
 }
 .projectWidget h3 {
     margin-bottom:17px;
+    margin-top: 10px;
 }
 
 .projectWidget p {
@@ -106,7 +107,7 @@ p.social-icons {
 
 .projectWidget {
     text-align: left;
-    margin-bottom: 40px;
+    margin: 25px;
 }
 
 .projectWidget .panel-body {
@@ -120,13 +121,16 @@ p.social-icons {
 .navbar-nav > li > .dropdown-menu, .navbar-nav .open .dropdown-menu {
     background-color: #EAC11A;
 }
+.donation-info {
 
-.donation-info h3 {
+}
+
+.donation-info .donationdate {
     margin-bottom: 20px;
 }
 
 ul.nav-tabs li a {
-    background-color: #FFE682;
+    background-color: #E3C033;
 }
 
 .projectUserView {
@@ -142,5 +146,8 @@ ul.nav-tabs li a {
     max-height: 350px;
     overflow: hidden;
     width: 100%;
+}
+.myDonation {
+    margin-bottom:60px;
 }
 

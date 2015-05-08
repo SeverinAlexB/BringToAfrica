@@ -4,7 +4,7 @@
 
       <div class="panel-body">
             <a href="@routes.ProjectController.getProject(widget.getId())">
-              <h3>@widget.getTitle()</h3>
+              <h3 class="text-center">@widget.getTitle()</h3>
             </a>
             <a href="@routes.ProjectController.getProject(widget.getId())" class="img-thumb">
               <figure>
@@ -18,7 +18,7 @@
                 <span class="progress-value">@widget.getState() % </span>
               </div>
             </div>
-            <p>@widget.getDescription()</p>
+            <p class="text-center">@widget.getDescription()</p>
             <!--<a data-toggle="modal" href="@routes.ProjectController.getProject(widget.getId())" class="btn btn-default">Details</a>-->
       </div>
   </div>
