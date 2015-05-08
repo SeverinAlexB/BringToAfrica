@@ -26,38 +26,40 @@ public class DonationController extends Controller {
         if (form.hasErrors()) {
             return badRequest(views.html.project.donation.donate.render(project, form));
         } else {
-            List<DonationGoal> goals = project.getDonationGoals();
-            createDonations(form, goals);
-
+            createDonations(form, ApplicationController.getCurrentUser());
             return ok(views.html.project.donation.donateSuccess.render(project.getTitle(),project.getContact()));
         }
     }
 
-    private static void createDonations(Form<CreateDonationData> form, List<DonationGoal> goals) {
+    protected static void createDonations(Form<CreateDonationData> form, User user) {
+        Project project = ProjectService.getProjectById(form.get().projectId);
         String messageToCollector = form.get().remarks;
-        User user = ApplicationController.getCurrentUser();
+
 
         for (int i = 0; i < form.get().amounts.size(); i++) {
             String typeName = form.get().donations.get(i);
             int amount = form.get().amounts.get(i);
-            DonationGoal goal = getGoalByType(goals, typeName);
+            DonationGoal goal = getGoalByType(project.getDonationGoals(), typeName);
 
             if(amount > 0) {
                 createDonation(user, goal, amount, messageToCollector);
+                goal.refresh();
+                assert goal.getDonations().size() > 0;
             }
         }
 
     }
 
-    private static void createDonation(User user, DonationGoal goal, int amount, String messageToCollector) {
+    protected static Donation createDonation(User user, DonationGoal goal, int amount, String messageToCollector) {
         Donation donation = new Donation(user, goal);
         donation.setAmount(amount);
         donation.setDate(new Date((new java.util.Date()).getTime()));
         donation.setMessageToCollector(messageToCollector);
         donation.save();
+        return donation;
     }
 
-    private static DonationGoal getGoalByType(List<DonationGoal> goals, String typeName) {
+    protected static DonationGoal getGoalByType(List<DonationGoal> goals, String typeName) {
         DonationType type = DonationTypeService.getDonationTypeByName(typeName);
         return goals.stream()
                 .filter(g -> g.getType().getName().equals(type.getName()))
