@@ -10,7 +10,7 @@
       </header>
     </div>
     <div class="modal-body">
-    @helper.form(action = routes.NewsController.addNews(), 'role -> "form", 'id -> "news-form", 'type -> "POST", 'method -> "POST") {
+    @helper.form(action = routes.NewsController.addNews(), Symbol("data-parsley-validate") -> "", 'role -> "form", 'id -> "news-form", 'type -> "POST", 'method -> "POST") {
       <input type="hidden" name="projectId" value="@project.getId()">
 
       <div class="row">
@@ -30,7 +30,7 @@
       <div class="row">
         <div class="col-xs-12">
           <label for="add-note">Image URL</label>
-          <input class="form-control" type="text" name="imageUrl" placeholder="BildURL" value="@newsDataForm("imageUrl").value" required>
+          <input class="form-control" type="url" name="imageUrl" placeholder="BildURL" value="@newsDataForm("imageUrl").value" required>
         </div>
       </div>
 
