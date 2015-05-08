@@ -27,18 +27,13 @@ public class DonationController extends Controller {
             return badRequest(views.html.project.donation.donate.render(project, form));
         } else {
             List<DonationGoal> goals = project.getDonationGoals();
-            ArrayList<DonationData> donations = createDonations(form, goals);
+            createDonations(form, goals);
 
-            ProjectDonationData donation = new ProjectDonationData();
-            donation.project = project;
-            donation.donations = donations;
-            return ok(views.html.project.donation.donateSuccess.render(donation));
+            return ok(views.html.project.donation.donateSuccess.render(project.getTitle(),project.getContact()));
         }
     }
 
-    private static ArrayList<DonationData> createDonations(Form<CreateDonationData> form, List<DonationGoal> goals) {
-        ArrayList<DonationData> donations = new ArrayList<>();
-
+    private static void createDonations(Form<CreateDonationData> form, List<DonationGoal> goals) {
         String messageToCollector = form.get().remarks;
         User user = ApplicationController.getCurrentUser();
 
@@ -46,22 +41,20 @@ public class DonationController extends Controller {
             String typeName = form.get().donations.get(i);
             int amount = form.get().amounts.get(i);
             DonationGoal goal = getGoalByType(goals, typeName);
-            
+
             if(amount > 0) {
-                Donation donation = createDonation(user, goal, amount, messageToCollector);
-                donations.add(new DonationData(donation));
+                createDonation(user, goal, amount, messageToCollector);
             }
         }
-        return donations;
+
     }
 
-    private static Donation createDonation(User user, DonationGoal goal, int amount, String messageToCollector) {
+    private static void createDonation(User user, DonationGoal goal, int amount, String messageToCollector) {
         Donation donation = new Donation(user, goal);
         donation.setAmount(amount);
         donation.setDate(new Date((new java.util.Date()).getTime()));
         donation.setMessageToCollector(messageToCollector);
         donation.save();
-        return donation;
     }
 
     private static DonationGoal getGoalByType(List<DonationGoal> goals, String typeName) {
