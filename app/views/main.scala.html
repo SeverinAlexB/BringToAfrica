@@ -25,9 +25,12 @@
 <body>
 
 <div id="wrapper">
-    @layout.header()
-    <div id="main">
-        @content
+    <div id="wrap">
+        @layout.header()
+        <div id="main">
+            @content
+        </div>
+        <div id="push"></div>
     </div>
     @layout.footer()
 </div>

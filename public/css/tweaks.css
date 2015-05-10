@@ -1,3 +1,22 @@
+* {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+#wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -85px;
+}
+
+#footer, #push {
+    height: 85px;
+}
+
 .brand h1 {
 	font-family: 'Libre Baskerville', serif;
 	color: #fff;
@@ -58,10 +77,6 @@ h4 {
 
 .brand {
     min-width: 300px;
-}
-
-#footer, #push {
-    height: 8em;
 }
 
 p.social-icons {
