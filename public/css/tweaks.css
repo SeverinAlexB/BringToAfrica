@@ -144,3 +144,11 @@ ul.nav-tabs li a {
     width: 100%;
 }
 
+.parsley-errors-list li {
+    color: rgb(213, 72, 72);
+    list-style: none;
+}
+
+.parsley-errors-list{
+    padding-left: 0;
+}
