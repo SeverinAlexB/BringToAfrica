@@ -9,7 +9,7 @@
             <section class="checkout anim-section animate">
                 <div class="row">
                     <div class="tab-wrap col-sm-12">
-                        @helper.form(action = routes.RegistrationController.register()) {
+                        @helper.form(action = routes.RegistrationController.register(), Symbol("data-parsley-validate") -> "") {
                         <h1>Neues Profil erstellen</h1>
 
                         <div class="row">
