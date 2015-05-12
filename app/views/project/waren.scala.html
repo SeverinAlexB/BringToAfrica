@@ -1,4 +1,5 @@
 @(projektDataForm: Form[viewmodels.ProjectData])
+<div class="second block2">
 <section class="AddtoCart">
     <div class="row">
         <div class="col-xs-12">
@@ -12,10 +13,10 @@
                 <tbody>
                 <tr>
                     <td class="product-image">
-                        <input type="number" id="amount" name="amounts[0]" value="" class="form-control" required>
+                        <input type="number" id="amount" name="amounts[0]" value="" class="form-control" data-parsley-group="block2" required>
                     </td>
                     <td class="product-image">
-                        <input type="text" id="donation" name="donations[0]" value="" class="form-control" required>
+                        <input type="text" id="donation" name="donations[0]" value="" class="form-control" data-parsley-group="block2" required>
                     </td>
                 </tr>
                 </tbody>
@@ -32,12 +33,11 @@
             </div>
             <div class="btns-wrapper">
                 <div class="form-group">
-                    <a href="#contact" role="tab" data-toggle="tab">
-                        <button id="btnContinue2" class="btn btn-default btn-lg pull-right">Weiter</button>
-                    </a>
+                    <span id="btnContinue2" class="next btn btn-default btn-lg pull-right" data-current-block="2" data-next-block="3">Weiter</span>
                 </div>
             </div>
 
         </div>
     </div>
 </section>
+</div>

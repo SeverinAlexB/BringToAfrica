@@ -10,7 +10,7 @@
         <section class="checkout anim-section animate">
           <div class="row">
             <div class="tab-wrap col-sm-12">
-              @helper.form(action = routes.MyProfileController.saveMyProfile()) {
+              @helper.form(action = routes.MyProfileController.saveMyProfile(), Symbol("data-parsley-validate") -> "") {
                 <input class="hidden" type="text" name="id" placeholder="id" value='@myProfileForm("id").value' required>
                 <h1>Profil @myProfileForm("firstname").value @myProfileForm("lastname").value bearbeiten</h1>
                 <div class="row">

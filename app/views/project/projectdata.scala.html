@@ -1,37 +1,37 @@
 @(projektDataForm: Form[viewmodels.ProjectData])
+<div class="first block1">
 <div class="row">
     <div class="col-sm-6 col-xs-12">
         <div class="form-group">
             <label for="title">Gib deinem Projekt einen Namen<span>*</span></label>
-            <input class="form-control" id="title" type="text" name="title" value="@projektDataForm("title").value" required>
+            <input class="form-control" id="title" type="text" name="title" value="@projektDataForm("title").value" data-parsley-group="block1" required>
         </div>
         <div class="form-group">
             <label for="imageURL">Füge ein Titelbild hinzu<span>*</span></label>
-            <input class="form-control" id="imageURL" type="url" name="imageURL" value="@projektDataForm("imageURL").value" required>
+            <input class="form-control" id="imageURL" type="url" name="imageURL" value="@projektDataForm("imageURL").value" data-parsley-group="block1" required>
         </div>
         <div class="form-group">
             <label for="description">
                 Beschreibe dein Projekt in ein paar kurzen Sätzen<span>*</span>
             </label>
-            <textarea class="form-control" rows="5" cols="10" id="description" name="description" value="@projektDataForm("description").value" required></textarea>
+            <textarea class="form-control" rows="5" cols="10" id="description" name="description" value="@projektDataForm("description").value" data-parsley-group="block1" required></textarea>
         </div>
     </div>
     <div class="col-sm-6 col-xs-12">
         <div class="form-group">
             <label for="startsAt">Wann soll deine Spendenaktion starten?<span>
                                                         *</span></label>
-            <input class="form-control" id="startsAt" type="text" name="startsAt" value="@projektDataForm("startsAt").value" required>
+            <input class="form-control" id="startsAt" type="date" name="startsAt" value="@projektDataForm("startsAt").value" data-parsley-group="block1" required>
         </div>
         <div class="form-group">
             <label for="endsAt">Wann soll deine Spendenaktion enden?</label>
-            <input class="form-control" id="endsAt" type="text" name="endsAt" value="@projektDataForm("endsAt").value" required>
+            <input class="form-control" id="endsAt" type="date" name="endsAt" value="@projektDataForm("endsAt").value" data-parsley-group="block1" required>
         </div>
     </div>
     <div class="col-sm-12 col-xs-12">
         <div class="form-group">
-            <a href="#waren" role="tab" data-toggle="tab">
-                <button id="btnContinue1" class="btn btn-default btn-lg pull-right">Weiter</button>
-            </a>
+            <span id="btnContinue1" class="next btn btn-default btn-lg pull-right" data-current-block="1" data-next-block="2">Weiter</span>
         </div>
     </div>
+</div>
 </div>
