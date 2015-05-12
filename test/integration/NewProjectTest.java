@@ -49,7 +49,6 @@ public class NewProjectTest {
                     fakeRequest().withSession("email", email).withFormUrlEncodedBody(map));
             assertEquals(BAD_REQUEST, status(result));
             assertTrue(contentAsString(result).contains("Bitte fülle deine Kontaktmöglichkeiten aus"));
-            //assertTrue(contentAsString(result).contains("test.test"));
         }));
     }
 
