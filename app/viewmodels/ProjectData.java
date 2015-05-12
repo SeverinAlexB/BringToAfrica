@@ -19,7 +19,7 @@ public class ProjectData {
     public String endsAt;
 
 
-    @Constraints.Required(message = "Bitte fülle deine Kontaktmöglichkeiten aus")
+    @Constraints.Required(message = "test.test")
     public String contactInformation;
     @Constraints.Required(message = "Bitte gib das Spendenland an")
     public String country;
