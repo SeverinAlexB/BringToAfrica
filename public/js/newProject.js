@@ -25,4 +25,13 @@ $(function() {
         $("#main-table tbody tr:last").detach();
     });
 
+        $('#startsAtPicker').datetimepicker({format: 'DD-MM-YYYY'});
+        $('#endsAtPicker').datetimepicker({format: 'DD-MM-YYYY'});
+        $("#startsAtPicker").on("dp.change", function (e) {
+            $('#endsAtPicker').data("DateTimePicker").minDate(e.date);
+        });
+        $("#endsAtPicker").on("dp.change", function (e) {
+            $('#startsAtPicker').data("DateTimePicker").maxDate(e.date);
+        });
+
 });
