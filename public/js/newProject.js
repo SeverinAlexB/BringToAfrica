@@ -25,13 +25,20 @@ $(function() {
         $("#main-table tbody tr:last").detach();
     });
 
-        $('#startsAtPicker').datetimepicker({format: 'DD-MM-YYYY'});
-        $('#endsAtPicker').datetimepicker({format: 'DD-MM-YYYY'});
-        $("#startsAtPicker").on("dp.change", function (e) {
-            $('#endsAtPicker').data("DateTimePicker").minDate(e.date);
-        });
-        $("#endsAtPicker").on("dp.change", function (e) {
-            $('#startsAtPicker').data("DateTimePicker").maxDate(e.date);
-        });
+    $('#endsAt').datetimepicker({
+        format: 'DD.MM.YYYY'
+    });
+    $('#startsAt').datetimepicker({
+        format: 'DD.MM.YYYY'
+    });
+    $("#startsAt").data("DateTimePicker").widgetPositioning({horizontal: 'left', vertical: 'bottom'});
+    $("#endsAt").data("DateTimePicker").widgetPositioning({horizontal: 'left', vertical: 'bottom'});
+
+    $("#startsAt").on("dp.change", function (e) {
+        $('#endsAt').data("DateTimePicker").minDate(e.date);
+    });
+    $("#endsAt").on("dp.change", function (e) {
+        $('#startsAt').data("DateTimePicker").maxDate(e.date);
+    });
 
 });
