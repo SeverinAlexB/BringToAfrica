@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 public class DateConverter {
 
     public static java.sql.Date stringToSqlDate(String date) throws AfricaException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         java.util.Date dateUtil;
         try {
             dateUtil = sdf.parse(date);
