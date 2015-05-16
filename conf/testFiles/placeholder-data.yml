@@ -34,7 +34,10 @@ Addresses:
 Projects:
     - &project1 !!models.Project
         title:          Handys nach Honduras
-        description:    Honduras bracht Handys
+        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
+                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
+                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
+                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
         imageURL:       http://images.nationalgeographic.com/wpf/media-live/photos/000/030/cache/honduras_3022_600x450.jpg
         startsAt:       2015-05-17
         endsAt:         2015-05-25
@@ -43,7 +46,10 @@ Projects:
         owner:          *user1
     - &project2 !!models.Project
         title:          Velos nach Venezuela
-        description:    Venezuela bracht Velos, damit sie wirder etwas fitter in den Beinen werden
+        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
+                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
+                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
+                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
         imageURL:       http://www.couch-mag.de/sites/default/files/styles/large/public/Artikelbild_4.jpg?itok=wgOi2O5f
         startsAt:       2015-05-14
         endsAt:         2015-05-22
@@ -52,7 +58,10 @@ Projects:
         owner:          *user2
     - &project3 !!models.Project
         title:          Autos nach Australien
-        description:    Die Australier sind viel zu sportlich, spendet Autos damit sie wieder dicker werden
+        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
+                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
+                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
+                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
         imageURL:       http://www.in-australien.com/wp-content/uploads/2010/09/Campervan-Australien2.jpg
         startsAt:       2015-06-13
         endsAt:         2015-09-19
@@ -61,7 +70,10 @@ Projects:
         owner:          *user1
     - &project4 !!models.Project
         title:          Ziegel nach Zimbabwe
-        description:    Spendet Ziegel damit Zimbabwe bei Regen trocken schlafen kann
+        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
+                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
+                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
+                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
         imageURL:       http://static.wixstatic.com/media/7789fb_7981d6e446fd4ba882067785da04dd13.jpg_srz_920_555_85_22_0.50_1.20_0.00_jpg_srz
         startsAt:       2015-07-09
         endsAt:         2015-10-12
@@ -70,7 +82,10 @@ Projects:
         owner:          *user1
     - &project5 !!models.Project
         title:          Zelte nach Nepal
-        description:    Spende Zelte nach Nepal um den Menschen dort ein Dach über dem Kopf zu geben.
+        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
+                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
+                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
+                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
         imageURL:       http://images.nzz.ch/eos/v2/image/view/-/560/fullSize/inset/e6e9a4e3/1.18534155/1430577714/alte-frau-nepal.jpg
         startsAt:       2015-07-09
         endsAt:         2015-10-12
@@ -79,7 +94,10 @@ Projects:
         owner:          *user1
     - &project6 !!models.Project
         title:          Nahrungsmittel nach Japan
-        description:    Wir sammeln Nahrungsmittel für die Tsunamiopfer in Japan
+        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
+                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
+                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
+                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
         imageURL:       http://i.dailymail.co.uk/i/pix/2011/03/15/article-0-0B2D7C2600000578-689_964x641.jpg
         startsAt:       2015-07-09
         endsAt:         2015-10-12
@@ -88,7 +106,10 @@ Projects:
         owner:          *user1
     - &project7 !!models.Project
         title:          Taschen für Somalia
-        description:    Wir sind auf der Suche nach Tasche für somalische Mütter
+        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
+                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
+                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
+                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
         imageURL:       http://static01.nyt.com/images/2011/07/21/world/21somalia_span/21somalia-articleLarge.jpg
         startsAt:       2015-07-09
         endsAt:         2015-10-12
@@ -97,7 +118,10 @@ Projects:
         owner:          *user1
     - &project8 !!models.Project
         title:          Hüte nach Vietnam
-        description:    Wir bringen Hüte nach Vietnam
+        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
+                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
+                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
+                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
         imageURL:       http://www.sodi.de/uploads/pics/Vietnam_Lim_Familie_vor_Haus.JPG
         startsAt:       2015-07-09
         endsAt:         2015-10-12

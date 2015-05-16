@@ -18,15 +18,14 @@
         </div>
     </div>
     <div class="col-sm-6 col-xs-12">
-        <div class="form-group">
+
             <label for="startsAt">Wann soll deine Spendenaktion starten?<span>
                                                         *</span></label>
-            <input class="form-control" id="startsAt" type="date" name="startsAt" value="@projektDataForm("startsAt").value" data-parsley-group="block1" required>
-        </div>
-        <div class="form-group">
+                    <input class="form-control" id="startsAt" type="text" name="startsAt" value="@projektDataForm("startsAt").value" data-parsley-group="block1" required>
+
             <label for="endsAt">Wann soll deine Spendenaktion enden?</label>
-            <input class="form-control" id="endsAt" type="date" name="endsAt" value="@projektDataForm("endsAt").value" data-parsley-group="block1" required>
-        </div>
+                        <input class="form-control" id="endsAt" type="text" name="endsAt" value="@projektDataForm("endsAt").value" data-parsley-group="block1" required>
+
     </div>
     <div class="col-sm-12 col-xs-12">
         <div class="form-group">

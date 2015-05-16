@@ -37,7 +37,7 @@ create table donation_type (
 create table news (
   id                        bigint not null,
   title                     varchar(255),
-  description               varchar(255),
+  description               TEXT,
   date                      date,
   image_url                 varchar(255),
   project_id                bigint,
@@ -47,7 +47,7 @@ create table news (
 create table Project (
   id                        bigint not null,
   title                     varchar(255),
-  description               varchar(255),
+  description               TEXT,
   image_url                 varchar(255),
   starts_at                 date,
   ends_at                   date,

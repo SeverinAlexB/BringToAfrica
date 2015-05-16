@@ -25,4 +25,20 @@ $(function() {
         $("#main-table tbody tr:last").detach();
     });
 
+    $('#endsAt').datetimepicker({
+        format: 'DD.MM.YYYY'
+    });
+    $('#startsAt').datetimepicker({
+        format: 'DD.MM.YYYY'
+    });
+    $("#startsAt").data("DateTimePicker").widgetPositioning({horizontal: 'left', vertical: 'bottom'});
+    $("#endsAt").data("DateTimePicker").widgetPositioning({horizontal: 'left', vertical: 'bottom'});
+
+    $("#startsAt").on("dp.change", function (e) {
+        $('#endsAt').data("DateTimePicker").minDate(e.date);
+    });
+    $("#endsAt").on("dp.change", function (e) {
+        $('#startsAt').data("DateTimePicker").maxDate(e.date);
+    });
+
 });
