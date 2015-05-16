@@ -5,10 +5,12 @@
 # Home page
 GET         /                              controllers.ApplicationController.index()
 
-GET         /projects/widgets/:page        controllers.ProjectController.getProjectWidgets(page:Int)
+GET         /projects/widgets/:page        controllers.ProjectListController.getProjectWidgets(page:Int)
+
 GET         /projects/new                  controllers.ProjectController.createProject()
 GET         /projects/:id                  controllers.ProjectController.getProject(id: Long)
 POST        /projects/data                 controllers.ProjectController.addProjectData()
+
 POST        /donations                     controllers.DonationController.donate()
 
 POST        /news                          controllers.NewsController.addNews()
