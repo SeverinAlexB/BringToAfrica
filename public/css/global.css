@@ -590,8 +590,26 @@ blockquote footer:before, .blockquote-reverse footer:after {
 	background: url(../img/breadcrumb-bg.jpg) center 37.3% no-repeat;
 	background-size: cover;
 	padding: 31px 0 42px;
-/*	margin-bottom: 59px;*/
 }
+
+.breadcrumb-section-variant-2 {
+	background: url(../img/breadcrumb-bg-2.jpg) no-repeat;
+	background-size: cover;
+	padding: 31px 0 42px;
+}
+
+.breadcrumb-section-variant-3 {
+	background: url(../img/breadcrumb-bg-3.jpg) no-repeat;
+	background-size: cover;
+	padding: 31px 0 42px;
+}
+
+.breadcrumb-section-variant-4 {
+	background: url(../img/breadcrumb-bg-4.jpg) no-repeat;
+	background-size: cover;
+	padding: 31px 0 42px;
+}
+
 .breadcrumb-section h1 {
 	font-weight: 700;
 	margin-bottom: 0;
