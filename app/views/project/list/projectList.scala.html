@@ -1,14 +1,9 @@
 @(widgets: List[viewmodels.ProjectWidget], pageSize: Int, currentPage: Int)
+        <div class="cause-page-section" id="page-info">
 
-@main("BringToAfrica") {
-        <div class="content-wrapper cause-page-section" id="page-info">
-            <div class="container">
                 <!-- Our Causes Section-->
                 <section class="our-causes">
                         <div class="row">
-                            <header class="page-header section-header top-spacer">
-                              <h2>Spende deine Sachen und hilf anderen Menschen!<br/><strong>Unsere laufenden Projekte </strong></h2>
-                            </header>
                             <div class="article-list progressbar">
                                 @for(widget <- widgets) {
                                 <div class="cols-xs-12 col-sm-4">
@@ -23,17 +18,17 @@
                 <div class="cols-xs-12 text-center">
                     <ul class="pagination">
                             @if(pageSize > 1) {
-                                @if(currentPage > 1) {
+                                @if(currentPage > 0) {
                                     <li>
-                                        <a href="@routes.ProjectController.getProjectWidgets(currentPage - 1)">Zurück</a>
+                                        <a href="@routes.ProjectListController.getProjectList(currentPage - 1)">Zurück</a>
                                     </li>
                                 }
                                 @for(i <- 0 to pageSize - 1) {
-                                    <li @if(currentPage == i){class="active"}><a href="@routes.ProjectController.getProjectWidgets(i)">@i</a></li>
+                                    <li @if(currentPage == i){class="active"}><a href="@routes.ProjectListController.getProjectList(i)">@(i+1)</a></li>
                                 }
-                                @if(currentPage < pageSize) {
-                                    <li class="active">
-                                        <a href="@routes.ProjectController.getProjectWidgets(currentPage + 1)">Weiter</a>
+                                @if(currentPage < pageSize -1) {
+                                    <li>
+                                        <a href="@routes.ProjectListController.getProjectList(currentPage + 1)">Weiter</a>
                                     </li>
                                 }
                             } else {
@@ -43,6 +38,5 @@
                             }
                     </ul>
                 </div>
-            </div>
         </div>
-} { }
+

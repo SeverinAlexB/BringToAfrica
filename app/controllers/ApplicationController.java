@@ -1,16 +1,14 @@
 package controllers;
 
 import models.User;
-import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import services.ConsumerService;
-import viewmodels.donation.MyDonationsData;
 
 public class ApplicationController extends Controller {
 
     public static Result index() {
-        return redirect(routes.ProjectController.getProjectWidgets(0));
+        return ok(views.html.startpage.render());
     }
     public static Result errorBadRequest(String error) {
         return badRequest(views.html.error.render(400, error));

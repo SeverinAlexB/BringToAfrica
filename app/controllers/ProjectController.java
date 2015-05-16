@@ -21,16 +21,6 @@ import java.util.List;
 
 public class ProjectController extends Controller {
 
-    private static final int PAGE_SIZE = 10;
-
-    public static Result getProjectWidgets(int page) {
-        Page<Project> projectPage = ProjectService.getProjectPage(PAGE_SIZE, page);
-        List<ProjectWidget> widgets = new ArrayList<>();
-        for (Project p :projectPage.getList()) {
-            widgets.add(new ProjectWidget(p));
-        }
-        return ok(views.html.index.render(widgets, projectPage.getTotalPageCount(), page));
-    }
 
     public static Html getProjectWidget(long id) {
         Project project = ProjectService.getProjectById(id);

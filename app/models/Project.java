@@ -13,6 +13,7 @@ public class Project extends Model {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String title;
+    @Column(columnDefinition = "TEXT")
     private String description;
     private String imageURL;
     private Date startsAt;
