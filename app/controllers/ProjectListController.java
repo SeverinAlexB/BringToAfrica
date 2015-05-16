@@ -17,7 +17,7 @@ import static play.mvc.Results.ok;
  * Created by Severin on 16.05.2015.
  */
 public class ProjectListController extends Controller {
-    private static final int PAGE_SIZE = 3;
+    private static final int PAGE_SIZE = 6;
 
 
     public static Result getProjectList(int page) {

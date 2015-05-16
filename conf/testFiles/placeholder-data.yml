@@ -62,7 +62,43 @@ Projects:
     - &project4 !!models.Project
         title:          Ziegel nach Zimbabwe
         description:    Spendet Ziegel damit Zimbabwe bei Regen trocken schlafen kann
-        imageURL:       http://www.planetstillalive.com/wp-content/uploads/2012/07/African-sunset1-1024x680.jpg
+        imageURL:       http://static.wixstatic.com/media/7789fb_7981d6e446fd4ba882067785da04dd13.jpg_srz_920_555_85_22_0.50_1.20_0.00_jpg_srz
+        startsAt:       2015-07-09
+        endsAt:         2015-10-12
+        contact:        Bitte per Email melden (ziegel@zimbabwe.com)
+        address:        *address2
+        owner:          *user1
+    - &project5 !!models.Project
+        title:          Zelte nach Nepal
+        description:    Spende Zelte nach Nepal um den Menschen dort ein Dach über dem Kopf zu geben.
+        imageURL:       http://images.nzz.ch/eos/v2/image/view/-/560/fullSize/inset/e6e9a4e3/1.18534155/1430577714/alte-frau-nepal.jpg
+        startsAt:       2015-07-09
+        endsAt:         2015-10-12
+        contact:        Bitte per Email melden (ziegel@zimbabwe.com)
+        address:        *address2
+        owner:          *user1
+    - &project6 !!models.Project
+        title:          Nahrungsmittel nach Japan
+        description:    Wir sammeln Nahrungsmittel für die Tsunamiopfer in Japan
+        imageURL:       http://i.dailymail.co.uk/i/pix/2011/03/15/article-0-0B2D7C2600000578-689_964x641.jpg
+        startsAt:       2015-07-09
+        endsAt:         2015-10-12
+        contact:        Bitte per Email melden (ziegel@zimbabwe.com)
+        address:        *address2
+        owner:          *user1
+    - &project7 !!models.Project
+        title:          Taschen für Somalia
+        description:    Wir sind auf der Suche nach Tasche für somalische Mütter
+        imageURL:       http://static01.nyt.com/images/2011/07/21/world/21somalia_span/21somalia-articleLarge.jpg
+        startsAt:       2015-07-09
+        endsAt:         2015-10-12
+        contact:        Bitte per Email melden (ziegel@zimbabwe.com)
+        address:        *address2
+        owner:          *user1
+    - &project8 !!models.Project
+        title:          Hüte nach Vietnam
+        description:    Wir bringen Hüte nach Vietnam
+        imageURL:       http://www.sodi.de/uploads/pics/Vietnam_Lim_Familie_vor_Haus.JPG
         startsAt:       2015-07-09
         endsAt:         2015-10-12
         contact:        Bitte per Email melden (ziegel@zimbabwe.com)
