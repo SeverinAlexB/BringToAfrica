@@ -2,7 +2,6 @@ package viewmodels.donation;
 
 
 import models.DonationGoal;
-import play.data.validation.Constraints;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +22,21 @@ public class CreateDonationData {
     public List<Integer> amounts = new ArrayList<>();
     public List<String> donations = new ArrayList<>();
     public String remarks;
+
     public String validate() {
+        boolean hasDonation = false;
         for(int amount: amounts){
-           if(amount<0) return "Anzahl muss grösser gleich 0 sein.";
+            if(amount < 0) {
+                return "Anzahl muss grösser gleich 0 sein.";
+            }
+            if(amount > 0) {
+                hasDonation = true;
+            }
+donatin
+        if(hasDonation) {
+            return null;
+        } else {
+            return "Es muss mindestens ein Gegenstand gespendet werden";
         }
-        return null;
     }
 }
