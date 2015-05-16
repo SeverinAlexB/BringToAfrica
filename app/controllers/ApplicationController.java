@@ -10,7 +10,9 @@ import viewmodels.donation.MyDonationsData;
 public class ApplicationController extends Controller {
 
     public static Result index() {
-        return redirect(routes.ProjectController.getProjectWidgets(0));
+        //return redirect(routes.ProjectController.getProjectWidgets(0));
+        //return ok(views.html.project.donation.donateSuccess.render(project.getTitle(),project.getContact()));
+        return ok(views.html.startpage.render());
     }
     public static Result errorBadRequest(String error) {
         return badRequest(views.html.error.render(400, error));

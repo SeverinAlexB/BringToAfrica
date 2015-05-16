@@ -1,0 +1,16 @@
+@main("BringToAfrica") {
+        <div class="content-wrapper cause-page-section" id="page-info">
+            <div class="container">
+                <!-- Our Causes Section-->
+                <div class="row">
+                    <header class="page-header section-header top-spacer">
+                        <h2>Spende deine Sachen und hilf anderen Menschen!<br/><strong>Unsere laufenden Projekte </strong></h2>
+                    </header>
+                </div>
+                <div>
+                    @ProjectController.getProjectWidgetList(0)
+                </div>
+            </div>
+
+        </div>
+} { }
