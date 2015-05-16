@@ -33,7 +33,7 @@ Addresses:
 
 Projects:
     - &project1 !!models.Project
-        title:          Ein Solidaritätsprojekt zwischen der Schweiz und Griechenland
+        title:          Handys nach Honduras
         description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
                         Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
                         Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
