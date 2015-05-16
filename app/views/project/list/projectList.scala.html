@@ -18,16 +18,16 @@
                 <div class="cols-xs-12 text-center">
                     <ul class="pagination">
                             @if(pageSize > 1) {
-                                @if(currentPage > 1) {
+                                @if(currentPage > 0) {
                                     <li>
                                         <a href="@routes.ProjectListController.getProjectList(currentPage - 1)">Zurück</a>
                                     </li>
                                 }
                                 @for(i <- 0 to pageSize - 1) {
-                                    <li @if(currentPage == i){class="active"}><a href="@routes.ProjectListController.getProjectList(i)">@i</a></li>
+                                    <li @if(currentPage == i){class="active"}><a href="@routes.ProjectListController.getProjectList(i)">@(i+1)</a></li>
                                 }
-                                @if(currentPage < pageSize) {
-                                    <li class="active">
+                                @if(currentPage < pageSize -1) {
+                                    <li>
                                         <a href="@routes.ProjectListController.getProjectList(currentPage + 1)">Weiter</a>
                                     </li>
                                 }
