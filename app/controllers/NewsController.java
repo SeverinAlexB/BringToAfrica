@@ -22,7 +22,7 @@ public class NewsController {
     @Security.Authenticated(AuthenticationController.class)
     public static Result addNews() throws AfricaException {
         Form<NewsData> newsDataForm = Form.form(NewsData.class).bindFromRequest();
-        models.Project project = ProjectService.getProjectById(Long.valueOf(newsDataForm.get().projectId));
+        models.Project project = ProjectService.getProjectById(Long.valueOf(newsDataForm.data().get("projectId")));
         if (newsDataForm.hasErrors()) {
             return badRequest(views.html.project.news.newNews.render(project, newsDataForm));
         } else {
