@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 contact-form">
         <h1>Log in</h1>
-        @helper.form(action = routes.LoginController.authenticate()) {
+        @helper.form(action = routes.LoginController.authenticate(), Symbol("data-parsley-validate") -> "") {
           <div class="form-group">
             <input class="form-control" type="text" placeholder="Email" name="email" id="email"required>
           </div>

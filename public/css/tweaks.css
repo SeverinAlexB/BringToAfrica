@@ -1,3 +1,22 @@
+* {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+#wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -85px;
+}
+
+#footer, #push {
+    height: 85px;
+}
+
 .brand h1 {
 	font-family: 'Libre Baskerville', serif;
 	color: #fff;
@@ -59,10 +78,6 @@ h4 {
 
 .brand {
     min-width: 300px;
-}
-
-#footer, #push {
-    height: 8em;
 }
 
 p.social-icons {
@@ -147,9 +162,20 @@ ul.nav-tabs li a {
     overflow: hidden;
     width: 100%;
 }
+
 .myDonation {
     margin-bottom:60px;
 }
 .tab-content {
     padding: 30px 20px 30px;
+
+
+.parsley-errors-list li {
+    color: rgb(213, 72, 72);
+    list-style: none;
+}
+
+.parsley-errors-list{
+    padding-left: 0;
+
 }
