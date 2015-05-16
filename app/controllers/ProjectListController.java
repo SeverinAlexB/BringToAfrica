@@ -17,16 +17,24 @@ import static play.mvc.Results.ok;
  * Created by Severin on 16.05.2015.
  */
 public class ProjectListController extends Controller {
-    private static final int PAGE_SIZE = 2;
-    public static Result getProjectWidgets(int page) {
-        return ok(getProjectWidgetList(page));
+    private static final int PAGE_SIZE = 3;
+
+
+    public static Result getProjectList(int page) {
+        return ok(parseProjectList(page,true));
     }
-    public static Html getProjectWidgetList(int page) {
+
+    public static Html parseProjectList(int page, boolean withMain) {
         Page<Project> projectPage = ProjectService.getProjectPage(PAGE_SIZE, page);
         List<ProjectWidget> widgets = new ArrayList<>();
         for (Project p :projectPage.getList()) {
             widgets.add(new ProjectWidget(p));
         }
-        return views.html.project.list.projectList.render(widgets, projectPage.getTotalPageCount(), page);
+        if(withMain) {
+            return views.html.project.list.projectListMain.render(widgets, projectPage.getTotalPageCount(), page);
+        }
+        else {
+            return views.html.project.list.projectList.render(widgets, projectPage.getTotalPageCount(), page);
+        }
     }
 }

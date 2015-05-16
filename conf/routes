@@ -5,7 +5,7 @@
 # Home page
 GET         /                              controllers.ApplicationController.index()
 
-GET         /projects/widgets/:page        controllers.ProjectListController.getProjectWidgets(page:Int)
+GET         /projects/widgets/:page        controllers.ProjectListController.getProjectList(page:Int)
 
 GET         /projects/new                  controllers.ProjectController.createProject()
 GET         /projects/:id                  controllers.ProjectController.getProject(id: Long)
