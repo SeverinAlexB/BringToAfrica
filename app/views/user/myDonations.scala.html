@@ -19,16 +19,14 @@
         </div>
     </div>
     }
-
-
-    <div class="article-list  ">
+    <div class="article-list">
         @for(projectdata <- donationsData.donations) {
-        <div class="row">
+        <div class="row myDonation">
             <div class="col-xs-12 col-sm-4 text-center">
                 @ProjectController.getProjectWidget(projectdata.project.getId())
             </div>
             <div class="donation-info col-xs-12 col-sm-8">
-              <h3>@projectdata.date</h3>
+              <h5 class="donationdate">@projectdata.date</h5>
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs nav-tabs_less-space" role="tablist">
                     <li class="active"><a href="#tabSpenden@donationsData.donations.indexOf(projectdata)" role="tab" data-toggle="tab">Meine Spenden</a></li>
