@@ -152,3 +152,12 @@ ul.nav-tabs li a {
 .parsley-errors-list{
     padding-left: 0;
 }
+
+.bootstrap-datetimepicker-widget .list-unstyled li:before {
+    color: #fff !important;
+    content: "";
+}
+
+.bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover {
+    background-color: #e7bd15 !important;
+}
