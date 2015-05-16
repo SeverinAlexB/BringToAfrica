@@ -1,5 +1,12 @@
 @(widgets: List[viewmodels.ProjectWidget], pageSize: Int, currentPage: Int)
 
 @main("BringToAfrica") {
-       @projectList(widgets,pageSize,currentPage)
+       <div class="container">
+              <div class="row">
+                     <header class="page-header section-header top-spacer">
+                            <h2>Spende deine Sachen und hilf anderen Menschen!<br/><strong>Unsere laufenden Projekte </strong></h2>
+                     </header>
+              </div>
+              @projectList(widgets,pageSize,currentPage)
+       </div>
 } { }
