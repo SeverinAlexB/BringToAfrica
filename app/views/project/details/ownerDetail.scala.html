@@ -30,7 +30,7 @@
                 }
                 @for(user <- projectDetail.getDonators()) {
                 <h3>@user.getFirstName() @user.getLastName()</h3>
-                <table class="table">
+                <table id="donators-table" class="table">
                     <thead>
                     <tr>
                         <th width="50">Datum</th>
@@ -42,16 +42,16 @@
                     <tbody>
                     @for(donation <- projectDetail.getDonationsForUser(user)) {
                     <tr>
-                        <td class="product-image">
+                        <td class="donation-date">
                             @donation.getDate().format("d.M")
                         </td>
-                        <td class="product-image">
+                        <td class="donation-amount">
                             @donation.getAmount()
                         </td>
-                        <td class="product-image">
+                        <td class="donation-type">
                             @donation.getDonationGoal().getType().getName()
                         </td>
-                        <td class="product-image">
+                        <td class="donation-message">
                             @donation.getMessageToCollector()
                         </td>
                     </tr>
