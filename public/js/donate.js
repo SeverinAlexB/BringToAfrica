@@ -31,10 +31,19 @@ function changeActiveButtonForDonationAmount(){
         $('#donate-submit').prop('disabled', true);
     }
 
+    function resetToZeroDonations() {
+        activeButton.removeClass('active');
+        valueKeeper.val('0');
+    }
+
     if (parseInt($(this).text()) > 0) {
         activateDonateButton();
     } else {
         deactivateDonateButton();
+    }
+
+    if ($(this).text() === valueKeeper.val()) {
+        resetToZeroDonations();
     }
 
     if($(this).hasClass('inpt-first')) {
