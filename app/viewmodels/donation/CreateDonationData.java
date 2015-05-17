@@ -25,14 +25,15 @@ public class CreateDonationData {
 
     public String validate() {
         boolean hasDonation = false;
-        for(int amount: amounts){
-            if(amount < 0) {
+        for(int amount: amounts) {
+            if (amount < 0) {
                 return "Anzahl muss grösser gleich 0 sein.";
             }
-            if(amount > 0) {
+            if (amount > 0) {
                 hasDonation = true;
             }
-donatin
+        }
+
         if(hasDonation) {
             return null;
         } else {

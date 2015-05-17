@@ -23,6 +23,20 @@ function changeActiveButtonForDonationAmount(){
     $('#' + btngroup.attr('id') + ' .inpt-first').removeClass('active');
     activeButton.addClass('active');
 
+    function activateDonateButton() {
+        $('#donate-submit').removeAttr('disabled');
+    }
+
+    function deactivateDonateButton() {
+        $('#donate-submit').prop('disabled', true);
+    }
+
+    if (parseInt($(this).text()) > 0) {
+        activateDonateButton();
+    } else {
+        deactivateDonateButton();
+    }
+
     if($(this).hasClass('inpt-first')) {
         if($(this).val() === ''){
             // Custom Field is empty
