@@ -15,14 +15,6 @@ Users:
         email:      hh@gmail.com
         passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
 
-DonationTypes:
-    - &type1 !!models.DonationType
-        name:       Laptop
-    - &type2 !!models.DonationType
-        name:       Maus
-    - &type3 !!models.DonationType
-        name:       Tastatur
-
 Addresses:
     - &address1 !!models.Address
         country:    Nigeria
@@ -149,6 +141,14 @@ News:
         imageURL:       http://s6.postimg.org/d5a0dq0y9/P3021326.jpg
         project:        *project3
 
+DonationTypes:
+    - &type1 !!models.DonationType
+        name:       Laptop
+    - &type2 !!models.DonationType
+        name:       Maus
+    - &type3 !!models.DonationType
+        name:       Tastatur
+
 DonationGoals:
     - &goal1 !!models.DonationGoal
         amount:         10
@@ -162,6 +162,34 @@ DonationGoals:
         amount:         50
         project:        *project2
         type:           *type3
+    - &goal4 !!models.DonationGoal
+        amount:         20
+        project:        *project3
+        type:           *type1
+    - &goal5 !!models.DonationGoal
+        amount:         15
+        project:        *project4
+        type:           *type2
+    - &goal6 !!models.DonationGoal
+        amount:         30
+        project:        *project5
+        type:           *type3
+    - &goal7 !!models.DonationGoal
+        amount:         25
+        project:        *project6
+        type:           *type1
+    - &goal8 !!models.DonationGoal
+        amount:         10
+        project:        *project7
+        type:           *type2
+    - &goal9 !!models.DonationGoal
+        amount:         5
+        project:        *project8
+        type:           *type3
+    - &goal10 !!models.DonationGoal
+        amount:         15
+        project:        *project8
+        type:           *type1
 
 Donations:
     - &donation1 !!models.Donation
