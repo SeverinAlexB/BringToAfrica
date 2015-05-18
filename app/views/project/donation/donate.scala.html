@@ -11,6 +11,7 @@
             </div>
             <div class="modal-body">
                 @helper.form(action = routes.DonationController.donate, 'role -> "form", 'id -> "donate-form", Symbol("data-parsley-validate") -> "") {
+
                     <input type="hidden" name="projectId" value="@project.getId()">
                     @for(i <- 0 until donateForm.get().donations.size){
                     <div class="row">
@@ -20,9 +21,9 @@
 
                                 <div class="choose-pricing">
                                     <div id="donationamount@donateForm.get().donations(i)" class="donationbtn-group">
-                                        <input type="hidden" class="valueKeeper" id="amounts_@i" name="amounts[@i]" value="1">
+                                        <input type="hidden" class="valueKeeper" id="amounts_@i" name="amounts[@i]" value="0">
                                         <input type="hidden" name="donations[@i]" value="@donateForm.get().donations(i)">
-                                        <button type="button" data-target="#amounts_@i" class="btn btn-default active">1</button>
+                                        <button type="button" data-target="#amounts_@i" class="btn btn-default">1</button>
                                         <button type="button" data-target="#amounts_@i" class="btn btn-default">2</button>
                                         <button type="button" data-target="#amounts_@i" class="btn btn-default">3</button>
                                         <input placeholder="Custom" data-target="#amounts_@i" class="inpt-first form-control" type="text"
@@ -41,29 +42,13 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <button id="donate-submit" type="submit" class="btn btn-default">Spenden</button>
+                            <button id="donate-submit" type="submit" class="btn btn-default pull-right" disabled>Spenden</button>
                         </div>
                     </div>
                 }
             </div>
             <script>
-            //Set the active Buttons for the donation amount
-            $(".donationbtn-group .btn, .donationbtn-group .inpt-first").click(function(){
-                var btngroup = $(this).parent();
-                var activeButton = $(this);
-                var valueKeeper = $('#' + btngroup.attr('id') + ' .valueKeeper')
 
-                $('#' + btngroup.attr('id') + ' .btn').removeClass('active');
-                $('#' + btngroup.attr('id') + ' .inpt-first').removeClass('active');
-                activeButton.addClass('active');
-
-                if($(this).hasClass('inpt-first')) {
-                    if($(this).val() === ''){
-                        // Custom Field is empty
-                        valueKeeper.val('0'); //Set value to 0
-                    }
-                }
-            });
         </script>
         </div>
 

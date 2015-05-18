@@ -12,3 +12,44 @@ $(document).ready(function () {
         $.pjax.submit(event, '#pjax-container');
     })
 });
+
+$(".donationbtn-group .btn, .donationbtn-group .inpt-first").click(
+function changeActiveButtonForDonationAmount(){
+    var btngroup = $(this).parent();
+    var activeButton = $(this);
+    var valueKeeper = $('#' + btngroup.attr('id') + ' .valueKeeper')
+
+    $('#' + btngroup.attr('id') + ' .btn').removeClass('active');
+    $('#' + btngroup.attr('id') + ' .inpt-first').removeClass('active');
+    activeButton.addClass('active');
+
+    function activateDonateButton() {
+        $('#donate-submit').removeAttr('disabled');
+    }
+
+    function deactivateDonateButton() {
+        $('#donate-submit').prop('disabled', true);
+    }
+
+    function resetToZeroDonations() {
+        activeButton.removeClass('active');
+        valueKeeper.val('0');
+    }
+
+    if (parseInt($(this).text()) > 0) {
+        activateDonateButton();
+    } else {
+        deactivateDonateButton();
+    }
+
+    if ($(this).text() === valueKeeper.val()) {
+        resetToZeroDonations();
+    }
+
+    if($(this).hasClass('inpt-first')) {
+        if($(this).val() === ''){
+            // Custom Field is empty
+            valueKeeper.val('0');
+        }
+    }
+});

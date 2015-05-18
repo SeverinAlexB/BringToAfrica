@@ -8,12 +8,8 @@ import play.mvc.Security;
 import services.DonationTypeService;
 import services.ProjectService;
 import viewmodels.donation.CreateDonationData;
-import viewmodels.donation.DonationData;
-import viewmodels.donation.ProjectDonationData;
 
 import java.sql.Date;
-import java.util.ArrayList;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
