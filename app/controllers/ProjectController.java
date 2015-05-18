@@ -75,7 +75,7 @@ public class ProjectController extends Controller {
     }
 
     private static void addDonationGoals(Project project, Form<ProjectData> projectDataForm) {
-        for (int i = 0; i < projectDataForm.get().amounts.size(); i++) {
+        for (int i = 0; i < projectDataForm.get().donations.size(); i++) {
             DonationType donationType = DonationTypeService.getOrSetDonationType(
                 projectDataForm.get().donations.get(i)
             );
