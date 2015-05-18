@@ -1590,7 +1590,11 @@ border:none;
 		#main-table td:nth-of-type(4):before { content: "Quantity"; }
 		#main-table td:nth-of-type(5):before { content: "Total"; }
 		#main-table td:nth-of-type(6):before { content: "Remove"; }
-		
+
+	    td.donation-date:before { content: "Datum" !important; }
+		td.donation-amount:before { content: "Anzahl"; }
+		td.donation-type:before { content: "Spendengut"; }
+		td.donation-message:before { content: "Notiz"; }
 		
 		#summary-table{position: relative; }
 		#summary-table td.one{border: none; position: absolute; bottom: -70px; padding: 0; text-align: right;}
