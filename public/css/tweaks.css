@@ -162,9 +162,10 @@ ul.nav-tabs li a {
 .myDonation {
     margin-bottom:60px;
 }
+
 .tab-content {
     padding: 30px 20px 30px;
-
+}
 
 .parsley-errors-list li {
     color: rgb(213, 72, 72);
@@ -173,7 +174,6 @@ ul.nav-tabs li a {
 
 .parsley-errors-list{
     padding-left: 0;
-
 }
 
 .bootstrap-datetimepicker-widget .list-unstyled li:before {
