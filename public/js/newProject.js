@@ -17,7 +17,7 @@ $(function() {
         var amount = "amounts[" + rows + "]";
         var donation = "donations[" + rows + "]";
         if(rows > 3) return;
-        $('#main-table tbody').append('<tr><td class="product-image"><input class="form-control" type="number" id="name" data-parsley-group="block2" required ' + amount + '" value=""></td><td class="product-title"><input class="form-control" id="name" data-parsley-group="block2" required type="text" name="' + donation + '" value=""></td></tr>');
+        $('#main-table tbody').append('<tr><td class="product-image"><input class="form-control" type="number" id="amount" data-parsley-group="block2" required name="' + amount + '" value=""></td><td class="product-title"><input class="form-control" id="donation" data-parsley-group="block2" required type="text" name="' + donation + '" value=""></td></tr>');
     });
     $('#deleteGood').click(function(){
     	var rows = $('#main-table >tbody >tr').length;

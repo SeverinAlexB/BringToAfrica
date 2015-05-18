@@ -52,6 +52,7 @@ public class NewProjectTest {
         }));
     }
 
+
     @Test
     public void NewProjectTestTest(){
         DatabaseTest.runInCleanApp((browser -> {
