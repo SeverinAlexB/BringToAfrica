@@ -45,20 +45,10 @@ $(function () {
         return $('#' + btnGroup.attr('id') + ' .valueKeeper')
     }
 
-    function resetDoubleClickedButton(activeButton) {
-        var valueKeeper = findValueKeeper(activeButton);
-
-        if (activeButton.text() === valueKeeper.val()) {
-            activeButton.removeClass('active');
-            valueKeeper.val('0');
-        }
-    }
-
     function onButtonChange() {
         var activeButton = $(this);
 
         changeActiveButtonForDonationAmount(activeButton);
-        resetDoubleClickedButton(activeButton);
         resetValueIfCustomInputEmpty(activeButton);
 
         var buttonValue = parseInt(activeButton.text()) || parseInt(activeButton.val())
