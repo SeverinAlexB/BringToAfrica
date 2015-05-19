@@ -1650,7 +1650,9 @@ h4.normal-text {
 .step-donation.sec-step-med {
 	background: #f9f7f5;
 	border: 0px;
-	padding: 0px 0 52px;
+	padding: 0px;
+	margin-top: 60px;
+	margin-bottom: 30px;
 	display: inline-block;
 	width: 100%;
 }
