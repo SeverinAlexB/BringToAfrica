@@ -9,7 +9,7 @@ $(document).ready(function () {
         $(target).attr('value', $(this).val());
     });
     $(document).on('submit', '#donate-form', function(event) {
-        $.pjax.submit(event, '#pjax-container');
+        $.pjax.submit(event, '#pjax-container', {push: false});
     })
 });
 

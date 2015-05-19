@@ -19,17 +19,19 @@
                class="btn btn-default pull-right">Registrieren</a>
           </div>
         }
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
       @if(loginForm.hasErrors()) {
         <div class="alert alert-danger" role="alert">
           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
           <span class="sr-only">Error:</span>
-          <p>
           @for((key, value) <- loginForm.errors) {
             @for(err <- value) {
               @err.message().toString() <br/>
             }
           }
-          </p>
         </div>
       }
       </div>
