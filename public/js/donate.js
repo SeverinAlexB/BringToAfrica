@@ -1,27 +1,26 @@
-$(document).ready(function () {
-    $('.choose-pricing button').on('click', function () {
+$(function () {
+    $('.choose-pricing button').on('click', function updateValue() {
         var target = $(this).attr('data-target');
         $(target).attr('value', $(this).text());
-
     });
-    $('.choose-pricing input.form-control').change(function() {
+
+    $('.choose-pricing input.form-control').change(function updateValue() {
         var target = $(this).attr('data-target');
         $(target).attr('value', $(this).val());
     });
-    $(document).on('submit', '#donate-form', function(event) {
+
+    $(document).on('submit', '#donate-form', function submitDonationForm(event) {
         $.pjax.submit(event, '#pjax-container', {push: false});
-    })
-});
+    });
 
-$(".donationbtn-group .btn, .donationbtn-group .inpt-first").click(
-function changeActiveButtonForDonationAmount(){
-    var btngroup = $(this).parent();
-    var activeButton = $(this);
-    var valueKeeper = $('#' + btngroup.attr('id') + ' .valueKeeper')
+    function changeActiveButtonForDonationAmount(activeButton) {
+        var valueKeeper = findValueKeeper(activeButton);
+        var btnGroup = activeButton.parent();
 
-    $('#' + btngroup.attr('id') + ' .btn').removeClass('active');
-    $('#' + btngroup.attr('id') + ' .inpt-first').removeClass('active');
-    activeButton.addClass('active');
+        $('#' + btnGroup.attr('id') + ' .btn').removeClass('active');
+        $('#' + btnGroup.attr('id') + ' .inpt-first').removeClass('active');
+        activeButton.addClass('active');
+    }
 
     function activateDonateButton() {
         $('#donate-submit').removeAttr('disabled');
@@ -31,25 +30,35 @@ function changeActiveButtonForDonationAmount(){
         $('#donate-submit').prop('disabled', true);
     }
 
-    function resetToZeroDonations() {
-        activeButton.removeClass('active');
-        valueKeeper.val('0');
-    }
+    function resetValueIfCustomInputEmpty(activeButton) {
+        var valueKeeper = findValueKeeper(activeButton);
 
-    if (parseInt($(this).text()) > 0) {
-        activateDonateButton();
-    } else {
-        deactivateDonateButton();
-    }
-
-    if ($(this).text() === valueKeeper.val()) {
-        resetToZeroDonations();
-    }
-
-    if($(this).hasClass('inpt-first')) {
-        if($(this).val() === ''){
-            // Custom Field is empty
-            valueKeeper.val('0');
+        if(activeButton.hasClass('inpt-first')) {
+            if(activeButton.val() === '') {
+                valueKeeper.val('0');
+            }
         }
     }
+
+    function findValueKeeper(activeButton) {
+        var btnGroup = activeButton.parent();
+        return $('#' + btnGroup.attr('id') + ' .valueKeeper')
+    }
+
+    function onButtonChange() {
+        var activeButton = $(this);
+
+        changeActiveButtonForDonationAmount(activeButton);
+        resetValueIfCustomInputEmpty(activeButton);
+
+        var buttonValue = parseInt(activeButton.text()) || parseInt(activeButton.val())
+        if (buttonValue > 0) {
+            activateDonateButton();
+        } else {
+            deactivateDonateButton();
+        }
+    }
+
+    $(".donationbtn-group .btn").click(onButtonChange);
+    $(".donationbtn-group .inpt-first").change(onButtonChange);
 });
