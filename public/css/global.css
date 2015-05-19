@@ -379,7 +379,9 @@ padding-top: 20px;
 	padding-bottom:0;
 }
 .alert{
-margin-top: 5em;
+border-radius: 0px;
+box-shadow: none;
+margin-top: 1em;
 padding:13px 15px;
 font-size:16px;
 line-height:1.5;
@@ -405,24 +407,24 @@ margin-bottom:20px;
 }
 .alert.alert-danger {
 	color: #dc7276;
-	border: 1px solid #f5cfcf;
+	border: 2px solid #f5cfcf;
 }
 
 .alert.alert-success {
 	color: #68905e;
-	border: 1px solid #b9e6b1;
+	border: 2px solid #b9e6b1;
 }
 .alert.alert-info {
 	color: #71abd1;
-	border: 1px solid #b1defb;
+	border: 2px solid #b1defb;
 }
 .alert.alert-warning {
 	color: #d2af49;
-	border: 1px solid #fbdeb1;
+	border: 2px solid #fbdeb1;
 }
 .alert.alert-default {
 	color: #b9b5b4;
-	border: 1px solid #dedede;
+	border: 2px solid #dedede;
 }
 
 .alert.alert-danger p {
