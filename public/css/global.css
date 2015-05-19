@@ -320,6 +320,7 @@ padding-top: 20px;
 	margin-bottom: 0px;
 }
 .nav-tabs > li > a {
+    border: 1px solid #ddd;
 	border-radius: 0;
 	width: 100%;
 	font-size: 18px;

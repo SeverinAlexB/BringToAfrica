@@ -185,3 +185,11 @@ ul.nav-tabs li a {
 .bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover {
     background-color: #e7bd15 !important;
 }
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    background-color: #e7bd15;
+}
+
+.nav-tabs>li>a {
+    background: #fff;
+}
