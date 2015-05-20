@@ -1,7 +1,6 @@
 package service;
 
 import integration.DatabaseTest;
-import junit.framework.TestCase;
 import models.User;
 import org.junit.Assert;
 import org.junit.Test;
