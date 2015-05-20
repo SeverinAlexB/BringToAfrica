@@ -39,6 +39,7 @@ public class NewsController {
 
     public static Result getNews(Long id) {
         News news = News.find.byId(id);
+        news.refresh();
         return ok(views.html.project.news.detail.render(news));
     }
 }
