@@ -41,11 +41,4 @@ public class NewsController {
         News news = News.find.byId(id);
         return ok(views.html.project.news.detail.render(news));
     }
-
-    private static Form<CreateDonationData> createDonationForm(Project project) {
-        List<DonationGoal> goals = project.getDonationGoals();
-        CreateDonationData data = new CreateDonationData(goals);
-        return Form.form(CreateDonationData.class).fill(data);
-    }
-
 }
