@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 
 import static org.junit.Assert.assertTrue;
 
+
 public class LoginTest {
 
     @Test
@@ -38,5 +39,4 @@ public class LoginTest {
             assertTrue(browser.getCookies().size() == 0);
         }));
     }
-
 }
