@@ -5,19 +5,15 @@ import models.DonationType;
 import models.Project;
 import models.User;
 import org.junit.Test;
-import play.mvc.Http;
 import play.mvc.Result;
 import services.DonationGoalService;
 import services.ProjectService;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static play.test.Helpers.*;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static play.test.Helpers.contentAsString;
 
 public class DonateTest {
     @Test
