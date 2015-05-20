@@ -22,20 +22,30 @@ public class MyProfile {
     public String password2;
     public String changePassword;
 
-    //TODO why is at checkbox value=ture -> null
+    public String validate() {
+        User user = User.find.byId(Long.parseLong(this.id));
+        if(!isUserValid(user))return "User oder aktuelles Passwort ungültig.";
+        if(this.changePw())return isNewPassswordVaild();
+        return null;
+    }
+
+
     public boolean changePw(){
         if(changePassword == null || changePassword == "true")return true;
         return false;
     }
 
-    public String validate() {
-        User user = User.find.byId(Long.parseLong(this.id));
-        if(user == null)return "User ungültig";
-        if (!ConsumerService.isValid(user.getEmail(), this.oldPassword)) {
-            return "aktuelles Passwort ungültig";
-        }else if(this.changePw()){
-            if(!ConsumerService.validatePasswords(password1,password2))return "neues Passwort ungültig";
-        }
-        return null;
+    private boolean isUserValid(User user){
+        if(user == null)return false;
+        return isOldPasswordValid(user);
+    }
+
+    private boolean isOldPasswordValid(User user){
+        return ConsumerService.isValid(user.getEmail(), this.oldPassword);
+    }
+
+    private String isNewPassswordVaild(){
+        if( ConsumerService.validatePasswords(password1,password2))return null;
+        return "neues Passwort ungültig";
     }
 }
