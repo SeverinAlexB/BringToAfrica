@@ -1,6 +1,5 @@
 package service;
 
-import exceptions.AfricaException;
 import org.junit.Assert;
 import org.junit.Test;
 import services.DateConverter;

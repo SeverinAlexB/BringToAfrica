@@ -100,34 +100,34 @@ public class ProjectServiceTest {
 
     @Test
     public void testStateSmallerThanGoal() {
-        DatabaseTest.runInCleanApp(testBrowser -> {
+        DatabaseTest.runInCleanApp((browser -> {
             List<Project> projectList = getFilledDataStructure();
             int state1 = ProjectService.getStateOfProjectInPercent(projectList.get(0));
             assertEquals(50, state1);
-        });
+        }));
     }
 
     @Test
     public void testStateBiggerThanGoal() {
-        DatabaseTest.runInCleanApp(testBrowser -> {
+        DatabaseTest.runInCleanApp((browser -> {
             List<Project> projectList = getFilledDataStructure();
             int state1 = ProjectService.getStateOfProjectInPercent(projectList.get(1));
             assertEquals(100, state1);
-        });
+        }));
     }
 
     @Test
     public void testGetDonators() {
-        DatabaseTest.runInCleanApp(testBrowser -> {
+        DatabaseTest.runInCleanApp((browser -> {
             List<Project> projectList = getFilledDataStructure();
             Set<User> donators = ProjectService.getDonators(projectList.get(0));
             assertTrue(donators.contains(user));
-        });
+        }));
     }
 
     @Test
     public void testGetDonationsForUser() {
-        DatabaseTest.runInCleanApp(testBrowser -> {
+        DatabaseTest.runInCleanApp(browser -> {
             List<Project> projectList = getFilledDataStructure();
             ProjectDetail projectDetail = new ProjectDetail(projectList.get(0));
             List<Donation> donationsForUser = projectDetail.getDonationsForUser(user);
