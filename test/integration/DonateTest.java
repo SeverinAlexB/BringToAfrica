@@ -5,14 +5,11 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import play.mvc.Result;
 import services.DonationGoalService;
-import services.DonationService;
 import services.ProjectService;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.fest.assertions.Assertions.assertThat;
-import static org.junit.Assert.assertTrue;
 import static play.test.Helpers.*;
 import static org.junit.Assert.assertEquals;
 

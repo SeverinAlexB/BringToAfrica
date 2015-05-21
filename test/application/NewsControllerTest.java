@@ -4,10 +4,7 @@ import integration.DatabaseTest;
 import models.*;
 import org.junit.Test;
 import org.mindrot.jbcrypt.BCrypt;
-import play.mvc.Http;
 import play.mvc.Result;
-import services.DonationGoalService;
-import services.ProjectService;
 
 import java.util.HashMap;
 import java.util.Map;

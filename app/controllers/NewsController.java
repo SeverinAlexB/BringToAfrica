@@ -7,11 +7,6 @@ import play.mvc.Result;
 import services.ProjectService;
 import play.mvc.Security;
 import viewmodels.NewsData;
-import viewmodels.ProjectDetail;
-import viewmodels.ProjectWidget;
-import viewmodels.donation.CreateDonationData;
-
-import java.util.List;
 
 import static play.mvc.Results.badRequest;
 import static play.mvc.Results.ok;

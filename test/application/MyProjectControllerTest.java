@@ -1,11 +1,8 @@
 package application;
 
 import integration.DatabaseTest;
-import models.DonationGoal;
-import models.DonationType;
 import models.Project;
 import org.junit.Test;
-import play.mvc.Http;
 import play.mvc.Result;
 import services.ProjectService;
 

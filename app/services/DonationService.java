@@ -1,7 +1,6 @@
 package services;
 
 import models.Donation;
-import models.User;
 import models.DonationGoal;
 
 import java.util.List;
