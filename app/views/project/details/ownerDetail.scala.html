@@ -29,7 +29,10 @@
                 <h5>Es hat leider noch niemand für dein Projekt gespendet.</h5>
                 }
                 @for(user <- projectDetail.getDonators()) {
-                <h3>@user.getFirstName() @user.getLastName()</h3>
+                <h3>
+                    @user.getFirstName() @user.getLastName()
+                    <a href="mailto:@user.getEmail()"><span id="mailto" class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a>
+                </h3>
                 <table id="donators-table" class="table">
                     <thead>
                     <tr>
