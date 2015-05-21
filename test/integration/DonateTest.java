@@ -63,14 +63,15 @@ public class DonateTest {
             browser.getDriver().findElement(By.name("password1")).sendKeys(password);
             browser.getDriver().findElement(By.name("password2")).sendKeys(password);
             browser.getDriver().findElement(By.id("btnRegistieren")).click();
-            
+
             Project project = Project.find.byId(2l);
-            int size = project.getDonationGoals().get(0).getDonations().size();
             browser.goTo("http://localhost:3333/projects/2");
-            browser.getDriver().findElement(By.name("donate-custom")).sendKeys("10");
+            browser.getDriver().findElement(By.name("btnSpenden")).click();
+            browser.getDriver().findElement(By.name("donate-custom_0")).sendKeys("10");
+            browser.getDriver().findElement(By.name("remarks")).sendKeys("TestNote");
             browser.getDriver().findElement(By.id("donate-submit")).click();
             project.refresh();
-            assertEquals(size + 1, project.getDonationGoals().get(0).getDonations().size());
+            assertEquals(2, project.getDonationGoals().get(0).getDonations().size());
         });
     }
 }
