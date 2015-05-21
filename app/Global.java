@@ -18,20 +18,14 @@ import java.util.*;
 import static play.mvc.Results.internalServerError;
 
 public class Global extends GlobalSettings {
-    private boolean loadTestData = true;
+    private static final boolean LOAD_TEST_DATA = true;
     @Override
     public void onStart(Application app) {
-        if(loadTestData && !isJUnitTest()) {
+        if(LOAD_TEST_DATA && !isJUnitTest()) {
             cleanDatabase();
             fillDatabase("testFiles/placeholder-data.yml");
             Logger.info("test data loaded");
         }
-        //System.out.println("Play version: " + play.core.PlayVersion.current());
-    }
-
-    @Override
-    public void onStop(Application app) {
-        //Logger.info("Application shutdown...");
     }
     @Override
     public F.Promise<Result> onBadRequest(RequestHeader request, String error) {
