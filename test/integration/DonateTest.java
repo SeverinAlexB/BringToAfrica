@@ -1,17 +1,17 @@
 package integration;
 
-import models.DonationGoal;
-import models.DonationType;
-import models.Project;
-import models.User;
+import models.*;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import play.mvc.Result;
 import services.DonationGoalService;
+import services.DonationService;
 import services.ProjectService;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.fest.assertions.Assertions.assertThat;
 import static play.test.Helpers.*;
 import static org.junit.Assert.assertEquals;
 
@@ -45,5 +45,18 @@ public class DonateTest {
             goal.refresh();
             assertEquals(10, DonationGoalService.getState(goal));
         }));
+    }
+
+    @Test
+    public void NewNewsTestTest(){
+        DatabaseTest.runInFilledApp("testFiles/data1.yml", browser -> {
+            Project project = Project.find.byId(2l);
+            int size = project.getDonationGoals().get(0).getDonations().size();
+            browser.goTo("http://localhost:3333/projects/2");
+            browser.getDriver().findElement(By.name("donate-custom")).sendKeys("10");
+            browser.getDriver().findElement(By.id("donate-submit")).click();
+            project.refresh();
+            assertEquals(size + 1, project.getDonationGoals().get(0).getDonations().size());
+        });
     }
 }
