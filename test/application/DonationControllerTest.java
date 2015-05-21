@@ -4,11 +4,8 @@ import controllers.DonationController;
 import integration.DatabaseTest;
 import models.*;
 import org.junit.Test;
-import play.Play;
 import play.data.Form;
 import viewmodels.donation.CreateDonationData;
-
-import java.io.InputStream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

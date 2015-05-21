@@ -5,7 +5,6 @@ import models.Project;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Logger;
 
 
 public class ProjectDonationData implements Comparable<ProjectDonationData> {

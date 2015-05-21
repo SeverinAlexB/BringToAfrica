@@ -1,16 +1,12 @@
 package integration;
 
 
-import models.Donation;
 import models.News;
 import models.Project;
-import models.User;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class NewNewsTest {
     @Test

@@ -31,8 +31,7 @@ public class MyProfile {
 
 
     public boolean changePw(){
-        if(changePassword == null || changePassword == "true")return true;
-        return false;
+        return changePassword == null || changePassword.equals("true");
     }
 
     private boolean isUserValid(User user){

@@ -1,12 +1,10 @@
 package controllers;
 
-import com.avaje.ebean.Page;
 import exceptions.AfricaException;
 import models.*;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 import play.mvc.Security;
 import play.twirl.api.Html;
 import services.DateConverter;
@@ -15,7 +13,6 @@ import services.ProjectService;
 import viewmodels.*;
 import viewmodels.donation.CreateDonationData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

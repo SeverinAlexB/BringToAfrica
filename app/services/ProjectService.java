@@ -12,21 +12,10 @@ import java.util.Set;
 
 public class ProjectService {
 
-    public static void saveProject(Project project){
-        project.save();
-    }
-
     public static Project getProjectById(Long id){
         return Project.find.byId(id);
     }
 
-    public static Project getProjectByName(String name){
-       return  Project.find.where().eq("name", name).findUnique();
-    }
-
-    public static List<Project> getAllProjects(){
-        return Project.find.all();
-    }
 
     public static Page<Project> getProjectPage(int pageSize, int page){
         return Project.find.where().orderBy("endsAt DESC").findPagingList(pageSize).getPage(page);

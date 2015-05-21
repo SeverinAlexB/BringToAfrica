@@ -9,14 +9,9 @@ import services.ConsumerService;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static play.test.Helpers.contentAsString;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static play.mvc.Http.Status.OK;
-import static play.test.Helpers.fakeRequest;
-import static play.test.Helpers.status;
 
 import static play.test.Helpers.*;
 

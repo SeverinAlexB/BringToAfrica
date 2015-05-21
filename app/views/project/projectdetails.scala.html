@@ -20,7 +20,9 @@
                                     <h3 class="h4">@project.getTitle()</h3>
                                     <span class="date-desc">Start: @project.getStartsAt().format("d.M.Y")  |  Ende: @project.getEndsAt().format("d.M.Y")</span>
                                     @if(isAuthenticated) {
-                                        <a data-toggle="modal" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
+                                        <a data-toggle="modal" name="btnSpenden" data-target=".donate-form" class="btn btn-default pull-right">Spenden</a>
+                                    }else{
+                                        <a href="@routes.LoginController.login()" class="btn btn-default pull-right">Spenden</a>
                                     }
                                 </div>
                                 @if(isProjectOwner) {
