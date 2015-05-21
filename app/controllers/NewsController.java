@@ -1,21 +1,18 @@
 package controllers;
 
-import exceptions.AfricaException;
-import models.*;
+import models.News;
 import play.data.Form;
 import play.mvc.Result;
-import services.ProjectService;
 import play.mvc.Security;
+import services.ProjectService;
 import viewmodels.NewsData;
 
-import static play.mvc.Results.badRequest;
-import static play.mvc.Results.ok;
-import static play.mvc.Results.redirect;
+import static play.mvc.Results.*;
 
 public class NewsController {
 
     @Security.Authenticated(AuthenticationController.class)
-    public static Result addNews() throws AfricaException {
+    public static Result addNews() {
         Form<NewsData> newsDataForm = Form.form(NewsData.class).bindFromRequest();
         models.Project project = ProjectService.getProjectById(Long.valueOf(newsDataForm.data().get("projectId")));
         if (newsDataForm.hasErrors()) {
