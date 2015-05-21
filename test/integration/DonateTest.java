@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
 import static play.test.Helpers.*;
 import static org.junit.Assert.assertEquals;
 
@@ -50,6 +51,19 @@ public class DonateTest {
     @Test
     public void NewNewsTestTest(){
         DatabaseTest.runInFilledApp("testFiles/data1.yml", browser -> {
+            String firstName = "Michael";
+            String lastName = "Blocker";
+            String email = "michael.blocher@msn.com";
+            String password = "MeinPw5#";
+
+            browser.goTo("http://localhost:3333/registration");
+            browser.getDriver().findElement(By.name("firstname")).sendKeys(firstName);
+            browser.getDriver().findElement(By.name("lastname")).sendKeys(lastName);
+            browser.getDriver().findElement(By.name("email")).sendKeys(email);
+            browser.getDriver().findElement(By.name("password1")).sendKeys(password);
+            browser.getDriver().findElement(By.name("password2")).sendKeys(password);
+            browser.getDriver().findElement(By.id("btnRegistieren")).click();
+            
             Project project = Project.find.byId(2l);
             int size = project.getDonationGoals().get(0).getDonations().size();
             browser.goTo("http://localhost:3333/projects/2");
