@@ -65,7 +65,6 @@ public class DatabaseTest {
     private static void fillDatabase(HashMap<String,String> database, String yamlFile) {
         FakeApplication app = fakeApplication(database);
         Helpers.start(app);
-        InputStream inputStream = Play.application().resourceAsStream("testFiles/data1.yml");
         Object yam = Yaml.load(yamlFile);
 
         if(yam instanceof ArrayList) {
