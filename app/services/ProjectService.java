@@ -18,7 +18,7 @@ public class ProjectService {
 
 
     public static Page<Project> getProjectPage(int pageSize, int page){
-        return Project.find.where().orderBy("endsAt DESC").findPagingList(pageSize).getPage(page);
+        return Project.find.where().orderBy("id DESC").findPagingList(pageSize).getPage(page);
     }
 
     public static int getStateOfProjectInPercent(Project project){
