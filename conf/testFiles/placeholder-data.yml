@@ -14,6 +14,11 @@ Users:
         lastName:   Heiri
         email:      hh@gmail.com
         passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
+    - &user4 !!models.User
+        firstName:  Max
+        lastName:   Muster
+        email:      foo@hsr.ch
+        passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
 
 Addresses:
     - &address1 !!models.Address
@@ -26,118 +31,100 @@ Addresses:
 Projects:
     - &project1 !!models.Project
         title:          Handys nach Honduras
-        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
-                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
-                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
-                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
+        description:    "Informatik für Afrika ist ein Projekt, welches ausgewählten Partnerschulen in den ländlichen Regionen in Ländern Afrikas im Sinne der Hilfe zur Selbsthilfe mit der notwendigen Infrastruktur für einen zukunftsgerichteten qualitativ guten Informatikunterricht ausstattet und sie bei der Ausbildung und Rekrutierung von Fachpersonal unterstützt und begleitet. Wir wollen Lernenden in ländlichen Regionen Afrikas: - einen zukunftsgerichteten qualitativ guten Informatikunterricht bieten - den Internetzugang ermöglichen - die Bildungs und Berufschancen verbessern Wir erbringen folgende Leistungen: - Ausgewählte Schulen in Afrika (z. Z. Ghana, Nigeria und Kamerun) mit PCs und Software und zeitgemässen Unterrichtshilfsmittel (Hellraumprojektor, Beamer usw.) versorgen - die Schulen beim Anschluss ans Internet unterstützen - die Projektpartner vor Ort bei der Aus- und Weiterbildung unterstützen und anleiten - bei der Rekrutierung von Fachpersonal behilflich sein - die Partner vor Ort beim Aufbau einer nachhaltigen Selbstfinanzierung (Schreibstube Internet-Café usw.) unterstützen - die Schulen regelmässig vor Ort und übers Internet betreuen \nInformatik für Afrika ist als gemeinnütziges Projekt anerkannt und hat seinen Sitz in Untervaz. Das Projekt unterstützt gegenwärtig 15 Schulen/Projekte in den Ländern Ghana Nigeria und Kamerun. Unterstützen Sie unser Projekt mit einer Spende"
         imageURL:       http://images.nationalgeographic.com/wpf/media-live/photos/000/030/cache/honduras_3022_600x450.jpg
         startsAt:       2015-05-17
         endsAt:         2015-05-25
-        contact:        Bitte per Email melden (honduras@honduras.com)
+        contact:        "Vielen Dank für Ihre Spende. Kontaktieren Sie mich bitte unter der folgenden Email Adresse projektleiter@projekt.com oder unter folgender Telefonnummer 071 123 45 67"
         address:        *address1
         owner:          *user1
     - &project2 !!models.Project
         title:          Velos nach Venezuela
-        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
-                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
-                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
-                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
+        description:    "Informatik für Afrika ist ein Projekt, welches ausgewählten Partnerschulen in den ländlichen Regionen in Ländern Afrikas im Sinne der Hilfe zur Selbsthilfe mit der notwendigen Infrastruktur für einen zukunftsgerichteten qualitativ guten Informatikunterricht ausstattet und sie bei der Ausbildung und Rekrutierung von Fachpersonal unterstützt und begleitet. Wir wollen Lernenden in ländlichen Regionen Afrikas: - einen zukunftsgerichteten qualitativ guten Informatikunterricht bieten - den Internetzugang ermöglichen - die Bildungs und Berufschancen verbessern Wir erbringen folgende Leistungen: - Ausgewählte Schulen in Afrika (z. Z. Ghana, Nigeria und Kamerun) mit PCs und Software und zeitgemässen Unterrichtshilfsmittel (Hellraumprojektor, Beamer usw.) versorgen - die Schulen beim Anschluss ans Internet unterstützen - die Projektpartner vor Ort bei der Aus- und Weiterbildung unterstützen und anleiten - bei der Rekrutierung von Fachpersonal behilflich sein - die Partner vor Ort beim Aufbau einer nachhaltigen Selbstfinanzierung (Schreibstube Internet-Café usw.) unterstützen - die Schulen regelmässig vor Ort und übers Internet betreuen \nInformatik für Afrika ist als gemeinnütziges Projekt anerkannt und hat seinen Sitz in Untervaz. Das Projekt unterstützt gegenwärtig 15 Schulen/Projekte in den Ländern Ghana Nigeria und Kamerun. Unterstützen Sie unser Projekt mit einer Spende"
         imageURL:       http://www.couch-mag.de/sites/default/files/styles/large/public/Artikelbild_4.jpg?itok=wgOi2O5f
         startsAt:       2015-05-14
         endsAt:         2015-05-22
-        contact:        Bitte per Email melden (velos@venelzuela.com)
+        contact:        "Vielen Dank für Ihre Spende. Kontaktieren Sie mich bitte unter der folgenden Email Adresse projektleiter@projekt.com oder unter folgender Telefonnummer 071 123 45 67"
         address:        *address2
         owner:          *user2
     - &project3 !!models.Project
         title:          Autos nach Australien
-        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
-                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
-                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
-                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
+        description:    "Informatik für Afrika ist ein Projekt, welches ausgewählten Partnerschulen in den ländlichen Regionen in Ländern Afrikas im Sinne der Hilfe zur Selbsthilfe mit der notwendigen Infrastruktur für einen zukunftsgerichteten qualitativ guten Informatikunterricht ausstattet und sie bei der Ausbildung und Rekrutierung von Fachpersonal unterstützt und begleitet. Wir wollen Lernenden in ländlichen Regionen Afrikas: - einen zukunftsgerichteten qualitativ guten Informatikunterricht bieten - den Internetzugang ermöglichen - die Bildungs und Berufschancen verbessern Wir erbringen folgende Leistungen: - Ausgewählte Schulen in Afrika (z. Z. Ghana, Nigeria und Kamerun) mit PCs und Software und zeitgemässen Unterrichtshilfsmittel (Hellraumprojektor, Beamer usw.) versorgen - die Schulen beim Anschluss ans Internet unterstützen - die Projektpartner vor Ort bei der Aus- und Weiterbildung unterstützen und anleiten - bei der Rekrutierung von Fachpersonal behilflich sein - die Partner vor Ort beim Aufbau einer nachhaltigen Selbstfinanzierung (Schreibstube Internet-Café usw.) unterstützen - die Schulen regelmässig vor Ort und übers Internet betreuen \nInformatik für Afrika ist als gemeinnütziges Projekt anerkannt und hat seinen Sitz in Untervaz. Das Projekt unterstützt gegenwärtig 15 Schulen/Projekte in den Ländern Ghana Nigeria und Kamerun. Unterstützen Sie unser Projekt mit einer Spende"
         imageURL:       http://www.in-australien.com/wp-content/uploads/2010/09/Campervan-Australien2.jpg
         startsAt:       2015-06-13
         endsAt:         2015-09-19
-        contact:        Bitte per Email melden (autos@australien.com)
+        contact:        "Vielen Dank für Ihre Spende. Kontaktieren Sie mich bitte unter der folgenden Email Adresse projektleiter@projekt.com oder unter folgender Telefonnummer 071 123 45 67"
         address:        *address2
         owner:          *user1
     - &project4 !!models.Project
-        title:          Ziegel nach Zimbabwe
-        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
-                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
-                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
-                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
+        title:          Bücher nach Zimbabwe
+        description:    "Informatik für Afrika ist ein Projekt, welches ausgewählten Partnerschulen in den ländlichen Regionen in Ländern Afrikas im Sinne der Hilfe zur Selbsthilfe mit der notwendigen Infrastruktur für einen zukunftsgerichteten qualitativ guten Informatikunterricht ausstattet und sie bei der Ausbildung und Rekrutierung von Fachpersonal unterstützt und begleitet. Wir wollen Lernenden in ländlichen Regionen Afrikas: - einen zukunftsgerichteten qualitativ guten Informatikunterricht bieten - den Internetzugang ermöglichen - die Bildungs und Berufschancen verbessern Wir erbringen folgende Leistungen: - Ausgewählte Schulen in Afrika (z. Z. Ghana, Nigeria und Kamerun) mit PCs und Software und zeitgemässen Unterrichtshilfsmittel (Hellraumprojektor, Beamer usw.) versorgen - die Schulen beim Anschluss ans Internet unterstützen - die Projektpartner vor Ort bei der Aus- und Weiterbildung unterstützen und anleiten - bei der Rekrutierung von Fachpersonal behilflich sein - die Partner vor Ort beim Aufbau einer nachhaltigen Selbstfinanzierung (Schreibstube Internet-Café usw.) unterstützen - die Schulen regelmässig vor Ort und übers Internet betreuen \nInformatik für Afrika ist als gemeinnütziges Projekt anerkannt und hat seinen Sitz in Untervaz. Das Projekt unterstützt gegenwärtig 15 Schulen/Projekte in den Ländern Ghana Nigeria und Kamerun. Unterstützen Sie unser Projekt mit einer Spende"
         imageURL:       http://static.wixstatic.com/media/7789fb_7981d6e446fd4ba882067785da04dd13.jpg_srz_920_555_85_22_0.50_1.20_0.00_jpg_srz
         startsAt:       2015-07-09
         endsAt:         2015-10-12
-        contact:        Bitte per Email melden (ziegel@zimbabwe.com)
+        contact:        "Vielen Dank für Ihre Spende. Kontaktieren Sie mich bitte unter der folgenden Email Adresse projektleiter@projekt.com oder unter folgender Telefonnummer 071 123 45 67"
         address:        *address2
         owner:          *user1
     - &project5 !!models.Project
         title:          Zelte nach Nepal
-        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
-                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
-                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
-                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
+        description:    "Informatik für Afrika ist ein Projekt, welches ausgewählten Partnerschulen in den ländlichen Regionen in Ländern Afrikas im Sinne der Hilfe zur Selbsthilfe mit der notwendigen Infrastruktur für einen zukunftsgerichteten qualitativ guten Informatikunterricht ausstattet und sie bei der Ausbildung und Rekrutierung von Fachpersonal unterstützt und begleitet. Wir wollen Lernenden in ländlichen Regionen Afrikas: - einen zukunftsgerichteten qualitativ guten Informatikunterricht bieten - den Internetzugang ermöglichen - die Bildungs und Berufschancen verbessern Wir erbringen folgende Leistungen: - Ausgewählte Schulen in Afrika (z. Z. Ghana, Nigeria und Kamerun) mit PCs und Software und zeitgemässen Unterrichtshilfsmittel (Hellraumprojektor, Beamer usw.) versorgen - die Schulen beim Anschluss ans Internet unterstützen - die Projektpartner vor Ort bei der Aus- und Weiterbildung unterstützen und anleiten - bei der Rekrutierung von Fachpersonal behilflich sein - die Partner vor Ort beim Aufbau einer nachhaltigen Selbstfinanzierung (Schreibstube Internet-Café usw.) unterstützen - die Schulen regelmässig vor Ort und übers Internet betreuen \nInformatik für Afrika ist als gemeinnütziges Projekt anerkannt und hat seinen Sitz in Untervaz. Das Projekt unterstützt gegenwärtig 15 Schulen/Projekte in den Ländern Ghana Nigeria und Kamerun. Unterstützen Sie unser Projekt mit einer Spende"
         imageURL:       http://images.nzz.ch/eos/v2/image/view/-/560/fullSize/inset/e6e9a4e3/1.18534155/1430577714/alte-frau-nepal.jpg
         startsAt:       2015-07-09
         endsAt:         2015-10-12
-        contact:        Bitte per Email melden (ziegel@zimbabwe.com)
+        contact:        "Vielen Dank für Ihre Spende. Kontaktieren Sie mich bitte unter der folgenden Email Adresse projektleiter@projekt.com oder unter folgender Telefonnummer 071 123 45 67"
         address:        *address2
         owner:          *user1
     - &project6 !!models.Project
-        title:          Nahrungsmittel nach Japan
-        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
-                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
-                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
-                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
+        title:          Informatik für Afrika
+        description:    "Informatik für Afrika ist ein Projekt, welches ausgewählten Partnerschulen in den ländlichen Regionen in Ländern Afrikas im Sinne der Hilfe zur Selbsthilfe mit der notwendigen Infrastruktur für einen zukunftsgerichteten qualitativ guten Informatikunterricht ausstattet und sie bei der Ausbildung und Rekrutierung von Fachpersonal unterstützt und begleitet. Wir wollen Lernenden in ländlichen Regionen Afrikas: - einen zukunftsgerichteten qualitativ guten Informatikunterricht bieten - den Internetzugang ermöglichen - die Bildungs und Berufschancen verbessern Wir erbringen folgende Leistungen: - Ausgewählte Schulen in Afrika (z. Z. Ghana, Nigeria und Kamerun) mit PCs und Software und zeitgemässen Unterrichtshilfsmittel (Hellraumprojektor, Beamer usw.) versorgen - die Schulen beim Anschluss ans Internet unterstützen - die Projektpartner vor Ort bei der Aus- und Weiterbildung unterstützen und anleiten - bei der Rekrutierung von Fachpersonal behilflich sein - die Partner vor Ort beim Aufbau einer nachhaltigen Selbstfinanzierung (Schreibstube Internet-Café usw.) unterstützen - die Schulen regelmässig vor Ort und übers Internet betreuen \nInformatik für Afrika ist als gemeinnütziges Projekt anerkannt und hat seinen Sitz in Untervaz. Das Projekt unterstützt gegenwärtig 15 Schulen/Projekte in den Ländern Ghana Nigeria und Kamerun. Unterstützen Sie unser Projekt mit einer Spende"
         imageURL:       http://i.dailymail.co.uk/i/pix/2011/03/15/article-0-0B2D7C2600000578-689_964x641.jpg
         startsAt:       2015-07-09
         endsAt:         2015-10-12
-        contact:        Bitte per Email melden (ziegel@zimbabwe.com)
+        contact:        "Vielen Dank für Ihre Spende. Kontaktieren Sie mich bitte unter der folgenden Email Adresse projektleiter@projekt.com oder unter folgender Telefonnummer 071 123 45 67"
         address:        *address2
         owner:          *user1
     - &project7 !!models.Project
         title:          Taschen für Somalia
-        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
-                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
-                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
-                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
+        description:    "Informatik für Afrika ist ein Projekt, welches ausgewählten Partnerschulen in den ländlichen Regionen in Ländern Afrikas im Sinne der Hilfe zur Selbsthilfe mit der notwendigen Infrastruktur für einen zukunftsgerichteten qualitativ guten Informatikunterricht ausstattet und sie bei der Ausbildung und Rekrutierung von Fachpersonal unterstützt und begleitet. Wir wollen Lernenden in ländlichen Regionen Afrikas: - einen zukunftsgerichteten qualitativ guten Informatikunterricht bieten - den Internetzugang ermöglichen - die Bildungs und Berufschancen verbessern Wir erbringen folgende Leistungen: - Ausgewählte Schulen in Afrika (z. Z. Ghana, Nigeria und Kamerun) mit PCs und Software und zeitgemässen Unterrichtshilfsmittel (Hellraumprojektor, Beamer usw.) versorgen - die Schulen beim Anschluss ans Internet unterstützen - die Projektpartner vor Ort bei der Aus- und Weiterbildung unterstützen und anleiten - bei der Rekrutierung von Fachpersonal behilflich sein - die Partner vor Ort beim Aufbau einer nachhaltigen Selbstfinanzierung (Schreibstube Internet-Café usw.) unterstützen - die Schulen regelmässig vor Ort und übers Internet betreuen \nInformatik für Afrika ist als gemeinnütziges Projekt anerkannt und hat seinen Sitz in Untervaz. Das Projekt unterstützt gegenwärtig 15 Schulen/Projekte in den Ländern Ghana Nigeria und Kamerun. Unterstützen Sie unser Projekt mit einer Spende"
         imageURL:       http://static01.nyt.com/images/2011/07/21/world/21somalia_span/21somalia-articleLarge.jpg
         startsAt:       2015-07-09
         endsAt:         2015-10-12
-        contact:        Bitte per Email melden (ziegel@zimbabwe.com)
+        contact:        "Vielen Dank für Ihre Spende. Kontaktieren Sie mich bitte unter der folgenden Email Adresse projektleiter@projekt.com oder unter folgender Telefonnummer 071 123 45 67"
         address:        *address2
         owner:          *user1
     - &project8 !!models.Project
         title:          Hüte nach Vietnam
-        description:    Auf Initiative von Josef Zisyadis, Co-Präsident von Slow Food Schweiz und ehemaliger Schweizer Parlamentarier, und von 4 Waadtländer Winzern (Raoul Cruchon, Noé Graff, Raymond Paccot und Gilles Wannaz) entsteht 2011 auf der griechischen Insel Patmos ein Rebberg.
-                        Die vier Waadtländer Winzer sind begeistert von der Idee, auf der «Heiligen Insel» am Aufbau eines Rebbergs mitzuwirken und dabei ihr Wissen auszutauschen.
-                        Mit der Hilfe von Schülern der Inselschulen und des Klosters St. Johann haben wir an einem Ort, wo der Weinbau bis vor gut 80 Jahren floriert, einen Rebberg wiederhergestellt und 12'000 Fuss einheimische Reben gepflanzt.
-                        Die Unterstützungsvereinigung Patoinos hat zusammen mit ihren treuen Rebstockbesitzern das Projekt inzwischen vorangetrieben, um den kräftig wachsenden Reben einen harmonischen Rahmen zu bieten.
+        description:    "Informatik für Afrika ist ein Projekt, welches ausgewählten Partnerschulen in den ländlichen Regionen in Ländern Afrikas im Sinne der Hilfe zur Selbsthilfe mit der notwendigen Infrastruktur für einen zukunftsgerichteten qualitativ guten Informatikunterricht ausstattet und sie bei der Ausbildung und Rekrutierung von Fachpersonal unterstützt und begleitet. Wir wollen Lernenden in ländlichen Regionen Afrikas: - einen zukunftsgerichteten qualitativ guten Informatikunterricht bieten - den Internetzugang ermöglichen - die Bildungs und Berufschancen verbessern Wir erbringen folgende Leistungen: - Ausgewählte Schulen in Afrika (z. Z. Ghana, Nigeria und Kamerun) mit PCs und Software und zeitgemässen Unterrichtshilfsmittel (Hellraumprojektor, Beamer usw.) versorgen - die Schulen beim Anschluss ans Internet unterstützen - die Projektpartner vor Ort bei der Aus- und Weiterbildung unterstützen und anleiten - bei der Rekrutierung von Fachpersonal behilflich sein - die Partner vor Ort beim Aufbau einer nachhaltigen Selbstfinanzierung (Schreibstube Internet-Café usw.) unterstützen - die Schulen regelmässig vor Ort und übers Internet betreuen \nInformatik für Afrika ist als gemeinnütziges Projekt anerkannt und hat seinen Sitz in Untervaz. Das Projekt unterstützt gegenwärtig 15 Schulen/Projekte in den Ländern Ghana Nigeria und Kamerun. Unterstützen Sie unser Projekt mit einer Spende"
         imageURL:       http://www.sodi.de/uploads/pics/Vietnam_Lim_Familie_vor_Haus.JPG
         startsAt:       2015-07-09
         endsAt:         2015-10-12
-        contact:        Bitte per Email melden (ziegel@zimbabwe.com)
+        contact:        "Vielen Dank für Ihre Spende. Kontaktieren Sie mich bitte unter der folgenden Email Adresse projektleiter@projekt.com oder unter folgender Telefonnummer 071 123 45 67"
         address:        *address2
         owner:          *user1
 
 News:
     - &news1 !!models.News
-        title:          Handys sind unterwegs
-        description:    Vielen Dank für die zahlreichen Spenden!
+        title:          "Vielen Dank für die grosszügige Unterstützung"
+        description:    "Vielen Dank für die grosszügige Unterstützung. Damit das Spendenprojekt weiterhin erfolgreich verläuft, bitten wir Sie interessierte Personen über unser Projekt zu informieren. Somit können wir gemeinsam das Spendenziel erreichen!"
         date:           2015-06-12
         imageURL:       http://upload.wikimedia.org/wikipedia/commons/4/4c/Lufthansa_Cargo_MD11_Beladung.JPG
         project:        *project1
     - &news2 !!models.News
-        title:          Handys sind angekommen
-        description:    Die Empfänger haben grosse Freude an den neuen Handys
-        date:           2015-06-20
-        imageURL:       http://www.abendblatt.de/img/ausland/crop105490967/0282604747-w820-cv16_9-q85/honduras-HA-Politik-Tegucigalpa.jpg
+        title:          Halbzeit und auf Kurs!
+        description:    "Damit das Spendenprojekt weiterhin erfolgreich verläuft, bitten wir Sie interessierte Personen über unser Projekt zu informieren. Somit können wir gemeinsam das Spendenziel erreichen!"
+        date:           2015-06-12
+        imageURL:       http://www.ahgz.de/news/media/show/66895/volle-fahrt-voraus-interim-manager-bringen-betriebe-wieder-auf-kurs.jpg
         project:        *project1
     - &news3 !!models.News
+        title:          Spendenziel erreicht! Riesiges Dankeschön
+        description:    Die Empfänger haben grosse Freude an den neuen Handys
+        date:           2015-06-24
+        imageURL:       http://www.worldvision.ch/fileadmin/images/aktuell/newsroom/Honduras_Kleinbauern_World-Vision_1.jpg
+        project:        *project1
+    - &news4 !!models.News
         title:          Autos sind in Australien angekommen
         description:    Vielen Dank für die zahlreichen Spenden!
-        date:           2025-01-06
+        date:           2015-01-06
         imageURL:       http://s6.postimg.org/d5a0dq0y9/P3021326.jpg
         project:        *project3
 
@@ -148,32 +135,46 @@ DonationTypes:
         name:       Maus
     - &type3 !!models.DonationType
         name:       Tastatur
+    - &type4 !!models.DonationType
+        name:       Taschen
+    - &type5 !!models.DonationType
+        name:       Zelte
+    - &type6 !!models.DonationType
+        name:       Hüte
+    - &type7 !!models.DonationType
+        name:       Bücher
+    - &type8 !!models.DonationType
+        name:       Auto    
+    - &type9 !!models.DonationType
+        name:       Handy  
+    - &type10 !!models.DonationType
+        name:       Velo  
 
 DonationGoals:
     - &goal1 !!models.DonationGoal
         amount:         10
         project:        *project1
-        type:           *type1
+        type:           *type9
     - &goal2 !!models.DonationGoal
         amount:         100
         project:        *project1
-        type:           *type2
+        type:           *type1
     - &goal3 !!models.DonationGoal
         amount:         50
         project:        *project2
-        type:           *type3
+        type:           *type10
     - &goal4 !!models.DonationGoal
         amount:         20
         project:        *project3
-        type:           *type1
+        type:           *type8
     - &goal5 !!models.DonationGoal
         amount:         15
         project:        *project4
-        type:           *type2
+        type:           *type7
     - &goal6 !!models.DonationGoal
         amount:         30
         project:        *project5
-        type:           *type3
+        type:           *type5
     - &goal7 !!models.DonationGoal
         amount:         25
         project:        *project6
@@ -181,26 +182,26 @@ DonationGoals:
     - &goal8 !!models.DonationGoal
         amount:         10
         project:        *project7
-        type:           *type2
+        type:           *type4
     - &goal9 !!models.DonationGoal
-        amount:         5
+        amount:         10
         project:        *project8
         type:           *type3
     - &goal10 !!models.DonationGoal
         amount:         15
         project:        *project8
-        type:           *type1
+        type:           *type6
 
 Donations:
     - &donation1 !!models.Donation
         date:           2015-06-30
-        amount:         4
-        messageToCollector: Der Akku des Laptops ist sehr schwach
+        amount:         10
+        messageToCollector: Der Akku der Handys ist sehr schwach
         user:           *user1
         donationGoal:   *goal1
     - &donation11 !!models.Donation
         date:           2015-06-30
-        amount:         5
+        amount:         21
         messageToCollector: Der Akku des Laptops ist sehr schwach
         user:           *user1
         donationGoal:   *goal2
@@ -223,8 +224,50 @@ Donations:
         user:           *user2
         donationGoal:   *goal3
     - &donation5 !!models.Donation
-        date:           2015-06-30
+        date:           2015-06-12
         amount:         19
         messageToCollector: Die Maus funktioniert einwandfrei
         user:           *user1
         donationGoal:   *goal2
+    - &donation6 !!models.Donation
+        date:           2015-06-15
+        amount:         9
+        messageToCollector: Ich finde das Projekt sehr unterstützenswert und werde es meinen Freunden weiterempfehlen.
+        user:           *user2
+        donationGoal:   *goal4
+    - &donation7 !!models.Donation
+        date:           2015-06-17
+        amount:         13
+        messageToCollector: Ich finde das Projekt sehr unterstützenswert und werde es meinen Freunden weiterempfehlen.
+        user:           *user3
+        donationGoal:   *goal5
+    - &donation8 !!models.Donation
+        date:           2015-06-20
+        amount:         10
+        messageToCollector: Ich finde das Projekt sehr unterstützenswert und werde es meinen Freunden weiterempfehlen.
+        user:           *user2
+        donationGoal:   *goal6
+    - &donation9 !!models.Donation
+        date:           2015-06-21
+        amount:         12
+        messageToCollector: Ich finde das Projekt sehr unterstützenswert und werde es meinen Freunden weiterempfehlen.
+        user:           *user3
+        donationGoal:   *goal7
+    - &donation10 !!models.Donation
+        date:           2015-06-07
+        amount:         15
+        messageToCollector: Ich finde das Projekt sehr unterstützenswert und werde es meinen Freunden weiterempfehlen.
+        user:           *user2
+        donationGoal:   *goal8
+    - &donation11 !!models.Donation
+        date:           2015-06-16
+        amount:         6
+        messageToCollector: Ich finde das Projekt sehr unterstützenswert und werde es meinen Freunden weiterempfehlen.
+        user:           *user3
+        donationGoal:   *goal9
+    - &donation12 !!models.Donation
+        date:           2015-06-26
+        amount:         8
+        messageToCollector: Ich finde das Projekt sehr unterstützenswert und werde es meinen Freunden weiterempfehlen.
+        user:           *user2
+        donationGoal:   *goal10
