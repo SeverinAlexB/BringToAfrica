@@ -108,19 +108,19 @@ News:
         description:    "Vielen Dank für die grosszügige Unterstützung. Damit das Spendenprojekt weiterhin erfolgreich verläuft, bitten wir Sie interessierte Personen über unser Projekt zu informieren. Somit können wir gemeinsam das Spendenziel erreichen!"
         date:           2015-06-12
         imageURL:       http://upload.wikimedia.org/wikipedia/commons/4/4c/Lufthansa_Cargo_MD11_Beladung.JPG
-        project:        *project1
+        project:        *project8
     - &news2 !!models.News
         title:          Halbzeit und auf Kurs!
         description:    "Damit das Spendenprojekt weiterhin erfolgreich verläuft, bitten wir Sie interessierte Personen über unser Projekt zu informieren. Somit können wir gemeinsam das Spendenziel erreichen!"
         date:           2015-06-12
         imageURL:       http://www.ahgz.de/news/media/show/66895/volle-fahrt-voraus-interim-manager-bringen-betriebe-wieder-auf-kurs.jpg
-        project:        *project1
+        project:        *project8
     - &news3 !!models.News
         title:          Spendenziel erreicht! Riesiges Dankeschön
         description:    Die Empfänger haben grosse Freude an den neuen Handys
         date:           2015-06-24
         imageURL:       http://www.worldvision.ch/fileadmin/images/aktuell/newsroom/Honduras_Kleinbauern_World-Vision_1.jpg
-        project:        *project1
+        project:        *project8
     - &news4 !!models.News
         title:          Autos sind in Australien angekommen
         description:    Vielen Dank für die zahlreichen Spenden!
@@ -255,19 +255,19 @@ Donations:
         donationGoal:   *goal7
     - &donation10 !!models.Donation
         date:           2015-06-07
-        amount:         15
+        amount:         6
         messageToCollector: Ich finde das Projekt sehr unterstützenswert und werde es meinen Freunden weiterempfehlen.
         user:           *user2
         donationGoal:   *goal8
     - &donation11 !!models.Donation
         date:           2015-06-16
-        amount:         6
+        amount:         10
         messageToCollector: Ich finde das Projekt sehr unterstützenswert und werde es meinen Freunden weiterempfehlen.
         user:           *user3
         donationGoal:   *goal9
     - &donation12 !!models.Donation
         date:           2015-06-26
-        amount:         8
+        amount:         15
         messageToCollector: Ich finde das Projekt sehr unterstützenswert und werde es meinen Freunden weiterempfehlen.
         user:           *user2
         donationGoal:   *goal10
