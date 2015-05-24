@@ -19,7 +19,7 @@ public class NewsData {
     public String imageUrl;
 
     public String validate() {
-        if(imageUrl != null){
+        if (imageUrl != null) {
             try {
                 URL url = new URL(imageUrl);
                 URLConnection conn = url.openConnection();

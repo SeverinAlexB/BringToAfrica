@@ -42,9 +42,9 @@ public class ProjectDetail {
 
     public List<Donation> getDonationsForUser(User user) {
         List<Donation> donations = new ArrayList<>();
-        for(DonationGoal donationGoal : project.getDonationGoals()) {
-            for(Donation donation : donationGoal.getDonations()) {
-                if(donation.getUser().equals(user)) {
+        for (DonationGoal donationGoal : project.getDonationGoals()) {
+            for (Donation donation : donationGoal.getDonations()) {
+                if (donation.getUser().equals(user)) {
                     donations.add(donation);
                 }
             }

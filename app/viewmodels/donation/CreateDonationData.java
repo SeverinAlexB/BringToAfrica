@@ -25,7 +25,7 @@ public class CreateDonationData {
 
     public String validate() {
         boolean hasDonation = false;
-        for(int amount: amounts) {
+        for (int amount : amounts) {
             if (amount < 0) {
                 return "Anzahl muss grösser gleich 0 sein.";
             }
@@ -34,7 +34,7 @@ public class CreateDonationData {
             }
         }
 
-        if(hasDonation) {
+        if (hasDonation) {
             return null;
         } else {
             return "Es muss mindestens ein Gegenstand gespendet werden";

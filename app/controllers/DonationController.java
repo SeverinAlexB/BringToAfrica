@@ -17,13 +17,16 @@ public class DonationController extends Controller {
     @Security.Authenticated(AuthenticationController.class)
     public static Result donate() {
         Form<CreateDonationData> form = Form.form(CreateDonationData.class).bindFromRequest();
-        Project project = ProjectService.getProjectById(Long.parseLong(form.data().get("projectId")));
+        long projectId = Long.parseLong(form.data().get("projectId"));
+        Project project = ProjectService.getProjectById(projectId);
 
         if (form.hasErrors()) {
             return badRequest(views.html.project.donation.donate.render(project, form));
         } else {
             createDonations(form, ApplicationController.getCurrentUser());
-            return ok(views.html.project.donation.donateSuccess.render(project.getTitle(),project.getContact()));
+            return ok(views.html.project.donation.donateSuccess.render(
+                project.getTitle(), project.getContact())
+            );
         }
     }
 
@@ -37,7 +40,7 @@ public class DonationController extends Controller {
             int amount = form.get().amounts.get(i);
             DonationGoal goal = getGoalByType(project.getDonationGoals(), typeName);
 
-            if(amount > 0) {
+            if (amount > 0) {
                 createDonation(user, goal, amount, messageToCollector);
                 goal.refresh();
                 assert goal.getDonations().size() > 0;
@@ -46,7 +49,8 @@ public class DonationController extends Controller {
 
     }
 
-    protected static Donation createDonation(User user, DonationGoal goal, int amount, String messageToCollector) {
+    protected static Donation createDonation(User user, DonationGoal goal, int amount,
+                                              String messageToCollector) {
         Donation donation = new Donation(user, goal);
         donation.setAmount(amount);
         donation.setDate(new Date((new java.util.Date()).getTime()));

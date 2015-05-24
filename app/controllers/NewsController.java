@@ -14,16 +14,21 @@ public class NewsController {
     @Security.Authenticated(AuthenticationController.class)
     public static Result addNews() {
         Form<NewsData> newsDataForm = Form.form(NewsData.class).bindFromRequest();
-        models.Project project = ProjectService.getProjectById(Long.valueOf(newsDataForm.data().get("projectId")));
+        Long projectId = Long.valueOf(newsDataForm.data().get("projectId"));
+        models.Project project = ProjectService.getProjectById(projectId);
         if (newsDataForm.hasErrors()) {
             return badRequest(views.html.project.news.newNews.render(project, newsDataForm));
         } else {
             News news = new News();
             news.setTitle(newsDataForm.get().title);
             news.setDescription(newsDataForm.get().description);
-            if(newsDataForm.get().imageUrl!=null)news.setImageURL(newsDataForm.get().imageUrl);
             news.setDate(new java.sql.Date(new java.util.Date().getTime()));
             news.setProject(project);
+
+            if (newsDataForm.get().imageUrl != null) {
+                news.setImageURL(newsDataForm.get().imageUrl);
+            }
+
             news.save();
             return redirect(routes.ProjectController.getProject(project.getId()));
         }

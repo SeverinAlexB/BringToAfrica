@@ -16,12 +16,12 @@ public class ProjectDonationData implements Comparable<ProjectDonationData> {
 
     @Override
     public int compareTo(ProjectDonationData o) {
-        try{
+        try {
             String format = "dd.MM.yyyy";
             Date d1 = new SimpleDateFormat(format).parse(this.date);
             Date d2 = new SimpleDateFormat(format).parse(o.date);
             return d1.compareTo(d2);
-        } catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println("should no happen - ProjectDonationData compareTo Exception!");
             return 0;
         }
