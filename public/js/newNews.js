@@ -7,6 +7,7 @@ $(document).ready(function () {
        });
 
     $(document).on('submit', '#news-form', function(event) {
+        e.preventDefault();
         $.pjax.submit(event, '#pjax-containerNews', {push: false});
 
         /*//event.preventDefault();
