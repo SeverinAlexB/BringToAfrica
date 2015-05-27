@@ -18,6 +18,7 @@ public class Project extends Model {
     private String imageURL;
     private Date startsAt;
     private Date endsAt;
+    @Column(columnDefinition = "TEXT")
     private String contact;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private List<News> news;
