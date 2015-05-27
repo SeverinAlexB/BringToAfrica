@@ -12,6 +12,7 @@ public class Donation extends Model{
     private Long id;
     private Date date;
     private int amount;
+    @Column(columnDefinition = "TEXT")
     private String messageToCollector;
 
     @ManyToOne
