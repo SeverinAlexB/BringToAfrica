@@ -15,7 +15,7 @@ Users:
         email:      hh@gmail.com
         passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
     - &user4 !!models.User
-        firstName:  Max
+        firstName:  Manuel
         lastName:   Muster
         email:      foo@hsr.ch
         passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
