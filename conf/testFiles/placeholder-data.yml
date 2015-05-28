@@ -10,7 +10,7 @@ Users:
         email:      max@gmail.com
         passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
     - &user3 !!models.User
-        firstName:  Hans
+        firstName:  Heinrich
         lastName:   Heiri
         email:      hh@gmail.com
         passwordHashedSalted:   $2a$10$53DwpSRH7Hf7qhglH5flzerDGuN7j0JPQlonBn0RTkUoZaokZ55Xy
