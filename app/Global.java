@@ -21,7 +21,7 @@ public class Global extends GlobalSettings {
     private static final boolean LOAD_TEST_DATA = true;
     @Override
     public void onStart(Application app) {
-        if(LOAD_TEST_DATA && !isJUnitTest()) {
+        if (LOAD_TEST_DATA && !isJUnitTest()) {
             cleanDatabase();
             fillDatabase("testFiles/placeholder-data.yml");
             Logger.info("test data loaded");
@@ -33,13 +33,15 @@ public class Global extends GlobalSettings {
     }
     @Override
     public F.Promise<Result> onHandlerNotFound(RequestHeader request) {
-        return F.Promise.<Result>pure(ApplicationController.errorNotFound("Die Seite '" + request.path() + "' wurde nicht gefunden."));
+        return F.Promise.<Result>pure(ApplicationController.errorNotFound(
+            "Die Seite '" + request.path() + "' wurde nicht gefunden."
+        ));
     }
     @Override
     public F.Promise<Result> onError(RequestHeader request, Throwable t) {
         Logger.error(t.toString());
         return F.Promise.<Result>pure(internalServerError(
-                views.html.error.render(500,t.toString())
+            views.html.error.render(500, t.toString())
         ));
     }
 
@@ -49,7 +51,7 @@ public class Global extends GlobalSettings {
         ServerConfig config = new ServerConfig();
         DdlGenerator ddl = new DdlGenerator();
         String databaseType = Play.application().configuration().getString("databaseType");
-        if(databaseType.equals("postgres")) {
+        if (databaseType.equals("postgres")) {
             ddl.setup((SpiEbeanServer) server, new PostgresPlatform(), config);
         } else {
             ddl.setup((SpiEbeanServer) server, new H2Platform(), config);
@@ -61,11 +63,11 @@ public class Global extends GlobalSettings {
 
     private  void fillDatabase(String yamlFile) {
         Object yam = Yaml.load(yamlFile);
-        if(yam instanceof ArrayList) {
+        if (yam instanceof ArrayList) {
             Ebean.save((List) yam);
         } else {
-            Map<String,List<Object>> yamMap = (Map) yam;
-            for(String s: yamMap.keySet()){
+            Map<String, List<Object>> yamMap = (Map) yam;
+            for (String s : yamMap.keySet()) {
                 Ebean.save(yamMap.get(s));
             }
         }

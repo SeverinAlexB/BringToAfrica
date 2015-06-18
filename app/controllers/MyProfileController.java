@@ -32,7 +32,9 @@ public class MyProfileController {
             );
         } else {
             User user = User.find.byId(Long.parseLong(myProfileForm.get().id));
-            if (myProfileForm.get().changePw())editPassword(myProfileForm, user);
+            if (myProfileForm.get().changePw()) {
+                editPassword(myProfileForm, user);
+            }
             saveProfile(user, myProfileForm);
             ConsumerService.logIn(user.getEmail());
             return play.mvc.Controller.redirect(routes.ApplicationController.index());

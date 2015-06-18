@@ -14,8 +14,7 @@ public class ConsumerService {
 
     public static boolean isValid(String email, String password) {
         User user = getConsumerByEmail(email);
-        if (user == null)return false;
-        return BCrypt.checkpw(password, user.getPasswordHashedSalted());
+        return user != null && BCrypt.checkpw(password, user.getPasswordHashedSalted());
     }
     public static void logIn(String email){
         play.mvc.Controller.session().clear();

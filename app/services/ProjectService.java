@@ -30,16 +30,20 @@ public class ProjectService {
                 state += d.getAmount();
             }
         }
-        if (goal == 0.0 || state == 0.0) return 0;
-        if(state > goal) return 100;
+        if (goal == 0.0 || state == 0.0) {
+            return 0;
+        }
+        if (state > goal) {
+            return 100;
+        }
         return (int) ((100 / goal) * state);
     }
 
     public static Set<User> getDonators(Project project) {
         Set<User> donators = new HashSet<>();
-        for(DonationGoal donationGoal : project.getDonationGoals()) {
+        for (DonationGoal donationGoal : project.getDonationGoals()) {
             List<Donation> donationsForDonationGoal = donationGoal.getDonations();
-            for(Donation donation : donationsForDonationGoal) {
+            for (Donation donation : donationsForDonationGoal) {
                 donators.add(donation.getUser());
             }
         }

@@ -32,7 +32,8 @@ public class ProjectController extends Controller {
         Boolean isAuthenticated = user != null;
         Boolean isProjectOwner = isAuthenticated && user.getId().equals(project.getOwner().getId());
         return ok(views.html.project.projectdetails.render(
-            project, projectDetail, createDonationForm(project), Form.form(NewsData.class), isAuthenticated, isProjectOwner
+            project, projectDetail, createDonationForm(project),
+            Form.form(NewsData.class), isAuthenticated, isProjectOwner
         ));
     }
 

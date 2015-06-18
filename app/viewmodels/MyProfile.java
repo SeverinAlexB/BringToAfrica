@@ -24,8 +24,12 @@ public class MyProfile {
 
     public String validate() {
         User user = User.find.byId(Long.parseLong(this.id));
-        if(!isUserValid(user))return "User oder aktuelles Passwort ungültig.";
-        if(this.changePw())return isNewPassswordVaild();
+        if (!isUserValid(user)) {
+            return "User oder aktuelles Passwort ungültig.";
+        }
+        if (this.changePw()) {
+            return isNewPassswordVaild();
+        }
         return null;
     }
 
@@ -34,9 +38,8 @@ public class MyProfile {
         return changePassword == null || changePassword.equals("true");
     }
 
-    private boolean isUserValid(User user){
-        if(user == null)return false;
-        return isOldPasswordValid(user);
+    private boolean isUserValid(User user) {
+        return user != null && isOldPasswordValid(user);
     }
 
     private boolean isOldPasswordValid(User user){
@@ -44,7 +47,9 @@ public class MyProfile {
     }
 
     private String isNewPassswordVaild(){
-        if( ConsumerService.validatePasswords(password1,password2))return null;
+        if (ConsumerService.validatePasswords(password1, password2)) {
+            return null;
+        }
         return "neues Passwort ungültig";
     }
 }
